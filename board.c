@@ -136,13 +136,17 @@ void pushMove(Board *board, Move move)
     }
 
     board->moves.stack[board->moves.size].oldEnPassantSquareIndex = board->enPassantSquareIndex;
-    board->moves.stack[board->moves.size].oldCastlingRights[0] = board->castlingRights[0]; 
-    board->moves.stack[board->moves.size].oldCastlingRights[1] = board->castlingRights[1]; 
-    board->moves.stack[board->moves.size].oldCastlingRights[2] = board->castlingRights[2]; 
-    board->moves.stack[board->moves.size].oldCastlingRights[3] = board->castlingRights[3]; 
+    memcpy(board->moves.stack[board->moves.size].oldCastlingRights, board->castlingRights, 4*sizeof(int));
     board->moves.stack[board->moves.size].oldHalfMoveClock = board->halfmoveClock;
+    
+    board->moves.stack[board->moves.size].oldWhitePieceAmt = board->whitePieceAmt;
+    memcpy(board->moves.stack[board->moves.size].oldWhitePieceSquares, board->whitePieceSquares, 16*sizeof(Square));
 
+    board->moves.stack[board->moves.size].oldBlackPieceAmt = board->blackPieceAmt;
+    memcpy(board->moves.stack[board->moves.size].oldBlackPieceSquares, board->blackPieceSquares, 16*sizeof(Square));
+    board->moves.stack[board->moves.size].oldGameState = board->gameState;
 
+    // to disable castling rights
     if (board->squares[move.fromSquare].type == KING || board->squares[move.fromSquare].type == ROOK) {
         int disableCastlingStartIndex = (board->squares[move.fromSquare].color == WHITE_PIECE) ? 0 : 2;
         if (board->squares[move.fromSquare].type == KING) {
@@ -174,6 +178,24 @@ void pushMove(Board *board, Move move)
             pawnDirection = -8;
         }
         board->squares[move.toSquare + pawnDirection] = (Square){NONE, NONE, move.toSquare + pawnDirection};
+
+        if (board->squares[move.fromSquare].color == WHITE_PIECE) {
+            for (int j = 0; j < board->blackPieceAmt; j++) {
+                if (board->blackPieceSquares[j].squareIndex == move.toSquare + pawnDirection) {
+                    board->blackPieceSquares[j] = board->blackPieceSquares[board->blackPieceAmt-1];
+                    board->blackPieceAmt--;
+                    break;
+                }
+            }
+        } else {
+            for (int j = 0; j < board->whitePieceAmt; j++) {
+                if (board->whitePieceSquares[j].squareIndex == move.toSquare + pawnDirection) {
+                    board->whitePieceSquares[j] = board->whitePieceSquares[board->whitePieceAmt-1];
+                    board->whitePieceAmt--;
+                    break;
+                }
+            }
+        }
     } else if (board->squares[move.fromSquare].type == PAWN) {        
         if (board->squares[move.fromSquare].color == WHITE_PIECE)
         {
@@ -191,20 +213,12 @@ void pushMove(Board *board, Move move)
         }
     }
 
-    board->moves.stack[board->moves.size].oldFromSquare = move.fromSquare;
-    board->moves.stack[board->moves.size].oldToSquare = move.toSquare;
-    board->moves.stack[board->moves.size].oldPromotionType = move.promotionType;
-    board->moves.stack[board->moves.size].oldCaptureSquare = move.captureSquare;
-    board->moves.stack[board->moves.size].oldIsEnpassant = move.isEnpassant;
-
-    board->moves.size++;
-
-    // for castling
+    
+    // for castling, moves the rook as well
     if (board->squares[move.fromSquare].type == KING) {
         // castling in this is represented by the king moving 2 squares at once
         int isCastlingMove = (move.fromSquare - 2 == move.toSquare || move.fromSquare + 2 == move.toSquare);
         if (isCastlingMove) {
-            printf("CASTLING\n");
             int rookIndexToMove;
             int rookDestinationIndexToMove;
             if (board->squares[move.fromSquare].color == WHITE_PIECE) {
@@ -228,20 +242,94 @@ void pushMove(Board *board, Move move)
                     rookDestinationIndexToMove = 5;
                 }
             }
+            
+            if (board->squares[move.fromSquare].color == WHITE_PIECE) {
+                for (int i = 0; i < board->whitePieceAmt; i++) {
+                    if (board->whitePieceSquares[i].squareIndex == rookIndexToMove) {
+                        // update the piece movement
+                        board->whitePieceSquares[i].squareIndex = rookDestinationIndexToMove;
+                        break;
+                    }
+                }
+            } else {
+                for (int i = 0; i < board->blackPieceAmt; i++) {
+                    if (board->blackPieceSquares[i].squareIndex == rookIndexToMove) {
+                        // update the piece movement
+                        board->blackPieceSquares[i].squareIndex = rookDestinationIndexToMove;
+                        break;
+                    }
+                }
+            }
 
             board->squares[rookDestinationIndexToMove] = board->squares[rookIndexToMove];
             board->squares[rookDestinationIndexToMove].squareIndex = rookDestinationIndexToMove;
             board->squares[rookIndexToMove] = (Square){NONE, NONE, rookIndexToMove};
+
         }
     }
-
-
+    
+    if (board->squares[move.fromSquare].color == WHITE_PIECE) {
+        for (int i = 0; i < board->whitePieceAmt; i++) {
+            if (board->whitePieceSquares[i].squareIndex == move.fromSquare) {
+                // update the piece movement
+                board->whitePieceSquares[i].squareIndex = move.toSquare;
+                if (move.promotionType > PAWN) {
+                    board->whitePieceSquares[i].type = move.promotionType;
+                }
+                
+                if (move.captureSquare.type != NONE && !move.isEnpassant) {
+                    // there was a capture, must update other color's pieces
+                    for (int j = 0; j < board->blackPieceAmt; j++) {
+                        if (board->blackPieceSquares[j].squareIndex == move.toSquare) {
+                            board->blackPieceSquares[j] = board->blackPieceSquares[board->blackPieceAmt-1];
+                            board->blackPieceAmt--;
+                            break;
+                        }
+                    }
+                }
+                break;
+            }
+        }
+    } else {
+        for (int i = 0; i < board->blackPieceAmt; i++) {
+            if (board->blackPieceSquares[i].squareIndex == move.fromSquare) {
+                // update the piece movement
+                board->blackPieceSquares[i].squareIndex = move.toSquare;
+                if (move.promotionType > PAWN) {
+                    board->blackPieceSquares[i].type = move.promotionType;
+                }
+                
+                if (move.captureSquare.type != NONE && !move.isEnpassant) {
+                    // there was a capture, must update other color's pieces
+                    for (int j = 0; j < board->whitePieceAmt; j++) {
+                        if (board->whitePieceSquares[j].squareIndex == move.toSquare) {
+                            board->whitePieceSquares[j] = board->whitePieceSquares[board->whitePieceAmt-1];
+                            board->whitePieceAmt--;
+                            break;
+                        }
+                    }
+                }
+                break;
+            }
+        }
+    }
+    
+    memcpy(&board->moves.stack[board->moves.size].oldMove, &move, sizeof(Move));
+    board->moves.size++;
+    
     board->squares[move.toSquare] = board->squares[move.fromSquare];
     board->squares[move.toSquare].squareIndex = move.toSquare;
     board->squares[move.fromSquare] = (Square){NONE, NONE, move.fromSquare};
-    
 
+    if (move.promotionType > PAWN) {
+        board->squares[move.toSquare].type = move.promotionType;
+    }
+    
+    
     // printf("\nCurrent EP index: %d\n", board->enPassantSquareIndex);
+    // printf("move %d to %d \n", move.fromSquare, move.toSquare);
+    // printBoard(board);
+    // generateAttackingSquares(board);
 }
 
 void popMove(Board *board)
@@ -259,24 +347,26 @@ void popMove(Board *board)
 
     // first remove the move from the move stack
     UndoMove undoMove = board->moves.stack[board->moves.size - 1];
-    board->moves.stack[board->moves.size - 1] = (UndoMove){-1, -1, -1, (Square){NONE, NONE, -1}, 0, -1, {-1, -1, -1, -1}, -1};
+    board->moves.stack[board->moves.size - 1] = (UndoMove){0};
 
     board->moves.size--;
 
     board->enPassantSquareIndex = undoMove.oldEnPassantSquareIndex;
-    board->castlingRights[0] = undoMove.oldCastlingRights[0];
-    board->castlingRights[1] = undoMove.oldCastlingRights[1];
-    board->castlingRights[2] = undoMove.oldCastlingRights[2];
-    board->castlingRights[3] = undoMove.oldCastlingRights[3];
+    memcpy(board->castlingRights, undoMove.oldCastlingRights, 4*sizeof(int));
+    memcpy(board->whitePieceSquares, undoMove.oldWhitePieceSquares, 16*sizeof(Square));
+    memcpy(board->blackPieceSquares, undoMove.oldBlackPieceSquares, 16*sizeof(Square));
+    board->whitePieceAmt = undoMove.oldWhitePieceAmt;
+    board->blackPieceAmt = undoMove.oldBlackPieceAmt;
+    board->gameState = undoMove.oldGameState;
 
-    if (board->squares[undoMove.oldToSquare].type == KING) {
-        int isCastlingMove = (undoMove.oldToSquare - 2 == undoMove.oldFromSquare || undoMove.oldToSquare + 2 == undoMove.oldFromSquare);
+    if (board->squares[undoMove.oldMove.toSquare].type == KING) {
+        int isCastlingMove = (undoMove.oldMove.toSquare - 2 == undoMove.oldMove.fromSquare || undoMove.oldMove.toSquare + 2 == undoMove.oldMove.fromSquare);
         if (isCastlingMove) {
             int rookIndexToMove;
             int rookDestinationIndexToMove;
             
-            if (board->squares[undoMove.oldToSquare].color == WHITE_PIECE) {
-                if (undoMove.oldToSquare + 2 == undoMove.oldFromSquare) {
+            if (board->squares[undoMove.oldMove.toSquare].color == WHITE_PIECE) {
+                if (undoMove.oldMove.toSquare + 2 == undoMove.oldMove.fromSquare) {
                     // queenside for white
                     rookIndexToMove = 59;
                     rookDestinationIndexToMove = 56;
@@ -286,7 +376,7 @@ void popMove(Board *board)
                     rookDestinationIndexToMove = 63;
                 }
             } else {
-                if (undoMove.oldToSquare + 2 == undoMove.oldFromSquare) {
+                if (undoMove.oldMove.toSquare + 2 == undoMove.oldMove.fromSquare) {
                     // queenside for black
                     rookIndexToMove = 3;
                     rookDestinationIndexToMove = 0;
@@ -303,41 +393,48 @@ void popMove(Board *board)
         }
     }
 
-    if (undoMove.oldIsEnpassant)
+    if (undoMove.oldMove.isEnpassant)
     {
-        int pawnDirection = (board->squares[undoMove.oldFromSquare].color == WHITE_PIECE) ? 8 : -8;
-        if (board->squares[undoMove.oldFromSquare].color == WHITE_PIECE)
+        int pawnDirection = (board->squares[undoMove.oldMove.toSquare].color == WHITE_PIECE) ? 8 : -8;
 
         // set the from square to the place of the moved piece
         // note that to square is the empty square of where the piece actually went to
-        board->squares[undoMove.oldFromSquare] = board->squares[undoMove.oldToSquare];
-        board->squares[undoMove.oldFromSquare].squareIndex = undoMove.oldFromSquare;
-        board->squares[undoMove.oldToSquare] = (Square){NONE, NONE, undoMove.oldToSquare};
+        board->squares[undoMove.oldMove.fromSquare] = board->squares[undoMove.oldMove.toSquare];
+        board->squares[undoMove.oldMove.fromSquare].squareIndex = undoMove.oldMove.fromSquare;
+        board->squares[undoMove.oldMove.toSquare] = (Square){NONE, NONE, undoMove.oldMove.toSquare};
         // now reset the piece which was captured
-        board->squares[undoMove.oldToSquare + pawnDirection] = undoMove.oldCaptureSquare;
+        board->squares[undoMove.oldMove.toSquare + pawnDirection] = undoMove.oldMove.captureSquare;
     }
     else
     {
         // set the from square to the place of the moved piece
         // then set the index back to the from square idex
-        board->squares[undoMove.oldFromSquare] = board->squares[undoMove.oldToSquare];
-        board->squares[undoMove.oldFromSquare].squareIndex = undoMove.oldFromSquare;
+        board->squares[undoMove.oldMove.fromSquare] = board->squares[undoMove.oldMove.toSquare];
+        board->squares[undoMove.oldMove.fromSquare].squareIndex = undoMove.oldMove.fromSquare;
 
-        if (undoMove.oldCaptureSquare.type != NONE)
+        if (undoMove.oldMove.captureSquare.type != NONE)
         {
-            board->squares[undoMove.oldToSquare] = undoMove.oldCaptureSquare;
+            board->squares[undoMove.oldMove.toSquare] = undoMove.oldMove.captureSquare;
         }
         else
         {
-            board->squares[undoMove.oldToSquare] = (Square){NONE, NONE, undoMove.oldToSquare};
+            board->squares[undoMove.oldMove.toSquare] = (Square){NONE, NONE, undoMove.oldMove.toSquare};
         }
     }
 
-    // for (int i = 0; i < 499999999; i++)
-    // {
-    //     i*i;
-    // }
+    if (undoMove.oldMove.promotionType > PAWN) {
+        board->squares[undoMove.oldMove.fromSquare].type = PAWN;
+    }
+
     // printf("\nCurrent EP index: %d\n", board->enPassantSquareIndex);
+
+    // printf("\n");
+    // for (int i = 0; i<4; i++) {
+    //     printf("%d ", board->castlingRights[i]);
+    // }
+    // printf("\n");
+    // generateAttackingSquares(board);
+    
 }
 
 int isSlidingPiece(Square square)
@@ -375,6 +472,9 @@ void initBoard(Board *board, char fen[])
     int currentSquareIndex = 0;
     int fenReadIndex = 0;
 
+
+    board->whitePieceAmt = 0;
+    board->blackPieceAmt = 0;
     for (int i = 0; i < strlen(fen); i++)
     {
 
@@ -400,9 +500,16 @@ void initBoard(Board *board, char fen[])
             board->squares[currentSquareIndex].type = pieceType;
             board->squares[currentSquareIndex].color = pieceColor;
             board->squares[currentSquareIndex].squareIndex = currentSquareIndex;
+
+            if (pieceColor == WHITE_PIECE) {
+                board->whitePieceSquares[board->whitePieceAmt++] = board->squares[currentSquareIndex];
+            } else {
+                board->blackPieceSquares[board->blackPieceAmt++] = board->squares[currentSquareIndex];
+            }
             currentSquareIndex++;
         }
     }
+    printf("\n the amts %d %d\n", board->whitePieceAmt, board->blackPieceAmt);
 
     // change the board turn
     if (fen[fenReadIndex] == 'w')
@@ -445,6 +552,8 @@ void initBoard(Board *board, char fen[])
         };
     }
 
+    
+
     fenReadIndex += 1;
     char enPassantField[2];
     int enPassantFieldIndex = 0;
@@ -481,12 +590,20 @@ void initBoard(Board *board, char fen[])
 
     board->halfmoveClock = atoi(halfmovesField);
     board->fullmoveNumber = atoi(fullmovesField);
-    printf("%d %d %d\n", board->halfmoveClock, board->fullmoveNumber);
+    // printf("%d %d\n", board->halfmoveClock, board->fullmoveNumber);
 
     
     board->moves.size = 0;
     board->moves.capacity = 5;
     board->moves.stack = malloc(board->moves.capacity * sizeof(UndoMove));
 
+    // these will be updated in the pseudo-legal move generation
+    board->whiteAttackingAmt = 0;
+    board->blackAttackingAmt = 0; 
+
     printBoard(board);
+
+    board->gameState = 0;
+    generateLegalMoves(board);
+    
 }

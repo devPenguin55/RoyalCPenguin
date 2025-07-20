@@ -7,12 +7,11 @@
 #include "board.h"
 #include "movegen.h"
 
-
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 const int directionOffsets[8] = {-8, 8, -1, 1, -9, -7, 7, 9};    // up, down, left, right, diagonal upleft, diagonal upright, diagonal downleft, diagonal downright
 const int knightOffsets[8] = {-10, -17, -15, -6, 6, 15, 17, 10}; // leftmidup, lefthighup, righthighup, rightmidup, leftmiddown, lefthighdown, righthighdown, rightmiddown
 const int kingIndexesToCastle[8] = {61, 62, 59, 58, 5, 6, 3, 2}; //  white kingside(f1, g1) queenside(d1, c1), black kingside(f8, g8) queenside(d8, d8)
-    
+
 int numSquaresToEdge[64][20];
 void fillNumSquaresToEdge()
 {
@@ -51,37 +50,28 @@ void fillNumSquaresToEdge()
     }
 }
 
-LegalMovesContainer generatePseudoLegalMoves(Board *board)
+Square generateAttackingSquares(Board *board, int colorOfFromPieceToAttack)
 {
-    int legalMovesCapacity = 64;
+    AttackingSquareContainer *attackingSquares = (colorOfFromPieceToAttack == WHITE_PIECE) ? board->whiteAttackingSquares : board->blackAttackingSquares;
+    int *amtAttackingSquares = (colorOfFromPieceToAttack == WHITE_PIECE) ? &board->whiteAttackingAmt : &board->blackAttackingAmt;
+    *amtAttackingSquares = 0;
 
-    LegalMovesContainer legalMoves;
-    legalMoves.amtOfMoves = 0;
+    Square *pieceSquares = (colorOfFromPieceToAttack == WHITE_PIECE) ? board->whitePieceSquares : board->blackPieceSquares;
+    int amtOfPieces = (colorOfFromPieceToAttack == WHITE_PIECE) ? board->whitePieceAmt : board->blackPieceAmt;
 
-    legalMoves.moves = malloc(legalMovesCapacity * sizeof(Move));
-    if (legalMoves.moves == NULL)
-    {
-        perror("malloc failed");
-        exit(EXIT_FAILURE);
-    }
-
-    int toSquareIndex;
-    int startDirection, endDirection;
+    int startDirection, endDirection, toSquareIndex;
+    int canAddAttacker;
     int pawnPushAmount, pawnDirection, pawnMoveIsCapture, capturedPieceIndex, onEnpassantSquare, enPassantPieceToCaptureIndex;
+    int pawnCaptureIndexesToTry[2];
+    int pieceCapturedByPawnIndex;
     int startPawnCaptureIndex, endPawnCaptureIndex;
-    int isOkayToCastle;
 
-    for (int squareIndex = 0; squareIndex < 64; squareIndex++)
+    for (int squareIndex = 0; squareIndex < amtOfPieces; squareIndex++)
     {
         // sliding pieces
-        if (!(board->squares[squareIndex].type != NONE && board->squares[squareIndex].color == board->colorToPlay))
-        {
-            continue;
-        }
-
-        if (isSlidingPiece(board->squares[squareIndex]) || board->squares[squareIndex].type == KING)
+        if (isSlidingPiece(pieceSquares[squareIndex]) || pieceSquares[squareIndex].type == KING)
         { // technically king isn't sliding but the code works here
-            switch (board->squares[squareIndex].type)
+            switch (pieceSquares[squareIndex].type)
             {
             case QUEEN:
                 startDirection = 0;
@@ -103,7 +93,243 @@ LegalMovesContainer generatePseudoLegalMoves(Board *board)
 
             for (int directionOffsetIndex = startDirection; directionOffsetIndex < endDirection; directionOffsetIndex++)
             {
-                for (int edgeStep = 1; edgeStep <= numSquaresToEdge[squareIndex][directionOffsetIndex]; edgeStep++)
+                for (int edgeStep = 1; edgeStep <= numSquaresToEdge[pieceSquares[squareIndex].squareIndex][directionOffsetIndex]; edgeStep++)
+                {
+                    toSquareIndex = pieceSquares[squareIndex].squareIndex + directionOffsets[directionOffsetIndex] * edgeStep;
+
+                    if (toSquareIndex < 0 || toSquareIndex > 63)
+                    {
+                        continue;
+                    }
+
+                    canAddAttacker = 1;
+                    for (int verifyExistenceIdx = 0; verifyExistenceIdx < *amtAttackingSquares; verifyExistenceIdx++)
+                    {
+                        if (attackingSquares[verifyExistenceIdx].attackingSquare.squareIndex == toSquareIndex)
+                        {
+                            if (attackingSquares[verifyExistenceIdx].attackGivenFromSquareIndex == pieceSquares[squareIndex].squareIndex)
+                            {
+                                // cannot add duplicates, but can add other squares attacking the same square
+                                canAddAttacker = 0;
+            
+                                break;
+                            }
+                        }
+                    }
+
+                    
+
+                    if (board->squares[toSquareIndex].type != NONE || pieceSquares[squareIndex].type == KING)
+                    {
+                        // the move would capture another piece, stop here
+                        if (canAddAttacker && board->squares[toSquareIndex].type == KING && board->squares[toSquareIndex].color != colorOfFromPieceToAttack)
+                        {
+                            attackingSquares[(*amtAttackingSquares)++] = (AttackingSquareContainer){
+                                (Square){
+                                    board->squares[toSquareIndex].type,
+                                    board->squares[toSquareIndex].color,
+                                    toSquareIndex},
+                                pieceSquares[squareIndex].squareIndex};
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+        else if (pieceSquares[squareIndex].type == KNIGHT)
+        {
+            for (int directionOffsetIndex = 8; directionOffsetIndex < 16; directionOffsetIndex++)
+            {
+                if (!numSquaresToEdge[pieceSquares[squareIndex].squareIndex][directionOffsetIndex])
+                {
+                    continue;
+                }
+
+                toSquareIndex = pieceSquares[squareIndex].squareIndex + knightOffsets[directionOffsetIndex - 8];
+
+                if (toSquareIndex < 0 || toSquareIndex > 63)
+                {
+                    continue;
+                }
+
+                canAddAttacker = 1;
+                for (int verifyExistenceIdx = 0; verifyExistenceIdx < *amtAttackingSquares; verifyExistenceIdx++)
+                {
+                    if (attackingSquares[verifyExistenceIdx].attackingSquare.squareIndex == toSquareIndex)
+                    {
+                        if (attackingSquares[verifyExistenceIdx].attackGivenFromSquareIndex == pieceSquares[squareIndex].squareIndex)
+                        {
+                            // cannot add duplicates, but can add other squares attacking the same square
+                            canAddAttacker = 0;
+                            break;
+                        }
+                    }
+                }
+
+                if (canAddAttacker && board->squares[toSquareIndex].type == KING && board->squares[toSquareIndex].color != colorOfFromPieceToAttack)
+                {
+                    attackingSquares[(*amtAttackingSquares)++] = (AttackingSquareContainer){
+                        (Square){
+                            board->squares[toSquareIndex].type,
+                            board->squares[toSquareIndex].color,
+                            toSquareIndex},
+                        pieceSquares[squareIndex].squareIndex};
+                }
+            }
+        }
+        else if (pieceSquares[squareIndex].type == PAWN)
+        {
+            // pawn captures
+            startPawnCaptureIndex = (pieceSquares[squareIndex].color == WHITE_PIECE) ? 16 : 18;
+            endPawnCaptureIndex = (pieceSquares[squareIndex].color == WHITE_PIECE) ? 18 : 20;
+
+            pawnDirection = (pieceSquares[squareIndex].color == WHITE_PIECE) ? 8 : -8;
+            if (pieceSquares[squareIndex].color == WHITE_PIECE)
+            {
+                pawnCaptureIndexesToTry[0] = pieceSquares[squareIndex].squareIndex - 9;
+                pawnCaptureIndexesToTry[1] = pieceSquares[squareIndex].squareIndex - 7;
+            }
+            else
+            {
+                pawnCaptureIndexesToTry[0] = pieceSquares[squareIndex].squareIndex + 7;
+                pawnCaptureIndexesToTry[1] = pieceSquares[squareIndex].squareIndex + 9;
+            }
+
+            int pawnCaptureIndexesToTryIndex = -1; // * because we do ++ right after (don't change)
+            for (int pawnCaptureIndex = startPawnCaptureIndex; pawnCaptureIndex < endPawnCaptureIndex; pawnCaptureIndex++)
+            {
+                pawnCaptureIndexesToTryIndex++;
+                if (numSquaresToEdge[pieceSquares[squareIndex].squareIndex][pawnCaptureIndex] != -1)
+                {
+                    pawnMoveIsCapture = 0;
+                    capturedPieceIndex = 0;
+
+                    // pieceCapturedByPawnIndex is the the diagonal
+                    pieceCapturedByPawnIndex = pawnCaptureIndexesToTry[pawnCaptureIndexesToTryIndex];
+
+                    enPassantPieceToCaptureIndex = pieceCapturedByPawnIndex + pawnDirection;
+
+                    if (enPassantPieceToCaptureIndex >= 0 || enPassantPieceToCaptureIndex <= 63)
+                    {
+                        if (pieceSquares[squareIndex].color == WHITE_PIECE)
+                        {
+                            onEnpassantSquare = (pieceCapturedByPawnIndex >= 16 && pieceCapturedByPawnIndex <= 23);
+                        }
+                        else
+                        {
+                            onEnpassantSquare = (pieceCapturedByPawnIndex >= 40 && pieceCapturedByPawnIndex <= 47);
+                        }
+                        onEnpassantSquare = (onEnpassantSquare && board->squares[enPassantPieceToCaptureIndex].type == PAWN && pieceCapturedByPawnIndex == board->enPassantSquareIndex);
+                    }
+                    else
+                    {
+                        onEnpassantSquare = 0;
+                    }
+
+                    if (
+                        // check if the piece can be captured by seeing if the square == the capture square
+                        (
+                            board->squares[pieceCapturedByPawnIndex].type != NONE &&
+                            board->squares[pieceCapturedByPawnIndex].color != pieceSquares[squareIndex].color) ||
+                        ( // en passant
+                            board->squares[pieceCapturedByPawnIndex].type == NONE &&
+                            board->squares[pieceCapturedByPawnIndex + pawnDirection].color != pieceSquares[squareIndex].color &&
+                            onEnpassantSquare))
+                    {
+                        pawnMoveIsCapture = 1;
+                        capturedPieceIndex = (!onEnpassantSquare) ? pieceCapturedByPawnIndex : enPassantPieceToCaptureIndex;
+                    }
+                    else
+                    {
+                        capturedPieceIndex = pieceCapturedByPawnIndex;
+                    }
+
+                    canAddAttacker = 1;
+                    for (int verifyExistenceIdx = 0; verifyExistenceIdx < *amtAttackingSquares; verifyExistenceIdx++)
+                    {
+                        if (attackingSquares[verifyExistenceIdx].attackingSquare.squareIndex == capturedPieceIndex)
+                        {
+                            if (attackingSquares[verifyExistenceIdx].attackGivenFromSquareIndex == pieceSquares[squareIndex].squareIndex)
+                            {
+                                // cannot add duplicates, but can add other squares attacking the same square
+                                canAddAttacker = 0;
+            
+                                break;
+                            }
+                        }
+                    }
+
+                    if (canAddAttacker && board->squares[capturedPieceIndex].type == KING && board->squares[capturedPieceIndex].color != colorOfFromPieceToAttack)
+                    {
+                        attackingSquares[(*amtAttackingSquares)++] = (AttackingSquareContainer){
+                            (Square){
+                                board->squares[capturedPieceIndex].type,
+                                board->squares[capturedPieceIndex].color,
+                                capturedPieceIndex},
+                            pieceSquares[squareIndex].squareIndex};
+                    }
+                }
+            }
+        }
+    }
+}
+
+LegalMovesContainer generatePseudoLegalMoves(Board *board)
+{
+    int legalMovesCapacity = 35;
+
+    LegalMovesContainer legalMoves;
+    legalMoves.amtOfMoves = 0;
+
+    legalMoves.moves = malloc(legalMovesCapacity * sizeof(Move));
+    if (legalMoves.moves == NULL)
+    {
+        perror("malloc failed");
+        exit(EXIT_FAILURE);
+    }
+
+    int toSquareIndex;
+    int startDirection, endDirection;
+    int pawnPushAmount, pawnDirection, pawnMoveIsCapture, capturedPieceIndex, onEnpassantSquare, enPassantPieceToCaptureIndex;
+
+    int pawnCaptureIndexesToTry[2];
+    int pieceCapturedByPawnIndex;
+    int pawnCanPromote;
+
+    int startPawnCaptureIndex, endPawnCaptureIndex;
+    int isOkayToCastle;
+
+    Square *pieceSquares = (board->colorToPlay == WHITE_PIECE) ? board->whitePieceSquares : board->blackPieceSquares;
+    int amtOfPieces = (board->colorToPlay == WHITE_PIECE) ? board->whitePieceAmt : board->blackPieceAmt;
+
+    for (int squareIndex = 0; squareIndex < amtOfPieces; squareIndex++)
+    {
+        // sliding pieces
+        if (isSlidingPiece(pieceSquares[squareIndex]) || pieceSquares[squareIndex].type == KING)
+        { // technically king isn't sliding but the code works here
+            switch (pieceSquares[squareIndex].type)
+            {
+                case QUEEN:
+                    startDirection = 0;
+                    endDirection = 8;
+                    break;
+                case BISHOP:
+                    startDirection = 4;
+                    endDirection = 8;
+                    break;
+                case ROOK:
+                    startDirection = 0;
+                    endDirection = 4;
+                    break;
+                case KING:
+                    startDirection = 0;
+                    endDirection = 8;
+                    break;
+            }
+
+            for (int directionOffsetIndex = startDirection; directionOffsetIndex < endDirection; directionOffsetIndex++)
+            {
+                for (int edgeStep = 1; edgeStep <= numSquaresToEdge[pieceSquares[squareIndex].squareIndex][directionOffsetIndex]; edgeStep++)
                 {
                     if (legalMoves.amtOfMoves >= legalMovesCapacity)
                     {
@@ -117,7 +343,7 @@ LegalMovesContainer generatePseudoLegalMoves(Board *board)
                         }
                     }
 
-                    toSquareIndex = board->squares[squareIndex].squareIndex + directionOffsets[directionOffsetIndex] * edgeStep;
+                    toSquareIndex = pieceSquares[squareIndex].squareIndex + directionOffsets[directionOffsetIndex] * edgeStep;
 
                     if (toSquareIndex < 0 || toSquareIndex > 63)
                     {
@@ -134,13 +360,16 @@ LegalMovesContainer generatePseudoLegalMoves(Board *board)
                     {
                         // the move would capture the opponent's piece, stop after letting the move
                         // this is a capture move so register the capture square
-                        legalMoves.moves[legalMoves.amtOfMoves++] = (Move){board->squares[squareIndex].squareIndex, toSquareIndex, -1, (Square){board->squares[toSquareIndex].type, board->squares[toSquareIndex].color, toSquareIndex}, 0};
+                        legalMoves.moves[legalMoves.amtOfMoves++] = (Move){pieceSquares[squareIndex].squareIndex, toSquareIndex, -1, (Square){board->squares[toSquareIndex].type, board->squares[toSquareIndex].color, toSquareIndex}, 0};
+
                         break;
-                    } else {
-                        legalMoves.moves[legalMoves.amtOfMoves++] = (Move){board->squares[squareIndex].squareIndex, toSquareIndex, -1, (Square){NONE, NONE, -1}, 0};
                     }
-                    
-                    if (board->squares[squareIndex].type == KING)
+                    else
+                    {
+                        legalMoves.moves[legalMoves.amtOfMoves++] = (Move){pieceSquares[squareIndex].squareIndex, toSquareIndex, -1, (Square){NONE, NONE, -1}, 0};
+                    }
+
+                    if (pieceSquares[squareIndex].type == KING)
                     {
                         break;
                     }
@@ -148,26 +377,48 @@ LegalMovesContainer generatePseudoLegalMoves(Board *board)
             }
 
             // extra requirements for king move to castle
-            if (board->squares[squareIndex].type == KING) {
+            if (pieceSquares[squareIndex].type == KING)
+            {
                 // filter out the valid indexes based on current castling rights
-
-                for (int i = (board->squares[squareIndex].color==WHITE_PIECE ? 0 : 2); i<(board->squares[squareIndex].color==WHITE_PIECE ? 2 : 4); i++) {
-                    if (!board->castlingRights[i]) { continue; }
+                for (int i = (pieceSquares[squareIndex].color == WHITE_PIECE ? 0 : 2); i < (pieceSquares[squareIndex].color == WHITE_PIECE ? 2 : 4); i++)
+                {
+                    if (!board->castlingRights[i])
+                    {
+                        continue;
+                    }
 
                     isOkayToCastle = 1;
                     for (int amtToAdd = 0; amtToAdd < 2; amtToAdd++)
                     {
-                        
-                        if (board->squares[kingIndexesToCastle[i*2+amtToAdd]].type != NONE) { 
-                            isOkayToCastle = 0; 
+
+                        if (board->squares[kingIndexesToCastle[i * 2 + amtToAdd]].type != NONE)
+                        {
+                            isOkayToCastle = 0;
                             break;
                         }
+
+                        board->squares[kingIndexesToCastle[i * 2 + amtToAdd]] = (Square){KING, board->colorToPlay, kingIndexesToCastle[i * 2 + amtToAdd]};
+                        
+                        generateAttackingSquares(board, (board->colorToPlay == BLACK_PIECE) ? WHITE_PIECE : BLACK_PIECE);
+                        
+                        board->squares[kingIndexesToCastle[i * 2 + amtToAdd]] = (Square){NONE, NONE, kingIndexesToCastle[i * 2 + amtToAdd]};
+
+                        if (((board->colorToPlay == WHITE_PIECE) ? board->blackAttackingAmt : board->whiteAttackingAmt) != 0)
+                        {   
+                            isOkayToCastle = 0;
+                            break;
+                        }
+
                     }
                     // take care of b1 and b8
-                    if ((i == 1 || i == 3) && board->squares[kingIndexesToCastle[i*2+1]-1].type != NONE) { 
-                        isOkayToCastle = 0; 
+                    if ((i == 1 || i == 3) && board->squares[kingIndexesToCastle[i * 2 + 1] - 1].type != NONE)
+                    {
+                        isOkayToCastle = 0;
                     }
-                    if (!isOkayToCastle) { continue; }
+                    if (!isOkayToCastle)
+                    {
+                        continue;
+                    }
 
                     if (legalMoves.amtOfMoves >= legalMovesCapacity)
                     {
@@ -180,16 +431,11 @@ LegalMovesContainer generatePseudoLegalMoves(Board *board)
                             exit(EXIT_FAILURE);
                         }
                     }
-                    legalMoves.moves[legalMoves.amtOfMoves++] = (Move){board->squares[squareIndex].squareIndex, kingIndexesToCastle[i*2+1], -1, (Square){NONE, NONE, -1}, 0};
+                    legalMoves.moves[legalMoves.amtOfMoves++] = (Move){pieceSquares[squareIndex].squareIndex, kingIndexesToCastle[i * 2 + 1], -1, (Square){NONE, NONE, -1}, 0};
                 }
-
-                
-
-                
             }
-            
         }
-        else if (board->squares[squareIndex].type == KNIGHT)
+        else if (pieceSquares[squareIndex].type == KNIGHT)
         {
             for (int directionOffsetIndex = 8; directionOffsetIndex < 16; directionOffsetIndex++)
             {
@@ -205,12 +451,12 @@ LegalMovesContainer generatePseudoLegalMoves(Board *board)
                     }
                 }
 
-                if (!numSquaresToEdge[squareIndex][directionOffsetIndex])
+                if (!numSquaresToEdge[pieceSquares[squareIndex].squareIndex][directionOffsetIndex])
                 {
                     continue;
                 }
 
-                toSquareIndex = board->squares[squareIndex].squareIndex + knightOffsets[directionOffsetIndex - 8];
+                toSquareIndex = pieceSquares[squareIndex].squareIndex + knightOffsets[directionOffsetIndex - 8];
 
                 if (toSquareIndex < 0 || toSquareIndex > 63)
                 {
@@ -226,18 +472,20 @@ LegalMovesContainer generatePseudoLegalMoves(Board *board)
                 if (board->squares[toSquareIndex].type != NONE && board->squares[toSquareIndex].color != board->colorToPlay)
                 {
                     // this is a capture move so register the capture square
-                    legalMoves.moves[legalMoves.amtOfMoves++] = (Move){board->squares[squareIndex].squareIndex, toSquareIndex, -1, (Square){board->squares[toSquareIndex].type, board->squares[toSquareIndex].color, toSquareIndex}, 0};
-                } else {
-                    legalMoves.moves[legalMoves.amtOfMoves++] = (Move){board->squares[squareIndex].squareIndex, toSquareIndex, -1, (Square){NONE, NONE, -1}, 0};
+                    legalMoves.moves[legalMoves.amtOfMoves++] = (Move){pieceSquares[squareIndex].squareIndex, toSquareIndex, -1, (Square){board->squares[toSquareIndex].type, board->squares[toSquareIndex].color, toSquareIndex}, 0};
+                }
+                else
+                {
+                    legalMoves.moves[legalMoves.amtOfMoves++] = (Move){pieceSquares[squareIndex].squareIndex, toSquareIndex, -1, (Square){NONE, NONE, -1}, 0};
                 }
             }
         }
-        else if (board->squares[squareIndex].type == PAWN)
+        else if (pieceSquares[squareIndex].type == PAWN)
         {
             // check for double push eligibility
             if (
-                (board->squares[squareIndex].color == WHITE_PIECE && squareIndex >= 48 && squareIndex <= 55) ||
-                (board->squares[squareIndex].color == BLACK_PIECE && squareIndex >= 8 && squareIndex <= 15))
+                (pieceSquares[squareIndex].color == WHITE_PIECE && pieceSquares[squareIndex].squareIndex >= 48 && pieceSquares[squareIndex].squareIndex <= 55) ||
+                (pieceSquares[squareIndex].color == BLACK_PIECE && pieceSquares[squareIndex].squareIndex >= 8 && pieceSquares[squareIndex].squareIndex <= 15))
             {
                 pawnPushAmount = 2;
             }
@@ -246,7 +494,7 @@ LegalMovesContainer generatePseudoLegalMoves(Board *board)
                 pawnPushAmount = 1;
             }
 
-            pawnDirection = (board->squares[squareIndex].color == WHITE_PIECE) ? -8 : 8;
+            pawnDirection = (pieceSquares[squareIndex].color == WHITE_PIECE) ? -8 : 8;
 
             for (int curPawnPushAmount = 1; curPawnPushAmount < pawnPushAmount + 1; curPawnPushAmount++)
             {
@@ -262,7 +510,7 @@ LegalMovesContainer generatePseudoLegalMoves(Board *board)
                     }
                 }
 
-                toSquareIndex = board->squares[squareIndex].squareIndex + pawnDirection * curPawnPushAmount;
+                toSquareIndex = pieceSquares[squareIndex].squareIndex + pawnDirection * curPawnPushAmount;
 
                 if (toSquareIndex < 0 || toSquareIndex > 63)
                 {
@@ -274,17 +522,58 @@ LegalMovesContainer generatePseudoLegalMoves(Board *board)
                     // the pawn would walk into another piece, illegal
                     break;
                 }
+                
+                pawnCanPromote = 0;
+                if (board->colorToPlay == WHITE_PIECE && toSquareIndex / 8 == 0) {
+                    // the white pawn has gotten to be able to promote
+                    pawnCanPromote = 1;
+                } else if (board->colorToPlay == BLACK_PIECE && toSquareIndex / 8 == 7) {
+                    // the black pawn has gotten to be able to promote
+                    pawnCanPromote = 1;                    
+                }
+                
+                if (!pawnCanPromote) {
+                    legalMoves.moves[legalMoves.amtOfMoves++] = (Move){pieceSquares[squareIndex].squareIndex, toSquareIndex, -1, (Square){NONE, NONE, -1}, 0};
+                } else {
+                    for (int promotionType = KNIGHT; promotionType < KING; promotionType++)
+                    {
+                       if (legalMoves.amtOfMoves >= legalMovesCapacity)
+                       {
+                           legalMovesCapacity *= 2;
+                           legalMoves.moves = realloc(legalMoves.moves, legalMovesCapacity * sizeof(Move));
 
-                legalMoves.moves[legalMoves.amtOfMoves++] = (Move){board->squares[squareIndex].squareIndex, toSquareIndex, -1, (Square){NONE, NONE, -1}, 0};
+                           if (legalMoves.moves == NULL)
+                           {
+                               perror("malloc failed");
+                               exit(EXIT_FAILURE);
+                           }
+                       } 
+                        legalMoves.moves[legalMoves.amtOfMoves++] = (Move){pieceSquares[squareIndex].squareIndex, toSquareIndex, promotionType, (Square){NONE, NONE, -1}, 0};   
+                    }
+                }
             }
 
             // pawn captures
-            startPawnCaptureIndex = (board->squares[squareIndex].color == WHITE_PIECE) ? 16 : 18;
-            endPawnCaptureIndex = (board->squares[squareIndex].color == WHITE_PIECE) ? 18 : 20;
+            startPawnCaptureIndex = (pieceSquares[squareIndex].color == WHITE_PIECE) ? 16 : 18;
+            endPawnCaptureIndex = (pieceSquares[squareIndex].color == WHITE_PIECE) ? 18 : 20;
 
+            pawnDirection = (pieceSquares[squareIndex].color == WHITE_PIECE) ? 8 : -8;
+            if (pieceSquares[squareIndex].color == WHITE_PIECE)
+            {
+                pawnCaptureIndexesToTry[0] = pieceSquares[squareIndex].squareIndex - 9;
+                pawnCaptureIndexesToTry[1] = pieceSquares[squareIndex].squareIndex - 7;
+            }
+            else
+            {
+                pawnCaptureIndexesToTry[0] = pieceSquares[squareIndex].squareIndex + 7;
+                pawnCaptureIndexesToTry[1] = pieceSquares[squareIndex].squareIndex + 9;
+            }
+
+            int pawnCaptureIndexesToTryIndex = -1; // * because we do ++ right after (don't change)
             for (int pawnCaptureIndex = startPawnCaptureIndex; pawnCaptureIndex < endPawnCaptureIndex; pawnCaptureIndex++)
             {
-                if (numSquaresToEdge[squareIndex][pawnCaptureIndex] != -1)
+                pawnCaptureIndexesToTryIndex++;
+                if (numSquaresToEdge[pieceSquares[squareIndex].squareIndex][pawnCaptureIndex] != -1)
                 {
                     if (legalMoves.amtOfMoves >= legalMovesCapacity)
                     {
@@ -300,55 +589,75 @@ LegalMovesContainer generatePseudoLegalMoves(Board *board)
 
                     pawnMoveIsCapture = 0;
                     capturedPieceIndex = 0;
-                    for (int enPassantIndex = 0; enPassantIndex < 64; enPassantIndex++)
+
+                    // pieceCapturedByPawnIndex is the the diagonal
+                    pieceCapturedByPawnIndex = pawnCaptureIndexesToTry[pawnCaptureIndexesToTryIndex];
+
+                    enPassantPieceToCaptureIndex = pieceCapturedByPawnIndex + pawnDirection;
+
+                    if (enPassantPieceToCaptureIndex >= 0 || enPassantPieceToCaptureIndex <= 63)
                     {
-                        // enPassantIndex is the the diagonal
-                        if (!(enPassantIndex == numSquaresToEdge[squareIndex][pawnCaptureIndex]))
+                        if (pieceSquares[squareIndex].color == WHITE_PIECE)
                         {
-                            continue;
-                        }
-
-                        pawnDirection = (board->squares[squareIndex].color == WHITE_PIECE) ? 8 : -8;
-                        enPassantPieceToCaptureIndex = enPassantIndex + pawnDirection;
-
-                        if (enPassantPieceToCaptureIndex >= 0 || enPassantPieceToCaptureIndex <= 63)
-                        {
-                            if (board->squares[squareIndex].color == WHITE_PIECE)
-                            {
-                                onEnpassantSquare = (enPassantIndex >= 16 && enPassantIndex <= 23);
-                            }
-                            else
-                            {
-                                onEnpassantSquare = (enPassantIndex >= 40 && enPassantIndex <= 47);
-                            }
-                            onEnpassantSquare = (onEnpassantSquare && board->squares[enPassantPieceToCaptureIndex].type == PAWN &&  enPassantIndex == board->enPassantSquareIndex);
+                            onEnpassantSquare = (pieceCapturedByPawnIndex >= 16 && pieceCapturedByPawnIndex <= 23);
                         }
                         else
                         {
-                            onEnpassantSquare = 0;
+                            onEnpassantSquare = (pieceCapturedByPawnIndex >= 40 && pieceCapturedByPawnIndex <= 47);
                         }
+                        onEnpassantSquare = (onEnpassantSquare && board->squares[enPassantPieceToCaptureIndex].type == PAWN && pieceCapturedByPawnIndex == board->enPassantSquareIndex);
+                    }
+                    else
+                    {
+                        onEnpassantSquare = 0;
+                    }
 
-                        if (
-                            // check if the piece can be captured by seeing if the square == the capture square
-                            (
-                                board->squares[enPassantIndex].type != NONE &&
-                                board->squares[enPassantIndex].color != board->squares[squareIndex].color) ||
-                            ( // en passant
-                                board->squares[enPassantIndex].type == NONE &&
-                                board->squares[enPassantIndex + pawnDirection].color != board->squares[squareIndex].color &&
-                                onEnpassantSquare))
-                        {
-                            pawnMoveIsCapture = 1;
-                            capturedPieceIndex = (!onEnpassantSquare) ? enPassantIndex : enPassantPieceToCaptureIndex;
-                            break;
-                        }
+                    if (
+                        // check if the piece can be captured by seeing if the square == the capture square
+                        (
+                            board->squares[pieceCapturedByPawnIndex].type != NONE &&
+                            board->squares[pieceCapturedByPawnIndex].color != pieceSquares[squareIndex].color) ||
+                        ( // en passant
+                            board->squares[pieceCapturedByPawnIndex].type == NONE &&
+                            board->squares[pieceCapturedByPawnIndex + pawnDirection].color != pieceSquares[squareIndex].color &&
+                            onEnpassantSquare))
+                    {
+                        pawnMoveIsCapture = 1;
+                        capturedPieceIndex = (!onEnpassantSquare) ? pieceCapturedByPawnIndex : enPassantPieceToCaptureIndex;
                     }
                     if (!pawnMoveIsCapture)
                     {
                         continue;
                     }
 
-                    legalMoves.moves[legalMoves.amtOfMoves++] = (Move){board->squares[squareIndex].squareIndex, numSquaresToEdge[squareIndex][pawnCaptureIndex], -1, (Square){board->squares[capturedPieceIndex].type, board->squares[capturedPieceIndex].color, capturedPieceIndex}, onEnpassantSquare};
+                    pawnCanPromote = 0;
+                    if (board->colorToPlay == WHITE_PIECE && numSquaresToEdge[pieceSquares[squareIndex].squareIndex][pawnCaptureIndex] / 8 == 0) {
+                        // the white pawn has gotten to be able to promote
+                        pawnCanPromote = 1;
+                    } else if (board->colorToPlay == BLACK_PIECE && numSquaresToEdge[pieceSquares[squareIndex].squareIndex][pawnCaptureIndex] / 8 == 7) {
+                        // the black pawn has gotten to be able to promote
+                        pawnCanPromote = 1;                    
+                    }
+                    
+                    if (!pawnCanPromote) {
+                        legalMoves.moves[legalMoves.amtOfMoves++] = (Move){pieceSquares[squareIndex].squareIndex, numSquaresToEdge[pieceSquares[squareIndex].squareIndex][pawnCaptureIndex], -1, (Square){board->squares[capturedPieceIndex].type, board->squares[capturedPieceIndex].color, capturedPieceIndex}, onEnpassantSquare};
+                    } else {
+                        for (int promotionType = KNIGHT; promotionType < KING; promotionType++)
+                        {
+                            if (legalMoves.amtOfMoves >= legalMovesCapacity)
+                            {
+                                legalMovesCapacity *= 2;
+                                legalMoves.moves = realloc(legalMoves.moves, legalMovesCapacity * sizeof(Move));
+
+                                if (legalMoves.moves == NULL)
+                                {
+                                    perror("malloc failed");
+                                    exit(EXIT_FAILURE);
+                                }
+                            }
+                            legalMoves.moves[legalMoves.amtOfMoves++] = (Move){pieceSquares[squareIndex].squareIndex, numSquaresToEdge[pieceSquares[squareIndex].squareIndex][pawnCaptureIndex], promotionType, (Square){board->squares[capturedPieceIndex].type, board->squares[capturedPieceIndex].color, capturedPieceIndex}, onEnpassantSquare};
+                        }
+                    }
                 }
             }
         }
@@ -356,46 +665,64 @@ LegalMovesContainer generatePseudoLegalMoves(Board *board)
     return legalMoves;
 }
 
-LegalMovesContainer generateLegalMoves(Board *board) {
+
+
+LegalMovesContainer generateLegalMoves(Board *board)
+{
+    if (board->gameState != 0) {
+        // if checkmate or stalemate, stop wasting time trying to generate legal moves
+        LegalMovesContainer actualLegalMoves;
+        return actualLegalMoves;
+    }
     LegalMovesContainer pseudoLegal = generatePseudoLegalMoves(board);
+    // return pseudoLegal;
 
     LegalMovesContainer actualLegalMoves;
     actualLegalMoves.moves = malloc(pseudoLegal.amtOfMoves * sizeof(Move));
     actualLegalMoves.amtOfMoves = 0;
-    if (actualLegalMoves.moves == NULL) {
+    if (actualLegalMoves.moves == NULL)
+    {
         perror("malloc error");
         exit(EXIT_FAILURE);
     }
 
-    int isLegal;
+
+    int originalColorOfFromPieceToAttack = (board->colorToPlay == WHITE_PIECE) ? BLACK_PIECE : WHITE_PIECE;
+
     for (int pseudoLegalMoveIndex = 0; pseudoLegalMoveIndex < pseudoLegal.amtOfMoves; pseudoLegalMoveIndex++)
-    {
-        isLegal = 1;
+    {   
         pushMove(board, pseudoLegal.moves[pseudoLegalMoveIndex]);
-        LegalMovesContainer opponentResponseMoves = generatePseudoLegalMoves(board);
-        for (int opponentResponseMoveIndex = 0; opponentResponseMoveIndex < opponentResponseMoves.amtOfMoves; opponentResponseMoveIndex++) {
-            if (board->squares[opponentResponseMoves.moves[opponentResponseMoveIndex].toSquare].type == KING) {
-                isLegal = 0;
-            }
+
+        generateAttackingSquares(board, originalColorOfFromPieceToAttack);
+
+        if (((originalColorOfFromPieceToAttack == BLACK_PIECE) ? board->blackAttackingAmt : board->whiteAttackingAmt) == 0)
+        {
+            actualLegalMoves.moves[actualLegalMoves.amtOfMoves++] = pseudoLegal.moves[pseudoLegalMoveIndex];
         }
 
-        free(opponentResponseMoves.moves);
-
-        if (isLegal) {
-            actualLegalMoves.moves[actualLegalMoves.amtOfMoves++] = pseudoLegal.moves[pseudoLegalMoveIndex];
-        } 
-
-        
         popMove(board);
     }
 
     free(pseudoLegal.moves);
-    
+
+    if (actualLegalMoves.amtOfMoves == 0) {
+        generateAttackingSquares(board, originalColorOfFromPieceToAttack);
+        if (((originalColorOfFromPieceToAttack == BLACK_PIECE) ? board->blackAttackingAmt : board->whiteAttackingAmt) == 0) {
+            // no checks, is stalemate
+            board->gameState = STALEMATE;
+        } else {
+            // there are check, is checkmate
+            board->gameState = CHECKMATE;
+        }
+    }
+
     return actualLegalMoves;
 }
 
-int moveGenerationTest(Board *board, int depth) {
-    if (depth == 0) {
+int moveGenerationTest(Board *board, int depth)
+{
+    if (depth == 0)
+    {
         return 1;
     }
 
@@ -404,15 +731,13 @@ int moveGenerationTest(Board *board, int depth) {
     for (int i = 0; i < legalMoves.amtOfMoves; i++)
     {
         pushMove(board, legalMoves.moves[i]);
-        numPos += moveGenerationTest(board, depth-1);
+        numPos += moveGenerationTest(board, depth - 1);
         popMove(board);
     }
 
     free(legalMoves.moves);
 
-
     return numPos;
-    
 }
 
 void initMoveGen()

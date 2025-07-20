@@ -13,6 +13,9 @@
 #define QUEEN 5
 #define KING 6
 
+#define CHECKMATE 1
+#define STALEMATE 2
+
 typedef struct Square {
     int type;
     int color;
@@ -28,30 +31,45 @@ typedef struct Move {
 } Move;
 
 typedef struct UndoMove {
-    int oldFromSquare;
-    int oldToSquare;
-    int oldPromotionType;
-    Square oldCaptureSquare;
-    int oldIsEnpassant;
+    Move oldMove;
     int oldEnPassantSquareIndex;
     int oldCastlingRights[4];
     int oldHalfMoveClock;
+    Square oldWhitePieceSquares[16];
+    int oldWhitePieceAmt;
+    Square oldBlackPieceSquares[16];
+    int oldBlackPieceAmt;
+    int oldGameState;
 } UndoMove;
 
 typedef struct MoveStack {
-    UndoMove *stack; // pointer to the dynamic array
+    UndoMove *stack; // pointer to the dynamic array of undo moves
     int size; // current amt
     int capacity; // max stack before resizing
 } MoveStack;
 
+typedef struct AttackingSquareContainer {
+    Square attackingSquare;
+    int attackGivenFromSquareIndex;
+} AttackingSquareContainer;
+
 typedef struct Board {
     Square squares[64];
+    Square whitePieceSquares[16];
+    int whitePieceAmt;
+    Square blackPieceSquares[16];
+    int blackPieceAmt;
+    AttackingSquareContainer whiteAttackingSquares[64];
+    int whiteAttackingAmt;
+    AttackingSquareContainer blackAttackingSquares[64];
+    int blackAttackingAmt;
     MoveStack moves;
     int castlingRights[4]; // white kingside queenside, black kingside queenside
     int colorToPlay;
     int enPassantSquareIndex;
     int halfmoveClock; // number of halfmoves since pawn/capture
     int fullmoveNumber; // total fullmoves starting at 1
+    int gameState;
 } Board;
 
 void convertCharToPieceType(char pieceChar, int *pieceType, int *pieceColor);
