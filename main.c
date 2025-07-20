@@ -58,8 +58,9 @@ int main() {
 
     LegalMovesContainer curLegalMoves = generateLegalMoves(&board);
     
+    int aiWaitToMove = 0;
     while (!WindowShouldClose()) {
-        drawFrame(&board, &spriteSheet, spriteRecs, &drawingPieceMouseHandler, sounds, 1, &curLegalMoves);
+        drawFrame(&board, &spriteSheet, spriteRecs, &drawingPieceMouseHandler, sounds, 1, &curLegalMoves, &aiWaitToMove);
     }
 
     // printf("\n\n\nmove stack -> \n");
