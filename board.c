@@ -154,15 +154,24 @@ void pushMove(Board *board, Move move)
             board->castlingRights[disableCastlingStartIndex+1] = 0;
         } else {
             // rook move
-            int queensideAddition = (move.fromSquare % 8) == 0; // if the rook's column of its from square is 0, then queenside castling gets disabled
-            board->castlingRights[disableCastlingStartIndex + queensideAddition] = 0;
+            int queensideAddition = (move.fromSquare == 56 && board->squares[move.fromSquare].color == WHITE_PIECE) || (move.fromSquare == 0 && board->squares[move.fromSquare].color == BLACK_PIECE); // if the rook's column of its from square is 0, then queenside castling gets disabled
+            if (queensideAddition || ((move.fromSquare == 63 && board->squares[move.fromSquare].color == WHITE_PIECE) || (move.fromSquare == 7 && board->squares[move.fromSquare].color == BLACK_PIECE)))
+            {
+                board->castlingRights[disableCastlingStartIndex + queensideAddition] = 0;
+            }
         }
     }
     if (move.captureSquare.type == ROOK && (move.toSquare % 8 == 0 || move.toSquare % 8 == 7)) {
         // rook capture
         int disableCastlingStartIndex = (board->squares[move.toSquare].color == WHITE_PIECE) ? 0 : 2;
-        int queensideAddition = (move.toSquare % 8) == 0; // if the rook's column of its from square is 0, then queenside castling gets disabled
-        board->castlingRights[disableCastlingStartIndex + queensideAddition] = 0;
+        // int queensideAddition = (move.toSquare % 8) == 0; // if the rook's column of its from square is 0, then queenside castling gets disabled
+        // board->castlingRights[disableCastlingStartIndex + queensideAddition] = 0;
+        
+        int queensideAddition = (move.toSquare == 56 && board->squares[move.toSquare].color == WHITE_PIECE) || (move.toSquare == 0 && board->squares[move.toSquare].color == BLACK_PIECE); // if the rook's column of its from square is 0, then queenside castling gets disabled
+        if (queensideAddition || ((move.toSquare == 63 && board->squares[move.toSquare].color == WHITE_PIECE) || (move.toSquare == 7 && board->squares[move.toSquare].color == BLACK_PIECE)))
+        {
+            board->castlingRights[disableCastlingStartIndex + queensideAddition] = 0;
+        }
     }
 
     board->enPassantSquareIndex = -1;
@@ -329,7 +338,7 @@ void pushMove(Board *board, Move move)
     // printf("\nCurrent EP index: %d\n", board->enPassantSquareIndex);
     // printf("move %d to %d \n", move.fromSquare, move.toSquare);
     // printBoard(board);
-    // generateAttackingSquares(board);
+    
 }
 
 void popMove(Board *board)
@@ -352,7 +361,9 @@ void popMove(Board *board)
     board->moves.size--;
 
     board->enPassantSquareIndex = undoMove.oldEnPassantSquareIndex;
+
     memcpy(board->castlingRights, undoMove.oldCastlingRights, 4*sizeof(int));
+
     memcpy(board->whitePieceSquares, undoMove.oldWhitePieceSquares, 16*sizeof(Square));
     memcpy(board->blackPieceSquares, undoMove.oldBlackPieceSquares, 16*sizeof(Square));
     board->whitePieceAmt = undoMove.oldWhitePieceAmt;
@@ -433,7 +444,6 @@ void popMove(Board *board)
     //     printf("%d ", board->castlingRights[i]);
     // }
     // printf("\n");
-    // generateAttackingSquares(board);
     
 }
 
@@ -597,13 +607,9 @@ void initBoard(Board *board, char fen[])
     board->moves.capacity = 5;
     board->moves.stack = malloc(board->moves.capacity * sizeof(UndoMove));
 
-    // these will be updated in the pseudo-legal move generation
-    board->whiteAttackingAmt = 0;
-    board->blackAttackingAmt = 0; 
 
     printBoard(board);
 
-    board->gameState = 0;
+    board->gameState = NONE;
     generateLegalMoves(board);
-    
 }

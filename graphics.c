@@ -18,6 +18,9 @@ DrawingPieceMouseHandler drawingPieceMouseHandler;
 void initGraphics(Texture2D *spriteSheet, Rectangle *spriteRecs, Sound *sounds)
 {
     srand(time(NULL));
+
+    InitWindow(8*100*0.75, 8*100*0.75, "Chess Board");
+    InitAudioDevice();
     
     *spriteSheet = LoadTexture("chessPieces.png");
     SetTextureFilter(*spriteSheet, 1);
@@ -213,7 +216,7 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
         *curLegalMoves = generateLegalMoves(board);
     }
 
-    if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) && board->colorToPlay == WHITE_PIECE)
+    if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))// && board->colorToPlay == WHITE_PIECE)
     {
         if (!drawingPieceMouseHandler->isPickedUp)
         {
@@ -246,16 +249,18 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
                             }
                         }
                         pushMove(board, curLegalMoves->moves[i]);
+                        printf("\n");
+                        for (int i = 0; i<4; i++) {
+                            printf("%d ", board->castlingRights[i]);
+                        }
                         *aiWaitToMove = 0;
                         *curLegalMoves = generateLegalMoves(board);
                         UndoMove lastMove = board->moves.stack[board->moves.size - 1];
                         
-                        generateAttackingSquares(board, (board->colorToPlay == BLACK_PIECE) ? WHITE_PIECE : BLACK_PIECE);
-
-                        if (board->gameState > 0) {
+                        if (board->gameState > CHECK) {
                             PlaySound(sounds[4]);
                         }
-                        else if (((board->colorToPlay == WHITE_PIECE) ? board->blackAttackingAmt : board->whiteAttackingAmt) != 0) {
+                        else if (board->gameState == CHECK) {
                             PlaySound(sounds[2]);
                         }
                         else if (board->squares[lastMove.oldMove.toSquare].type == KING && ((lastMove.oldMove.toSquare - 2 == lastMove.oldMove.fromSquare) || (lastMove.oldMove.toSquare + 2 == lastMove.oldMove.fromSquare)))
@@ -313,7 +318,7 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
         DrawText(text, 1 * 75, 3.5 * 75, 80, DARKGREEN);
     }
 
-    if (board->colorToPlay == BLACK_PIECE && board->gameState == 0 && (*aiWaitToMove) > 500) {
+    if (0) {//(board->colorToPlay == BLACK_PIECE && board->gameState <= CHECK && (*aiWaitToMove) > 500) {
         drawingPieceMouseHandler->isPickedUp = 0;
         pushMove(board, curLegalMoves->moves[rand() % (curLegalMoves->amtOfMoves)]);
 
@@ -321,12 +326,10 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
 
         UndoMove lastMove = board->moves.stack[board->moves.size - 1];
 
-        generateAttackingSquares(board, (board->colorToPlay == BLACK_PIECE) ? WHITE_PIECE : BLACK_PIECE);
-
-        if (board->gameState > 0) {
+        if (board->gameState > CHECK) {
             PlaySound(sounds[4]);
         }
-        else if (((board->colorToPlay == WHITE_PIECE) ? board->blackAttackingAmt : board->whiteAttackingAmt) != 0) {
+        else if (board->gameState == CHECK) {
             PlaySound(sounds[2]);
         }
         else if (board->squares[lastMove.oldMove.toSquare].type == KING && ((lastMove.oldMove.toSquare - 2 == lastMove.oldMove.fromSquare) || (lastMove.oldMove.toSquare + 2 == lastMove.oldMove.fromSquare)))

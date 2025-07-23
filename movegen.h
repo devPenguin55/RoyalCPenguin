@@ -10,7 +10,7 @@ typedef struct LegalMovesContainer
 } LegalMovesContainer;
 
 void fillNumSquaresToEdge();
-Square generateAttackingSquares(Board *board, int colorOfFromPieceToAttack);
+int kingIsAttacked(Board *board, int colorToCheck);
 LegalMovesContainer generatePseudoLegalMoves(Board *board);
 LegalMovesContainer generateLegalMoves(Board *board);
 int moveGenerationTest(Board *board, int depth);

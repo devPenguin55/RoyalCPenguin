@@ -1,11 +1,14 @@
 #ifndef BOARD_H
 #define BOARD_H
 
+// piece color
 #define WHITE_PIECE 0
 #define BLACK_PIECE 1
 
+// generic NONE for piece type and game state
 #define NONE 0
 
+// piece type
 #define PAWN 1
 #define KNIGHT 2
 #define BISHOP 3
@@ -13,8 +16,10 @@
 #define QUEEN 5
 #define KING 6
 
-#define CHECKMATE 1
-#define STALEMATE 2
+// game state 
+#define CHECK 1
+#define CHECKMATE 2
+#define STALEMATE 3
 
 typedef struct Square {
     int type;
@@ -48,21 +53,12 @@ typedef struct MoveStack {
     int capacity; // max stack before resizing
 } MoveStack;
 
-typedef struct AttackingSquareContainer {
-    Square attackingSquare;
-    int attackGivenFromSquareIndex;
-} AttackingSquareContainer;
-
 typedef struct Board {
     Square squares[64];
     Square whitePieceSquares[16];
     int whitePieceAmt;
     Square blackPieceSquares[16];
     int blackPieceAmt;
-    AttackingSquareContainer whiteAttackingSquares[64];
-    int whiteAttackingAmt;
-    AttackingSquareContainer blackAttackingSquares[64];
-    int blackAttackingAmt;
     MoveStack moves;
     int castlingRights[4]; // white kingside queenside, black kingside queenside
     int colorToPlay;
