@@ -583,14 +583,14 @@ LegalMovesContainer generateLegalMoves(Board *board)
     return actualLegalMoves;
 }
 
-void indexToNotation(int squareIndex, char *notation) {
-    int file = squareIndex % 8;  // 0 = 'a', ..., 7 = 'h'
-    int rank = 7 - (squareIndex / 8);  // 0 = '8', ..., 7 = '1'
+// void indexToNotation(int squareIndex, char *notation) {
+//     int file = squareIndex % 8;  // 0 = 'a', ..., 7 = 'h'
+//     int rank = 7 - (squareIndex / 8);  // 0 = '8', ..., 7 = '1'
 
-    notation[0] = 'a' + file;
-    notation[1] = '1' + rank;
-    notation[2] = '\0';
-}
+//     notation[0] = 'a' + file;
+//     notation[1] = '1' + rank;
+//     notation[2] = '\0';
+// }
 
 int moveGenerationTest(Board *board, int depth)
 {
