@@ -7,8 +7,11 @@
 #include <time.h>
 #include "board.h"
 #include "graphics.h"
+#include "search.h"
 
-
+const int AI_COLOR = BLACK_PIECE;
+const int OPPONENT_COLOR = (AI_COLOR == WHITE_PIECE) ? BLACK_PIECE : WHITE_PIECE;
+const int AI_DEPTH = 7;
 
 Sound sounds[6];
 Texture2D spriteSheet;
@@ -75,7 +78,7 @@ void convertPieceTypeToTextureColumn(int pieceType, int *textureCol)
     }
 }
 
-void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, DrawingPieceMouseHandler *drawingPieceMouseHandler, Sound *sounds, int showIndexes, LegalMovesContainer *curLegalMoves, int *aiWaitToMove)
+void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, DrawingPieceMouseHandler *drawingPieceMouseHandler, Sound *sounds, int showIndexes, LegalMovesContainer *curLegalMoves)
 {
     BeginDrawing();
     Color color;
@@ -216,7 +219,7 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
         *curLegalMoves = generateLegalMoves(board);
     }
 
-    if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))// && board->colorToPlay == WHITE_PIECE)
+    if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) && board->colorToPlay == OPPONENT_COLOR)
     {
         if (!drawingPieceMouseHandler->isPickedUp)
         {
@@ -253,7 +256,7 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
                         for (int i = 0; i<4; i++) {
                             printf("%d ", board->castlingRights[i]);
                         }
-                        *aiWaitToMove = 0;
+
                         *curLegalMoves = generateLegalMoves(board);
                         UndoMove lastMove = board->moves.stack[board->moves.size - 1];
                         
@@ -318,9 +321,9 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
         DrawText(text, 1 * 75, 3.5 * 75, 80, DARKGREEN);
     }
 
-    if (0) {//(board->colorToPlay == BLACK_PIECE && board->gameState <= CHECK && (*aiWaitToMove) > 500) {
+    if (board->colorToPlay == AI_COLOR && board->gameState <= CHECK) {
         drawingPieceMouseHandler->isPickedUp = 0;
-        pushMove(board, curLegalMoves->moves[rand() % (curLegalMoves->amtOfMoves)]);
+        pushMove(board, SearchRoot(board, AI_DEPTH));
 
         *curLegalMoves = generateLegalMoves(board);
 
@@ -344,11 +347,7 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
         {
             PlaySound(sounds[0]);
         }
-
-        printBoard(board);
     }
 
     EndDrawing();
-
-    (*aiWaitToMove)++;
 }

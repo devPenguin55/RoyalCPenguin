@@ -2,6 +2,8 @@
 #define MOVEGEN_H
 
 extern int numSquaresToEdge[64][20];
+static const int pieceTypeToWorth[7] = {0, 1, 3, 3, 5, 9, 500}; // converts piece type to the worth, ex: KNIGHT = 2, so pieceTypeToWorth[2] is 3
+
 
 typedef struct LegalMovesContainer
 {

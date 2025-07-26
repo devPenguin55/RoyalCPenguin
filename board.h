@@ -21,6 +21,8 @@
 #define CHECKMATE 2
 #define STALEMATE 3
 
+
+
 typedef struct Square {
     int type;
     int color;

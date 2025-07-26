@@ -6,6 +6,8 @@
 #include "board.h"
 #include "movegen.h"
 
+
+
 void convertCharToPieceType(char pieceChar, int *pieceType, int *pieceColor)
 {
     /* use like:
@@ -461,7 +463,7 @@ void initBoard(Board *board, char fen[])
         board->squares[i].squareIndex = i;
     }
 
-    printf("%s\n", fen);
+    // printf("%s\n", fen);
 
     /*
     rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
@@ -519,7 +521,6 @@ void initBoard(Board *board, char fen[])
             currentSquareIndex++;
         }
     }
-    printf("\n the amts %d %d\n", board->whitePieceAmt, board->blackPieceAmt);
 
     // change the board turn
     if (fen[fenReadIndex] == 'w')
@@ -608,7 +609,7 @@ void initBoard(Board *board, char fen[])
     board->moves.stack = malloc(board->moves.capacity * sizeof(UndoMove));
 
 
-    printBoard(board);
+    // printBoard(board);
 
     board->gameState = NONE;
     generateLegalMoves(board);
