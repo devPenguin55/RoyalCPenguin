@@ -74,7 +74,8 @@ int Search(Board *board, int depth, int alpha, int beta) {
         // Game Over -> checkmate or stalemate
         free(legalMoves.moves);
         if (board->gameState == CHECKMATE) {
-            return -infinity;
+            // * the mate score is infinity value - depthSearched, depth searched is the target ply - depthRemaining
+            return -(infinity - (board->targetPly - depth));
         }
         return 0;
     }
@@ -97,6 +98,7 @@ int Search(Board *board, int depth, int alpha, int beta) {
         if (evaluation > alpha) {
             alpha = evaluation;
         }
+        
     }   
 
     free(legalMoves.moves);
@@ -105,6 +107,8 @@ int Search(Board *board, int depth, int alpha, int beta) {
 }
 
 Move SearchRoot(Board *board, int depth) {    
+    board->targetPly = depth;
+
     LegalMovesContainer legalMoves = generateLegalMoves(board);
     orderMoves(board, &legalMoves);
     
@@ -118,7 +122,8 @@ Move SearchRoot(Board *board, int depth) {
     for (int i = 0; i < legalMoves.amtOfMoves; i++)
     {
         pushMove(board, legalMoves.moves[i]);
-        evaluation = -Search(board, depth - 1, -infinity, -alpha);
+        evaluation = -Search(board, depth - 1, -infinity, infinity);
+        printf("\n%d for %d to %d\n", evaluation, legalMoves.moves[i].fromSquare, legalMoves.moves[i].toSquare);
         popMove(board);
 
         if (evaluation > alpha) {

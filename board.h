@@ -68,6 +68,7 @@ typedef struct Board {
     int halfmoveClock; // number of halfmoves since pawn/capture
     int fullmoveNumber; // total fullmoves starting at 1
     int gameState;
+    int targetPly;
 } Board;
 
 void convertCharToPieceType(char pieceChar, int *pieceType, int *pieceColor);
