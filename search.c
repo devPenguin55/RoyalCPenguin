@@ -118,7 +118,7 @@ Move SearchRoot(Board *board, int depth) {
     int st = getTimeInMilliseconds();
     
     int evaluation;
-    int alpha = -infinity;
+    int best = -infinity;
     for (int i = 0; i < legalMoves.amtOfMoves; i++)
     {
         pushMove(board, legalMoves.moves[i]);
@@ -126,8 +126,8 @@ Move SearchRoot(Board *board, int depth) {
         printf("\n%d for %d to %d\n", evaluation, legalMoves.moves[i].fromSquare, legalMoves.moves[i].toSquare);
         popMove(board);
 
-        if (evaluation > alpha) {
-            alpha = evaluation;
+        if (evaluation > best) {
+            best = evaluation;
             bestMoveIndex = i;
         }
     }   
