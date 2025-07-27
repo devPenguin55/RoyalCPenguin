@@ -18,7 +18,8 @@ int main() {
     Board board;
 
 
-    initBoard(&board, "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+    // initBoard(&board, "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1");
+    initBoard(&board, "r1b1kb1r/pppp1ppp/5q2/4n3/3KP3/2N3PN/PPP4P/R1BQ1B1R b kq - 0 1"); // simple M1
 
     // initBoard(&board, "3k4/R7/8/4K3/8/8/8/8 w - - 0 1"); // endgame heuristic testing
 
