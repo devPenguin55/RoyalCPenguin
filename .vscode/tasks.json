@@ -7,7 +7,7 @@
       "command": "cmd.exe",
       "args": [
         "/c",
-        "C:/msys64/mingw64/bin/gcc.exe main.c board.c graphics.c movegen.c evaluation.c search.c moveOrdering.c -o main.exe -IC:/msys64/mingw64/include -LC:/msys64/mingw64/lib -lraylib -lopengl32 -lgdi32 -lwinmm && main.exe & pause"
+        "C:/msys64/mingw64/bin/gcc.exe main.c board.c graphics.c movegen.c evaluation.c search.c zobrist.c moveOrdering.c -o main.exe -Wall -Werror -IC:/msys64/mingw64/include -LC:/msys64/mingw64/lib -lraylib -lopengl32 -lgdi32 -lwinmm && main.exe & pause"
       ],
       "options": {
         "cwd": "${workspaceFolder}"

@@ -5,6 +5,7 @@
 #include <math.h>
 #include "board.h"
 #include "movegen.h"
+#include "zobrist.h"
 
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 const int directionOffsets[8] = {-8, 8, -1, 1, -9, -7, 7, 9};    // up, down, left, right, diagonal upleft, diagonal upright, diagonal downleft, diagonal downright
@@ -530,8 +531,8 @@ LegalMovesContainer generateLegalMoves(Board *board)
 {
     if (board->gameState > CHECK) {
         // if checkmate or stalemate, stop wasting time trying to generate legal moves
-        LegalMovesContainer actualLegalMoves;
-        return actualLegalMoves;
+        LegalMovesContainer emptyLegalMoves = {0};
+        return emptyLegalMoves;
     }
     LegalMovesContainer pseudoLegal = generatePseudoLegalMoves(board);
     // return pseudoLegal;
@@ -546,13 +547,11 @@ LegalMovesContainer generateLegalMoves(Board *board)
     }
 
 
-    int originalColorOfFromPieceToAttack = (board->colorToPlay == WHITE_PIECE) ? BLACK_PIECE : WHITE_PIECE;
     int originalColorToPlay = board->colorToPlay;
 
     for (int pseudoLegalMoveIndex = 0; pseudoLegalMoveIndex < pseudoLegal.amtOfMoves; pseudoLegalMoveIndex++)
     {   
         pushMove(board, pseudoLegal.moves[pseudoLegalMoveIndex]);
-
         
         if (!kingIsAttacked(board, originalColorToPlay))
         {

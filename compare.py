@@ -101,7 +101,7 @@ e = e.strip().split('\n')
 for i in e:
     i = i.split("|")
     print(f'''
-    initBoard(&board, "{i[0]}");
+    initBoard(&board, "{i[0]}", &tt);
     perft = moveGenerationTest(&board, {i[1]});
     if (perft == {i[2]}) {{
         printf("\\nPassed Test Case of Fen %s on depth %d", "{i[0]}", {i[1]});

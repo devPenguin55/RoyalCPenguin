@@ -10,7 +10,9 @@ typedef struct ScoredMove
     int score;
 } ScoredMove;
 
-void orderMoves(Board *board, LegalMovesContainer *legalMoves);
+struct TranspositionTable;
+
+void orderMoves(Board *board, LegalMovesContainer *legalMoves, struct TranspositionTable *tt);
 
 
 #endif

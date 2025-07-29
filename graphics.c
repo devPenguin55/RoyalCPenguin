@@ -8,8 +8,9 @@
 #include "board.h"
 #include "graphics.h"
 #include "search.h"
+#include "zobrist.h"
 
-const int AI_COLOR = BLACK_PIECE;
+const int AI_COLOR = WHITE_PIECE;
 const int OPPONENT_COLOR = (AI_COLOR == WHITE_PIECE) ? BLACK_PIECE : WHITE_PIECE;
 const int AI_DEPTH = 6;
 
@@ -20,8 +21,6 @@ DrawingPieceMouseHandler drawingPieceMouseHandler;
 
 void initGraphics(Texture2D *spriteSheet, Rectangle *spriteRecs, Sound *sounds)
 {
-    srand(time(NULL));
-
     InitWindow(8*100*0.75, 8*100*0.75, "Chess Board");
     InitAudioDevice();
     
@@ -78,12 +77,13 @@ void convertPieceTypeToTextureColumn(int pieceType, int *textureCol)
     }
 }
 
-void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, DrawingPieceMouseHandler *drawingPieceMouseHandler, Sound *sounds, int showIndexes, LegalMovesContainer *curLegalMoves)
+void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, DrawingPieceMouseHandler *drawingPieceMouseHandler, Sound *sounds, int showIndexes, LegalMovesContainer *curLegalMoves, TranspositionTable *tt)
 {
     BeginDrawing();
+    
     Color color;
     int colorAdjustment;
-    ClearBackground(RAYWHITE);
+    ClearBackground(DARKGRAY);
 
     // Draw the background board
     for (int i = 0; i < 8; i++)
@@ -210,16 +210,14 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
 
     if (IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
     {
+        // undo the last 2 moves to undo ur move and the AI's move or in the other order for the opposite side to go again
         popMove(board);
-        for (int i = 0; i < 499999999; i++)
-        {
-            i*i;
-        }
         popMove(board);
-        *curLegalMoves = generateLegalMoves(board);
+        WaitTime(0.25);
+        *curLegalMoves = generateLegalMoves(board);        
     }
 
-    if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) && board->colorToPlay == OPPONENT_COLOR)
+    if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))// && board->colorToPlay == OPPONENT_COLOR)
     {
         if (!drawingPieceMouseHandler->isPickedUp)
         {
@@ -252,11 +250,12 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
                             }
                         }
                         pushMove(board, curLegalMoves->moves[i]);
-                        printf("\n");
-                        for (int i = 0; i<4; i++) {
-                            printf("%d ", board->castlingRights[i]);
-                        }
-
+                        
+                        // printf("\n");
+                        // for (int i = 0; i<4; i++) {
+                                // printf("%d ", board->castlingRights[i]);
+                            // }
+                            
                         *curLegalMoves = generateLegalMoves(board);
                         UndoMove lastMove = board->moves.stack[board->moves.size - 1];
                         
@@ -279,7 +278,7 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
                             PlaySound(sounds[0]);
                         }
 
-                        printBoard(board);
+                        // printBoard(board);
                         break;
                     }
                 }
@@ -323,8 +322,7 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
 
     if (board->colorToPlay == AI_COLOR && board->gameState <= CHECK) {
         drawingPieceMouseHandler->isPickedUp = 0;
-        pushMove(board, SearchRoot(board, AI_DEPTH));
-
+        pushMove(board, IterativeDeepening(board, AI_DEPTH, tt));
         *curLegalMoves = generateLegalMoves(board);
 
         UndoMove lastMove = board->moves.stack[board->moves.size - 1];
@@ -348,6 +346,11 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
             PlaySound(sounds[0]);
         }
     }
+
+
+    // char text3[64];
+    // snprintf(text3, sizeof(text3), "%llu", );
+    // DrawText(text3, 8.5 * 75, 4 * 75, 20, WHITE);
 
     EndDrawing();
 }

@@ -1,5 +1,8 @@
 #ifndef BOARD_H
 #define BOARD_H
+#include <stdint.h>
+
+struct TranspositionTable; // forward delcare it to avoid circular includes
 
 // piece color
 #define WHITE_PIECE 0
@@ -21,7 +24,7 @@
 #define CHECKMATE 2
 #define STALEMATE 3
 
-
+#define STARTING_FEN "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 
 typedef struct Square {
     int type;
@@ -78,6 +81,6 @@ void printMove(Move move);
 void pushMove(Board *board, Move move);
 void popMove(Board *board);
 int isSlidingPiece(Square square);
-void initBoard(Board *board, char fen[]);
+void initBoard(Board *board, char fen[], struct TranspositionTable *tt);
 
 #endif

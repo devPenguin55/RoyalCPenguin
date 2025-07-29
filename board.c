@@ -2,10 +2,11 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+#include <stdint.h>
 #include <math.h>
 #include "board.h"
 #include "movegen.h"
-
+#include "zobrist.h"
 
 
 void convertCharToPieceType(char pieceChar, int *pieceType, int *pieceColor)
@@ -454,7 +455,7 @@ int isSlidingPiece(Square square)
     return (square.type == QUEEN || square.type == ROOK || square.type == BISHOP);
 }
 
-void initBoard(Board *board, char fen[])
+void initBoard(Board *board, char fen[], TranspositionTable *tt)
 {
     for (int i = 0; i < 64; i++)
     {
@@ -575,12 +576,10 @@ void initBoard(Board *board, char fen[])
 
 
     board->enPassantSquareIndex = -1;
-    int enPassantDetectingIndexToSkip = -1;
     if (enPassantFieldIndex > 1)
     {
         // turn something like f6 into the index 21
         board->enPassantSquareIndex = (enPassantField[0] - 'a') + ((8 - (enPassantField[1] - '0')) * 8);
-        enPassantDetectingIndexToSkip = board->enPassantSquareIndex;
     } 
 
     fenReadIndex += 1;
@@ -611,6 +610,7 @@ void initBoard(Board *board, char fen[])
 
     // printBoard(board);
 
+    
     board->gameState = NONE;
     generateLegalMoves(board);
 }
