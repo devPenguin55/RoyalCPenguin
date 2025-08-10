@@ -64,7 +64,7 @@ int SearchAllCaptures(Board *board, int alpha, int beta, TranspositionTable *tt)
     return alpha;
 }
 
-int Search(Board *board, int depth, int alpha, int beta, TranspositionTable *tt) {
+int Search(Board *board, int depth, int alpha, int beta, TranspositionTable *tt, SearchRootResult *rootResult) {
     if (depth == 0) {
         int evaluation = SearchAllCaptures(board, alpha, beta, tt);
         ttStore(tt, generateZobristHash(board, tt), depth, (board->targetPly - depth), evaluation, FLAG_EXACT, (Move){-1, -1, -1, (Square){NONE, NONE, -1}, -1});
@@ -92,6 +92,11 @@ int Search(Board *board, int depth, int alpha, int beta, TranspositionTable *tt)
     long long ttLookupValue = ttLookup(tt, generateZobristHash(board, tt), depth, (board->targetPly - depth), alpha, beta);
     if (ttLookupValue != UNKNOWN) {
         (tt->hits)++;
+        if ((depth == board->targetPly) && (ttLookupValue > rootResult->bestScore)) {
+            uint64_t key = generateZobristHash(board, tt);
+            rootResult->bestMove = tt->entries[key % tt->size].bestMove;
+            rootResult->bestScore = ttLookupValue;
+        }
         return ttLookupValue;
     }
 
@@ -105,7 +110,7 @@ int Search(Board *board, int depth, int alpha, int beta, TranspositionTable *tt)
     {
         pushMove(board, legalMoves.moves[i]);
         if (foundPv) {
-            evaluation = -Search(board, depth-1, -alpha-1, -alpha, tt);
+            evaluation = -Search(board, depth-1, -alpha-1, -alpha, tt, rootResult);
             if ((evaluation > alpha) && (evaluation < beta)) {
                 /* 
                 check for failure - we search with window (alpha, alpha + 1)
@@ -121,11 +126,11 @@ int Search(Board *board, int depth, int alpha, int beta, TranspositionTable *tt)
                      5,177,664 positions evaluated before using on a test position
                      4,990,554 positions evaluated after using on the same test position
                 */ 
-               evaluation = -Search(board, depth - 1, -beta, -alpha, tt);
+               evaluation = -Search(board, depth - 1, -beta, -alpha, tt, rootResult);
                foundPv = 0;
             }
         } else {
-            evaluation = -Search(board, depth - 1, -beta, -alpha, tt);
+            evaluation = -Search(board, depth - 1, -beta, -alpha, tt, rootResult);
         }
         popMove(board);
 
@@ -141,6 +146,10 @@ int Search(Board *board, int depth, int alpha, int beta, TranspositionTable *tt)
             foundPv = 1;
             flag = FLAG_EXACT;
             bestMoveInSearch = legalMoves.moves[i];
+            if ((depth == board->targetPly)) {
+                rootResult->bestMove = legalMoves.moves[i];
+                rootResult->bestScore = alpha;
+            }
         }
         
     }   
@@ -152,48 +161,9 @@ int Search(Board *board, int depth, int alpha, int beta, TranspositionTable *tt)
     return alpha;
 }
 
-SearchRootResult SearchRoot(Board *board, int depth, TranspositionTable *tt) {    
-    board->targetPly = depth;
-
-    LegalMovesContainer legalMoves = generateLegalMoves(board);
-    orderMoves(board, &legalMoves, tt);
-    
-
-    int bestMoveIndex = -1;    
-    
-    // int st = getTimeInMilliseconds();
-    
-    int evaluation;
-    int bestScore = -infinity;
-    for (int i = 0; i < legalMoves.amtOfMoves; i++)
-    {
-        pushMove(board, legalMoves.moves[i]);
-        evaluation = -Search(board, depth - 1, -infinity, infinity, tt);
-        // printf("\n%d for %d to %d", evaluation, legalMoves.moves[i].fromSquare, legalMoves.moves[i].toSquare);
-        popMove(board);
-
-        if (evaluation > bestScore) {
-            bestScore = evaluation;
-            bestMoveIndex = i;
-        }
-    }   
-    // printf("\nTook %f ms for depth %d, %d positions evaluated, move index %d", getTimeInMilliseconds()-st, depth, POSITIONS_EVALUATED, bestMoveIndex);
-    // printf("\nTT had %d hits and %d collisions\n", tt->hits, tt->collisions);
-    if (bestScore > infinity-500) {
-        // winning mate within 50 moves
-        printf("     -> Winning Mate in %d\n", (infinity-bestScore+1)/2);
-    } else if (bestScore < -infinity+500) {
-        // losing mate within 50 moves
-        printf("     -> Losing Mate in %d\n", (infinity+bestScore)/2);
-    }
-
-    Move bestMove = legalMoves.moves[bestMoveIndex];
-    free(legalMoves.moves);
-    
-    return (SearchRootResult){bestMove, bestScore};
-}
-
 Move IterativeDeepening(Board *board, int maxDepth, TranspositionTable *tt) {
+    // ! if u see depth 1 mate found but score is like -999996 or smt, then it found mate but it was in tp and thus cancelled search there 
+    // ! bc it knew that it was game over
     int searchStartTime = getTimeInMilliseconds();
     POSITIONS_EVALUATED = 0;
     tt->hits = 0;
@@ -202,7 +172,11 @@ Move IterativeDeepening(Board *board, int maxDepth, TranspositionTable *tt) {
     SearchRootResult rootResult;
     int maxDepthSearched = 1;
     for (int currentDepth = 1; currentDepth <= maxDepth; currentDepth++) {
-        rootResult = SearchRoot(board, currentDepth, tt);
+        board->targetPly = currentDepth;
+        rootResult.bestScore = -infinity;
+        Search(board, currentDepth, -infinity, infinity, tt, &rootResult);
+        printf("\n\n%d %d", rootResult.bestScore, -infinity);
+
         maxDepthSearched = currentDepth;
         if (((rootResult.bestScore > infinity-500) || (rootResult.bestScore < -infinity+500)) && rootResult.bestScore != UNKNOWN) {
             // we have a mate score to deal with

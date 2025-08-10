@@ -10,7 +10,6 @@ typedef struct SearchRootResult {
 
 double getTimeInMilliseconds();
 int SearchAllCaptures(Board *board, int alpha, int beta, TranspositionTable *tt);
-int Search(Board *board, int depth, int alpha, int beta, TranspositionTable *tt);
-SearchRootResult SearchRoot(Board *board, int depth, TranspositionTable *tt);
+int Search(Board *board, int depth, int alpha, int beta, TranspositionTable *tt, SearchRootResult *rootResult);
 Move IterativeDeepening(Board *board, int maxDepth, TranspositionTable *tt);
 #endif
