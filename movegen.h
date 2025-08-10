@@ -2,7 +2,8 @@
 #define MOVEGEN_H
 
 extern int numSquaresToEdge[64][20];
-static const int pieceTypeToWorth[7] = {0, 1, 3, 3, 5, 9, 500}; // converts piece type to the worth, ex: KNIGHT = 2, so pieceTypeToWorth[2] is 3
+static const int pieceTypeToWorth[7] = {0, 100, 300, 320, 500, 900, 0}; // converts piece type to the worth, ex: KNIGHT = 2, so pieceTypeToWorth[2] is 3
+//                                     the king's value is 0 because you cannot lose the king!
 static const int FLAG_EXACT = 0;
 static const int FLAG_ALPHA = 1;
 static const int FLAG_BETA  = 2;

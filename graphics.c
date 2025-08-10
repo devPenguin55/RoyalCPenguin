@@ -10,9 +10,9 @@
 #include "search.h"
 #include "zobrist.h"
 
-const int AI_COLOR = WHITE_PIECE;
+const int AI_COLOR = BLACK_PIECE;
 const int OPPONENT_COLOR = (AI_COLOR == WHITE_PIECE) ? BLACK_PIECE : WHITE_PIECE;
-const int AI_DEPTH = 6;
+const int AI_DEPTH = 10;
 
 Sound sounds[6];
 Texture2D spriteSheet;

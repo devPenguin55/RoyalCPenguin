@@ -118,8 +118,8 @@ int Search(Board *board, int depth, int alpha, int beta, TranspositionTable *tt)
                      -> all other moves aren't potentially beating this and warranting the full search
                      -> (the goal is to skip the other nodes and have a performance boost)
                 
-                     5,177,664
-                     4,990,554
+                     5,177,664 positions evaluated before using on a test position
+                     4,990,554 positions evaluated after using on the same test position
                 */ 
                evaluation = -Search(board, depth - 1, -beta, -alpha, tt);
                foundPv = 0;
@@ -209,12 +209,16 @@ Move IterativeDeepening(Board *board, int maxDepth, TranspositionTable *tt) {
             printf("\n[MATE FOUND]");
             break;
         } else {
-            printf("best move %d to %d, %d was best score\n", rootResult.bestMove.fromSquare, rootResult.bestMove.toSquare, rootResult.bestScore);
+            printf("depth %d | best move %d to %d, %d was best score\n", currentDepth, rootResult.bestMove.fromSquare, rootResult.bestMove.toSquare, rootResult.bestScore);
         }
+        // if (((getTimeInMilliseconds() - searchStartTime)/1000) > 5) {
+        //     printf("\n[TIME OUT]");
+        //     break;
+        // }
     }   
 
-    printf("\nTook %f ms for depth %d, %d positions evaluated, %d hits, %d collisions", getTimeInMilliseconds()-searchStartTime, maxDepthSearched, POSITIONS_EVALUATED, tt->hits, tt->collisions);
-    
+    printf("\nTook %f ms for depth %d, %d positions evaluated, %d hits, %d collisions\n", getTimeInMilliseconds()-searchStartTime, maxDepthSearched, POSITIONS_EVALUATED, tt->hits, tt->collisions);
+    printf("Wrote %d, which is %f\n\n", tt->writes, ((double)(tt->writes))/((double)(tt->size))*100.0);
     // // extract PV line
     // for (int i = 0; i<maxDepthSearched; i++) {
     //     uint64_t key = generateZobristHash(board, tt);

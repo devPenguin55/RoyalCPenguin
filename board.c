@@ -613,4 +613,5 @@ void initBoard(Board *board, char fen[], TranspositionTable *tt)
     
     board->gameState = NONE;
     generateLegalMoves(board);
+    
 }
