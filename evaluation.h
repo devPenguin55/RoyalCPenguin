@@ -2,6 +2,8 @@
 #define EVALUATION_H
 #include "board.h"
 
-int Evaluate(Board *board);
+double Evaluate(Board *board);
+
+
 
 #endif

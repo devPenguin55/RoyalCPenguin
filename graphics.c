@@ -12,7 +12,7 @@
 
 const int AI_COLOR = BLACK_PIECE;
 const int OPPONENT_COLOR = (AI_COLOR == WHITE_PIECE) ? BLACK_PIECE : WHITE_PIECE;
-const int AI_DEPTH = 8;
+const int AI_DEPTH = 7;
 
 Sound sounds[6];
 Texture2D spriteSheet;
@@ -322,6 +322,13 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
 
     if (board->colorToPlay == AI_COLOR && board->gameState <= CHECK) {
         drawingPieceMouseHandler->isPickedUp = 0;
+        // if (board->fullmoveNumber < 4) {
+
+        //     pushMove(board, IterativeDeepening(board, AI_DEPTH, tt));
+        // } else {
+        //     pushMove(board, IterativeDeepening(board, 30, tt));
+            
+        // }
         pushMove(board, IterativeDeepening(board, AI_DEPTH, tt));
         *curLegalMoves = generateLegalMoves(board);
 
@@ -345,6 +352,15 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
         {
             PlaySound(sounds[0]);
         }
+
+        // uint64_t key = generateZobristHash(board, tt);
+        // Move *bestMoveFromTT = NULL;
+        // TranspositionTableEntry *pEntry = &(tt->entries[key % tt->size]); // * pointer here avoids creating the object and taking more memory
+        // if (pEntry->key == key) {
+        //     // we have a match for the best move that was saved in the TT, will rank it highly
+        //     bestMoveFromTT = &(pEntry->bestMove);
+        // }
+        // printf("\nBest Move %d to %d\n", bestMoveFromTT->fromSquare, bestMoveFromTT->toSquare);
     }
 
 
