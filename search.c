@@ -4,12 +4,14 @@
 #include <string.h>
 #include <math.h>
 #include <time.h>
+#include <raylib.h>
 #include "board.h"
 #include "movegen.h"
 #include "search.h"
 #include "evaluation.h"
 #include "moveOrdering.h"
 #include "zobrist.h"
+
 
 // #define MAX(a, b) ((a) > (b) ? (a) : (b))
 
@@ -161,7 +163,33 @@ int Search(Board *board, int depth, int alpha, int beta, TranspositionTable *tt,
     return alpha;
 }
 
-Move IterativeDeepening(Board *board, int maxDepth, TranspositionTable *tt) {
+void convertPieceTypeToTextureColumn2(int pieceType, int *textureCol)
+{
+    switch (pieceType)
+    {
+    case KING:
+        *textureCol = 0;
+        break;
+    case QUEEN:
+        *textureCol = 1;
+        break;
+    case BISHOP:
+        *textureCol = 2;
+        break;
+    case KNIGHT:
+        *textureCol = 3;
+        break;
+    case ROOK:
+        *textureCol = 4;
+        break;
+    case PAWN:
+        *textureCol = 5;
+        break;
+    }
+}
+
+
+SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTable *tt, Texture2D *spriteSheet, Rectangle *spriteRecs, DrawingPieceMouseHandler *drawingPieceMouseHandler, Vector2 *mousePosition, int *textureCol) {
     // ! if u see depth 1 mate found but score is like -999996 or smt, then it found mate but it was in tp and thus cancelled search there 
     // ! bc it knew that it was game over
     int searchStartTime = getTimeInMilliseconds();
@@ -171,12 +199,47 @@ Move IterativeDeepening(Board *board, int maxDepth, TranspositionTable *tt) {
     tt->writes = 0;
     SearchRootResult rootResult;
     int maxDepthSearched = 1;
+
+
     for (int currentDepth = 1; currentDepth <= maxDepth; currentDepth++) {
         board->targetPly = currentDepth;
         rootResult.bestScore = -infinity;
         Search(board, currentDepth, -infinity, infinity, tt, &rootResult);
         printf("\n\n%d %d", rootResult.bestScore, -infinity);
 
+        // * graphics addition 
+        BeginDrawing();
+
+        // convertPieceTypeToTextureColumn2(drawingPieceMouseHandler->squareSelected.type, &textureCol);
+
+        Rectangle destRec = {
+            mousePosition->x - spriteRecs[(*textureCol) + drawingPieceMouseHandler->squareSelected.color * 6].width * 0.75 * 0.5 * 0.5, mousePosition->y - spriteRecs[(*textureCol) + drawingPieceMouseHandler->squareSelected.color * 6].height * 0.75 * 0.5 * 0.5,
+            spriteRecs[0].width * 0.75 * 0.5, spriteRecs[0].height * 0.75 * 0.5};
+
+        DrawTexturePro(
+            *spriteSheet,
+            spriteRecs[(*textureCol) + drawingPieceMouseHandler->squareSelected.color * 6],
+            destRec,
+            (Vector2){0, 0},
+            0.0f,
+            WHITE);
+
+        DrawRectangle(8 * 75, 0, 75*4, 75*8, DARKGRAY);
+        char text[80];
+        if (((rootResult.bestScore > infinity-500) || (rootResult.bestScore < -infinity+500)) && rootResult.bestScore != UNKNOWN) { 
+            snprintf(text, sizeof(text), "Searched depth %d\nEval: Mate in %d ply", currentDepth, infinity-abs(rootResult.bestScore));
+        } else {
+            snprintf(text, sizeof(text), "Searched depth %d\nEval: %d", currentDepth, rootResult.bestScore);
+        }
+        DrawText(text, 8 * 75+2, 2 * 75, 30, GREEN);
+        char notation[5];
+        moveToNotation(&(rootResult.bestMove), notation);
+        DrawText("Bot Best Move\n---------------", 8 * 75+2, 4 * 75, 30, GREEN);
+        DrawText(notation, 8 * 75+2, 5 * 75-15, 30, GREEN);
+        EndDrawing();
+        
+        
+        
         maxDepthSearched = currentDepth;
         if (((rootResult.bestScore > infinity-500) || (rootResult.bestScore < -infinity+500)) && rootResult.bestScore != UNKNOWN) {
             // we have a mate score to deal with
@@ -186,32 +249,32 @@ Move IterativeDeepening(Board *board, int maxDepth, TranspositionTable *tt) {
             printf("depth %d | best move %d to %d, %d was best score\n", currentDepth, rootResult.bestMove.fromSquare, rootResult.bestMove.toSquare, rootResult.bestScore);
         }
         // if (((getTimeInMilliseconds() - searchStartTime)/1000) > 5) {
-        //     printf("\n[TIME OUT]");
-        //     break;
-        // }
-    }   
+            //     printf("\n[TIME OUT]");
+            //     break;
+            // }
+        }   
+        
+        printf("\nTook %f ms for depth %d, %d positions evaluated, %d hits, %d collisions\n", getTimeInMilliseconds()-searchStartTime, maxDepthSearched, POSITIONS_EVALUATED, tt->hits, tt->collisions);
+        printf("Wrote %d, which is %f\n\n", tt->writes, ((double)(tt->writes))/((double)(tt->size))*100.0);
+        // // extract PV line
+        // for (int i = 0; i<maxDepthSearched; i++) {
+            //     uint64_t key = generateZobristHash(board, tt);
+            //     Move *bestMoveFromTT = NULL;
+            //     TranspositionTableEntry *pEntry = &(tt->entries[key % tt->size]); // * pointer here avoids creating the object and taking more memory
+            //     if (pEntry->key == key) {
+                //         // we have a match for the best move that was saved in the TT, will rank it highly
+                //         bestMoveFromTT = &(pEntry->bestMove);
+                //     } 
+                //     printf("\n");
+                //     if (bestMoveFromTT != NULL && board->squares[bestMoveFromTT->fromSquare].type != NONE) {
+                    //         printMove(*bestMoveFromTT);
+                    //         pushMove(board, *bestMoveFromTT);
+                    //     } else {
+                        //         printf("PV extraction failure...");
+                        //         break;
+                        //     }
+                        // }
+                        
 
-    printf("\nTook %f ms for depth %d, %d positions evaluated, %d hits, %d collisions\n", getTimeInMilliseconds()-searchStartTime, maxDepthSearched, POSITIONS_EVALUATED, tt->hits, tt->collisions);
-    printf("Wrote %d, which is %f\n\n", tt->writes, ((double)(tt->writes))/((double)(tt->size))*100.0);
-    // // extract PV line
-    // for (int i = 0; i<maxDepthSearched; i++) {
-    //     uint64_t key = generateZobristHash(board, tt);
-    //     Move *bestMoveFromTT = NULL;
-    //     TranspositionTableEntry *pEntry = &(tt->entries[key % tt->size]); // * pointer here avoids creating the object and taking more memory
-    //     if (pEntry->key == key) {
-    //         // we have a match for the best move that was saved in the TT, will rank it highly
-    //         bestMoveFromTT = &(pEntry->bestMove);
-    //     } 
-    //     printf("\n");
-    //     if (bestMoveFromTT != NULL && board->squares[bestMoveFromTT->fromSquare].type != NONE) {
-    //         printMove(*bestMoveFromTT);
-    //         pushMove(board, *bestMoveFromTT);
-    //     } else {
-    //         printf("PV extraction failure...");
-    //         break;
-    //     }
-    // }
-    
-
-    return rootResult.bestMove;
+    return rootResult;
 }

@@ -5,12 +5,13 @@
 #include "board.h"
 #include "movegen.h"
 #include "zobrist.h"
+#include "search.h"
 
-typedef struct DrawingPieceMouseHandler {
+typedef struct DrawingPieceMouseHandler
+{
     Square squareSelected;
     int isPickedUp;
 } DrawingPieceMouseHandler;
-
 
 extern Sound sounds[6];
 extern Texture2D spriteSheet;
@@ -19,7 +20,7 @@ extern DrawingPieceMouseHandler drawingPieceMouseHandler;
 
 void initGraphics(Texture2D *spriteSheet, Rectangle *spriteRecs, Sound *sounds);
 void convertPieceTypeToTextureColumn(int pieceType, int *textureCol);
-void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, DrawingPieceMouseHandler *drawingPieceMouseHandler, Sound *sounds, int showIndexes, LegalMovesContainer *curLegalMoves, TranspositionTable *tt);
-
+void moveToNotation(Move *move, char *notation);
+void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, DrawingPieceMouseHandler *drawingPieceMouseHandler, Sound *sounds, int showIndexes, LegalMovesContainer *curLegalMoves, TranspositionTable *tt, SearchRootResult *result, int *draggingPieceType);
 
 #endif

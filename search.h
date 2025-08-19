@@ -8,8 +8,16 @@ typedef struct SearchRootResult {
     int bestScore;
 } SearchRootResult;
 
+typedef struct DrawingPieceMouseHandler
+{
+    Square squareSelected;
+    int isPickedUp;
+} DrawingPieceMouseHandler;
+void moveToNotation(Move *move, char *notation);
+
 double getTimeInMilliseconds();
 int SearchAllCaptures(Board *board, int alpha, int beta, TranspositionTable *tt);
 int Search(Board *board, int depth, int alpha, int beta, TranspositionTable *tt, SearchRootResult *rootResult);
-Move IterativeDeepening(Board *board, int maxDepth, TranspositionTable *tt);
+void convertPieceTypeToTextureColumn2(int pieceType, int *textureCol);
+SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTable *tt,Texture2D *spriteSheet, Rectangle *spriteRecs, DrawingPieceMouseHandler *drawingPieceMouseHandler, Vector2 *mousePosition, int *textureCol);
 #endif

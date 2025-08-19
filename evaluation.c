@@ -145,7 +145,7 @@ double Evaluate(Board *board) {
         // } 
     }
 
-    double eval = (double)(whiteEval - blackEval) + (((double)(whitePositionScore - blackPositionScore)) / 80.0);
+    double eval = (double)(whiteEval - blackEval) + (((double)(whitePositionScore - blackPositionScore)) * 0.5);
 
     if (board->colorToPlay == BLACK_PIECE) {
         eval *= -1;

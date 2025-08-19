@@ -21,7 +21,7 @@ DrawingPieceMouseHandler drawingPieceMouseHandler;
 
 void initGraphics(Texture2D *spriteSheet, Rectangle *spriteRecs, Sound *sounds)
 {
-    InitWindow(8*100*0.75, 8*100*0.75, "Chess Board");
+    InitWindow(12*100*0.75, 8*100*0.75, "Chess Board");
     InitAudioDevice();
     
     *spriteSheet = LoadTexture("chessPieces.png");
@@ -77,13 +77,28 @@ void convertPieceTypeToTextureColumn(int pieceType, int *textureCol)
     }
 }
 
-void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, DrawingPieceMouseHandler *drawingPieceMouseHandler, Sound *sounds, int showIndexes, LegalMovesContainer *curLegalMoves, TranspositionTable *tt)
+void moveToNotation(Move *move, char *notation) {
+    int file = move->fromSquare % 8;  // 0 = 'a', ..., 7 = 'h'
+    int rank = 7 - (move->fromSquare / 8);  // 0 = '8', ..., 7 = '1'
+    notation[0] = 'a' + file;
+    notation[1] = '1' + rank;
+    
+    file = move->toSquare % 8;  // 0 = 'a', ..., 7 = 'h'
+    rank = 7 - (move->toSquare / 8);  // 0 = '8', ..., 7 = '1'
+    notation[2] = 'a' + file;
+    notation[3] = '1' + rank;
+    notation[4] = '\0';
+}
+
+void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, DrawingPieceMouseHandler *drawingPieceMouseHandler, Sound *sounds, int showIndexes, LegalMovesContainer *curLegalMoves, TranspositionTable *tt, SearchRootResult *result, int *draggingPieceType)
 {
     BeginDrawing();
     
     Color color;
     int colorAdjustment;
     ClearBackground(DARKGRAY);
+
+    
 
     // Draw the background board
     for (int i = 0; i < 8; i++)
@@ -163,6 +178,14 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
                 DrawText(text, i * 75, j * 75, 30, GREEN);
             }
 
+            if (j == 7) {
+                DrawText(TextFormat("%c", "abcdefgh"[i]), i * 75, (j * 75)+45, 30, BLACK);
+            }
+
+            if (i == 7) {
+                DrawText(TextFormat("%c", "87654321"[j]), (i * 75)+59, (j * 75), 30, BLACK);
+            }
+
             if (kToDraw != -1)
             {
                 snprintf(text, sizeof(text), "%d", kToDraw);
@@ -226,6 +249,7 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
             {
                 drawingPieceMouseHandler->squareSelected = board->squares[snappedMouseX + snappedMouseY * 8];
                 drawingPieceMouseHandler->isPickedUp = 1;
+
             }
         }
     }
@@ -250,6 +274,7 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
                             }
                         }
                         pushMove(board, curLegalMoves->moves[i]);
+                        convertPieceTypeToTextureColumn(drawingPieceMouseHandler->squareSelected.type, draggingPieceType);
                         
                         // printf("\n");
                         // for (int i = 0; i<4; i++) {
@@ -319,7 +344,7 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
         char text[] = "Stalemate!";
         DrawText(text, 1 * 75, 3.5 * 75, 80, DARKGREEN);
     }
-
+    //board->colorToPlay == AI_COLOR &&
     if (board->colorToPlay == AI_COLOR && board->gameState <= CHECK) {
         drawingPieceMouseHandler->isPickedUp = 0;
         // if (board->fullmoveNumber < 4) {
@@ -329,7 +354,12 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
         //     pushMove(board, IterativeDeepening(board, 30, tt));
             
         // }
-        pushMove(board, IterativeDeepening(board, AI_DEPTH, tt));
+
+        // convertPieceTypeToTextureColumn(drawingPieceMouseHandler->squareSelected.type, &textureCol);
+
+        SearchRootResult rootResult = IterativeDeepening(board, AI_DEPTH, tt, spriteSheet, spriteRecs, drawingPieceMouseHandler, &mousePosition, draggingPieceType);
+        memcpy(result, &rootResult, sizeof(SearchRootResult));
+        pushMove(board, result->bestMove);
         *curLegalMoves = generateLegalMoves(board);
 
         UndoMove lastMove = board->moves.stack[board->moves.size - 1];
@@ -361,12 +391,22 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
         //     bestMoveFromTT = &(pEntry->bestMove);
         // }
         // printf("\nBest Move %d to %d\n", bestMoveFromTT->fromSquare, bestMoveFromTT->toSquare);
-    }
+    } else {
+        // * graphics addition 
 
+        DrawRectangle(8 * 75, 0, 75*4, 75*8, DARKGRAY);
+        char text[80];
+        if (((result->bestScore > infinity-500) || (result->bestScore < -infinity+500)) && result->bestScore != UNKNOWN) { 
+            snprintf(text, sizeof(text), "Searched depth %d\nEval: Mate in %d ply", board->targetPly, infinity-abs(result->bestScore));
+        } else {
+            snprintf(text, sizeof(text), "Searched depth %d\nEval: %d", board->targetPly, result->bestScore);
+        }
+        DrawText(text, 8 * 75+2, 2 * 75, 30, GREEN);
+        char notation[5];
+        moveToNotation(&result->bestMove, notation);
+        DrawText("Bot Best Move\n---------------", 8 * 75+2, 4 * 75, 30, GREEN);
+        DrawText(notation, 8 * 75+2, 5 * 75-15, 30, GREEN);
 
-    // char text3[64];
-    // snprintf(text3, sizeof(text3), "%llu", );
-    // DrawText(text3, 8.5 * 75, 4 * 75, 20, WHITE);
-
-    EndDrawing();
+        EndDrawing();
+    }    
 }
