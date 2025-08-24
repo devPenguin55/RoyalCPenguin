@@ -14,6 +14,8 @@ uint64_t getRandom64() {
            ((uint64_t)rand());
 }
 
+uint64_t zobristUniqueValues[70][12]; 
+
 void initializeTT(TranspositionTable *tt, int ttMBsToAllocate) {
     srand(55);
     
@@ -27,14 +29,14 @@ void initializeTT(TranspositionTable *tt, int ttMBsToAllocate) {
             currentValueIndex = color*6;
             for (int pieceType = PAWN; pieceType <= KING; pieceType++)
             {   
-                tt->uniqueValues[i][currentValueIndex] = getRandom64();
+                zobristUniqueValues[i][currentValueIndex] = getRandom64();
                 currentValueIndex++;
             }
         }
     }
 
     for (int i = 64; i<=69; i++) {
-        tt->uniqueValues[i][0] = getRandom64();
+        zobristUniqueValues[i][0] = getRandom64();
     }
     
     // convert MB to amount of entries
@@ -53,27 +55,30 @@ void initializeTT(TranspositionTable *tt, int ttMBsToAllocate) {
     printf("\nCreated TT table with %d MB -> space for %d entries\n", ttMBsToAllocate, tt->size);
 }
 
-uint64_t generateZobristHash(Board *board, TranspositionTable *tt) {
+uint64_t generateZobristHash(Board *board) {
     uint64_t hash = 0;
-    for (int i = 0; i < 64; i++)
+    for (int i = 0; i < board->whitePieceAmt; i++)
     {
-        if (board->squares[i].type == NONE) { continue; }
-        hash ^= tt->uniqueValues[i][board->squares[i].type - PAWN + board->squares[i].color*6];
+        hash ^= zobristUniqueValues[board->whitePieceSquares[i].squareIndex][board->whitePieceSquares[i].type - PAWN];
+    }
+    for (int i = 0; i < board->blackPieceAmt; i++)
+    {
+        hash ^= zobristUniqueValues[board->blackPieceSquares[i].squareIndex][board->blackPieceSquares[i].type - PAWN + 6];
     }
 
     if (board->colorToPlay == BLACK_PIECE) {
-        hash ^= tt->uniqueValues[64][0]; // XOR for black turn
+        hash ^= zobristUniqueValues[64][0]; // XOR for black turn
     }
 
     for (int i = 0; i < 4; i++)
     {   
         if (board->castlingRights[i]) {
-            hash ^= tt->uniqueValues[65+i][0];
+            hash ^= zobristUniqueValues[65+i][0];
         }
     }
     
     if (board->enPassantSquareIndex != -1) {
-        hash ^= tt->uniqueValues[70][0];
+        hash ^= zobristUniqueValues[70][0];
     }
 
 
@@ -130,7 +135,7 @@ void ttStore(TranspositionTable *tt, uint64_t key, int depth, int alreadySearche
                     return;
                 }
             }
-        } 
+        }
     } else {
         (tt->writes)++;
     }

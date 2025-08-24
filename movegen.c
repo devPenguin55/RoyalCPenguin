@@ -80,8 +80,10 @@ LegalMovesContainer generatePseudoLegalMoves(Board *board)
 
     int kingPieceSquaresIndexOfColorToPlay;
     int kingBoardSquareOfColorToPlay;
-    for (int i = 0; i < amtOfPieces; i++) {
-        if (pieceSquares[i].type == KING) {
+    for (int i = 0; i < amtOfPieces; i++)
+    {
+        if (pieceSquares[i].type == KING)
+        {
             kingPieceSquaresIndexOfColorToPlay = i;
             kingBoardSquareOfColorToPlay = pieceSquares[i].squareIndex;
             break;
@@ -97,22 +99,22 @@ LegalMovesContainer generatePseudoLegalMoves(Board *board)
         { // technically king isn't sliding but the code works here
             switch (pieceSquares[squareIndex].type)
             {
-                case QUEEN:
-                    startDirection = 0;
-                    endDirection = 8;
-                    break;
-                case BISHOP:
-                    startDirection = 4;
-                    endDirection = 8;
-                    break;
-                case ROOK:
-                    startDirection = 0;
-                    endDirection = 4;
-                    break;
-                case KING:
-                    startDirection = 0;
-                    endDirection = 8;
-                    break;
+            case QUEEN:
+                startDirection = 0;
+                endDirection = 8;
+                break;
+            case BISHOP:
+                startDirection = 4;
+                endDirection = 8;
+                break;
+            case ROOK:
+                startDirection = 0;
+                endDirection = 4;
+                break;
+            case KING:
+                startDirection = 0;
+                endDirection = 8;
+                break;
             }
 
             for (int directionOffsetIndex = startDirection; directionOffsetIndex < endDirection; directionOffsetIndex++)
@@ -169,10 +171,10 @@ LegalMovesContainer generatePseudoLegalMoves(Board *board)
                     {
                         continue;
                     }
-                    if (kingIsAttacked(board, board->colorToPlay)) {
+                    if (kingIsAttacked(board, board->colorToPlay))
+                    {
                         break;
                     }
-
 
                     isOkayToCastle = 1;
                     for (int amtToAdd = 0; amtToAdd < 2; amtToAdd++)
@@ -186,22 +188,20 @@ LegalMovesContainer generatePseudoLegalMoves(Board *board)
 
                         // remove the actual king first, then reset it
                         // pieceSquares[kingIndexOfColorToPlay] = (Square){NONE, NONE, -1};
-                        
-                        
+
                         board->squares[kingBoardSquareOfColorToPlay] = (Square){NONE, NONE, kingBoardSquareOfColorToPlay};
                         pieceSquares[kingPieceSquaresIndexOfColorToPlay] = (Square){KING, board->colorToPlay, kingIndexesToCastle[i * 2 + amtToAdd]};
-                        
+
                         board->squares[kingIndexesToCastle[i * 2 + amtToAdd]] = (Square){KING, board->colorToPlay, kingIndexesToCastle[i * 2 + amtToAdd]};
-                        isOkayToCastle = !kingIsAttacked(board, board->colorToPlay);                       
+                        isOkayToCastle = !kingIsAttacked(board, board->colorToPlay);
                         board->squares[kingIndexesToCastle[i * 2 + amtToAdd]] = (Square){NONE, NONE, kingIndexesToCastle[i * 2 + amtToAdd]};
-                        
+
                         pieceSquares[kingPieceSquaresIndexOfColorToPlay] = (Square){KING, board->colorToPlay, kingBoardSquareOfColorToPlay};
                         board->squares[kingBoardSquareOfColorToPlay] = (Square){KING, board->colorToPlay, kingBoardSquareOfColorToPlay};
                         if (!isOkayToCastle)
-                        {   
+                        {
                             break;
                         }
-
                     }
                     // take care of b1 and b8
                     if ((i == 1 || i == 3) && board->squares[kingIndexesToCastle[i * 2 + 1] - 1].type != NONE)
@@ -305,33 +305,39 @@ LegalMovesContainer generatePseudoLegalMoves(Board *board)
                     // the pawn would walk into another piece, illegal
                     break;
                 }
-                
+
                 pawnCanPromote = 0;
-                if (board->colorToPlay == WHITE_PIECE && toSquareIndex / 8 == 0) {
+                if (board->colorToPlay == WHITE_PIECE && toSquareIndex / 8 == 0)
+                {
                     // the white pawn has gotten to be able to promote
                     pawnCanPromote = 1;
-                } else if (board->colorToPlay == BLACK_PIECE && toSquareIndex / 8 == 7) {
-                    // the black pawn has gotten to be able to promote
-                    pawnCanPromote = 1;                    
                 }
-                
-                if (!pawnCanPromote) {
+                else if (board->colorToPlay == BLACK_PIECE && toSquareIndex / 8 == 7)
+                {
+                    // the black pawn has gotten to be able to promote
+                    pawnCanPromote = 1;
+                }
+
+                if (!pawnCanPromote)
+                {
                     legalMoves.moves[legalMoves.amtOfMoves++] = (Move){actualPieceSquareIndex, toSquareIndex, -1, (Square){NONE, NONE, -1}, 0};
-                } else {
+                }
+                else
+                {
                     for (int promotionType = KNIGHT; promotionType < KING; promotionType++)
                     {
-                       if (legalMoves.amtOfMoves >= legalMovesCapacity)
-                       {
-                           legalMovesCapacity *= 2;
-                           legalMoves.moves = realloc(legalMoves.moves, legalMovesCapacity * sizeof(Move));
+                        if (legalMoves.amtOfMoves >= legalMovesCapacity)
+                        {
+                            legalMovesCapacity *= 2;
+                            legalMoves.moves = realloc(legalMoves.moves, legalMovesCapacity * sizeof(Move));
 
-                           if (legalMoves.moves == NULL)
-                           {
-                               perror("malloc failed");
-                               exit(EXIT_FAILURE);
-                           }
-                       } 
-                        legalMoves.moves[legalMoves.amtOfMoves++] = (Move){actualPieceSquareIndex, toSquareIndex, promotionType, (Square){NONE, NONE, -1}, 0};   
+                            if (legalMoves.moves == NULL)
+                            {
+                                perror("malloc failed");
+                                exit(EXIT_FAILURE);
+                            }
+                        }
+                        legalMoves.moves[legalMoves.amtOfMoves++] = (Move){actualPieceSquareIndex, toSquareIndex, promotionType, (Square){NONE, NONE, -1}, 0};
                     }
                 }
             }
@@ -388,7 +394,6 @@ LegalMovesContainer generatePseudoLegalMoves(Board *board)
                     }
                     onEnpassantSquare = (onEnpassantSquare && board->squares[enPassantPieceToCaptureIndex].type == PAWN && pieceCapturedByPawnIndex == board->enPassantSquareIndex);
 
-
                     if (
                         // check if the piece can be captured by seeing if the square == the capture square
                         (
@@ -408,17 +413,23 @@ LegalMovesContainer generatePseudoLegalMoves(Board *board)
                     }
 
                     pawnCanPromote = 0;
-                    if (board->colorToPlay == WHITE_PIECE && numSquaresToEdge[actualPieceSquareIndex][pawnCaptureIndex] / 8 == 0) {
+                    if (board->colorToPlay == WHITE_PIECE && numSquaresToEdge[actualPieceSquareIndex][pawnCaptureIndex] / 8 == 0)
+                    {
                         // the white pawn has gotten to be able to promote
                         pawnCanPromote = 1;
-                    } else if (board->colorToPlay == BLACK_PIECE && numSquaresToEdge[actualPieceSquareIndex][pawnCaptureIndex] / 8 == 7) {
-                        // the black pawn has gotten to be able to promote
-                        pawnCanPromote = 1;                    
                     }
-                    
-                    if (!pawnCanPromote) {
+                    else if (board->colorToPlay == BLACK_PIECE && numSquaresToEdge[actualPieceSquareIndex][pawnCaptureIndex] / 8 == 7)
+                    {
+                        // the black pawn has gotten to be able to promote
+                        pawnCanPromote = 1;
+                    }
+
+                    if (!pawnCanPromote)
+                    {
                         legalMoves.moves[legalMoves.amtOfMoves++] = (Move){actualPieceSquareIndex, numSquaresToEdge[actualPieceSquareIndex][pawnCaptureIndex], -1, (Square){board->squares[capturedPieceIndex].type, board->squares[capturedPieceIndex].color, capturedPieceIndex}, onEnpassantSquare};
-                    } else {
+                    }
+                    else
+                    {
                         for (int promotionType = KNIGHT; promotionType < KING; promotionType++)
                         {
                             if (legalMoves.amtOfMoves >= legalMovesCapacity)
@@ -442,7 +453,8 @@ LegalMovesContainer generatePseudoLegalMoves(Board *board)
     return legalMoves;
 }
 
-int kingIsAttacked(Board *board, int colorToCheck) {
+int kingIsAttacked(Board *board, int colorToCheck)
+{
     int kingSquare = -1;
     int enemyColor = (colorToCheck == WHITE_PIECE) ? BLACK_PIECE : WHITE_PIECE;
 
@@ -450,33 +462,38 @@ int kingIsAttacked(Board *board, int colorToCheck) {
     Square *pieceSquares = (colorToCheck == WHITE_PIECE) ? board->whitePieceSquares : board->blackPieceSquares;
     int amtOfPieces = (colorToCheck == WHITE_PIECE) ? board->whitePieceAmt : board->blackPieceAmt;
 
-    for (int i = 0; i < amtOfPieces; i++) {
-        if (pieceSquares[i].type == KING) {
+    for (int i = 0; i < amtOfPieces; i++)
+    {
+        if (pieceSquares[i].type == KING)
+        {
             kingSquare = pieceSquares[i].squareIndex;
             break;
         }
     }
 
-    if (kingSquare == -1) {
+    if (kingSquare == -1)
+    {
         fprintf(stderr, "kingIsAttacked: could not find king for color %d\n", colorToCheck);
         exit(1);
     }
-    // ? the type checks are to see if there does exist a piece of that type 
+    // ? the type checks are to see if there does exist a piece of that type
     // ? in that direction that is attacking the king
 
     // Step 2: knight attacks
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < 8; i++)
+    {
         int to = kingSquare + knightOffsets[i];
-        if (!numSquaresToEdge[kingSquare][i + 8]) continue;
+        if (!numSquaresToEdge[kingSquare][i + 8])
+            continue;
         Square target = board->squares[to];
-        if (target.type == KNIGHT && target.color == enemyColor) return 1;
+        if (target.type == KNIGHT && target.color == enemyColor)
+            return 1;
     }
 
     // Step 3: pawn attacks
     int pawnDirs[2] = {
         (colorToCheck == WHITE_PIECE) ? 16 : 18,
-        (colorToCheck == WHITE_PIECE) ? 17 : 19
-    };
+        (colorToCheck == WHITE_PIECE) ? 17 : 19};
 
     int pawnCaptureIndexesToTry[2];
 
@@ -490,23 +507,30 @@ int kingIsAttacked(Board *board, int colorToCheck) {
         pawnCaptureIndexesToTry[0] = kingSquare + 7;
         pawnCaptureIndexesToTry[1] = kingSquare + 9;
     }
-    
-    for (int i = 0; i < 2; i++) {
-        if (numSquaresToEdge[kingSquare][pawnDirs[i]] == -1) continue;
+
+    for (int i = 0; i < 2; i++)
+    {
+        if (numSquaresToEdge[kingSquare][pawnDirs[i]] == -1)
+            continue;
         int to = pawnCaptureIndexesToTry[i];
         Square target = board->squares[to];
-        if (target.type == PAWN && target.color == enemyColor) return 1;
+        if (target.type == PAWN && target.color == enemyColor)
+            return 1;
     }
 
     // Step 4: sliding attacks (rook, bishop, queen)
-    for (int dir = 0; dir < 8; dir++) {
-        for (int dist = 1; dist <= numSquaresToEdge[kingSquare][dir]; dist++) {
+    for (int dir = 0; dir < 8; dir++)
+    {
+        for (int dist = 1; dist <= numSquaresToEdge[kingSquare][dir]; dist++)
+        {
             int to = kingSquare + directionOffsets[dir] * dist;
 
             Square target = board->squares[to];
 
-            if (target.type == NONE) continue;
-            if (target.color == colorToCheck) break;
+            if (target.type == NONE)
+                continue;
+            if (target.color == colorToCheck)
+                break;
 
             if ((dir < 4 && (target.type == ROOK || target.type == QUEEN)) ||
                 (dir >= 4 && (target.type == BISHOP || target.type == QUEEN)))
@@ -517,11 +541,14 @@ int kingIsAttacked(Board *board, int colorToCheck) {
     }
 
     // Step 5: adjacent enemy king
-    for (int dir = 0; dir < 8; dir++) {
-        if (!numSquaresToEdge[kingSquare][dir]) continue;
+    for (int dir = 0; dir < 8; dir++)
+    {
+        if (!numSquaresToEdge[kingSquare][dir])
+            continue;
         int to = kingSquare + directionOffsets[dir];
         Square target = board->squares[to];
-        if (target.type == KING && target.color == enemyColor) return 1;
+        if (target.type == KING && target.color == enemyColor)
+            return 1;
     }
 
     return 0;
@@ -529,7 +556,8 @@ int kingIsAttacked(Board *board, int colorToCheck) {
 
 LegalMovesContainer generateLegalMoves(Board *board)
 {
-    if (board->gameState > CHECK) {
+    if (board->gameState > CHECK)
+    {
         // if checkmate or stalemate, stop wasting time trying to generate legal moves
         LegalMovesContainer emptyLegalMoves = {0};
         return emptyLegalMoves;
@@ -546,13 +574,12 @@ LegalMovesContainer generateLegalMoves(Board *board)
         exit(EXIT_FAILURE);
     }
 
-
     int originalColorToPlay = board->colorToPlay;
 
     for (int pseudoLegalMoveIndex = 0; pseudoLegalMoveIndex < pseudoLegal.amtOfMoves; pseudoLegalMoveIndex++)
-    {   
+    {
         pushMove(board, pseudoLegal.moves[pseudoLegalMoveIndex]);
-        
+
         if (!kingIsAttacked(board, originalColorToPlay))
         {
             actualLegalMoves.moves[actualLegalMoves.amtOfMoves++] = pseudoLegal.moves[pseudoLegalMoveIndex];
@@ -563,22 +590,31 @@ LegalMovesContainer generateLegalMoves(Board *board)
 
     free(pseudoLegal.moves);
 
-    if (actualLegalMoves.amtOfMoves == 0) {
-        if (!kingIsAttacked(board, originalColorToPlay)) {
+    if (actualLegalMoves.amtOfMoves == 0)
+    {
+        if (!kingIsAttacked(board, originalColorToPlay))
+        {
             // no checks, is stalemate
-            board->gameState = STALEMATE;
-        } else {
+            board->gameState = DRAW;
+        }
+        else
+        {
             // there are check, is checkmate
             board->gameState = CHECKMATE;
         }
-    } else {
-        if (kingIsAttacked(board, originalColorToPlay)) {
+    }
+    else
+    {
+        if (kingIsAttacked(board, originalColorToPlay))
+        {
             board->gameState = CHECK;
-        } else {
+        }
+        else
+        {
             board->gameState = NONE;
         }
     }
-    
+
     return actualLegalMoves;
 }
 
@@ -619,7 +655,6 @@ int moveGenerationTest(Board *board, int depth)
 //         return 1;
 //     }
 
-
 //     LegalMovesContainer legalMoves = generateLegalMoves(board);
 //     int numPos = 0;
 //     int amt;
@@ -631,13 +666,13 @@ int moveGenerationTest(Board *board, int depth)
 //         numPos += amt;
 //         if (depth == 6) {
 //             char notation[3];
-//             int index = legalMoves.moves[i].fromSquare; 
+//             int index = legalMoves.moves[i].fromSquare;
 //             indexToNotation(index, notation);
 //             char notation2[3];
-//             int index2 = legalMoves.moves[i].toSquare; 
+//             int index2 = legalMoves.moves[i].toSquare;
 //             indexToNotation(index2, notation2);
 //             printf("\n%s%s -> %d", notation, notation2, amt);
-            
+
 //         }
 //         popMove(board);
 //     }

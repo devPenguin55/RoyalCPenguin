@@ -24,7 +24,7 @@ void orderMoves(Board *board, LegalMovesContainer *legalMoves, struct Transposit
 
     ScoredMove scoredMoves[legalMoves->amtOfMoves];
 
-    uint64_t key = generateZobristHash(board, tt);
+    uint64_t key = generateZobristHash(board);
     Move *bestMoveFromTT = NULL;
     TranspositionTableEntry *pEntry = &(tt->entries[key % tt->size]); // * pointer here avoids creating the object and taking more memory
     if (pEntry->key == key) {

@@ -28,6 +28,23 @@ int POSITIONS_EVALUATED;
 int SearchAllCaptures(Board *board, int alpha, int beta, TranspositionTable *tt) {
     // quiescence search
     POSITIONS_EVALUATED++;
+
+
+    uint64_t stateZobristHash = generateZobristHash(board);
+    for (int i = (board->moves.size-board->halfmoveClock); i < board->moves.size; i++)
+    {
+        if (board->moves.stack[i].oldZobristHash == stateZobristHash)
+        {
+                
+             board->gameState = DRAW;
+             return 0;
+        }
+    }
+    if (board->halfmoveClock >= 100) {
+        board->gameState = DRAW;
+        return 0;
+    }
+
     int evaluation = Evaluate(board);
     
     if (evaluation >= beta) {
@@ -37,7 +54,7 @@ int SearchAllCaptures(Board *board, int alpha, int beta, TranspositionTable *tt)
     if (evaluation > alpha) {
         alpha = evaluation;
     }
-
+    
     LegalMovesContainer legalMoves = generateLegalMoves(board);
 
     orderMoves(board, &legalMoves, tt);
@@ -67,11 +84,28 @@ int SearchAllCaptures(Board *board, int alpha, int beta, TranspositionTable *tt)
 }
 
 int Search(Board *board, int depth, int alpha, int beta, TranspositionTable *tt, SearchRootResult *rootResult) {
+    uint64_t stateZobristHash = generateZobristHash(board);
     if (depth == 0) {
         int evaluation = SearchAllCaptures(board, alpha, beta, tt);
-        ttStore(tt, generateZobristHash(board, tt), depth, (board->targetPly - depth), evaluation, FLAG_EXACT, (Move){-1, -1, -1, (Square){NONE, NONE, -1}, -1});
+        ttStore(tt, stateZobristHash, depth, (board->targetPly - depth), evaluation, FLAG_EXACT, (Move){-1, -1, -1, (Square){NONE, NONE, -1}, -1});
         return evaluation;
     }
+
+    for (int i = (board->moves.size-board->halfmoveClock); i < board->moves.size; i++)
+    {
+        if (board->moves.stack[i].oldZobristHash == stateZobristHash)
+        {
+                
+             board->gameState = DRAW;
+             return 0;
+        }
+    }
+    if (board->halfmoveClock >= 100) {
+        board->gameState = DRAW;
+        return 0;
+    }
+
+
     
     LegalMovesContainer legalMoves = generateLegalMoves(board);
 
@@ -81,24 +115,25 @@ int Search(Board *board, int depth, int alpha, int beta, TranspositionTable *tt,
         if (board->gameState == CHECKMATE) {
             // * the mate score is infinity value - depthSearched, depth searched is the target ply - depthRemaining
             long long mateScore = -(infinity - (board->targetPly - depth));
-            ttStore(tt, generateZobristHash(board, tt), depth, (board->targetPly - depth), mateScore, FLAG_EXACT, (Move){-1, -1, -1, (Square){NONE, NONE, -1}, -1});
+            ttStore(tt, stateZobristHash, depth, (board->targetPly - depth), mateScore, FLAG_EXACT, (Move){-1, -1, -1, (Square){NONE, NONE, -1}, -1});
             return mateScore;
         }
-        ttStore(tt, generateZobristHash(board, tt), depth, (board->targetPly - depth), 0, FLAG_EXACT, (Move){-1, -1, -1, (Square){NONE, NONE, -1}, -1});
+        ttStore(tt, stateZobristHash, depth, (board->targetPly - depth), 0, FLAG_EXACT, (Move){-1, -1, -1, (Square){NONE, NONE, -1}, -1});
         return 0;
     }
 
     
     int flag = FLAG_ALPHA;
     
-    long long ttLookupValue = ttLookup(tt, generateZobristHash(board, tt), depth, (board->targetPly - depth), alpha, beta);
+    long long ttLookupValue = ttLookup(tt, stateZobristHash, depth, (board->targetPly - depth), alpha, beta);
     if (ttLookupValue != UNKNOWN) {
         (tt->hits)++;
         if ((depth == board->targetPly) && (ttLookupValue > rootResult->bestScore)) {
-            uint64_t key = generateZobristHash(board, tt);
+            uint64_t key = stateZobristHash;
             rootResult->bestMove = tt->entries[key % tt->size].bestMove;
             rootResult->bestScore = ttLookupValue;
         }
+        // printf("tt lookup!\n");
         return ttLookupValue;
     }
 
@@ -134,12 +169,14 @@ int Search(Board *board, int depth, int alpha, int beta, TranspositionTable *tt,
         } else {
             evaluation = -Search(board, depth - 1, -beta, -alpha, tt, rootResult);
         }
+
+        
         popMove(board);
 
         if (evaluation >= beta) {
             // opponent would never allow for this to happen, the move was too good for the the current side
             free(legalMoves.moves);
-            ttStore(tt, generateZobristHash(board, tt), depth, (board->targetPly - depth), beta, FLAG_BETA, legalMoves.moves[i]);
+            ttStore(tt, stateZobristHash, depth, (board->targetPly - depth), beta, FLAG_BETA, legalMoves.moves[i]);
             return beta;
         }
 
@@ -158,7 +195,7 @@ int Search(Board *board, int depth, int alpha, int beta, TranspositionTable *tt,
 
     free(legalMoves.moves);
 
-    ttStore(tt, generateZobristHash(board, tt), depth, (board->targetPly - depth), alpha, flag, bestMoveInSearch);
+    ttStore(tt, stateZobristHash, depth, (board->targetPly - depth), alpha, flag, bestMoveInSearch);
 
     return alpha;
 }
@@ -170,19 +207,19 @@ void convertPieceTypeToTextureColumn2(int pieceType, int *textureCol)
     case KING:
         *textureCol = 0;
         break;
-    case QUEEN:
+        case QUEEN:
         *textureCol = 1;
         break;
-    case BISHOP:
+        case BISHOP:
         *textureCol = 2;
         break;
-    case KNIGHT:
+        case KNIGHT:
         *textureCol = 3;
         break;
-    case ROOK:
+        case ROOK:
         *textureCol = 4;
         break;
-    case PAWN:
+        case PAWN:
         *textureCol = 5;
         break;
     }
@@ -192,6 +229,7 @@ void convertPieceTypeToTextureColumn2(int pieceType, int *textureCol)
 SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTable *tt, Texture2D *spriteSheet, Rectangle *spriteRecs, DrawingPieceMouseHandler *drawingPieceMouseHandler, Vector2 *mousePosition, int *textureCol) {
     // ! if u see depth 1 mate found but score is like -999996 or smt, then it found mate but it was in tp and thus cancelled search there 
     // ! bc it knew that it was game over
+    
     int searchStartTime = getTimeInMilliseconds();
     POSITIONS_EVALUATED = 0;
     tt->hits = 0;
@@ -199,13 +237,35 @@ SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTab
     tt->writes = 0;
     SearchRootResult rootResult;
     int maxDepthSearched = 1;
+    
+    uint64_t stateZobristHash = generateZobristHash(board);
+    for (int i = (board->moves.size-board->halfmoveClock); i < board->moves.size; i++)
+    {
+        if (board->moves.stack[i].oldZobristHash == stateZobristHash)
+        {
+                
+             board->gameState = DRAW;
+             return rootResult;
+        }
+    }
+    if (board->halfmoveClock >= 100) {
+        board->gameState = DRAW;
+        return rootResult;
+    }
+    if (board->gameState > CHECK) {
+        return rootResult;
+    }
 
-
+    if ((board->whitePieceAmt + board->blackPieceAmt) <= 16) {
+        maxDepth += (int)((16 - board->whitePieceAmt - board->blackPieceAmt)/(2));
+    }
+    
+    printf("Searching for total depth %d with game state of %d\n", maxDepth, board->gameState);
+    
     for (int currentDepth = 1; currentDepth <= maxDepth; currentDepth++) {
         board->targetPly = currentDepth;
         rootResult.bestScore = -infinity;
         Search(board, currentDepth, -infinity, infinity, tt, &rootResult);
-        printf("\n\n%d %d", rootResult.bestScore, -infinity);
 
         // * graphics addition 
         BeginDrawing();
@@ -256,25 +316,29 @@ SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTab
         
         printf("\nTook %f ms for depth %d, %d positions evaluated, %d hits, %d collisions\n", getTimeInMilliseconds()-searchStartTime, maxDepthSearched, POSITIONS_EVALUATED, tt->hits, tt->collisions);
         printf("Wrote %d, which is %f\n\n", tt->writes, ((double)(tt->writes))/((double)(tt->size))*100.0);
-        // // extract PV line
-        // for (int i = 0; i<maxDepthSearched; i++) {
-            //     uint64_t key = generateZobristHash(board, tt);
-            //     Move *bestMoveFromTT = NULL;
-            //     TranspositionTableEntry *pEntry = &(tt->entries[key % tt->size]); // * pointer here avoids creating the object and taking more memory
-            //     if (pEntry->key == key) {
-                //         // we have a match for the best move that was saved in the TT, will rank it highly
-                //         bestMoveFromTT = &(pEntry->bestMove);
-                //     } 
-                //     printf("\n");
-                //     if (bestMoveFromTT != NULL && board->squares[bestMoveFromTT->fromSquare].type != NONE) {
-                    //         printMove(*bestMoveFromTT);
-                    //         pushMove(board, *bestMoveFromTT);
-                    //     } else {
-                        //         printf("PV extraction failure...");
-                        //         break;
-                        //     }
-                        // }
-                        
+        // extract PV line 
+        // int amtPV = 0;
+    //     for (int i = 0; i<maxDepthSearched; i++) {
+    //             uint64_t key = generateZobristHash(board);
+    //             Move *bestMoveFromTT = NULL;
+    //             TranspositionTableEntry *pEntry = &(tt->entries[key % tt->size]); // * pointer here avoids creating the object and taking more memory
+    //             if (pEntry->key == key) {
+    //                     // we have a match for the best move that was saved in the TT, will rank it highly
+    //                     bestMoveFromTT = &(pEntry->bestMove);
+    //                 } 
+    //                 printf("\n");
+    //                 if (bestMoveFromTT != NULL && board->squares[bestMoveFromTT->fromSquare].type != NONE) {
+    //                         printMove(*bestMoveFromTT);
+    //                         pushMove(board, *bestMoveFromTT);
+    //                         amtPV++;
+    //                     } else {
+    //                             printf("PV extraction failure...");
+    //                             break;
+    //                         }
+    //                     }
+    // for (int i = 0; i<amtPV; i++) {
+    //     popMove(board);
+    // }          
 
     return rootResult;
 }

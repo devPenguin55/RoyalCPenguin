@@ -10,7 +10,7 @@
 #include "search.h"
 #include "zobrist.h"
 
-const int AI_COLOR = BLACK_PIECE;
+const int AI_COLOR = WHITE_PIECE;
 const int OPPONENT_COLOR = (AI_COLOR == WHITE_PIECE) ? BLACK_PIECE : WHITE_PIECE;
 const int AI_DEPTH = 7;
 
@@ -21,9 +21,9 @@ DrawingPieceMouseHandler drawingPieceMouseHandler;
 
 void initGraphics(Texture2D *spriteSheet, Rectangle *spriteRecs, Sound *sounds)
 {
-    InitWindow(12*100*0.75, 8*100*0.75, "Chess Board");
+    InitWindow(12 * 100 * 0.75, 8 * 100 * 0.75, "Chess Board");
     InitAudioDevice();
-    
+
     *spriteSheet = LoadTexture("chessPieces.png");
     SetTextureFilter(*spriteSheet, 1);
 
@@ -77,14 +77,15 @@ void convertPieceTypeToTextureColumn(int pieceType, int *textureCol)
     }
 }
 
-void moveToNotation(Move *move, char *notation) {
-    int file = move->fromSquare % 8;  // 0 = 'a', ..., 7 = 'h'
-    int rank = 7 - (move->fromSquare / 8);  // 0 = '8', ..., 7 = '1'
+void moveToNotation(Move *move, char *notation)
+{
+    int file = move->fromSquare % 8;       // 0 = 'a', ..., 7 = 'h'
+    int rank = 7 - (move->fromSquare / 8); // 0 = '8', ..., 7 = '1'
     notation[0] = 'a' + file;
     notation[1] = '1' + rank;
-    
-    file = move->toSquare % 8;  // 0 = 'a', ..., 7 = 'h'
-    rank = 7 - (move->toSquare / 8);  // 0 = '8', ..., 7 = '1'
+
+    file = move->toSquare % 8;       // 0 = 'a', ..., 7 = 'h'
+    rank = 7 - (move->toSquare / 8); // 0 = '8', ..., 7 = '1'
     notation[2] = 'a' + file;
     notation[3] = '1' + rank;
     notation[4] = '\0';
@@ -93,12 +94,10 @@ void moveToNotation(Move *move, char *notation) {
 void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, DrawingPieceMouseHandler *drawingPieceMouseHandler, Sound *sounds, int showIndexes, LegalMovesContainer *curLegalMoves, TranspositionTable *tt, SearchRootResult *result, int *draggingPieceType)
 {
     BeginDrawing();
-    
+
     Color color;
     int colorAdjustment;
     ClearBackground(DARKGRAY);
-
-    
 
     // Draw the background board
     for (int i = 0; i < 8; i++)
@@ -109,10 +108,14 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
             {
                 color = (Color){230, 180, 52, 255};
                 colorAdjustment = 0;
-            } else if (board->moves.size && board->moves.stack[board->moves.size-1].oldMove.fromSquare == i+j*8) {
+            }
+            else if (board->moves.size && board->moves.stack[board->moves.size - 1].oldMove.fromSquare == i + j * 8)
+            {
                 color = (Color){219, 180, 52, 255};
                 colorAdjustment = 0;
-            } else if (board->moves.size && board->moves.stack[board->moves.size-1].oldMove.toSquare == i+j*8) {
+            }
+            else if (board->moves.size && board->moves.stack[board->moves.size - 1].oldMove.toSquare == i + j * 8)
+            {
                 color = (Color){200, 180, 52, 255};
                 colorAdjustment = 0;
             }
@@ -178,12 +181,14 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
                 DrawText(text, i * 75, j * 75, 30, GREEN);
             }
 
-            if (j == 7) {
-                DrawText(TextFormat("%c", "abcdefgh"[i]), i * 75, (j * 75)+45, 30, BLACK);
+            if (j == 7)
+            {
+                DrawText(TextFormat("%c", "abcdefgh"[i]), i * 75, (j * 75) + 45, 30, BLACK);
             }
 
-            if (i == 7) {
-                DrawText(TextFormat("%c", "87654321"[j]), (i * 75)+59, (j * 75), 30, BLACK);
+            if (i == 7)
+            {
+                DrawText(TextFormat("%c", "87654321"[j]), (i * 75) + 59, (j * 75), 30, BLACK);
             }
 
             if (kToDraw != -1)
@@ -237,10 +242,10 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
         popMove(board);
         popMove(board);
         WaitTime(0.25);
-        *curLegalMoves = generateLegalMoves(board);        
+        *curLegalMoves = generateLegalMoves(board);
     }
 
-    if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))// && board->colorToPlay == OPPONENT_COLOR)
+    if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) // && board->colorToPlay == OPPONENT_COLOR)
     {
         if (!drawingPieceMouseHandler->isPickedUp)
         {
@@ -249,7 +254,6 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
             {
                 drawingPieceMouseHandler->squareSelected = board->squares[snappedMouseX + snappedMouseY * 8];
                 drawingPieceMouseHandler->isPickedUp = 1;
-
             }
         }
     }
@@ -268,26 +272,30 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
                         curLegalMoves->moves[i].toSquare == snappedMouseX + snappedMouseY * 8 &&
                         curLegalMoves->moves[i].fromSquare == drawingPieceMouseHandler->squareSelected.squareIndex)
                     {
-                        if (curLegalMoves->moves[i].promotionType > PAWN) {
-                            if (curLegalMoves->moves[i].promotionType != QUEEN) {
+                        if (curLegalMoves->moves[i].promotionType > PAWN)
+                        {
+                            if (curLegalMoves->moves[i].promotionType != QUEEN)
+                            {
                                 continue;
                             }
                         }
                         pushMove(board, curLegalMoves->moves[i]);
                         convertPieceTypeToTextureColumn(drawingPieceMouseHandler->squareSelected.type, draggingPieceType);
-                        
+                        (*draggingPieceType) += drawingPieceMouseHandler->squareSelected.color * 6;
                         // printf("\n");
                         // for (int i = 0; i<4; i++) {
-                                // printf("%d ", board->castlingRights[i]);
-                            // }
-                            
+                        // printf("%d ", board->castlingRights[i]);
+                        // }
+
                         *curLegalMoves = generateLegalMoves(board);
                         UndoMove lastMove = board->moves.stack[board->moves.size - 1];
-                        
-                        if (board->gameState > CHECK) {
+
+                        if (board->gameState > CHECK)
+                        {
                             PlaySound(sounds[4]);
                         }
-                        else if (board->gameState == CHECK) {
+                        else if (board->gameState == CHECK)
+                        {
                             PlaySound(sounds[2]);
                         }
                         else if (board->squares[lastMove.oldMove.toSquare].type == KING && ((lastMove.oldMove.toSquare - 2 == lastMove.oldMove.fromSquare) || (lastMove.oldMove.toSquare + 2 == lastMove.oldMove.fromSquare)))
@@ -330,29 +338,38 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
             WHITE);
     }
 
-    if (board->gameState == CHECKMATE) {
+    
+
+    if (board->gameState == CHECKMATE)
+    {
 
         const char *text;
-        if (board->colorToPlay == BLACK_PIECE) {
+        if (board->colorToPlay == BLACK_PIECE)
+        {
             text = "White  Won\nCheckmate!";
-        } else {
+        }
+        else
+        {
             text = "Black  Won\nCheckmate!";
         }
         DrawText(text, 1 * 75, 3 * 75, 80, DARKGREEN);
-
-    } else if (board->gameState == STALEMATE) {
-        char text[] = "Stalemate!";
-        DrawText(text, 1 * 75, 3.5 * 75, 80, DARKGREEN);
     }
-    //board->colorToPlay == AI_COLOR &&
-    if (board->colorToPlay == AI_COLOR && board->gameState <= CHECK) {
+    else if (board->gameState == DRAW)
+    {
+        char text[] = "DRAW!";
+        DrawText(text, 2.5 * 75, 3.5 * 75, 80, DARKGREEN);
+    } 
+
+    if (board->colorToPlay == AI_COLOR && board->gameState <= CHECK)
+    // if (board->gameState <= CHECK)
+    {
         drawingPieceMouseHandler->isPickedUp = 0;
         // if (board->fullmoveNumber < 4) {
 
         //     pushMove(board, IterativeDeepening(board, AI_DEPTH, tt));
         // } else {
         //     pushMove(board, IterativeDeepening(board, 30, tt));
-            
+
         // }
 
         // convertPieceTypeToTextureColumn(drawingPieceMouseHandler->squareSelected.type, &textureCol);
@@ -360,14 +377,17 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
         SearchRootResult rootResult = IterativeDeepening(board, AI_DEPTH, tt, spriteSheet, spriteRecs, drawingPieceMouseHandler, &mousePosition, draggingPieceType);
         memcpy(result, &rootResult, sizeof(SearchRootResult));
         pushMove(board, result->bestMove);
+
         *curLegalMoves = generateLegalMoves(board);
 
         UndoMove lastMove = board->moves.stack[board->moves.size - 1];
 
-        if (board->gameState > CHECK) {
+        if (board->gameState > CHECK)
+        {
             PlaySound(sounds[4]);
         }
-        else if (board->gameState == CHECK) {
+        else if (board->gameState == CHECK)
+        {
             PlaySound(sounds[2]);
         }
         else if (board->squares[lastMove.oldMove.toSquare].type == KING && ((lastMove.oldMove.toSquare - 2 == lastMove.oldMove.fromSquare) || (lastMove.oldMove.toSquare + 2 == lastMove.oldMove.fromSquare)))
@@ -383,7 +403,7 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
             PlaySound(sounds[0]);
         }
 
-        // uint64_t key = generateZobristHash(board, tt);
+        // uint64_t key = generateZobristHash(board);
         // Move *bestMoveFromTT = NULL;
         // TranspositionTableEntry *pEntry = &(tt->entries[key % tt->size]); // * pointer here avoids creating the object and taking more memory
         // if (pEntry->key == key) {
@@ -391,22 +411,27 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
         //     bestMoveFromTT = &(pEntry->bestMove);
         // }
         // printf("\nBest Move %d to %d\n", bestMoveFromTT->fromSquare, bestMoveFromTT->toSquare);
-    } else {
-        // * graphics addition 
+    }
+    else
+    {
+        // * graphics addition
 
-        DrawRectangle(8 * 75, 0, 75*4, 75*8, DARKGRAY);
+        DrawRectangle(8 * 75, 0, 75 * 4, 75 * 8, DARKGRAY);
         char text[80];
-        if (((result->bestScore > infinity-500) || (result->bestScore < -infinity+500)) && result->bestScore != UNKNOWN) { 
-            snprintf(text, sizeof(text), "Searched depth %d\nEval: Mate in %d ply", board->targetPly, infinity-abs(result->bestScore));
-        } else {
+        if (((result->bestScore > infinity - 500) || (result->bestScore < -infinity + 500)) && result->bestScore != UNKNOWN)
+        {
+            snprintf(text, sizeof(text), "Searched depth %d\nEval: Mate in %d ply", board->targetPly, infinity - abs(result->bestScore));
+        }
+        else
+        {
             snprintf(text, sizeof(text), "Searched depth %d\nEval: %d", board->targetPly, result->bestScore);
         }
-        DrawText(text, 8 * 75+2, 2 * 75, 30, GREEN);
+        DrawText(text, 8 * 75 + 2, 2 * 75, 30, GREEN);
         char notation[5];
         moveToNotation(&result->bestMove, notation);
-        DrawText("Bot Best Move\n---------------", 8 * 75+2, 4 * 75, 30, GREEN);
-        DrawText(notation, 8 * 75+2, 5 * 75-15, 30, GREEN);
+        DrawText("Bot Best Move\n---------------", 8 * 75 + 2, 4 * 75, 30, GREEN);
+        DrawText(notation, 8 * 75 + 2, 5 * 75 - 15, 30, GREEN);
 
         EndDrawing();
-    }    
+    }
 }

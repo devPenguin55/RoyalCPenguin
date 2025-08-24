@@ -19,8 +19,8 @@ int main() {
     TranspositionTable tt;
     initializeTT(&tt, 256);
 
-    initBoard(&board, STARTING_FEN, &tt);
-    // initBoard(&board, "r3kb1r/p5pp/2pqb3/Q1nnp3/8/5N2/PPP1BPPP/R1B1K2R b KQkq - 0 1", &tt);
+    // initBoard(&board, STARTING_FEN, &tt);
+    initBoard(&board, "1r4k1/p2n3p/5np1/4p3/4P3/5PP1/K1R2BB1/1r4NR b - - 0 33", &tt);
     // initBoard(&board, "8/5k1P/1K6/8/8/2P5/1P6/8 w - - 0 1", &tt);
 
     // initBoard(&board, "1n1q1knr/r1p4p/1p1p2p1/pP1Q2N1/2N1P3/2P5/1P3PP1/R4RK1 b - - 0 1", &tt);
@@ -40,7 +40,7 @@ int main() {
 
     int draggingPieceType = -1;
     while (!WindowShouldClose()) {
-        drawFrame(&board, &spriteSheet, spriteRecs, &drawingPieceMouseHandler, sounds, 0, &curLegalMoves, &tt, result, &draggingPieceType);
+        drawFrame(&board, &spriteSheet, spriteRecs, &drawingPieceMouseHandler, sounds, 1, &curLegalMoves, &tt, result, &draggingPieceType);
     }
 
     free(tt.entries);

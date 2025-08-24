@@ -8,7 +8,6 @@
 #include "movegen.h"
 #include "zobrist.h"
 
-
 void convertCharToPieceType(char pieceChar, int *pieceType, int *pieceColor)
 {
     /* use like:
@@ -113,20 +112,13 @@ void printBoard(Board *board)
     printf("\n-----------------\n");
 }
 
-void printMove(Move move) 
+void printMove(Move move)
 {
     printf("pushMove(&board, (Move){%d, %d, %d, (Square){%d, %d, %d}, %d});\n", move.fromSquare, move.toSquare, move.promotionType, move.captureSquare.type, move.captureSquare.color, move.captureSquare.squareIndex, move.isEnpassant);
 }
 
 void pushMove(Board *board, Move move)
 {
-    // change the board turn
-    board->colorToPlay = (board->colorToPlay == WHITE_PIECE) ? BLACK_PIECE : WHITE_PIECE;
-
-    if (board->colorToPlay == WHITE_PIECE) {
-        board->fullmoveNumber++;
-    }
-
     if (board->moves.size >= board->moves.capacity)
     {
         board->moves.capacity *= 2;
@@ -138,24 +130,42 @@ void pushMove(Board *board, Move move)
         }
     }
 
+    uint64_t stateZobristHash = generateZobristHash(board);
+
     board->moves.stack[board->moves.size].oldEnPassantSquareIndex = board->enPassantSquareIndex;
-    memcpy(board->moves.stack[board->moves.size].oldCastlingRights, board->castlingRights, 4*sizeof(int));
+    memcpy(board->moves.stack[board->moves.size].oldCastlingRights, board->castlingRights, 4 * sizeof(int));
     board->moves.stack[board->moves.size].oldHalfMoveClock = board->halfmoveClock;
-    
+
     board->moves.stack[board->moves.size].oldWhitePieceAmt = board->whitePieceAmt;
-    memcpy(board->moves.stack[board->moves.size].oldWhitePieceSquares, board->whitePieceSquares, 16*sizeof(Square));
+    memcpy(board->moves.stack[board->moves.size].oldWhitePieceSquares, board->whitePieceSquares, 16 * sizeof(Square));
 
     board->moves.stack[board->moves.size].oldBlackPieceAmt = board->blackPieceAmt;
-    memcpy(board->moves.stack[board->moves.size].oldBlackPieceSquares, board->blackPieceSquares, 16*sizeof(Square));
+    memcpy(board->moves.stack[board->moves.size].oldBlackPieceSquares, board->blackPieceSquares, 16 * sizeof(Square));
     board->moves.stack[board->moves.size].oldGameState = board->gameState;
 
+    board->moves.stack[board->moves.size].oldZobristHash = stateZobristHash;
+
+    // change the board turn
+    board->colorToPlay = (board->colorToPlay == WHITE_PIECE) ? BLACK_PIECE : WHITE_PIECE;
+
+    if (board->colorToPlay == WHITE_PIECE)
+    {
+        board->fullmoveNumber++;
+    }
+    
+    
+    int resetHalfMoveClock = 0;
     // to disable castling rights
-    if (board->squares[move.fromSquare].type == KING || board->squares[move.fromSquare].type == ROOK) {
+    if (board->squares[move.fromSquare].type == KING || board->squares[move.fromSquare].type == ROOK)
+    {
         int disableCastlingStartIndex = (board->squares[move.fromSquare].color == WHITE_PIECE) ? 0 : 2;
-        if (board->squares[move.fromSquare].type == KING) {
+        if (board->squares[move.fromSquare].type == KING)
+        {
             board->castlingRights[disableCastlingStartIndex] = 0;
-            board->castlingRights[disableCastlingStartIndex+1] = 0;
-        } else {
+            board->castlingRights[disableCastlingStartIndex + 1] = 0;
+        }
+        else
+        {
             // rook move
             int queensideAddition = (move.fromSquare == 56 && board->squares[move.fromSquare].color == WHITE_PIECE) || (move.fromSquare == 0 && board->squares[move.fromSquare].color == BLACK_PIECE); // if the rook's column of its from square is 0, then queenside castling gets disabled
             if (queensideAddition || ((move.fromSquare == 63 && board->squares[move.fromSquare].color == WHITE_PIECE) || (move.fromSquare == 7 && board->squares[move.fromSquare].color == BLACK_PIECE)))
@@ -164,12 +174,13 @@ void pushMove(Board *board, Move move)
             }
         }
     }
-    if (move.captureSquare.type == ROOK && (move.toSquare % 8 == 0 || move.toSquare % 8 == 7)) {
+    if (move.captureSquare.type == ROOK && (move.toSquare % 8 == 0 || move.toSquare % 8 == 7))
+    {
         // rook capture
         int disableCastlingStartIndex = (board->squares[move.toSquare].color == WHITE_PIECE) ? 0 : 2;
         // int queensideAddition = (move.toSquare % 8) == 0; // if the rook's column of its from square is 0, then queenside castling gets disabled
         // board->castlingRights[disableCastlingStartIndex + queensideAddition] = 0;
-        
+
         int queensideAddition = (move.toSquare == 56 && board->squares[move.toSquare].color == WHITE_PIECE) || (move.toSquare == 0 && board->squares[move.toSquare].color == BLACK_PIECE); // if the rook's column of its from square is 0, then queenside castling gets disabled
         if (queensideAddition || ((move.toSquare == 63 && board->squares[move.toSquare].color == WHITE_PIECE) || (move.toSquare == 7 && board->squares[move.toSquare].color == BLACK_PIECE)))
         {
@@ -179,7 +190,9 @@ void pushMove(Board *board, Move move)
 
     board->enPassantSquareIndex = -1;
 
-    if (move.isEnpassant == 1) {
+    if (move.isEnpassant == 1)
+    {
+        resetHalfMoveClock = 1;
         int pawnDirection;
         if (board->squares[move.fromSquare].color == WHITE_PIECE)
         {
@@ -191,81 +204,108 @@ void pushMove(Board *board, Move move)
         }
         board->squares[move.toSquare + pawnDirection] = (Square){NONE, NONE, move.toSquare + pawnDirection};
 
-        if (board->squares[move.fromSquare].color == WHITE_PIECE) {
-            for (int j = 0; j < board->blackPieceAmt; j++) {
-                if (board->blackPieceSquares[j].squareIndex == move.toSquare + pawnDirection) {
-                    board->blackPieceSquares[j] = board->blackPieceSquares[board->blackPieceAmt-1];
+        if (board->squares[move.fromSquare].color == WHITE_PIECE)
+        {
+            for (int j = 0; j < board->blackPieceAmt; j++)
+            {
+                if (board->blackPieceSquares[j].squareIndex == move.toSquare + pawnDirection)
+                {
+                    board->blackPieceSquares[j] = board->blackPieceSquares[board->blackPieceAmt - 1];
                     board->blackPieceAmt--;
                     break;
                 }
             }
-        } else {
-            for (int j = 0; j < board->whitePieceAmt; j++) {
-                if (board->whitePieceSquares[j].squareIndex == move.toSquare + pawnDirection) {
-                    board->whitePieceSquares[j] = board->whitePieceSquares[board->whitePieceAmt-1];
+        }
+        else
+        {
+            for (int j = 0; j < board->whitePieceAmt; j++)
+            {
+                if (board->whitePieceSquares[j].squareIndex == move.toSquare + pawnDirection)
+                {
+                    board->whitePieceSquares[j] = board->whitePieceSquares[board->whitePieceAmt - 1];
                     board->whitePieceAmt--;
                     break;
                 }
             }
         }
-    } else if (board->squares[move.fromSquare].type == PAWN) {        
+    }
+    else if (board->squares[move.fromSquare].type == PAWN)
+    {
+        resetHalfMoveClock = 1;
         if (board->squares[move.fromSquare].color == WHITE_PIECE)
         {
-            if (move.toSquare == move.fromSquare-16)
+            if (move.toSquare == move.fromSquare - 16)
             {
-                board->enPassantSquareIndex = move.fromSquare-8;
+                board->enPassantSquareIndex = move.fromSquare - 8;
             }
         }
         else
         {
-            if (move.toSquare == move.fromSquare+16)
+            if (move.toSquare == move.fromSquare + 16)
             {
-                board->enPassantSquareIndex = move.fromSquare+8;
-            } 
+                board->enPassantSquareIndex = move.fromSquare + 8;
+            }
         }
     }
 
-    
     // for castling, moves the rook as well
-    if (board->squares[move.fromSquare].type == KING) {
+    if (board->squares[move.fromSquare].type == KING)
+    {
         // castling in this is represented by the king moving 2 squares at once
         int isCastlingMove = (move.fromSquare - 2 == move.toSquare || move.fromSquare + 2 == move.toSquare);
-        if (isCastlingMove) {
+        if (isCastlingMove)
+        {
             int rookIndexToMove;
             int rookDestinationIndexToMove;
-            if (board->squares[move.fromSquare].color == WHITE_PIECE) {
-                if (move.fromSquare - 2 == move.toSquare) {
+            if (board->squares[move.fromSquare].color == WHITE_PIECE)
+            {
+                if (move.fromSquare - 2 == move.toSquare)
+                {
                     // queenside for white
                     rookIndexToMove = 56;
                     rookDestinationIndexToMove = 59;
-                } else {
+                }
+                else
+                {
                     // kingside for white
                     rookIndexToMove = 63;
                     rookDestinationIndexToMove = 61;
                 }
-            } else {
-                if (move.fromSquare - 2 == move.toSquare) {
+            }
+            else
+            {
+                if (move.fromSquare - 2 == move.toSquare)
+                {
                     // queenside for black
                     rookIndexToMove = 0;
                     rookDestinationIndexToMove = 3;
-                } else {
+                }
+                else
+                {
                     // kingside for black
                     rookIndexToMove = 7;
                     rookDestinationIndexToMove = 5;
                 }
             }
-            
-            if (board->squares[move.fromSquare].color == WHITE_PIECE) {
-                for (int i = 0; i < board->whitePieceAmt; i++) {
-                    if (board->whitePieceSquares[i].squareIndex == rookIndexToMove) {
+
+            if (board->squares[move.fromSquare].color == WHITE_PIECE)
+            {
+                for (int i = 0; i < board->whitePieceAmt; i++)
+                {
+                    if (board->whitePieceSquares[i].squareIndex == rookIndexToMove)
+                    {
                         // update the piece movement
                         board->whitePieceSquares[i].squareIndex = rookDestinationIndexToMove;
                         break;
                     }
                 }
-            } else {
-                for (int i = 0; i < board->blackPieceAmt; i++) {
-                    if (board->blackPieceSquares[i].squareIndex == rookIndexToMove) {
+            }
+            else
+            {
+                for (int i = 0; i < board->blackPieceAmt; i++)
+                {
+                    if (board->blackPieceSquares[i].squareIndex == rookIndexToMove)
+                    {
                         // update the piece movement
                         board->blackPieceSquares[i].squareIndex = rookDestinationIndexToMove;
                         break;
@@ -276,24 +316,31 @@ void pushMove(Board *board, Move move)
             board->squares[rookDestinationIndexToMove] = board->squares[rookIndexToMove];
             board->squares[rookDestinationIndexToMove].squareIndex = rookDestinationIndexToMove;
             board->squares[rookIndexToMove] = (Square){NONE, NONE, rookIndexToMove};
-
         }
     }
-    
-    if (board->squares[move.fromSquare].color == WHITE_PIECE) {
-        for (int i = 0; i < board->whitePieceAmt; i++) {
-            if (board->whitePieceSquares[i].squareIndex == move.fromSquare) {
+
+    if (board->squares[move.fromSquare].color == WHITE_PIECE)
+    {
+        for (int i = 0; i < board->whitePieceAmt; i++)
+        {
+            if (board->whitePieceSquares[i].squareIndex == move.fromSquare)
+            {
                 // update the piece movement
                 board->whitePieceSquares[i].squareIndex = move.toSquare;
-                if (move.promotionType > PAWN) {
+                if (move.promotionType > PAWN)
+                {
                     board->whitePieceSquares[i].type = move.promotionType;
                 }
-                
-                if (move.captureSquare.type != NONE && !move.isEnpassant) {
+
+                if (move.captureSquare.type != NONE && !move.isEnpassant)
+                {
+                    resetHalfMoveClock = 1;
                     // there was a capture, must update other color's pieces
-                    for (int j = 0; j < board->blackPieceAmt; j++) {
-                        if (board->blackPieceSquares[j].squareIndex == move.toSquare) {
-                            board->blackPieceSquares[j] = board->blackPieceSquares[board->blackPieceAmt-1];
+                    for (int j = 0; j < board->blackPieceAmt; j++)
+                    {
+                        if (board->blackPieceSquares[j].squareIndex == move.toSquare)
+                        {
+                            board->blackPieceSquares[j] = board->blackPieceSquares[board->blackPieceAmt - 1];
                             board->blackPieceAmt--;
                             break;
                         }
@@ -302,20 +349,29 @@ void pushMove(Board *board, Move move)
                 break;
             }
         }
-    } else {
-        for (int i = 0; i < board->blackPieceAmt; i++) {
-            if (board->blackPieceSquares[i].squareIndex == move.fromSquare) {
+    }
+    else
+    {
+        for (int i = 0; i < board->blackPieceAmt; i++)
+        {
+            if (board->blackPieceSquares[i].squareIndex == move.fromSquare)
+            {
                 // update the piece movement
                 board->blackPieceSquares[i].squareIndex = move.toSquare;
-                if (move.promotionType > PAWN) {
+                if (move.promotionType > PAWN)
+                {
                     board->blackPieceSquares[i].type = move.promotionType;
                 }
-                
-                if (move.captureSquare.type != NONE && !move.isEnpassant) {
+
+                if (move.captureSquare.type != NONE && !move.isEnpassant)
+                {
+                    resetHalfMoveClock = 1;
                     // there was a capture, must update other color's pieces
-                    for (int j = 0; j < board->whitePieceAmt; j++) {
-                        if (board->whitePieceSquares[j].squareIndex == move.toSquare) {
-                            board->whitePieceSquares[j] = board->whitePieceSquares[board->whitePieceAmt-1];
+                    for (int j = 0; j < board->whitePieceAmt; j++)
+                    {
+                        if (board->whitePieceSquares[j].squareIndex == move.toSquare)
+                        {
+                            board->whitePieceSquares[j] = board->whitePieceSquares[board->whitePieceAmt - 1];
                             board->whitePieceAmt--;
                             break;
                         }
@@ -325,23 +381,30 @@ void pushMove(Board *board, Move move)
             }
         }
     }
-    
+
     memcpy(&board->moves.stack[board->moves.size].oldMove, &move, sizeof(Move));
     board->moves.size++;
-    
+
     board->squares[move.toSquare] = board->squares[move.fromSquare];
     board->squares[move.toSquare].squareIndex = move.toSquare;
     board->squares[move.fromSquare] = (Square){NONE, NONE, move.fromSquare};
 
-    if (move.promotionType > PAWN) {
+    if (move.promotionType > PAWN)
+    {
         board->squares[move.toSquare].type = move.promotionType;
+        resetHalfMoveClock = 1;
     }
-    
-    
+
+    if (resetHalfMoveClock == 1)
+    {
+        board->halfmoveClock = 0;
+    } else {
+        board->halfmoveClock++;
+    }
+
     // printf("\nCurrent EP index: %d\n", board->enPassantSquareIndex);
     // printf("move %d to %d \n", move.fromSquare, move.toSquare);
     // printBoard(board);
-    
 }
 
 void popMove(Board *board)
@@ -353,7 +416,8 @@ void popMove(Board *board)
 
     // change the board turn
     board->colorToPlay = (board->colorToPlay == WHITE_PIECE) ? BLACK_PIECE : WHITE_PIECE;
-    if (board->colorToPlay == BLACK_PIECE) {
+    if (board->colorToPlay == BLACK_PIECE)
+    {
         board->fullmoveNumber--;
     }
 
@@ -365,36 +429,48 @@ void popMove(Board *board)
 
     board->enPassantSquareIndex = undoMove.oldEnPassantSquareIndex;
 
-    memcpy(board->castlingRights, undoMove.oldCastlingRights, 4*sizeof(int));
+    memcpy(board->castlingRights, undoMove.oldCastlingRights, 4 * sizeof(int));
 
-    memcpy(board->whitePieceSquares, undoMove.oldWhitePieceSquares, 16*sizeof(Square));
-    memcpy(board->blackPieceSquares, undoMove.oldBlackPieceSquares, 16*sizeof(Square));
+    memcpy(board->whitePieceSquares, undoMove.oldWhitePieceSquares, 16 * sizeof(Square));
+    memcpy(board->blackPieceSquares, undoMove.oldBlackPieceSquares, 16 * sizeof(Square));
     board->whitePieceAmt = undoMove.oldWhitePieceAmt;
     board->blackPieceAmt = undoMove.oldBlackPieceAmt;
     board->gameState = undoMove.oldGameState;
+    board->halfmoveClock = undoMove.oldHalfMoveClock;
 
-    if (board->squares[undoMove.oldMove.toSquare].type == KING) {
+    if (board->squares[undoMove.oldMove.toSquare].type == KING)
+    {
         int isCastlingMove = (undoMove.oldMove.toSquare - 2 == undoMove.oldMove.fromSquare || undoMove.oldMove.toSquare + 2 == undoMove.oldMove.fromSquare);
-        if (isCastlingMove) {
+        if (isCastlingMove)
+        {
             int rookIndexToMove;
             int rookDestinationIndexToMove;
-            
-            if (board->squares[undoMove.oldMove.toSquare].color == WHITE_PIECE) {
-                if (undoMove.oldMove.toSquare + 2 == undoMove.oldMove.fromSquare) {
+
+            if (board->squares[undoMove.oldMove.toSquare].color == WHITE_PIECE)
+            {
+                if (undoMove.oldMove.toSquare + 2 == undoMove.oldMove.fromSquare)
+                {
                     // queenside for white
                     rookIndexToMove = 59;
                     rookDestinationIndexToMove = 56;
-                } else {
+                }
+                else
+                {
                     // kingside for white
                     rookIndexToMove = 61;
                     rookDestinationIndexToMove = 63;
                 }
-            } else {
-                if (undoMove.oldMove.toSquare + 2 == undoMove.oldMove.fromSquare) {
+            }
+            else
+            {
+                if (undoMove.oldMove.toSquare + 2 == undoMove.oldMove.fromSquare)
+                {
                     // queenside for black
                     rookIndexToMove = 3;
                     rookDestinationIndexToMove = 0;
-                } else {
+                }
+                else
+                {
                     // kingside for black
                     rookIndexToMove = 5;
                     rookDestinationIndexToMove = 7;
@@ -436,7 +512,8 @@ void popMove(Board *board)
         }
     }
 
-    if (undoMove.oldMove.promotionType > PAWN) {
+    if (undoMove.oldMove.promotionType > PAWN)
+    {
         board->squares[undoMove.oldMove.fromSquare].type = PAWN;
     }
 
@@ -447,7 +524,6 @@ void popMove(Board *board)
     //     printf("%d ", board->castlingRights[i]);
     // }
     // printf("\n");
-    
 }
 
 int isSlidingPiece(Square square)
@@ -485,7 +561,6 @@ void initBoard(Board *board, char fen[], TranspositionTable *tt)
     int currentSquareIndex = 0;
     int fenReadIndex = 0;
 
-
     board->whitePieceAmt = 0;
     board->blackPieceAmt = 0;
     for (int i = 0; i < strlen(fen); i++)
@@ -514,9 +589,12 @@ void initBoard(Board *board, char fen[], TranspositionTable *tt)
             board->squares[currentSquareIndex].color = pieceColor;
             board->squares[currentSquareIndex].squareIndex = currentSquareIndex;
 
-            if (pieceColor == WHITE_PIECE) {
+            if (pieceColor == WHITE_PIECE)
+            {
                 board->whitePieceSquares[board->whitePieceAmt++] = board->squares[currentSquareIndex];
-            } else {
+            }
+            else
+            {
                 board->blackPieceSquares[board->blackPieceAmt++] = board->squares[currentSquareIndex];
             }
             currentSquareIndex++;
@@ -564,8 +642,6 @@ void initBoard(Board *board, char fen[], TranspositionTable *tt)
         };
     }
 
-    
-
     fenReadIndex += 1;
     char enPassantField[2];
     int enPassantFieldIndex = 0;
@@ -574,13 +650,12 @@ void initBoard(Board *board, char fen[], TranspositionTable *tt)
         enPassantField[enPassantFieldIndex++] = fen[fenReadIndex++];
     }
 
-
     board->enPassantSquareIndex = -1;
     if (enPassantFieldIndex > 1)
     {
         // turn something like f6 into the index 21
         board->enPassantSquareIndex = (enPassantField[0] - 'a') + ((8 - (enPassantField[1] - '0')) * 8);
-    } 
+    }
 
     fenReadIndex += 1;
     char halfmovesField[4];
@@ -602,16 +677,12 @@ void initBoard(Board *board, char fen[], TranspositionTable *tt)
     board->fullmoveNumber = atoi(fullmovesField);
     // printf("%d %d\n", board->halfmoveClock, board->fullmoveNumber);
 
-    
     board->moves.size = 0;
     board->moves.capacity = 5;
     board->moves.stack = malloc(board->moves.capacity * sizeof(UndoMove));
 
-
     // printBoard(board);
 
-    
     board->gameState = NONE;
     generateLegalMoves(board);
-    
 }
