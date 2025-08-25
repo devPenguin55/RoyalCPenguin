@@ -11,8 +11,13 @@ typedef struct ScoredMove
 } ScoredMove;
 
 struct TranspositionTable;
+struct SearchRootResult {
+    Move bestMove;
+    int bestScore;
+    Move killers[100][2];
+};
 
-void orderMoves(Board *board, LegalMovesContainer *legalMoves, struct TranspositionTable *tt);
+void orderMoves(Board *board, LegalMovesContainer *legalMoves, struct TranspositionTable *tt, int ply, struct SearchRootResult *rootResult);
 
 
 #endif

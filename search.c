@@ -25,7 +25,7 @@ double getTimeInMilliseconds() {
 
 int POSITIONS_EVALUATED;
 
-int SearchAllCaptures(Board *board, int alpha, int beta, TranspositionTable *tt) {
+int SearchAllCaptures(Board *board, int alpha, int beta, TranspositionTable *tt, SearchRootResult *rootResult) {
     // quiescence search
     POSITIONS_EVALUATED++;
 
@@ -57,14 +57,14 @@ int SearchAllCaptures(Board *board, int alpha, int beta, TranspositionTable *tt)
     
     LegalMovesContainer legalMoves = generateLegalMoves(board);
 
-    orderMoves(board, &legalMoves, tt);
+    orderMoves(board, &legalMoves, tt, board->targetPly, rootResult);
 
     for (int i = 0; i < legalMoves.amtOfMoves; i++)
     {
         if (legalMoves.moves[i].captureSquare.type == NONE) { continue; }
 
         pushMove(board, legalMoves.moves[i]);
-        evaluation = -SearchAllCaptures(board, -beta, -alpha, tt);
+        evaluation = -SearchAllCaptures(board, -beta, -alpha, tt, rootResult);
         popMove(board);
 
         if (evaluation >= beta) {
@@ -86,7 +86,7 @@ int SearchAllCaptures(Board *board, int alpha, int beta, TranspositionTable *tt)
 int Search(Board *board, int depth, int alpha, int beta, TranspositionTable *tt, SearchRootResult *rootResult) {
     uint64_t stateZobristHash = generateZobristHash(board);
     if (depth == 0) {
-        int evaluation = SearchAllCaptures(board, alpha, beta, tt);
+        int evaluation = SearchAllCaptures(board, alpha, beta, tt, rootResult);
         ttStore(tt, stateZobristHash, depth, (board->targetPly - depth), evaluation, FLAG_EXACT, (Move){-1, -1, -1, (Square){NONE, NONE, -1}, -1});
         return evaluation;
     }
@@ -137,7 +137,7 @@ int Search(Board *board, int depth, int alpha, int beta, TranspositionTable *tt,
         return ttLookupValue;
     }
 
-    orderMoves(board, &legalMoves, tt);
+    orderMoves(board, &legalMoves, tt, (board->targetPly - depth), rootResult);
 
     Move bestMoveInSearch = (Move){-1, -1, -1, (Square){NONE, NONE, -1}, -1};
 
@@ -175,8 +175,19 @@ int Search(Board *board, int depth, int alpha, int beta, TranspositionTable *tt,
 
         if (evaluation >= beta) {
             // opponent would never allow for this to happen, the move was too good for the the current side
+            int curPly = (board->targetPly - depth);
+            ttStore(tt, stateZobristHash, depth, curPly, beta, FLAG_BETA, legalMoves.moves[i]);
+
+            if ((legalMoves.moves[i].captureSquare.type != NONE) || (legalMoves.moves[i].promotionType != NONE)) {
+                if (rootResult->killers[curPly][0].fromSquare == rootResult->killers[curPly][0].toSquare) {
+                    // store the killer in the first slot
+                    memcpy(&rootResult->killers[curPly][0], &legalMoves.moves[i], sizeof(Move));
+                } else if (rootResult->killers[curPly][1].fromSquare == rootResult->killers[curPly][1].toSquare) {
+                    // store the killer in the second slot
+                    memcpy(&rootResult->killers[curPly][1], &legalMoves.moves[i], sizeof(Move));                
+                }
+            }
             free(legalMoves.moves);
-            ttStore(tt, stateZobristHash, depth, (board->targetPly - depth), beta, FLAG_BETA, legalMoves.moves[i]);
             return beta;
         }
 
@@ -193,9 +204,9 @@ int Search(Board *board, int depth, int alpha, int beta, TranspositionTable *tt,
         
     }   
 
+    ttStore(tt, stateZobristHash, depth, (board->targetPly - depth), alpha, flag, bestMoveInSearch);
     free(legalMoves.moves);
 
-    ttStore(tt, stateZobristHash, depth, (board->targetPly - depth), alpha, flag, bestMoveInSearch);
 
     return alpha;
 }
@@ -255,6 +266,8 @@ SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTab
     if (board->gameState > CHECK) {
         return rootResult;
     }
+
+
 
     if ((board->whitePieceAmt + board->blackPieceAmt) <= 16) {
         maxDepth += (int)((16 - board->whitePieceAmt - board->blackPieceAmt)/(2));
@@ -317,7 +330,8 @@ SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTab
         printf("\nTook %f ms for depth %d, %d positions evaluated, %d hits, %d collisions\n", getTimeInMilliseconds()-searchStartTime, maxDepthSearched, POSITIONS_EVALUATED, tt->hits, tt->collisions);
         printf("Wrote %d, which is %f\n\n", tt->writes, ((double)(tt->writes))/((double)(tt->size))*100.0);
         // extract PV line 
-        // int amtPV = 0;
+    //     printf("\nPV line -> ");
+    //     int amtPV = 0;
     //     for (int i = 0; i<maxDepthSearched; i++) {
     //             uint64_t key = generateZobristHash(board);
     //             Move *bestMoveFromTT = NULL;
@@ -326,9 +340,10 @@ SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTab
     //                     // we have a match for the best move that was saved in the TT, will rank it highly
     //                     bestMoveFromTT = &(pEntry->bestMove);
     //                 } 
-    //                 printf("\n");
     //                 if (bestMoveFromTT != NULL && board->squares[bestMoveFromTT->fromSquare].type != NONE) {
-    //                         printMove(*bestMoveFromTT);
+    //                         char notation[5];
+    //                         moveToNotation(&(*bestMoveFromTT), notation);
+    //                         printf("%s ", notation);
     //                         pushMove(board, *bestMoveFromTT);
     //                         amtPV++;
     //                     } else {

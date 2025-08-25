@@ -78,7 +78,7 @@ uint64_t generateZobristHash(Board *board) {
     }
     
     if (board->enPassantSquareIndex != -1) {
-        hash ^= zobristUniqueValues[70][0];
+        hash ^= zobristUniqueValues[board->enPassantSquareIndex % 8][0];
     }
 
 

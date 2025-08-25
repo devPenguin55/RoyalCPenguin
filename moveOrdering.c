@@ -17,7 +17,7 @@ int compareInDescendingOrder(const void *a, const void *b) {
     return moveB->score - moveA->score;
 }
 
-void orderMoves(Board *board, LegalMovesContainer *legalMoves, struct TranspositionTable *tt) {
+void orderMoves(Board *board, LegalMovesContainer *legalMoves, struct TranspositionTable *tt, int ply, struct SearchRootResult *rootResult) {
     int score;
     int possiblePawnAttackingIndexes[2];
     int pawnAttackingDirection = (board->colorToPlay == WHITE_PIECE) ? -1 : 1;
@@ -68,7 +68,30 @@ void orderMoves(Board *board, LegalMovesContainer *legalMoves, struct Transposit
                 score += 10000;
             }
         }
-        
+
+        if (
+            legalMoves->moves[i].fromSquare == rootResult->killers[ply][0].fromSquare &&
+            legalMoves->moves[i].toSquare == rootResult->killers[ply][0].toSquare &&
+            legalMoves->moves[i].isEnpassant == rootResult->killers[ply][0].isEnpassant &&
+            legalMoves->moves[i].promotionType == rootResult->killers[ply][0].promotionType &&
+            legalMoves->moves[i].captureSquare.color == rootResult->killers[ply][0].captureSquare.color &&
+            legalMoves->moves[i].captureSquare.type == rootResult->killers[ply][0].captureSquare.type &&
+            legalMoves->moves[i].captureSquare.squareIndex == rootResult->killers[ply][0].captureSquare.squareIndex
+        ) {
+            score += 5000;
+        } else if (
+            legalMoves->moves[i].fromSquare == rootResult->killers[ply][1].fromSquare &&
+            legalMoves->moves[i].toSquare == rootResult->killers[ply][1].toSquare &&
+            legalMoves->moves[i].isEnpassant == rootResult->killers[ply][1].isEnpassant &&
+            legalMoves->moves[i].promotionType == rootResult->killers[ply][1].promotionType &&
+            legalMoves->moves[i].captureSquare.color == rootResult->killers[ply][1].captureSquare.color &&
+            legalMoves->moves[i].captureSquare.type == rootResult->killers[ply][1].captureSquare.type &&
+            legalMoves->moves[i].captureSquare.squareIndex == rootResult->killers[ply][1].captureSquare.squareIndex
+        ) {
+            score += 5000;
+        }
+
+                
 
         scoredMoves[i].score = score;
         scoredMoves[i].move = legalMoves->moves[i];
