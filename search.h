@@ -9,6 +9,7 @@ typedef struct SearchRootResult {
     Move bestMove;
     int bestScore;
     Move killers[100][2];
+    // int history[2][64][64];
 } SearchRootResult;
 
 typedef struct DrawingPieceMouseHandler

@@ -579,12 +579,10 @@ LegalMovesContainer generateLegalMoves(Board *board)
     for (int pseudoLegalMoveIndex = 0; pseudoLegalMoveIndex < pseudoLegal.amtOfMoves; pseudoLegalMoveIndex++)
     {
         pushMove(board, pseudoLegal.moves[pseudoLegalMoveIndex]);
-
         if (!kingIsAttacked(board, originalColorToPlay))
         {
             actualLegalMoves.moves[actualLegalMoves.amtOfMoves++] = pseudoLegal.moves[pseudoLegalMoveIndex];
         }
-
         popMove(board);
     }
 

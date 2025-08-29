@@ -30,13 +30,13 @@ int main() {
     // initBoard(&board, "k7/2R5/3K4/8/8/8/8/8 w - - 28 15", &tt); // m3
     // initBoard(&board, "3k4/8/R7/4K3/8/8/8/8 w - - 50 26", &tt); // m6
     // initBoard(&board, "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1", &tt); //kiwipete
-    
+    // initBoard(&board, "rnbqkbnr/ppp1pppp/8/8/3p4/3P1N2/PPP1PPPP/RNBQKB1R w KQkq - 0 3", &tt); //test
     
     initGraphics(&spriteSheet, spriteRecs, sounds);
     
     LegalMovesContainer curLegalMoves = generateLegalMoves(&board);
 
-    SearchRootResult *result = &((SearchRootResult){(Move){-1, -1, -1, (Square){NONE, NONE, -1}, -1}, Evaluate(&board)});
+    SearchRootResult *result = &((SearchRootResult){(Move){-1, -1, -1, (Square){NONE, NONE, -1}, -1}, Evaluate(&board)});    
 
     int draggingPieceType = -1;
     while (!WindowShouldClose()) {

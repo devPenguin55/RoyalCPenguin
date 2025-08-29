@@ -7,6 +7,104 @@
 #include "board.h"
 #include "movegen.h"
 #include "zobrist.h"
+#include "common.h"
+
+ int PawnsStart[] = {
+    0,   0,   0,   0,   0,   0,   0,   0,
+    50,  50,  50,  50,  50,  50,  50,  50,
+    10,  10,  20,  30,  30,  20,  10,  10,
+    5,   5,  10,  25,  25,  10,   5,   5,
+    0,   0,   0,  20,  20,   0,   0,   0,
+    5,  -5, -10,   0,   0, -10,  -5,   5,
+    5,  10,  10, -20, -20,  10,  10,   5,
+    0,   0,   0,   0,   0,   0,   0,   0
+};
+
+ int PawnsEnd[] = {
+        0,   0,   0,   0,   0,   0,   0,   0,
+    80,  80,  80,  80,  80,  80,  80,  80,
+    50,  50,  50,  50,  50,  50,  50,  50,
+    30,  30,  30,  30,  30,  30,  30,  30,
+    20,  20,  20,  20,  20,  20,  20,  20,
+    10,  10,  10,  10,  10,  10,  10,  10,
+    10,  10,  10,  10,  10,  10,  10,  10,
+    0,   0,   0,   0,   0,   0,   0,   0
+};
+
+ int Rooks[] = {
+    0,  0,  0,  0,  0,  0,  0,  0,
+    5, 10, 10, 10, 10, 10, 10,  5,
+    -5,  0,  0,  0,  0,  0,  0, -5,
+    -5,  0,  0,  0,  0,  0,  0, -5,
+    -5,  0,  0,  0,  0,  0,  0, -5,
+    -5,  0,  0,  0,  0,  0,  0, -5,
+    -5,  0,  0,  0,  0,  0,  0, -5,
+    0,  0,  0,  5,  5,  0,  0,  0
+};
+
+ int Knights[] = {
+    -50,-40,-30,-30,-30,-30,-40,-50,
+    -40,-20,  0,  0,  0,  0,-20,-40,
+    -30,  0, 10, 15, 15, 10,  0,-30,
+    -30,  5, 15, 20, 20, 15,  5,-30,
+    -30,  0, 15, 20, 20, 15,  0,-30,
+    -30,  5, 10, 15, 15, 10,  5,-30,
+    -40,-20,  0,  5,  5,  0,-20,-40,
+    -50,-40,-30,-30,-30,-30,-40,-50,
+};
+
+ int Bishops[] = {
+    -20,-10,-10,-10,-10,-10,-10,-20,
+    -10,  0,  0,  0,  0,  0,  0,-10,
+    -10,  0,  5, 10, 10,  5,  0,-10,
+    -10,  5,  5, 10, 10,  5,  5,-10,
+    -10,  0, 10, 10, 10, 10,  0,-10,
+    -10, 10, 10, 10, 10, 10, 10,-10,
+    -10,  5,  0,  0,  0,  0,  5,-10,
+    -20,-10,-10,-10,-10,-10,-10,-20,
+};
+
+ int Queens[] = {
+    -20,-10,-10, -5, -5,-10,-10,-20,
+    -10,  0,  0,  0,  0,  0,  0,-10,
+    -10,  0,  5,  5,  5,  5,  0,-10,
+    -5,   0,  5,  5,  5,  5,  0, -5,
+    0,    0,  5,  5,  5,  5,  0, -5,
+    -10,  5,  5,  5,  5,  5,  0,-10,
+    -10,  0,  5,  0,  0,  0,  0,-10,
+    -20,-10,-10, -5, -5,-10,-10,-20
+};
+
+ int KingStart[] = {
+    -80, -70, -70, -70, -70, -70, -70, -80, 
+    -60, -60, -60, -60, -60, -60, -60, -60, 
+    -40, -50, -50, -60, -60, -50, -50, -40, 
+    -30, -40, -40, -50, -50, -40, -40, -30, 
+    -20, -30, -30, -40, -40, -30, -30, -20, 
+    -10, -20, -20, -20, -20, -20, -20, -10, 
+    20,  20,  -5,  -5,  -5,  -5,  20,  20, 
+    20,  30,  10,   0,   0,  10,  30,  20
+};
+
+ int KingEnd[] = {
+    -20, -10, -10, -10, -10, -10, -10, -20,
+    -5,   0,   5,   5,   5,   5,   0,  -5,
+    -10, -5,   20,  30,  30,  20,  -5, -10,
+    -15, -10,  35,  45,  45,  35, -10, -15,
+    -20, -15,  30,  40,  40,  30, -15, -20,
+    -25, -20,  20,  25,  25,  20, -20, -25,
+    -30, -25,   0,   0,   0,   0, -25, -30,
+    -50, -30, -30, -30, -30, -30, -30, -50
+};
+
+ int *TableLookup[6][2] = {
+    {PawnsStart, PawnsEnd},
+    {Knights, NULL},
+    {Bishops, NULL},
+    {Rooks, NULL},
+    {Queens, NULL},
+    {KingStart, KingEnd},
+};
 
 void convertCharToPieceType(char pieceChar, int *pieceType, int *pieceColor)
 {
@@ -212,6 +310,8 @@ void pushMove(Board *board, Move move)
                 {
                     board->blackPieceSquares[j] = board->blackPieceSquares[board->blackPieceAmt - 1];
                     board->blackPieceAmt--;
+                    board->materialScore += pieceTypeToWorth[PAWN];
+                    board->pieceSquareTableScore += TableLookup[PAWN - 1][0][(move.toSquare + pawnDirection)^56];
                     break;
                 }
             }
@@ -224,6 +324,8 @@ void pushMove(Board *board, Move move)
                 {
                     board->whitePieceSquares[j] = board->whitePieceSquares[board->whitePieceAmt - 1];
                     board->whitePieceAmt--;
+                    board->materialScore -= pieceTypeToWorth[PAWN];
+                    board->pieceSquareTableScore -= TableLookup[PAWN - 1][0][move.toSquare + pawnDirection];
                     break;
                 }
             }
@@ -296,6 +398,8 @@ void pushMove(Board *board, Move move)
                     {
                         // update the piece movement
                         board->whitePieceSquares[i].squareIndex = rookDestinationIndexToMove;
+                        board->pieceSquareTableScore -= TableLookup[ROOK - 1][0][rookIndexToMove];
+                        board->pieceSquareTableScore += TableLookup[ROOK - 1][0][rookDestinationIndexToMove];
                         break;
                     }
                 }
@@ -308,6 +412,8 @@ void pushMove(Board *board, Move move)
                     {
                         // update the piece movement
                         board->blackPieceSquares[i].squareIndex = rookDestinationIndexToMove;
+                        board->pieceSquareTableScore += TableLookup[ROOK - 1][0][rookIndexToMove^56];
+                        board->pieceSquareTableScore -= TableLookup[ROOK - 1][0][rookDestinationIndexToMove^56];
                         break;
                     }
                 }
@@ -330,6 +436,8 @@ void pushMove(Board *board, Move move)
                 if (move.promotionType > PAWN)
                 {
                     board->whitePieceSquares[i].type = move.promotionType;
+                    board->pieceSquareTableScore -= TableLookup[PAWN - 1][0][board->whitePieceSquares[i].squareIndex];
+                    board->pieceSquareTableScore += TableLookup[move.promotionType - 1][0][board->whitePieceSquares[i].squareIndex];
                 }
 
                 if (move.captureSquare.type != NONE && !move.isEnpassant)
@@ -340,6 +448,8 @@ void pushMove(Board *board, Move move)
                     {
                         if (board->blackPieceSquares[j].squareIndex == move.toSquare)
                         {
+                            board->pieceSquareTableScore += TableLookup[board->blackPieceSquares[j].type - 1][0][(board->blackPieceSquares[j].squareIndex)^56];
+                            board->materialScore += pieceTypeToWorth[board->blackPieceSquares[j].type];
                             board->blackPieceSquares[j] = board->blackPieceSquares[board->blackPieceAmt - 1];
                             board->blackPieceAmt--;
                             break;
@@ -361,6 +471,8 @@ void pushMove(Board *board, Move move)
                 if (move.promotionType > PAWN)
                 {
                     board->blackPieceSquares[i].type = move.promotionType;
+                    board->pieceSquareTableScore += TableLookup[PAWN - 1][0][(board->blackPieceSquares[i].squareIndex)^56];
+                    board->pieceSquareTableScore -= TableLookup[move.promotionType - 1][0][(board->blackPieceSquares[i].squareIndex)^56];
                 }
 
                 if (move.captureSquare.type != NONE && !move.isEnpassant)
@@ -371,6 +483,9 @@ void pushMove(Board *board, Move move)
                     {
                         if (board->whitePieceSquares[j].squareIndex == move.toSquare)
                         {
+                            board->pieceSquareTableScore -= TableLookup[board->whitePieceSquares[j].type - 1][0][board->whitePieceSquares[j].squareIndex];
+                            
+                            board->materialScore -= pieceTypeToWorth[board->whitePieceSquares[j].type];
                             board->whitePieceSquares[j] = board->whitePieceSquares[board->whitePieceAmt - 1];
                             board->whitePieceAmt--;
                             break;
@@ -385,15 +500,27 @@ void pushMove(Board *board, Move move)
     memcpy(&board->moves.stack[board->moves.size].oldMove, &move, sizeof(Move));
     board->moves.size++;
 
+    if (board->squares[move.fromSquare].color == WHITE_PIECE) {
+        board->pieceSquareTableScore -= TableLookup[board->squares[move.fromSquare].type - 1][0][move.fromSquare];
+        board->pieceSquareTableScore += TableLookup[board->squares[move.fromSquare].type - 1][0][move.toSquare];
+    } else {
+        board->pieceSquareTableScore += TableLookup[board->squares[move.fromSquare].type - 1][0][(move.fromSquare)^56];
+        board->pieceSquareTableScore -= TableLookup[board->squares[move.fromSquare].type - 1][0][(move.toSquare)^56];
+    }
+
+    
     board->squares[move.toSquare] = board->squares[move.fromSquare];
     board->squares[move.toSquare].squareIndex = move.toSquare;
     board->squares[move.fromSquare] = (Square){NONE, NONE, move.fromSquare};
 
+        
+
     if (move.promotionType > PAWN)
     {
+        board->materialScore += (board->squares[move.toSquare].color == WHITE_PIECE) ? (pieceTypeToWorth[move.promotionType]-pieceTypeToWorth[PAWN]) : (-pieceTypeToWorth[move.promotionType]+pieceTypeToWorth[PAWN]);
         board->squares[move.toSquare].type = move.promotionType;
         resetHalfMoveClock = 1;
-    }
+    } 
 
     if (resetHalfMoveClock == 1)
     {
@@ -460,6 +587,8 @@ void popMove(Board *board)
                     rookIndexToMove = 61;
                     rookDestinationIndexToMove = 63;
                 }
+                board->pieceSquareTableScore += TableLookup[ROOK - 1][0][rookDestinationIndexToMove];
+                board->pieceSquareTableScore -= TableLookup[ROOK - 1][0][rookIndexToMove];
             }
             else
             {
@@ -475,6 +604,8 @@ void popMove(Board *board)
                     rookIndexToMove = 5;
                     rookDestinationIndexToMove = 7;
                 }
+                board->pieceSquareTableScore -= TableLookup[ROOK - 1][0][rookDestinationIndexToMove^56];
+                board->pieceSquareTableScore += TableLookup[ROOK - 1][0][rookIndexToMove^56];
             }
 
             board->squares[rookDestinationIndexToMove] = board->squares[rookIndexToMove];
@@ -489,6 +620,13 @@ void popMove(Board *board)
 
         // set the from square to the place of the moved piece
         // note that to square is the empty square of where the piece actually went to
+
+        if (undoMove.oldMove.captureSquare.color == WHITE_PIECE) {
+            board->pieceSquareTableScore += TableLookup[PAWN - 1][0][undoMove.oldMove.captureSquare.squareIndex];
+        } else {
+            board->pieceSquareTableScore -= TableLookup[PAWN - 1][0][(undoMove.oldMove.captureSquare.squareIndex)^56];
+        }
+        board->materialScore += (board->squares[undoMove.oldMove.toSquare].color == WHITE_PIECE) ? -pieceTypeToWorth[PAWN] : pieceTypeToWorth[PAWN];
         board->squares[undoMove.oldMove.fromSquare] = board->squares[undoMove.oldMove.toSquare];
         board->squares[undoMove.oldMove.fromSquare].squareIndex = undoMove.oldMove.fromSquare;
         board->squares[undoMove.oldMove.toSquare] = (Square){NONE, NONE, undoMove.oldMove.toSquare};
@@ -504,6 +642,14 @@ void popMove(Board *board)
 
         if (undoMove.oldMove.captureSquare.type != NONE)
         {
+            board->materialScore += (undoMove.oldMove.captureSquare.color == WHITE_PIECE) ? pieceTypeToWorth[undoMove.oldMove.captureSquare.type] : -pieceTypeToWorth[undoMove.oldMove.captureSquare.type];
+            
+            if (undoMove.oldMove.captureSquare.color == WHITE_PIECE) {
+                board->pieceSquareTableScore += TableLookup[undoMove.oldMove.captureSquare.type - 1][0][undoMove.oldMove.toSquare];
+            } else {
+                board->pieceSquareTableScore -= TableLookup[undoMove.oldMove.captureSquare.type - 1][0][(undoMove.oldMove.toSquare)^56];
+            }
+            
             board->squares[undoMove.oldMove.toSquare] = undoMove.oldMove.captureSquare;
         }
         else
@@ -514,8 +660,26 @@ void popMove(Board *board)
 
     if (undoMove.oldMove.promotionType > PAWN)
     {
+        board->materialScore += (board->squares[undoMove.oldMove.fromSquare].color == WHITE_PIECE) ? -pieceTypeToWorth[undoMove.oldMove.promotionType]+pieceTypeToWorth[PAWN] : pieceTypeToWorth[undoMove.oldMove.promotionType]-pieceTypeToWorth[PAWN];
+        if (board->squares[undoMove.oldMove.fromSquare].color == WHITE_PIECE) {
+            board->pieceSquareTableScore += TableLookup[PAWN - 1][0][undoMove.oldMove.fromSquare];
+            board->pieceSquareTableScore -= TableLookup[undoMove.oldMove.promotionType - 1][0][undoMove.oldMove.toSquare];
+        } else {
+            board->pieceSquareTableScore -= TableLookup[PAWN - 1][0][(undoMove.oldMove.fromSquare)^56];
+            board->pieceSquareTableScore += TableLookup[undoMove.oldMove.promotionType - 1][0][(undoMove.oldMove.toSquare)^56];
+        }
         board->squares[undoMove.oldMove.fromSquare].type = PAWN;
+    } else {
+        if (board->squares[undoMove.oldMove.fromSquare].color == WHITE_PIECE) {
+            board->pieceSquareTableScore += TableLookup[board->squares[undoMove.oldMove.fromSquare].type - 1][0][undoMove.oldMove.fromSquare];
+            board->pieceSquareTableScore -= TableLookup[board->squares[undoMove.oldMove.fromSquare].type - 1][0][undoMove.oldMove.toSquare];
+        } else {
+            board->pieceSquareTableScore -= TableLookup[board->squares[undoMove.oldMove.fromSquare].type - 1][0][(undoMove.oldMove.fromSquare)^56];
+            board->pieceSquareTableScore += TableLookup[board->squares[undoMove.oldMove.fromSquare].type - 1][0][(undoMove.oldMove.toSquare)^56];
+        }
     }
+
+    
 
     // printf("\nCurrent EP index: %d\n", board->enPassantSquareIndex);
 
@@ -685,4 +849,22 @@ void initBoard(Board *board, char fen[], TranspositionTable *tt)
 
     board->gameState = NONE;
     generateLegalMoves(board);
+
+    int whiteMat = 0;
+    int blackMat = 0;
+    int whitePositionScore = 0;
+    int blackPositionScore = 0;
+    for (int i = 0; i < board->whitePieceAmt; i++)
+    {  
+        whiteMat += pieceTypeToWorth[board->whitePieceSquares[i].type];   
+        whitePositionScore += TableLookup[board->whitePieceSquares[i].type - 1][0][board->whitePieceSquares[i].squareIndex]; 
+    }
+    for (int i = 0; i < board->blackPieceAmt; i++)
+    {  
+        blackMat += pieceTypeToWorth[board->blackPieceSquares[i].type];
+        blackPositionScore += TableLookup[board->blackPieceSquares[i].type - 1][0][(board->blackPieceSquares[i].squareIndex)^56];
+    }
+    
+    board->materialScore = whiteMat - blackMat;
+    board->pieceSquareTableScore = whitePositionScore - blackPositionScore;
 }

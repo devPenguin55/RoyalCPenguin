@@ -78,7 +78,7 @@ void orderMoves(Board *board, LegalMovesContainer *legalMoves, struct Transposit
             legalMoves->moves[i].captureSquare.type == rootResult->killers[ply][0].captureSquare.type &&
             legalMoves->moves[i].captureSquare.squareIndex == rootResult->killers[ply][0].captureSquare.squareIndex
         ) {
-            score += 5000;
+            score *= 2;
         } else if (
             legalMoves->moves[i].fromSquare == rootResult->killers[ply][1].fromSquare &&
             legalMoves->moves[i].toSquare == rootResult->killers[ply][1].toSquare &&
@@ -88,10 +88,10 @@ void orderMoves(Board *board, LegalMovesContainer *legalMoves, struct Transposit
             legalMoves->moves[i].captureSquare.type == rootResult->killers[ply][1].captureSquare.type &&
             legalMoves->moves[i].captureSquare.squareIndex == rootResult->killers[ply][1].captureSquare.squareIndex
         ) {
-            score += 5000;
+            score *= 2;
         }
 
-                
+        
 
         scoredMoves[i].score = score;
         scoredMoves[i].move = legalMoves->moves[i];

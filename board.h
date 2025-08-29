@@ -78,6 +78,8 @@ typedef struct Board
     int fullmoveNumber; // total fullmoves starting at 1
     int gameState;
     int targetPly;
+    int materialScore;
+    int pieceSquareTableScore;
 } Board;
 
 void convertCharToPieceType(char pieceChar, int *pieceType, int *pieceColor);
