@@ -21,6 +21,8 @@ typedef struct TranspositionTable {
     int collisions;
 } TranspositionTable;
 
+extern uint64_t zobristUniqueValues[70][12];
+
 uint64_t getRandom64();
 void initializeTT(TranspositionTable *tt, int ttMBsToAllocate);
 uint64_t generateZobristHash(Board *board);

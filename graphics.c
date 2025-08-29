@@ -11,7 +11,7 @@
 #include "zobrist.h"
 #include "evaluation.h"
 
-const int AI_COLOR = !BLACK_PIECE;
+const int AI_COLOR = 5+!BLACK_PIECE;
 const int OPPONENT_COLOR = (AI_COLOR == WHITE_PIECE) ? BLACK_PIECE : WHITE_PIECE;
 const int AI_DEPTH = 7;
 
@@ -242,8 +242,7 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
         // undo the last 2 moves to undo ur move and the AI's move or in the other order for the opposite side to go again
         popMove(board);
         // popMove(board);
-        Evaluate(board);
-        printf("Board updated psqt: %d\n", board->pieceSquareTableScore);
+        printf("Updated: %lld | Real : %lld\n", board->zobristHash, generateZobristHash(board));
         WaitTime(0.25);
         *curLegalMoves = generateLegalMoves(board);
     }
@@ -283,8 +282,7 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
                             }
                         }
                         pushMove(board, curLegalMoves->moves[i]);
-                        Evaluate(board);
-                        printf("Board updated psqt: %d\n", board->pieceSquareTableScore);
+                        printf("Updated: %lld | Real : %lld\n", board->zobristHash, generateZobristHash(board));
                         convertPieceTypeToTextureColumn(drawingPieceMouseHandler->squareSelected.type, draggingPieceType);
                         (*draggingPieceType) += drawingPieceMouseHandler->squareSelected.color * 6;
                         // printf("\n");

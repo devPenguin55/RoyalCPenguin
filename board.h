@@ -2,7 +2,7 @@
 #define BOARD_H
 #include <stdint.h>
 
-struct TranspositionTable; // forward delcare it to avoid circular includes
+struct TranspositionTable; // forward declare it to avoid circular includes
 
 // piece color
 #define WHITE_PIECE 0
@@ -80,6 +80,7 @@ typedef struct Board
     int targetPly;
     int materialScore;
     int pieceSquareTableScore;
+    uint64_t zobristHash;
 } Board;
 
 void convertCharToPieceType(char pieceChar, int *pieceType, int *pieceColor);

@@ -563,7 +563,7 @@ LegalMovesContainer generateLegalMoves(Board *board)
         return emptyLegalMoves;
     }
     LegalMovesContainer pseudoLegal = generatePseudoLegalMoves(board);
-    // return pseudoLegal;
+    return pseudoLegal;
 
     LegalMovesContainer actualLegalMoves;
     actualLegalMoves.moves = malloc(pseudoLegal.amtOfMoves * sizeof(Move));

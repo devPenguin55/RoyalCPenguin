@@ -19,7 +19,7 @@ int main() {
     TranspositionTable tt;
     initializeTT(&tt, 256);
 
-    initBoard(&board, STARTING_FEN, &tt);
+    // initBoard(&board, STARTING_FEN, &tt);
     // initBoard(&board, "2rq1rk1/1p2npp1/4p1b1/4PBQp/5N2/2R3R1/PP3PPP/6K1 w - - 0 1", &tt);
     // initBoard(&board, "8/5k1P/1K6/8/8/2P5/1P6/8 w - - 0 1", &tt);
 
@@ -29,7 +29,7 @@ int main() {
     
     // initBoard(&board, "k7/2R5/3K4/8/8/8/8/8 w - - 28 15", &tt); // m3
     // initBoard(&board, "3k4/8/R7/4K3/8/8/8/8 w - - 50 26", &tt); // m6
-    // initBoard(&board, "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1", &tt); //kiwipete
+    initBoard(&board, "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1", &tt); //kiwipete
     // initBoard(&board, "rnbqkbnr/ppp1pppp/8/8/3p4/3P1N2/PPP1PPPP/RNBQKB1R w KQkq - 0 3", &tt); //test
     
     initGraphics(&spriteSheet, spriteRecs, sounds);
