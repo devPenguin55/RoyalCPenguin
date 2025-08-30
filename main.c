@@ -31,7 +31,6 @@ int main() {
     // initBoard(&board, "3k4/8/R7/4K3/8/8/8/8 w - - 50 26", &tt); // m6
     initBoard(&board, "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1", &tt); //kiwipete
     // initBoard(&board, "rnbqkbnr/ppp1pppp/8/8/3p4/3P1N2/PPP1PPPP/RNBQKB1R w KQkq - 0 3", &tt); //test
-    
     initGraphics(&spriteSheet, spriteRecs, sounds);
     
     LegalMovesContainer curLegalMoves = generateLegalMoves(&board);

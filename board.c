@@ -227,7 +227,6 @@ void pushMove(Board *board, Move move)
         }
     }
 
-    uint64_t stateZobristHash = generateZobristHash(board);
 
     board->moves.stack[board->moves.size].oldEnPassantSquareIndex = board->enPassantSquareIndex;
     memcpy(board->moves.stack[board->moves.size].oldCastlingRights, board->castlingRights, 4 * sizeof(int));
@@ -240,7 +239,7 @@ void pushMove(Board *board, Move move)
     memcpy(board->moves.stack[board->moves.size].oldBlackPieceSquares, board->blackPieceSquares, 16 * sizeof(Square));
     board->moves.stack[board->moves.size].oldGameState = board->gameState;
 
-    board->moves.stack[board->moves.size].oldZobristHash = stateZobristHash;
+    board->moves.stack[board->moves.size].oldZobristHash = board->zobristHash;
 
     if (board->enPassantSquareIndex != -1) {
         board->zobristHash ^= zobristUniqueValues[board->enPassantSquareIndex % 8][0];
@@ -579,7 +578,7 @@ void pushMove(Board *board, Move move)
     // printf("\nCurrent EP index: %d\n", board->enPassantSquareIndex);
     // printf("move %d to %d \n", move.fromSquare, move.toSquare);
     // printBoard(board);
-    printf("castling rights %d %d %d %d\n", board->castlingRights[0], board->castlingRights[1], board->castlingRights[2], board->castlingRights[3]);
+    // printf("castling rights %d %d %d %d\n", board->castlingRights[0], board->castlingRights[1], board->castlingRights[2], board->castlingRights[3]);
 }
 
 void popMove(Board *board)
@@ -602,8 +601,21 @@ void popMove(Board *board)
 
     board->moves.size--;
 
+    if (board->enPassantSquareIndex != -1) {
+        board->zobristHash ^= zobristUniqueValues[board->enPassantSquareIndex % 8][0];
+    }
+    if (undoMove.oldEnPassantSquareIndex != -1) {
+        board->zobristHash ^= zobristUniqueValues[undoMove.oldEnPassantSquareIndex % 8][0];
+    }
     board->enPassantSquareIndex = undoMove.oldEnPassantSquareIndex;
 
+
+    for (int i = 0; i<4; i++) {
+        if (board->castlingRights[i] != undoMove.oldCastlingRights[i]) {
+            // mismatch, it got updated, so we must update that on the zobrist hash
+            board->zobristHash ^= zobristUniqueValues[65+i][0];
+        }
+    }
     memcpy(board->castlingRights, undoMove.oldCastlingRights, 4 * sizeof(int));
 
     memcpy(board->whitePieceSquares, undoMove.oldWhitePieceSquares, 16 * sizeof(Square));
@@ -612,6 +624,11 @@ void popMove(Board *board)
     board->blackPieceAmt = undoMove.oldBlackPieceAmt;
     board->gameState = undoMove.oldGameState;
     board->halfmoveClock = undoMove.oldHalfMoveClock;
+
+    board->zobristHash ^= zobristUniqueValues[undoMove.oldMove.toSquare][board->squares[undoMove.oldMove.toSquare].type - PAWN + (board->squares[undoMove.oldMove.toSquare].color == BLACK_PIECE)*6];
+    board->zobristHash ^= zobristUniqueValues[undoMove.oldMove.fromSquare][board->squares[undoMove.oldMove.toSquare].type - PAWN + (board->squares[undoMove.oldMove.toSquare].color == BLACK_PIECE)*6];
+    board->zobristHash ^= zobristUniqueValues[64][0];
+    
 
     if (board->squares[undoMove.oldMove.toSquare].type == KING)
     {
@@ -637,6 +654,9 @@ void popMove(Board *board)
                 }
                 board->pieceSquareTableScore += TableLookup[ROOK - 1][0][rookDestinationIndexToMove];
                 board->pieceSquareTableScore -= TableLookup[ROOK - 1][0][rookIndexToMove];
+
+                board->zobristHash ^= zobristUniqueValues[rookIndexToMove][ROOK - PAWN];
+                board->zobristHash ^= zobristUniqueValues[rookDestinationIndexToMove][ROOK - PAWN];
             }
             else
             {
@@ -654,6 +674,9 @@ void popMove(Board *board)
                 }
                 board->pieceSquareTableScore -= TableLookup[ROOK - 1][0][rookDestinationIndexToMove^56];
                 board->pieceSquareTableScore += TableLookup[ROOK - 1][0][rookIndexToMove^56];
+
+                board->zobristHash ^= zobristUniqueValues[rookIndexToMove][ROOK - PAWN+6];
+                board->zobristHash ^= zobristUniqueValues[rookDestinationIndexToMove][ROOK - PAWN+6];
             }
 
             board->squares[rookDestinationIndexToMove] = board->squares[rookIndexToMove];
@@ -671,8 +694,10 @@ void popMove(Board *board)
 
         if (undoMove.oldMove.captureSquare.color == WHITE_PIECE) {
             board->pieceSquareTableScore += TableLookup[PAWN - 1][0][undoMove.oldMove.captureSquare.squareIndex];
+            board->zobristHash ^= zobristUniqueValues[undoMove.oldMove.captureSquare.squareIndex][0];
         } else {
             board->pieceSquareTableScore -= TableLookup[PAWN - 1][0][(undoMove.oldMove.captureSquare.squareIndex)^56];
+            board->zobristHash ^= zobristUniqueValues[undoMove.oldMove.captureSquare.squareIndex][6];
         }
         board->materialScore += (board->squares[undoMove.oldMove.toSquare].color == WHITE_PIECE) ? -pieceTypeToWorth[PAWN] : pieceTypeToWorth[PAWN];
         board->squares[undoMove.oldMove.fromSquare] = board->squares[undoMove.oldMove.toSquare];
@@ -694,8 +719,12 @@ void popMove(Board *board)
             
             if (undoMove.oldMove.captureSquare.color == WHITE_PIECE) {
                 board->pieceSquareTableScore += TableLookup[undoMove.oldMove.captureSquare.type - 1][0][undoMove.oldMove.toSquare];
+
+                board->zobristHash ^= zobristUniqueValues[undoMove.oldMove.captureSquare.squareIndex][undoMove.oldMove.captureSquare.type - PAWN];
             } else {
                 board->pieceSquareTableScore -= TableLookup[undoMove.oldMove.captureSquare.type - 1][0][(undoMove.oldMove.toSquare)^56];
+
+                board->zobristHash ^= zobristUniqueValues[undoMove.oldMove.captureSquare.squareIndex][undoMove.oldMove.captureSquare.type - PAWN + 6];
             }
             
             board->squares[undoMove.oldMove.toSquare] = undoMove.oldMove.captureSquare;
@@ -712,9 +741,15 @@ void popMove(Board *board)
         if (board->squares[undoMove.oldMove.fromSquare].color == WHITE_PIECE) {
             board->pieceSquareTableScore += TableLookup[PAWN - 1][0][undoMove.oldMove.fromSquare];
             board->pieceSquareTableScore -= TableLookup[undoMove.oldMove.promotionType - 1][0][undoMove.oldMove.toSquare];
+
+            board->zobristHash ^= zobristUniqueValues[undoMove.oldMove.fromSquare][undoMove.oldMove.promotionType - PAWN];
+            board->zobristHash ^= zobristUniqueValues[undoMove.oldMove.fromSquare][0];
         } else {
             board->pieceSquareTableScore -= TableLookup[PAWN - 1][0][(undoMove.oldMove.fromSquare)^56];
             board->pieceSquareTableScore += TableLookup[undoMove.oldMove.promotionType - 1][0][(undoMove.oldMove.toSquare)^56];
+
+            board->zobristHash ^= zobristUniqueValues[undoMove.oldMove.fromSquare][undoMove.oldMove.promotionType - PAWN+6];
+            board->zobristHash ^= zobristUniqueValues[undoMove.oldMove.fromSquare][6];
         }
         board->squares[undoMove.oldMove.fromSquare].type = PAWN;
     } else {
@@ -728,7 +763,7 @@ void popMove(Board *board)
     }
 
     
-
+    
     // printf("\nCurrent EP index: %d\n", board->enPassantSquareIndex);
 
     // printf("\n");
@@ -895,8 +930,7 @@ void initBoard(Board *board, char fen[], TranspositionTable *tt)
 
     // printBoard(board);
 
-    board->gameState = NONE;
-    generateLegalMoves(board);
+    
 
     int whiteMat = 0;
     int blackMat = 0;
@@ -916,4 +950,8 @@ void initBoard(Board *board, char fen[], TranspositionTable *tt)
     board->materialScore = whiteMat - blackMat;
     board->pieceSquareTableScore = whitePositionScore - blackPositionScore;
     board->zobristHash = generateZobristHash(board);
+    printf("zobrist hash %lld\n", board->zobristHash);
+
+    board->gameState = NONE;
+    generateLegalMoves(board);
 }

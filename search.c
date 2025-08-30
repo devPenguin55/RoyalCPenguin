@@ -30,7 +30,7 @@ int SearchAllCaptures(Board *board, int alpha, int beta, TranspositionTable *tt,
     POSITIONS_EVALUATED++;
 
 
-    uint64_t stateZobristHash = generateZobristHash(board);
+    uint64_t stateZobristHash = board->zobristHash;
     for (int i = (board->moves.size-board->halfmoveClock); i < board->moves.size; i++)
     {
         if (board->moves.stack[i].oldZobristHash == stateZobristHash)
@@ -84,7 +84,7 @@ int SearchAllCaptures(Board *board, int alpha, int beta, TranspositionTable *tt,
 }
 
 int Search(Board *board, int depth, int alpha, int beta, TranspositionTable *tt, SearchRootResult *rootResult) {
-    uint64_t stateZobristHash = generateZobristHash(board);
+    uint64_t stateZobristHash = board->zobristHash;
     if (depth == 0) {
         int evaluation = SearchAllCaptures(board, alpha, beta, tt, rootResult);
         ttStore(tt, stateZobristHash, depth, (board->targetPly - depth), evaluation, FLAG_EXACT, (Move){-1, -1, -1, (Square){NONE, NONE, -1}, -1});
@@ -249,7 +249,7 @@ SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTab
     SearchRootResult rootResult;
     int maxDepthSearched = 1;
     
-    uint64_t stateZobristHash = generateZobristHash(board);
+    uint64_t stateZobristHash = board->zobristHash;
     for (int i = (board->moves.size-board->halfmoveClock); i < board->moves.size; i++)
     {
         if (board->moves.stack[i].oldZobristHash == stateZobristHash)
@@ -333,7 +333,7 @@ SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTab
     //     printf("\nPV line -> ");
     //     int amtPV = 0;
     //     for (int i = 0; i<maxDepthSearched; i++) {
-    //             uint64_t key = generateZobristHash(board);
+    //             uint64_t key = board->zobristHash;
     //             Move *bestMoveFromTT = NULL;
     //             TranspositionTableEntry *pEntry = &(tt->entries[key % tt->size]); // * pointer here avoids creating the object and taking more memory
     //             if (pEntry->key == key) {
