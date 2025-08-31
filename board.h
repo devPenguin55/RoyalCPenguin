@@ -23,6 +23,7 @@ struct TranspositionTable; // forward declare it to avoid circular includes
 #define CHECK 1
 #define CHECKMATE 2
 #define DRAW 3
+#define DRAW_RETURN_0_IN_SEARCH 4
 
 #define STARTING_FEN "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 

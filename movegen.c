@@ -615,6 +615,108 @@ LegalMovesContainer generateLegalMoves(Board *board)
         }
     }
 
+    if (board->halfmoveClock >= 100) {
+        board->gameState = DRAW_RETURN_0_IN_SEARCH;
+        actualLegalMoves.amtOfMoves = 0;
+    }
+
+    if (board->gameState <= CHECK) {
+
+        for (int i = (board->moves.size-board->halfmoveClock); i < board->moves.size; i++)
+        {
+            if (board->moves.stack[i].oldZobristHash == board->zobristHash)
+            {
+                 board->gameState = DRAW_RETURN_0_IN_SEARCH;
+                 actualLegalMoves.amtOfMoves = 0;
+                 break;
+            }
+        }
+    }
+    
+    if (board->gameState <= CHECK) {
+        
+        if (board->whitePieceAmt + board->blackPieceAmt == 2) {
+            board->gameState = DRAW;
+            
+            return actualLegalMoves;
+        } else if ((board->whitePieceAmt <= 2) && (board->blackPieceAmt <= 2)) {
+            
+            int minorPieces = 0;
+            int whiteBishopColor = -1;
+            int blackBishopColor = -1;
+
+            for (int i = 0; i < board->whitePieceAmt; i++)
+            {
+                if (board->whitePieceSquares[i].type == PAWN || board->whitePieceSquares[i].type == QUEEN || board->whitePieceSquares[i].type == ROOK)
+                {   
+                    return actualLegalMoves;
+                } else if ((board->whitePieceSquares[i].type == KNIGHT) || (board->whitePieceSquares[i].type == BISHOP)) {
+                    minorPieces++;
+                    if (board->whitePieceSquares[i].type == BISHOP) {
+                        whiteBishopColor = ((board->whitePieceSquares[i].squareIndex % 2) == 1); 
+                    }
+                }
+            }
+            
+            if (minorPieces <= 1) {
+                minorPieces = 0;
+                for (int i = 0; i < board->blackPieceAmt; i++)
+                {
+                    if (board->blackPieceSquares[i].type == PAWN || board->blackPieceSquares[i].type == QUEEN || board->blackPieceSquares[i].type == ROOK)
+                    {
+                        return actualLegalMoves;
+                    } else if ((board->blackPieceSquares[i].type == KNIGHT) || (board->blackPieceSquares[i].type == BISHOP)) {
+                        minorPieces++;
+                        if (board->blackPieceSquares[i].type == BISHOP) {
+                            blackBishopColor = ((board->blackPieceSquares[i].squareIndex % 2) == 1); 
+                        }
+                    }
+                }
+
+                if (minorPieces <= 1) {
+                    if ((whiteBishopColor != -1 && blackBishopColor != -1) && (whiteBishopColor == blackBishopColor)) {
+                        
+                        return actualLegalMoves;
+                    }
+                    board->gameState = DRAW;
+                    return actualLegalMoves;
+                }
+            }             
+        } else if (((board->whitePieceAmt == 1) && (board->blackPieceAmt == 3)) || ((board->whitePieceAmt == 3) && (board->blackPieceAmt == 1))) {
+            if (board->whitePieceAmt == 1) {
+                int knights = 0;
+                for (int i = 0; i < board->blackPieceAmt; i++)
+                {
+                    if (board->blackPieceSquares[i].type == PAWN || board->blackPieceSquares[i].type == QUEEN || board->blackPieceSquares[i].type == ROOK)
+                    {
+                        return actualLegalMoves;
+                    } else if (board->blackPieceSquares[i].type == KNIGHT) {
+                        knights++;
+                    }
+                }
+                if (knights == 2) {
+                    board->gameState = DRAW;
+                    return actualLegalMoves;
+                }
+            } else {
+                int knights = 0;
+                for (int i = 0; i < board->whitePieceAmt; i++)
+                {
+                    if (board->whitePieceSquares[i].type == PAWN || board->whitePieceSquares[i].type == QUEEN || board->whitePieceSquares[i].type == ROOK)
+                    {
+                        return actualLegalMoves;
+                    } else if (board->whitePieceSquares[i].type == KNIGHT) {
+                        knights++;
+                    }
+                }
+                if (knights == 2) {
+                    board->gameState = DRAW;
+                    return actualLegalMoves;
+                }
+            }
+        }
+    }
+
     return actualLegalMoves;
 }
 

@@ -11,7 +11,7 @@
 #include "zobrist.h"
 #include "evaluation.h"
 
-const int AI_COLOR = !BLACK_PIECE;
+const int AI_COLOR = WHITE_PIECE;
 const int OPPONENT_COLOR = (AI_COLOR == WHITE_PIECE) ? BLACK_PIECE : WHITE_PIECE;
 const int AI_DEPTH = 7;
 
@@ -241,7 +241,7 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
     {
         // undo the last 2 moves to undo ur move and the AI's move or in the other order for the opposite side to go again
         popMove(board);
-        // popMove(board);
+        popMove(board);
         WaitTime(0.25);
         *curLegalMoves = generateLegalMoves(board);
     }
@@ -355,7 +355,7 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
         }
         DrawText(text, 1 * 75, 3 * 75, 80, DARKGREEN);
     }
-    else if (board->gameState == DRAW)
+    else if (board->gameState == DRAW || board->gameState == DRAW_RETURN_0_IN_SEARCH)
     {
         char text[] = "DRAW!";
         DrawText(text, 2.5 * 75, 3.5 * 75, 80, DARKGREEN);

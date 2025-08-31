@@ -90,24 +90,13 @@ int Search(Board *board, int depth, int alpha, int beta, TranspositionTable *tt,
         ttStore(tt, stateZobristHash, depth, (board->targetPly - depth), evaluation, FLAG_EXACT, (Move){-1, -1, -1, (Square){NONE, NONE, -1}, -1});
         return evaluation;
     }
-
-    for (int i = (board->moves.size-board->halfmoveClock); i < board->moves.size; i++)
-    {
-        if (board->moves.stack[i].oldZobristHash == stateZobristHash)
-        {
-                
-             board->gameState = DRAW;
-             return 0;
-        }
-    }
-    if (board->halfmoveClock >= 100) {
-        board->gameState = DRAW;
-        return 0;
-    }
-
-
     
     LegalMovesContainer legalMoves = generateLegalMoves(board);
+
+    if (board->gameState == DRAW_RETURN_0_IN_SEARCH) {
+        free(legalMoves.moves);
+        return 0;
+    }
 
     if (board->gameState > CHECK) {
         // Game Over -> checkmate or stalemate
@@ -249,24 +238,10 @@ SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTab
     SearchRootResult rootResult;
     int maxDepthSearched = 1;
     
-    uint64_t stateZobristHash = board->zobristHash;
-    for (int i = (board->moves.size-board->halfmoveClock); i < board->moves.size; i++)
-    {
-        if (board->moves.stack[i].oldZobristHash == stateZobristHash)
-        {
-                
-             board->gameState = DRAW;
-             return rootResult;
-        }
-    }
-    if (board->halfmoveClock >= 100) {
-        board->gameState = DRAW;
-        return rootResult;
-    }
+    
     if (board->gameState > CHECK) {
         return rootResult;
     }
-
 
 
     if ((board->whitePieceAmt + board->blackPieceAmt) <= 16) {
