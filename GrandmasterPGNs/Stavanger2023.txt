@@ -1,0 +1,1186 @@
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.05.30"]
+[Round "1.1"]
+[White "Caruana,F"]
+[Black "Carlsen,M"]
+[Result "1-0"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2764"]
+[BlackElo "2853"]
+[ECO "C11"]
+[Opening "French"]
+[Variation "Steinitz, Boleslavsky variation"]
+[WhiteFideId "2020009"]
+[BlackFideId "1503014"]
+[EventDate "2023.05.30"]
+
+1. e4 e6 2. d4 d5 3. Nc3 Nf6 4. e5 Nfd7 5. f4 c5 6. Nf3 Nc6 7. Be3 a6 8. Ne2 Qb6
+9. Qc1 Be7 10. c3 O-O 11. g3 f6 12. Bg2 cxd4 13. cxd4 Qa5+ 14. Nc3 Nb6 15. exf6
+Bxf6 16. b3 Bd7 17. O-O Rac8 18. Qd2 Be7 19. Ne2 Qxd2 20. Bxd2 Rc7 21. Rac1 Rfc8
+22. f5 Ba3 23. Rce1 Bb4 24. Bxb4 Nxb4 25. fxe6 Bxe6 26. Nf4 Bf5 27. Ne5 g6 28.
+g4 Be4 29. Bxe4 dxe4 30. a3 N4d5 31. Rxe4 Rc3 32. Nd7 Rxb3 33. Nxd5 Nxd5 34. Re5
+Nc3 35. Nf6+ 1-0
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.05.30"]
+[Round "1.2"]
+[White "Firouzja,Alireza"]
+[Black "Gukesh,D"]
+[Result "0-1"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2785"]
+[BlackElo "2732"]
+[ECO "C50"]
+[Opening "Giuoco Pianissimo"]
+[WhiteFideId "12573981"]
+[BlackFideId "46616543"]
+[EventDate "2023.05.30"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bc4 Bc5 4. d3 Nf6 5. O-O d6 6. c3 h6 7. Nbd2 a5 8. Re1
+O-O 9. Nf1 a4 10. Bb5 a3 11. b4 Bb6 12. Bc4 Ne7 13. Ng3 Ng6 14. h3 c6 15. Bb3 d5
+16. exd5 Nxd5 17. Bd2 Be6 18. Nh5 Bc7 19. d4 exd4 20. Nxd4 Qd6 21. Ng3 Rad8 22.
+Nxe6 fxe6 23. Qg4 Ne5 24. Qe2 Nxb4 25. Bg5 hxg5 26. cxb4 g6 27. Rad1 Qxb4 28.
+Bxe6+ Kh8 29. Rb1 Qf4 30. Rxb7 Nd3 31. Rd1 Nc1 32. Rxc1 Qxc1+ 33. Kh2 Rd2 34.
+Qe4 Rfxf2 35. Rxc7 Rxg2+ 36. Qxg2 Rxg2+ 37. Kxg2 Qd2+ 0-1
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.05.30"]
+[Round "1.3"]
+[White "Mamedyarov,S"]
+[Black "Tari,A"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2738"]
+[BlackElo "2642"]
+[ECO "D32"]
+[Opening "QGD"]
+[Variation "Tarrasch defence"]
+[WhiteFideId "13401319"]
+[BlackFideId "1510045"]
+[EventDate "2023.05.30"]
+
+1. c4 e6 2. Nc3 d5 3. d4 c5 4. cxd5 exd5 5. Nf3 Nc6 6. Bg5 Be7 7. Bxe7 Ngxe7 8.
+e3 c4 9. Be2 O-O 10. O-O Rb8 11. e4 b5 12. Qd2 dxe4 13. Nxe4 Be6 14. Rad1 Bd5
+15. Nc3 Qd6 16. Ne5 Rfd8 17. Bf3 Bxf3 18. Nxf3 Nf5 19. d5 Nb4 20. Nd4 Nxd4 21.
+Qxd4 a6 22. a4 h6 23. h3 Nd3 24. axb5 axb5 25. b3 Qb6 26. Nxb5 cxb3 27. Rxd3
+Qxb5 28. Rb1 Qb4 29. Qxb4 Rxb4 30. Rdxb3 Rxb3 31. Rxb3 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.05.30"]
+[Round "1.4"]
+[White "Abdusattorov,Nodirbek"]
+[Black "Giri,A"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2731"]
+[BlackElo "2768"]
+[ECO "D37"]
+[Opening "QGD"]
+[Variation "4.Nf3"]
+[WhiteFideId "14204118"]
+[BlackFideId "24116068"]
+[EventDate "2023.05.30"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bg5 h6 6. Bh4 dxc4 7. e3 c5 8. Bxc4
+cxd4 9. exd4 Nc6 10. O-O O-O 11. Rc1 b6 12. a3 Bb7 13. Bg3 Bd6 14. Ne5 Rc8 15.
+Bb5 Bb8 16. Qa4 Ne7 17. Nd7 Nxd7 18. Bxd7 Bxg3 19. Bxc8 Bc6 20. Qc4 Bf4 21. Ba6
+Bxc1 22. Rxc1 Qd7 23. h3 Rd8 24. Bb5 Bxb5 25. Qxb5 Nf5 26. Qxd7 Rxd7 27. Nb5
+Nxd4 28. Nxd4 Rxd4 29. Rc8+ Kh7 30. Rc7 Kg6 31. Rxa7 Rd1+ 32. Kh2 Rd2 33. Kg3
+Rxb2 34. a4 f5 35. a5 bxa5 36. Rxa5 Kf6 37. h4 g5 38. hxg5+ hxg5 39. f3 f4+ 40.
+Kh3 Rb1 41. Kh2 g4 42. fxg4 e5 43. Ra8 e4 44. Re8 Re1 45. Rf8+ Kg5 46. Rg8+ Kh4
+47. g5 f3 48. g6 Kg5 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.05.30"]
+[Round "1.5"]
+[White "So,W"]
+[Black "Nakamura,Hi"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2760"]
+[BlackElo "2775"]
+[ECO "C67"]
+[Opening "Ruy Lopez"]
+[Variation "Berlin defence, open variation"]
+[WhiteFideId "5202213"]
+[BlackFideId "2016192"]
+[EventDate "2023.05.30"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 Nf6 4. O-O Nxe4 5. Re1 Nd6 6. Nxe5 Be7 7. Bf1 Nxe5 8.
+Rxe5 O-O 9. d4 Bf6 10. Re2 Ne8 11. d5 d6 12. Nd2 Bg5 13. Nc4 Bxc1 14. Rxc1 Qg5
+15. Qd2 Qxd2 16. Rxd2 Nf6 17. Re1 Bd7 18. f3 h5 19. h4 Rfe8 20. Rxe8+ Bxe8 21.
+Kf2 a5 22. b3 Nd7 23. Na3 Nf6 24. Bb5 Kf8 25. Bxe8 Kxe8 26. Nb5 Kd7 27. c4 Ng8
+28. Re2 Nh6 29. Re4 c6 30. Nc3 Re8 31. Rxe8 Kxe8 32. Ne4 Kd7 33. Ng3 g6 34. Ne4
+cxd5 35. cxd5 b5 36. g3 Nf5 37. g4 hxg4 38. fxg4 Nxh4 39. Kg3 g5 40. Nxg5 Ng6
+41. Nxf7 Ne7 42. g5 Nxd5 43. Kg4 Ne7 44. Kf4 Ke6 45. Nd8+ Kd5 46. a4 bxa4 47.
+bxa4 Kc5 48. Nb7+ Kb4 49. Nxd6 Kxa4 50. Nb7 Kb4 51. Nxa5 Kxa5 52. Ke5 Ng6+ 53.
+Kf6 Nh4 54. g6 Nxg6 55. Kxg6 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.05.31"]
+[Round "2.1"]
+[White "Carlsen,M"]
+[Black "So,W"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2853"]
+[BlackElo "2760"]
+[ECO "C65"]
+[Opening "Ruy Lopez"]
+[Variation "Berlin defence"]
+[WhiteFideId "1503014"]
+[BlackFideId "5202213"]
+[EventDate "2023.05.30"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 Nf6 4. d3 Bc5 5. Bxc6 dxc6 6. O-O Nd7 7. h3 O-O 8.
+Nc3 a5 9. a4 f6 10. Qe2 Re8 11. Be3 Bd6 12. Nd2 Nf8 13. f3 Ng6 14. Qf2 Be6 15.
+Ne2 Qd7 16. b3 Bb4 17. Rad1 b6 18. g4 b5 19. h4 bxa4 20. bxa4 Bd6 21. Qh2 c5 22.
+h5 Nf4 23. Ra1 Nxe2+ 24. Qxe2 Reb8 25. c4 Rb4 26. Nb1 Rxa4 27. Rxa4 Qxa4 28. Nc3
+Qc6 29. Ra1 a4 30. Qc2 Bd7 31. Ra2 Kf7 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.05.31"]
+[Round "2.2"]
+[White "Tari,A"]
+[Black "Abdusattorov,Nodirbek"]
+[Result "0-1"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2642"]
+[BlackElo "2731"]
+[ECO "B30"]
+[Opening "Sicilian"]
+[Variation "Nimzovich-Rossolimo attack (without ...d6)"]
+[WhiteFideId "1510045"]
+[BlackFideId "14204118"]
+[EventDate "2023.05.30"]
+
+1. e4 c5 2. Nf3 Nc6 3. Bb5 d6 4. O-O Bd7 5. Re1 Nf6 6. h3 a6 7. Bf1 Rg8 8. d3 h6
+9. b4 cxb4 10. a3 b3 11. c4 g5 12. Qxb3 g4 13. hxg4 Nxg4 14. d4 Qa5 15. Nc3 Bg7
+16. e5 dxe5 17. Bd2 Qd8 18. d5 Nd4 19. Nxd4 exd4 20. Ne4 Be5 21. f4 Bh8 22. c5
+Kf8 23. Rac1 d3 24. Bc3 e6 25. c6 Bxc3 26. Qxc3 Qh4 27. Qc5+ Kg7 28. Bxd3 Qh2+
+29. Kf1 Qxf4+ 30. Ke2 exd5 31. Rf1 Qe5 32. cxd7 Rad8 33. Qc3 dxe4 34. Bxe4 Rxd7
+35. Rf4 Qxc3 36. Rxc3 Ne5 37. Rg3+ Ng6 38. Rfg4 Re8 39. Kf2 Re6 40. Bd3 a5 41.
+a4 b6 42. Kg1 Rd5 43. Bc4 Rd1+ 44. Kh2 Ree1 45. Rf3 h5 46. Rg5 h4 0-1
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.05.31"]
+[Round "2.3"]
+[White "Gukesh,D"]
+[Black "Nakamura,Hi"]
+[Result "0-1"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2732"]
+[BlackElo "2775"]
+[ECO "D32"]
+[Opening "QGD"]
+[Variation "Tarrasch defence"]
+[WhiteFideId "46616543"]
+[BlackFideId "2016192"]
+[EventDate "2023.05.30"]
+
+1. d4 d5 2. c4 e6 3. Nc3 c5 4. e3 Nf6 5. Nf3 Nc6 6. a3 dxc4 7. Bxc4 a6 8. O-O b5
+9. Bd3 Bb7 10. Re1 Qc7 11. Qe2 Rd8 12. Rd1 cxd4 13. exd4 Be7 14. a4 b4 15. Ne4
+Nxe4 16. Bxe4 O-O 17. Be3 Na5 18. Rac1 Qb8 19. Bb1 Bd5 20. Ne5 Qb7 21. Bd3 Ra8
+22. Bf4 f5 23. Nf3 Bd8 24. Re1 Nb3 25. Rc2 Bb6 26. Qe5 Rac8 27. Rxc8 Rxc8 28.
+Qe2 Ra8 29. Qe3 Qc6 30. Be5 Qd7 31. Ng5 Na5 32. h4 Nc6 33. Rc1 Nxe5 34. Qxe5 h6
+35. Nh3 Rc8 36. Re1 a5 37. Bb5 Qc7 38. Qe3 Qd6 39. Bd3 Ba2 40. Nf4 Bxd4 41. Qd2
+Be5 42. Ng6 Bf6 43. Qe2 Qd4 44. Rd1 Bb3 45. Rd2 Rd8 46. h5 Qg4 47. Qe3 Bd4 48.
+Be2 Qe4 49. Qxe4 fxe4 50. Kf1 Bf6 51. Rxd8+ Bxd8 52. Ne5 Bxa4 53. Bc4 Kf8 54.
+Bxe6 Bf6 55. Ng6+ Ke8 56. b3 Bb5+ 57. Ke1 Bc3+ 58. Kd1 Bd4 59. Bd5 Bxf2 60. Bxe4
+Bd4 61. Bd5 Kd7 62. Nh4 Kd6 63. Bg8 Bd7 64. Bf7 Bf6 65. Nf3 Bc6 66. Bg6 Bd5 67.
+Kc2 Bc3 68. Bf5 Ke7 69. Bg6 Kf6 70. Bd3 Bf7 71. g4 Be6 0-1
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.05.31"]
+[Round "2.4"]
+[White "Giri,A"]
+[Black "Caruana,F"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2768"]
+[BlackElo "2764"]
+[ECO "E25"]
+[Opening "Nimzo-Indian"]
+[Variation "Saemisch, Keres variation"]
+[WhiteFideId "24116068"]
+[BlackFideId "2020009"]
+[EventDate "2023.05.30"]
+
+1. d4 Nf6 2. c4 e6 3. Nc3 Bb4 4. f3 d5 5. a3 Bxc3+ 6. bxc3 c5 7. cxd5 Nxd5 8.
+dxc5 Qa5 9. e4 Ne7 10. Be3 O-O 11. Qb3 Qc7 12. Bb5 Nec6 13. Ne2 Na5 14. Qb4 Nbc6
+15. Qa4 Ne5 16. Bd4 Ng6 17. O-O e5 18. Bf2 Be6 19. Rab1 Rfd8 20. Qc2 a6 21. Ba4
+Nc4 22. Rbd1 Nxa3 23. Qc1 Nc4 24. Bb3 h6 25. h4 Qc6 26. h5 Ne7 27. Rxd8+ Rxd8
+28. Rd1 Rd7 29. Qa1 Qc8 30. Nd4 exd4 31. cxd4 b5 32. cxb6 Nxb6 33. d5 Nbxd5 34.
+exd5 Nxd5 35. Ba4 Rb7 36. Rc1 Rc7 37. Rxc7 Qxc7 38. Bb3 a5 39. Bxd5 Bxd5 40. Qd4
+Bb3 41. Qb6 Qc3 42. Qc5 Qa1+ 43. Kh2 Be6 44. Bd4 Qa2 45. Bc3 a4 46. Qd4 f6 47.
+Qd8+ Kh7 48. Qd3+ Kh8 49. Qd8+ Bg8 50. Bxf6 Qf7 51. Bb2 Qxh5+ 52. Kg1 Qg6 53.
+Qd4 Kh7 54. Kf2 Bb3 55. Qe4 Qxe4 56. fxe4 h5 57. g3 g5 58. Ke3 h4 59. gxh4 gxh4
+60. Kd2 h3 61. Be5 a3 62. Kc1 Ba2 63. Kc2 Kg6 64. Kc3 Be6 65. Kc2 Ba2 66. Kc3
+Be6 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.05.31"]
+[Round "2.5"]
+[White "Firouzja,Alireza"]
+[Black "Mamedyarov,S"]
+[Result "1-0"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2785"]
+[BlackElo "2738"]
+[ECO "D20"]
+[Opening "QGA"]
+[Variation "3.e4"]
+[WhiteFideId "12573981"]
+[BlackFideId "13401319"]
+[EventDate "2023.05.30"]
+
+1. d4 d5 2. c4 dxc4 3. e4 e5 4. Nf3 Bb4+ 5. Nc3 Nf6 6. Nxe5 b5 7. f3 O-O 8. a3
+Ba5 9. a4 a6 10. Be2 Nfd7 11. Be3 c6 12. Nxd7 Nxd7 13. O-O Bb7 14. Qe1 f5 15.
+exf5 Rxf5 16. Bd1 Rf7 17. Qg3 Nf6 18. Bc2 Nd5 19. Bg5 Qb6 20. Qh4 h6 21. Bd2 Nb4
+22. Bg6 Rf6 23. Bb1 Nd3 24. Be3 Bxc3 25. bxc3 Re8 26. Bf2 Nf4 27. Kh1 c5 28.
+axb5 axb5 29. Qg3 Nxg2 30. dxc5 Qc6 31. Bd4 Ne3 32. Rf2 Nd1 33. Rg2 g5 34. Be4
+Rxe4 35. Bxf6 Re3 36. Rxd1 Rxf3 37. Qb8+ Kf7 38. Bd4 Rf4 39. Rd2 Qf3 40. h3
+Qxh3+ 1-0
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.01"]
+[Round "3.1"]
+[White "Nakamura,Hi"]
+[Black "Carlsen,M"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2775"]
+[BlackElo "2853"]
+[ECO "C89"]
+[Opening "Ruy Lopez"]
+[Variation "Marshall counter-attack, 11...c6"]
+[WhiteFideId "2016192"]
+[BlackFideId "1503014"]
+[EventDate "2023.05.30"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. O-O Be7 6. Re1 b5 7. Bb3 O-O 8. c3
+d5 9. exd5 Nxd5 10. Nxe5 Nxe5 11. Rxe5 c6 12. d3 Bd6 13. Re1 Bf5 14. Qf3 Qh4 15.
+g3 Qh3 16. Nd2 Rae8 17. Ne4 Bg4 18. Qg2 Qxg2+ 19. Kxg2 f5 20. h3 Bh5 21. Bf4
+Bxf4 22. gxf4 fxe4 23. dxe4 Bf3+ 24. Kxf3 Rxf4+ 25. Kg3 Rfxe4 26. Rxe4 Rxe4 27.
+Kf3 Rf4+ 28. Kg3 Re4 29. Kf3 Rf4+ 30. Kg3 Re4 31. Kf3 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.01"]
+[Round "3.2"]
+[White "Abdusattorov,Nodirbek"]
+[Black "Firouzja,Alireza"]
+[Result "0-1"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2731"]
+[BlackElo "2785"]
+[ECO "D45"]
+[Opening "QGD semi-Slav"]
+[Variation "5...Nd7"]
+[WhiteFideId "14204118"]
+[BlackFideId "12573981"]
+[EventDate "2023.05.30"]
+
+1. d4 d5 2. c4 c6 3. Nf3 Nf6 4. Nc3 e6 5. e3 Nbd7 6. Be2 Bd6 7. b3 b6 8. Bb2 Bb7
+9. O-O O-O 10. Qc2 Re8 11. Rad1 Qe7 12. Rfe1 Rad8 13. h3 h6 14. Bf1 Ba3 15. cxd5
+exd5 16. Bxa3 Qxa3 17. Rb1 a5 18. Bd3 Qe7 19. Qb2 Ne4 20. Rbc1 Ng5 21. Nxg5 Qxg5
+22. Na4 Re6 23. Qe2 c5 24. dxc5 d4 25. Qg4 Qe7 26. Bf5 Nf6 27. Qe2 Re5 28. c6
+Bxc6 29. Rxc6 dxe3 30. Kf1 Rxf5 31. Qxe3 Qd7 32. Rcc1 Re8 33. Qxb6 Ne4 34. Rcd1
+Nxf2 35. Rxe8+ Qxe8 36. Qxf2 Qb5+ 37. Kg1 Rxf2 38. Kxf2 Qf5+ 39. Ke3 Qg5+ 40.
+Kf2 Qf4+ 41. Kg1 Qe3+ 42. Kf1 f5 43. Nb2 Qc3 44. Nc4 a4 45. Re1 axb3 46. axb3
+Qxb3 47. Ne5 g5 48. Nf3 Kg7 49. Kf2 Kf6 50. g4 Qb6+ 51. Kg3 Qd6+ 52. Kf2 fxg4
+53. hxg4 Qf4 54. Rh1 Kg7 55. Rg1 h5 56. Kg2 hxg4 57. Ne1 g3 58. Rf1 Qe3 59. Kh3
+Qf2 0-1
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.01"]
+[Round "3.3"]
+[White "Caruana,F"]
+[Black "Tari,A"]
+[Result "1-0"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2764"]
+[BlackElo "2642"]
+[ECO "E10"]
+[Opening "Queen's pawn game"]
+[WhiteFideId "2020009"]
+[BlackFideId "1510045"]
+[EventDate "2023.05.30"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. cxd5 exd5 5. Nc3 c6 6. Qc2 g6 7. Bg5 Be7 8. e3
+Bf5 9. Bd3 Bxd3 10. Qxd3 O-O 11. Bxf6 Bxf6 12. h4 Na6 13. h5 c5 14. Rd1 Nb4 15.
+Qe2 Re8 16. Kf1 Rc8 17. hxg6 hxg6 18. g3 Kg7 19. Kg2 cxd4 20. Nxd4 Nc6 21. Qf3
+Re5 22. Nde2 Rf5 23. Nf4 Bxc3 24. bxc3 Qg5 25. Qe2 Qe7 26. Nxd5 Qe6 27. e4 Re8
+28. Rhe1 Qc8 29. exf5 Rxe2 30. f6+ Kf8 31. Rxe2 Qf5 32. c4 Ne5 33. Rde1 Qf3+ 34.
+Kg1 1-0
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.01"]
+[Round "3.4"]
+[White "Mamedyarov,S"]
+[Black "Gukesh,D"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2738"]
+[BlackElo "2732"]
+[ECO "A35"]
+[Opening "English"]
+[Variation "symmetrical, four knights system"]
+[WhiteFideId "13401319"]
+[BlackFideId "46616543"]
+[EventDate "2023.05.30"]
+
+1. c4 c5 2. Nf3 Nf6 3. Nc3 Nc6 4. d4 cxd4 5. Nxd4 Qb6 6. e3 e6 7. Be2 Be7 8. O-O
+O-O 9. b3 d5 10. Nxc6 Qxc6 11. Bf3 Qc7 12. Nb5 Qd7 13. Bb2 dxc4 14. bxc4 a6 15.
+Nd4 Qc7 16. Rc1 Rd8 17. Qc2 Bd7 18. c5 Rac8 19. c6 bxc6 20. Nxc6 Bxc6 21. Qxc6
+Qxc6 22. Rxc6 Rxc6 23. Bxc6 Nd5 24. Rd1 Nb4 25. Rxd8+ Bxd8 26. Bb7 Nxa2 27. Bxa6
+Nb4 28. Bc4 Nc6 29. Bb5 Ne7 30. Ba3 g6 31. Bxe7 Bxe7 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.01"]
+[Round "3.5"]
+[White "So,W"]
+[Black "Giri,A"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2760"]
+[BlackElo "2768"]
+[ECO "D41"]
+[Opening "QGD"]
+[Variation "Semi-Tarrasch, 5.cd"]
+[WhiteFideId "5202213"]
+[BlackFideId "24116068"]
+[EventDate "2023.05.30"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 c5 5. cxd5 cxd4 6. Qxd4 exd5 7. Bg5 Be7 8.
+e3 O-O 9. Rd1 Be6 10. Bd3 h6 11. Bh4 Qa5 12. Bb1 Qa6 13. Qd3 Qxd3 14. Bxd3 Nc6
+15. O-O g5 16. Bg3 Nh5 17. Ne2 Nxg3 18. hxg3 Bf6 19. Nfd4 Rac8 20. f3 Nxd4 21.
+Nxd4 Bxd4 22. exd4 Rfe8 23. Kf2 Bd7 24. Rc1 Rxc1 25. Rxc1 Rc8 26. Rc5 b6 27.
+Rxd5 Be6 28. Re5 Rd8 29. Ke3 Bxa2 30. f4 gxf4+ 31. gxf4 Kf8 32. g4 Re8 33. Bc2
+Rc8 34. Bd3 Re8 35. Bc2 Rc8 36. Bd3 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.03"]
+[Round "4.1"]
+[White "Gukesh,D"]
+[Black "Carlsen,M"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2732"]
+[BlackElo "2853"]
+[ECO "C50"]
+[Opening "Giuoco Pianissimo"]
+[WhiteFideId "46616543"]
+[BlackFideId "1503014"]
+[EventDate "2023.05.30"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bc4 Nf6 4. d3 Bc5 5. c3 d6 6. Bg5 h6 7. Bh4 a5 8. O-O Bd7
+9. Na3 Bxa3 10. bxa3 O-O 11. Rb1 Rb8 12. Bb5 Be6 13. d4 Bg4 14. Bxc6 bxc6 15.
+dxe5 Bxf3 16. Rxb8 Qxb8 17. Qxf3 Nd7 18. exd6 cxd6 19. Qe2 Re8 20. Bg3 Nf6 21.
+f3 Nh5 22. Bf2 d5 23. Qa6 dxe4 24. fxe4 Nf6 25. Qxc6 Nxe4 26. Be3 Ng3 27. Re1
+Re6 28. Qd5 Qe8 29. hxg3 Rxe3 30. Rxe3 Qxe3+ 31. Kh2 Qxc3 32. Qd8+ Kh7 33. Qd7
+f6 34. Qf5+ Kh8 35. a4 Qe5 36. Qc8+ Kh7 37. Qc2+ Kg8 38. Qc4+ Kf8 39. Qc8+ Kf7
+40. Qd7+ Kg6 41. Qd3+ Qf5 42. Qb5 h5 43. Qe8+ Kh7 44. Qb5 Qe5 45. Kh3 Kh6 46.
+Kh2 g5 47. Kh3 Qe1 48. Kh2 h4 49. gxh4 Qxh4+ 50. Kg1 Qe1+ 51. Kh2 g4 52. Qc6 Kg5
+53. Qb6 Qd2 54. Qc5+ Kg6 55. Kg3 f5 56. Qe5 Qd3+ 57. Kh2 Qd8 58. Kg3 Qd3+ 59.
+Kh2 Qe4 60. Qxa5 Qf4+ 61. Kg1 Qd4+ 62. Kh2 Qf4+ 63. Kg1 g3 64. Qe1 Qd4+ 65. Kf1
+Qf4+ 66. Kg1 Kf7 67. a5 Qd4+ 68. Kf1 f4 69. a6 Qd3+ 70. Kg1 Qh7 71. a7 Qh2+ 72.
+Kf1 Qh1+ 73. Ke2 Qxg2+ 74. Kd1 Qb7 75. Qe5 g2 76. Qxf4+ Ke6 77. Qe3+ Kd7 78.
+Qd4+ Kc7 79. Qc5+ Kd7 80. Qd4+ Kc7 81. Qc5+ Kd7 82. Qd4+ 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.03"]
+[Round "4.2"]
+[White "Giri,A"]
+[Black "Nakamura,Hi"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2768"]
+[BlackElo "2775"]
+[ECO "B31"]
+[Opening "Sicilian"]
+[Variation "Nimzovich-Rossolimo attack (with ...g6, without ...d6)"]
+[WhiteFideId "24116068"]
+[BlackFideId "2016192"]
+[EventDate "2023.05.30"]
+
+1. e4 c5 2. Nf3 Nc6 3. Bb5 g6 4. Bxc6 bxc6 5. O-O Bg7 6. Re1 Qc7 7. d3 e5 8. c3
+Nf6 9. d4 cxd4 10. cxd4 exd4 11. Qxd4 O-O 12. Nc3 Qb6 13. Qxb6 axb6 14. e5 Ne8
+15. Be3 Ra6 16. Rad1 f6 17. Bd4 fxe5 18. Bxe5 d5 19. Bxg7 Nxg7 20. Ne5 Bb7 21.
+a4 Nf5 22. Nf3 c5 23. Nxd5 Rxa4 24. Nxb6 Rb4 25. Nd7 Bxf3 26. gxf3 Nh4 27. Nxf8
+Nxf3+ 28. Kg2 Nxe1+ 29. Rxe1 Kxf8 30. Re5 Rxb2 31. Rxc5 Rb4 32. Rc7 Kg8 33. Kg3
+g5 34. Rc5 h6 35. Rc7 Rf4 36. f3 Rb4 37. Re7 Ra4 38. Rd7 Rb4 39. Re7 Ra4 40. Rd7
+Rb4 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.03"]
+[Round "4.3"]
+[White "Tari,A"]
+[Black "So,W"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2642"]
+[BlackElo "2760"]
+[ECO "C89"]
+[Opening "Ruy Lopez"]
+[Variation "Marshall counter-attack, 11...c6"]
+[WhiteFideId "1510045"]
+[BlackFideId "5202213"]
+[EventDate "2023.05.30"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. O-O Be7 6. Re1 b5 7. Bb3 O-O 8. c3
+d5 9. exd5 Nxd5 10. Nxe5 Nxe5 11. Rxe5 c6 12. d3 Bd6 13. Re1 Bf5 14. Qf3 Re8 15.
+Rxe8+ Qxe8 16. Nd2 Qe1+ 17. Nf1 Bg6 18. Qd1 Qxd1 19. Bxd1 Bxd3 20. Bf3 Re8 21.
+Be3 Be4 22. Bxe4 Rxe4 23. Rd1 f5 24. g3 Kf7 25. Kg2 a5 26. Kf3 a4 27. a3 Be7 28.
+h4 h6 29. Bc1 g5 30. hxg5 hxg5 31. Ne3 g4+ 32. Kg2 Nxe3+ 33. Bxe3 Ke6 34. Kf1
+Bd6 35. Ke2 f4 36. gxf4 Bxf4 37. Rd8 Bxe3 38. Kd3 Re5 39. Re8+ Kd6 40. Rxe5 Kxe5
+41. Kxe3 Kf5 42. Kd3 Kf4 43. Ke2 Ke4 44. Kd2 Kf3 45. Ke1 c5 46. Kf1 Kf4 47. Ke1
+Ke5 48. Kd2 Ke4 49. Ke2 Kf4 50. Ke1 Ke4 51. Ke2 Kf4 52. Ke1 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.03"]
+[Round "4.4"]
+[White "Firouzja,Alireza"]
+[Black "Caruana,F"]
+[Result "0-1"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2785"]
+[BlackElo "2764"]
+[ECO "C11"]
+[Opening "French"]
+[Variation "Steinitz, Boleslavsky variation"]
+[WhiteFideId "12573981"]
+[BlackFideId "2020009"]
+[EventDate "2023.05.30"]
+
+1. e4 e6 2. d4 d5 3. Nc3 Nf6 4. e5 Nfd7 5. f4 c5 6. Nf3 Nc6 7. Be3 cxd4 8. Nxd4
+Qb6 9. Qd2 Qxb2 10. Rb1 Qa3 11. Ncb5 Qxa2 12. Rd1 Rb8 13. Nc7+ Kd8 14. Ncb5 Nc5
+15. Bd3 Nxd3+ 16. Qxd3 Bd7 17. Nd6 Bxd6 18. exd6 Qc4 19. Qd2 f6 20. Nxc6+ bxc6
+21. Qa5+ Ke8 22. Qxa7 Rb2 23. Qa8+ Kf7 24. Qxh8 Qxc2 25. Bd2 Qe4+ 26. Kf1 Qd3+
+27. Ke1 c5 28. h4 Bb5 29. Kf2 Rxd2+ 30. Rxd2 Qxd2+ 31. Kg3 Qe3+ 32. Kh2 Qxf4+
+33. Kg1 Qd4+ 34. Kh2 Qxh4+ 35. Kg1 Qd4+ 36. Kh2 Qe5+ 37. Kg1 Qxd6 38. Rxh7 Qf8 0-1
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.03"]
+[Round "4.5"]
+[White "Mamedyarov,S"]
+[Black "Abdusattorov,Nodirbek"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2738"]
+[BlackElo "2731"]
+[ECO "D20"]
+[Opening "QGA"]
+[Variation "3.e4"]
+[WhiteFideId "13401319"]
+[BlackFideId "14204118"]
+[EventDate "2023.05.30"]
+
+1. d4 d5 2. c4 dxc4 3. e4 e5 4. Nf3 Bb4+ 5. Nc3 exd4 6. Qxd4 Qxd4 7. Nxd4 Nf6 8.
+f3 Bc5 9. Be3 Nc6 10. Nc2 Bxe3 11. Nxe3 Be6 12. Bxc4 O-O-O 13. Rd1 Rxd1+ 14.
+Kxd1 Rd8+ 15. Kc1 Ne5 16. Bxe6+ fxe6 17. Kc2 c5 18. f4 Nfg4 19. Nxg4 Nxg4 20. g3
+Kc7 21. Re1 Nxh2 22. Rh1 Nf3 23. Rxh7 Rd7 24. e5 Kc6 25. Rh8 Rd2+ 26. Kc1 Rg2
+27. Rc8+ Kd7 28. Rxc5 Rxg3 29. Nb5 a6 30. Nd6 Rg1+ 31. Kc2 Rg2+ 32. Kc3 b6 33.
+Rc4 b5 34. Rc8 Rg3 35. Kb4 Rg4 36. Kc5 Rxf4 37. Ra8 Nxe5 38. Ra7+ Kd8 39. Rxg7
+Rf2 40. Nb7+ Ke8 41. Kd6 Nc4+ 42. Kxe6 Re2+ 43. Kf6 Rxb2 44. Nc5 Rf2+ 45. Ke6
+Re2+ 46. Kf6 Rf2+ 47. Ke6 Re2+ 48. Kf6 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.04"]
+[Round "5.1"]
+[White "Carlsen,M"]
+[Black "Giri,A"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2853"]
+[BlackElo "2768"]
+[ECO "E06"]
+[Opening "Catalan"]
+[Variation "closed, 5.Nf3"]
+[WhiteFideId "1503014"]
+[BlackFideId "24116068"]
+[EventDate "2023.05.30"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. g3 Be7 5. Bg2 O-O 6. O-O dxc4 7. Nc3 Nc6 8. e4
+a6 9. h4 h6 10. Qe2 b5 11. Rd1 Bb7 12. Bf4 Re8 13. e5 Nd5 14. Nxd5 exd5 15. e6
+Rf8 16. a4 fxe6 17. axb5 axb5 18. Rxa8 Bxa8 19. Qxe6+ Kh7 20. Ne5 Qd6 21. Qg4
+Nxe5 22. Bxe5 Qg6 23. Qd7 Bf6 24. Qxb5 Bxe5 25. dxe5 Qf5 26. Qc5 Re8 27. Qxc7
+Qxe5 28. Qd7 Qe6 29. Qb5 d4 30. Bxa8 Rxa8 31. Rxd4 Qe1+ 32. Kg2 Rf8 33. Rf4 Rxf4
+34. gxf4 Qe4+ 35. Kg3 Qg6+ 36. Kh2 Qg4 37. Qxc4 Qxh4+ 38. Kg2 Qg4+ 39. Kh2 Qh4+ 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.04"]
+[Round "5.2"]
+[White "Caruana,F"]
+[Black "Mamedyarov,S"]
+[Result "0-1"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2764"]
+[BlackElo "2738"]
+[ECO "A28"]
+[Opening "English"]
+[Variation "four knights, Nimzovich variation"]
+[WhiteFideId "2020009"]
+[BlackFideId "13401319"]
+[EventDate "2023.05.30"]
+
+1. c4 e5 2. Nc3 Nf6 3. Nf3 Nc6 4. e4 Bc5 5. Nxe5 Nxe5 6. d4 Bb4 7. dxe5 Nxe4 8.
+Qf3 d5 9. Be2 d4 10. Qxe4 dxc3 11. O-O O-O 12. a3 cxb2 13. Bxb2 Bc5 14. Bd3 g6
+15. e6 Qe7 16. Rfe1 a5 17. Qf4 f6 18. Be4 Ra6 19. Rad1 Rd6 20. Rxd6 Bxd6 21. Qh4
+c6 22. Bd3 Bxa3 23. Bxa3 Qxa3 24. Qg3 Re8 25. Bxg6 Rxe6 26. Bd3+ Kh8 27. Rd1 Qd6
+28. Qf3 Qe7 29. Bf1 Re5 30. h4 Be6 31. Rd4 Re1 32. Qc3 Bg8 33. Qd2 Qe5 34. Rd8
+Qa1 35. Qd3 Qb1 36. Rxg8+ Kxg8 37. Qd8+ Kg7 38. Qc7+ Kg6 39. Qg3+ Kf5 40. Qh3+
+Ke5 41. Qg3+ Ke6 42. Qg8+ Kd7 43. Qf7+ Kc8 44. Kh2 Qe4 45. Qg8+ Kc7 46. Kg1 Qd3
+47. Qf7+ Kb6 0-1
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.04"]
+[Round "5.3"]
+[White "So,W"]
+[Black "Firouzja,Alireza"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2760"]
+[BlackElo "2785"]
+[ECO "D85"]
+[Opening "Gruenfeld"]
+[Variation "modern exchange variation"]
+[WhiteFideId "5202213"]
+[BlackFideId "12573981"]
+[EventDate "2023.05.30"]
+
+1. d4 Nf6 2. c4 g6 3. Nc3 d5 4. cxd5 Nxd5 5. e4 Nxc3 6. bxc3 Bg7 7. Nf3 c5 8.
+Rb1 O-O 9. Be2 cxd4 10. cxd4 Qa5+ 11. Bd2 Qxa2 12. O-O Bg4 13. Be3 Nc6 14. Rxb7
+Rab8 15. Rc7 Rfc8 16. Rxc8+ Rxc8 17. h3 Bxf3 18. Bxf3 Rd8 19. d5 Ne5 20. Bg5 Qa3
+21. Be2 h6 22. Bd2 Qa2 23. Bb4 Bf6 24. Qd2 Qa4 25. f4 Nc6 26. Bc3 Qxe4 27. Bxf6
+exf6 28. Rd1 Ne7 29. Bf3 Qa4 30. Qd4 Qxd4+ 31. Rxd4 Nf5 32. Ra4 Nh4 33. Kf2 Nxf3
+34. Kxf3 Rxd5 35. Rxa7 Rd3+ 36. Kf2 Kf8 37. Ra8+ Kg7 38. h4 Rd4 39. Kf3 g5 40.
+hxg5 fxg5 41. fxg5 hxg5 42. g4 Rf4+ 43. Kg3 Re4 44. Kf3 Rd4 45. Ra3 f6 46. Kg3
+Kf7 47. Rf3 Ke6 48. Re3+ Kd5 49. Rf3 Ke5 50. Rf5+ Ke6 51. Rf3 Rd6 52. Re3+ Kd5
+53. Rf3 Ke4 54. Rf5 Ke3 55. Rf3+ 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.04"]
+[Round "5.4"]
+[White "Nakamura,Hi"]
+[Black "Tari,A"]
+[Result "1-0"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2775"]
+[BlackElo "2642"]
+[ECO "C24"]
+[Opening "Bishop's opening"]
+[Variation "Berlin defence"]
+[WhiteFideId "2016192"]
+[BlackFideId "1510045"]
+[EventDate "2023.05.30"]
+
+1. e4 e5 2. Bc4 Nf6 3. d3 Bc5 4. Nc3 c6 5. Bb3 d6 6. h3 O-O 7. Nf3 a5 8. O-O
+Nbd7 9. a3 b5 10. Ba2 a4 11. Nh4 Ba7 12. Qf3 Nc5 13. Nf5 Bxf5 14. Qxf5 Re8 15.
+Bd2 Ne6 16. Ne2 d5 17. exd5 Nxd5 18. Rae1 Qd6 19. Qg4 Rad8 20. Ng3 Nd4 21. Bg5
+Rb8 22. Be3 Qg6 23. c3 Nxe3 24. fxe3 Nb3 25. Ne4 Qxg4 26. hxg4 c5 27. Bxb3 axb3
+28. c4 Red8 29. Rd1 Rd7 30. Kf2 h5 31. gxh5 f5 32. Nc3 b4 33. Nb5 f4 34. axb4
+Bb6 35. exf4 cxb4+ 36. Kf3 exf4 37. d4 Rbd8 38. Rd3 Rc8 39. Rc1 Rd5 40. c5 Rg5
+41. Nd6 Rc6 42. cxb6 1-0
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.04"]
+[Round "5.5"]
+[White "Abdusattorov,Nodirbek"]
+[Black "Gukesh,D"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2731"]
+[BlackElo "2732"]
+[ECO "D45"]
+[Opening "QGD semi-Slav"]
+[Variation "Stoltz variation"]
+[WhiteFideId "14204118"]
+[BlackFideId "46616543"]
+[EventDate "2023.05.30"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 c6 5. e3 Nbd7 6. Qc2 Bd6 7. g4 Nxg4 8. Rg1
+Qf6 9. Rxg4 Qxf3 10. h3 Qf6 11. e4 h5 12. Rg2 Bf4 13. Bxf4 Qxf4 14. Rxg7 dxc4
+15. Bxc4 Nb6 16. Bb3 Bd7 17. a4 c5 18. dxc5 Qe5 19. Rg3 Qxc5 20. a5 Nc4 21. Bxc4
+Qxc4 22. O-O-O O-O-O 23. Rd4 Qf1+ 24. Rd1 Qc4 25. Rd4 Qc5 26. Ne2 Qxc2+ 27. Kxc2
+e5 28. Rd5 f6 29. f4 Bc6 30. Rc5 Kb8 31. fxe5 Bxe4+ 32. Kc3 fxe5 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.05"]
+[Round "6.1"]
+[White "Tari,A"]
+[Black "Carlsen,M"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2642"]
+[BlackElo "2853"]
+[ECO "B51"]
+[Opening "Sicilian"]
+[Variation "Canal-Sokolsky (Nimzovich-Rossolimo, Moscow) attack"]
+[WhiteFideId "1510045"]
+[BlackFideId "1503014"]
+[EventDate "2023.05.30"]
+
+1. e4 c5 2. Nf3 d6 3. Bb5+ Nd7 4. d4 cxd4 5. Nxd4 g6 6. O-O Bg7 7. Re1 Nf6 8.
+Bf1 O-O 9. c4 b6 10. Nc3 Bb7 11. f3 a6 12. Be3 Rc8 13. Rc1 Re8 14. Qd2 h5 15.
+Qf2 e6 16. h3 d5 17. cxd5 exd5 18. exd5 Nxd5 19. Nxd5 Rxc1 20. Rxc1 Bxd5 21.
+Bxa6 Qe7 22. Bd2 Ra8 23. Bb5 Rxa2 24. Bc3 Nc5 25. Re1 Ne6 26. Qe3 Qd6 27. Nxe6
+Bxe6 28. h4 Bxc3 29. Qxc3 Ra5 30. Bf1 Kh7 31. b4 Rd5 32. Bc4 Qc7 33. Rc1 Rd8 34.
+Bf1 Qf4 35. Qe1 Rd2 36. b5 Rb2 37. Rd1 Rc2 38. Qe4 Qc7 39. Qe3 Bc4 40. Bxc4 Rxc4
+41. Qg5 Kg7 42. Re1 Qd6 43. Kh1 Rb4 44. Rc1 Qd4 45. Rc6 Rb1+ 46. Kh2 Rd1 47. Qg3
+Qg1+ 48. Kh3 Rd5 49. Qf4 Rf5 50. Qc4 g5 51. hxg5 Qh1+ 52. Kg3 Rxg5+ 53. Kf4 Qh4+
+54. g4 hxg4 55. Qd4+ Kh7 56. Qd3+ Rg6 57. Rxg6 fxg6 58. fxg4 Kh6 59. Qd4 Qg5+
+60. Kf3 Qxb5 61. Qh8+ Kg5 62. Qd8+ Kh6 63. Qh8+ Kg5 64. Qd8+ 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.05"]
+[Round "6.2"]
+[White "Gukesh,D"]
+[Black "Giri,A"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2732"]
+[BlackElo "2768"]
+[ECO "D12"]
+[Opening "QGD Slav"]
+[Variation "4.e3 Bf5"]
+[WhiteFideId "46616543"]
+[BlackFideId "24116068"]
+[EventDate "2023.05.30"]
+
+1. d4 d5 2. c4 c6 3. Nf3 Nf6 4. e3 Bf5 5. Nc3 e6 6. Nh4 Be4 7. f3 Bg6 8. Bd2 Be7
+9. Qb3 Qc7 10. O-O-O dxc4 11. Qxc4 a6 12. Nxg6 hxg6 13. Kb1 b5 14. Qe2 c5 15.
+dxc5 Nbd7 16. Rc1 Ne5 17. f4 Nc4 18. Be1 Bxc5 19. Qf3 O-O 20. Bxc4 bxc4 21. Ne4
+Be7 22. Nd2 Qd7 23. Nxc4 Qd3+ 24. Rc2 Rac8 25. e4 Qxe4 26. Qxe4 Nxe4 27. Ba5 g5
+28. fxg5 Bxg5 29. Rd1 f5 30. Nd6 Rxc2 31. Kxc2 Nf6 32. Re1 Nd5 33. g3 f4 34.
+gxf4 Bxf4 35. Rxe6 Rf6 36. Rxf6 Nxf6 37. Nb7 Bxh2 38. Nc5 g5 39. Nxa6 g4 40. Kd3
+Be5 41. b3 Kf7 42. Bb6 g3 43. Bg1 Bd6 44. Nc5 Bxc5 45. Bxc5 g2 46. b4 Ke6 47.
+Kc4 Kd7 48. a4 Ne4 49. Be3 Kc6 50. b5+ Kb7 51. Kd3 Ng5 52. a5 Nh3 53. a6+ Kb8
+54. b6 g1=Q 55. Bxg1 Nxg1 56. Ke4 Nh3 57. Kd5 Nf4+ 58. Kd6 Nd3 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.05"]
+[Round "6.3"]
+[White "Firouzja,Alireza"]
+[Black "Nakamura,Hi"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2785"]
+[BlackElo "2775"]
+[ECO "B31"]
+[Opening "Sicilian"]
+[Variation "Nimzovich-Rossolimo attack (with ...g6, without ...d6)"]
+[WhiteFideId "12573981"]
+[BlackFideId "2016192"]
+[EventDate "2023.05.30"]
+
+1. e4 c5 2. Nf3 Nc6 3. Bb5 g6 4. O-O Bg7 5. Bxc6 bxc6 6. Re1 Qc7 7. Na3 Nh6 8.
+c3 O-O 9. h3 f6 10. d4 cxd4 11. cxd4 d5 12. Bd2 Qb7 13. e5 Nf7 14. Nc2 Bf5 15.
+exf6 exf6 16. Rc1 a5 17. b4 a4 18. Bf4 Rfd8 19. a3 Nd6 20. Ne3 Be6 21. Bxd6 Rxd6
+22. Re2 Qb6 23. Qc2 Bd7 24. Rce1 Re6 25. Nd1 Rxe2 26. Qxe2 Bf8 27. Nb2 Qb5 28.
+Qd2 Bd6 29. Nh2 Qb8 30. Nf1 Kg7 31. Ne3 h5 32. Nd3 Qc8 33. h4 Be6 34. Nc5 Bf7
+35. Qc2 Ra7 36. Rc1 Bf4 37. Nd3 Bd6 38. Nc5 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.05"]
+[Round "6.4"]
+[White "Mamedyarov,S"]
+[Black "So,W"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2738"]
+[BlackElo "2760"]
+[ECO "D20"]
+[Opening "QGA"]
+[Variation "3.e4"]
+[WhiteFideId "13401319"]
+[BlackFideId "5202213"]
+[EventDate "2023.05.30"]
+
+1. d4 d5 2. c4 dxc4 3. e4 e5 4. Nf3 Bb4+ 5. Nc3 exd4 6. Nxd4 Nd7 7. Bxc4 Ngf6 8.
+O-O O-O 9. f3 Ne5 10. Be2 Qe7 11. Bg5 Bxc3 12. bxc3 c5 13. Nc2 Rd8 14. Qe1 h6
+15. Bxf6 Qxf6 16. Ne3 Nd3 17. Bxd3 Rxd3 18. Nd5 Qd8 19. Qe2 c4 20. Rfd1 Rxd1+
+21. Rxd1 b5 22. a4 a6 23. Qb2 Qa5 24. axb5 axb5 25. h3 Be6 26. Nf4 Rb8 27. Kh1
+b4 28. cxb4 Rxb4 29. Qc3 Qb6 30. Nxe6 fxe6 31. Rd7 Rb1+ 32. Kh2 Qb8+ 33. e5 Qb6
+34. Rd4 Rc1 35. Qd2 Qb1 36. Re4 Kh7 37. Qd6 Rh1+ 38. Kg3 Qg1 39. Qxe6 Qh2+ 40.
+Kf2 Qg1+ 41. Kg3 Qh2+ 42. Kh4 Qxg2 43. Qf5+ Kh8 44. Qf8+ Kh7 45. Qf5+ Kh8 46.
+Qf8+ Kh7 47. Qf5+ 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.05"]
+[Round "6.5"]
+[White "Abdusattorov,Nodirbek"]
+[Black "Caruana,F"]
+[Result "0-1"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2731"]
+[BlackElo "2764"]
+[ECO "C65"]
+[Opening "Ruy Lopez"]
+[Variation "Berlin defence"]
+[WhiteFideId "14204118"]
+[BlackFideId "2020009"]
+[EventDate "2023.05.30"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 Nf6 4. d3 Bc5 5. Bxc6 dxc6 6. O-O Bd6 7. Nbd2 Be6 8.
+Nb3 b6 9. Ng5 Bg4 10. f3 Bh5 11. Kh1 Nd7 12. Nh3 f6 13. Be3 Qe7 14. Nd2 Nc5 15.
+Nc4 Ne6 16. Ng1 g5 17. Ne2 Bf7 18. Qe1 h5 19. Nxd6+ cxd6 20. a4 h4 21. a5 b5 22.
+h3 a6 23. d4 c5 24. c3 Kf8 25. Rd1 Kg7 26. Qf2 Rac8 27. Rd2 Qc7 28. Ra1 Rhd8 29.
+b4 cxd4 30. cxd4 Qe7 31. Rad1 Rh8 32. Qe1 Rc4 33. dxe5 dxe5 34. Rd6 Rd8 35. Rxd8
+Nxd8 36. g3 hxg3 37. Nxg3 Be6 38. Qd2 Nf7 39. Bc5 Qe8 40. h4 Qh8 41. h5 Qh7 42.
+Kg2 Qh6 43. Kf2 g4 44. Be3 Qh8 45. fxg4 Qc8 46. Bc5 Bxg4 47. Rf1 Bh3 48. Rg1 Kh7
+49. h6 Qg4 50. Nf5 Qxe4 51. Rg7+ Kh8 52. Ne3 Nxh6 53. Nxc4 Kxg7 54. Bf8+ Kxf8
+55. Qxh6+ Kg8 56. Ne3 Bf5 57. Qh5 Bg6 58. Qh3 f5 59. Qh6 Kf7 60. Qh8 Qd4 61. Ke2
+f4 62. Ng4 f3+ 0-1
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.06"]
+[Round "7.1"]
+[White "Carlsen,M"]
+[Black "Firouzja,Alireza"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2853"]
+[BlackElo "2785"]
+[ECO "B40"]
+[Opening "Sicilian defence"]
+[WhiteFideId "1503014"]
+[BlackFideId "12573981"]
+[EventDate "2023.05.30"]
+
+1. e4 c5 2. Nf3 e6 3. Bd3 Nc6 4. O-O g5 5. Bb5 Bg7 6. Bxc6 bxc6 7. d3 g4 8. Nfd2
+h5 9. Nb3 d6 10. f4 Ne7 11. Bd2 Bxb2 12. Ba5 Qd7 13. N1d2 Bg7 14. Qe1 Ba6 15.
+Rd1 f5 16. e5 Ng6 17. Nc4 Bxc4 18. dxc4 d5 19. Nxc5 Qc8 20. Nb3 O-O 21. Bb4 Re8
+22. Bd6 Qa6 23. Qc3 Rad8 24. c5 Bh6 25. g3 Rd7 26. Nd4 Rf7 27. Rb1 h4 28. Qd3
+Qa4 29. a3 a5 30. Rfd1 hxg3 31. hxg3 Bxf4 32. gxf4 Nxf4 33. Qb3 Qxb3 34. Rxb3 a4
+35. Rb4 Rh7 36. Rf1 Nh3+ 37. Kg2 Ng5 38. Nxc6 Ne4 39. Rxe4 dxe4 40. Nd4 Rh3 41.
+c6 Kf7 42. c7 Reh8 43. Nc6 Rh2+ 44. Kg3 Rxc2 45. Nd8+ Kg6 46. Nxe6 Rh3+ 47. Kf4
+Rf3+ 48. Rxf3 exf3 49. Kg3 Rg2+ 50. Kh4 Rh2+ 51. Kg3 Rg2+ 52. Kh4 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.06"]
+[Round "7.2"]
+[White "So,W"]
+[Black "Abdusattorov,Nodirbek"]
+[Result "1-0"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2760"]
+[BlackElo "2731"]
+[ECO "D20"]
+[Opening "QGA"]
+[Variation "3.e4"]
+[WhiteFideId "5202213"]
+[BlackFideId "14204118"]
+[EventDate "2023.05.30"]
+
+1. d4 d5 2. c4 dxc4 3. e4 e5 4. Nf3 exd4 5. Bxc4 Nc6 6. O-O Qf6 7. Bg5 Qg6 8.
+Nbd2 Be7 9. Bf4 Nf6 10. Bb5 Bd6 11. Bg3 Bxg3 12. hxg3 O-O 13. Rc1 Ng4 14. Bxc6
+bxc6 15. Qa4 Qh6 16. Rxc6 Bd7 17. Rxh6 Bxa4 18. Rh5 Nf6 19. Ra5 Bc2 20. e5 Ne4
+21. Rc1 Nxd2 22. Rxc2 Nxf3+ 23. gxf3 f6 24. Rxc7 Rf7 25. Rxf7 Kxf7 26. exf6 Rd8
+27. Kf1 d3 28. Ke1 1-0
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.06"]
+[Round "7.3"]
+[White "Caruana,F"]
+[Black "Gukesh,D"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2764"]
+[BlackElo "2732"]
+[ECO "C65"]
+[Opening "Ruy Lopez"]
+[Variation "Berlin defence"]
+[WhiteFideId "2020009"]
+[BlackFideId "46616543"]
+[EventDate "2023.05.30"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 Nf6 4. d3 Bc5 5. Bxc6 dxc6 6. Nbd2 Be6 7. O-O Qd6 8.
+Kh1 h6 9. a3 Nd7 10. b4 Bb6 11. Qe1 a5 12. Bb2 O-O 13. Bc3 axb4 14. axb4 Bd4 15.
+Bxd4 exd4 16. Qb1 b6 17. Qb2 c5 18. bxc5 bxc5 19. c3 dxc3 20. Qxc3 Nb6 21. h3
+Rfd8 22. Rxa8 Rxa8 23. Rc1 Rd8 24. Qxc5 Qxd3 25. Kg1 Rc8 26. Qd4 Qxd4 27. Nxd4
+c5 28. Nxe6 fxe6 29. Rb1 Rc6 30. Nf3 c4 31. Ne5 Rc5 32. f4 Nc8 33. Kf2 c3 34.
+Nd3 c2 35. Rc1 Rc4 36. Ne1 Rxe4 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.06"]
+[Round "7.4"]
+[White "Nakamura,Hi"]
+[Black "Mamedyarov,S"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2775"]
+[BlackElo "2738"]
+[ECO "D20"]
+[Opening "QGA"]
+[Variation "3.e4"]
+[WhiteFideId "2016192"]
+[BlackFideId "13401319"]
+[EventDate "2023.05.30"]
+
+1. d4 d5 2. c4 dxc4 3. e4 e5 4. Nf3 Bb4+ 5. Nc3 Nf6 6. Nxe5 b5 7. f3 O-O 8. a4
+c5 9. Be3 cxd4 10. Qxd4 Qe7 11. axb5 Rd8 12. Qxc4 Be6 13. Qe2 Qc7 14. Nc4 Nbd7
+15. Ra6 Nc5 16. Rc6 Qe7 17. Qf2 Ncxe4 18. fxe4 Nxe4 19. Qf4 Nxc3 20. bxc3 Bxc3+
+21. Kf2 Rd5 22. Qe4 Qf6+ 23. Kg1 Rad8 24. Bxa7 Rf5 25. Bd3 Rfd5 26. Bf1 Rf5 27.
+Bd3 Rfd5 28. Bf1 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.06"]
+[Round "7.5"]
+[White "Giri,A"]
+[Black "Tari,A"]
+[Result "1-0"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2768"]
+[BlackElo "2642"]
+[ECO "E04"]
+[Opening "Catalan"]
+[Variation "open, 5.Nf3"]
+[WhiteFideId "24116068"]
+[BlackFideId "1510045"]
+[EventDate "2023.05.30"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. g3 dxc4 5. Bg2 c5 6. O-O Nc6 7. Qa4 Bd7 8. Qxc4
+b5 9. Qd3 c4 10. Qc2 Rc8 11. a4 a6 12. axb5 axb5 13. Bg5 Be7 14. Nc3 O-O 15.
+Bxf6 Bxf6 16. Nxb5 Nb4 17. Qd2 Bxb5 18. Qxb4 Bc6 19. e3 e5 20. dxe5 Bxf3 21.
+exf6 Qxf6 22. Qc3 Bxg2 23. Qxf6 gxf6 24. Kxg2 Rfd8 25. Rfc1 Rd2 26. b3 c3 27.
+Ra4 Rb2 28. Rc4 Rb8 29. R1xc3 R2xb3 30. Rg4+ Kf8 31. Rcc4 R3b5 32. Rgf4 R8b6 33.
+Rc8+ Kg7 34. Rg4+ Rg5 35. Ra4 Rf5 36. g4 Rg5 37. h4 Rg6 38. Kf3 Rb5 39. Raa8 Kh6
+40. Kf4 f5 41. g5+ Kh5 42. Rh8 h6 43. Rag8 Ra6 44. Rxh6+ Rxh6 45. gxh6 Kxh6 46.
+Rg5 Rb4+ 47. Kxf5 Rxh4 48. Rg3 Rh2 49. f4 Kh5 50. Rg7 1-0
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.08"]
+[Round "8.1"]
+[White "Mamedyarov,S"]
+[Black "Carlsen,M"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2738"]
+[BlackElo "2853"]
+[ECO "D37"]
+[Opening "QGD"]
+[Variation "classical variation (5.Bf4)"]
+[WhiteFideId "13401319"]
+[BlackFideId "1503014"]
+[EventDate "2023.05.30"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bf4 O-O 6. e3 c5 7. dxc5 Bxc5 8. a3
+Nc6 9. cxd5 Nxd5 10. Nxd5 exd5 11. Bd3 Bd6 12. Bxd6 Qxd6 13. O-O Qf6 14. Qd2 Bg4
+15. Be2 d4 16. Nxd4 Nxd4 17. exd4 Bxe2 18. Qxe2 Rad8 19. Rad1 Rxd4 20. Rxd4 Qxd4
+21. Rd1 Qa4 22. g3 Qc6 23. Qe7 h6 24. h4 Re8 25. Rd8 Rxd8 26. Qxd8+ Kh7 27. Qd3+
+Kg8 28. Qd8+ Kh7 29. Qd3+ Kg8 30. Qd8+ Kh7 31. Qd3+ 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.08"]
+[Round "8.2"]
+[White "Firouzja,Alireza"]
+[Black "Giri,A"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2785"]
+[BlackElo "2768"]
+[ECO "C44"]
+[Opening "Konstantinopolsky opening"]
+[WhiteFideId "12573981"]
+[BlackFideId "24116068"]
+[EventDate "2023.05.30"]
+
+1. e4 e5 2. Nf3 Nc6 3. g3 Nf6 4. d3 Bc5 5. Bg2 d6 6. c3 a5 7. O-O O-O 8. Re1 h6
+9. d4 Ba7 10. h3 Bd7 11. Be3 Qc8 12. g4 Re8 13. Nbd2 a4 14. a3 b5 15. Qc2 Na5
+16. Nh4 c5 17. dxe5 dxe5 18. Nf5 Qc7 19. c4 bxc4 20. Nxc4 Nxc4 21. Qxc4 Rab8 22.
+Rad1 Be6 23. Qxa4 Bb3 24. Qa6 Bxd1 25. Rxd1 Re6 26. Qa4 Rxb2 27. Bf1 Reb6 28. h4
+Rb1 29. Rd2 Qb7 30. g5 hxg5 31. hxg5 Qxe4 32. Rd8+ Kh7 33. Qxe4 Nxe4 34. Rd7 Ra6
+35. Kg2 Rxa3 36. Rxf7 Kg6 37. Bc4 Nxg5 38. Ne7+ Kh6 39. Rf8 Rxe3 40. Rh8+ Nh7
+41. fxe3 Rb2+ 42. Kf3 e4+ 43. Kxe4 Rb7 44. Nc6 Kg6 45. Ne5+ Kf6 46. Nc6 Ng5+ 47.
+Kd3 Rd7+ 48. Ke2 Bb6 49. Rf8+ Nf7 50. e4 Bc7 51. e5+ Bxe5 52. Nxe5 Kxe5 53. Bxf7
+Kd4 54. Kd2 c4 55. Bg8 c3+ 56. Kc2 Rc7 57. Rf4+ Ke3 58. Rg4 Kf3 59. Rg6 Kf4 60.
+Bd5 Kf5 61. Ra6 g5 62. Bc6 Ke5 63. Ra5+ Kf4 64. Ra4+ Ke3 65. Ba8 Rc5 66. Rg4 Kf2
+67. Bb7 Ke3 68. Bg2 Kf2 69. Bh3 Kf3 70. Rb4 Ke3 71. Bg4 Kf2 72. Re4 Kg3 73. Be2
+Kf2 74. Bd1 Kg3 75. Rd4 Kf2 76. Kd3 Kg3 77. Bb3 Kf2 78. Bc4 Kf3 79. Kxc3 g4 80.
+Kd2 g3 81. Be2+ Kf2 82. Rf4+ Kg1 83. Bf3 Ra5 84. Be4 g2 85. Rg4 Ra2+ 86. Ke3 Kh2
+87. Rxg2+ 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.08"]
+[Round "8.3"]
+[White "Abdusattorov,Nodirbek"]
+[Black "Nakamura,Hi"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2731"]
+[BlackElo "2775"]
+[ECO "C67"]
+[Opening "Ruy Lopez"]
+[Variation "Berlin defence, open variation"]
+[WhiteFideId "14204118"]
+[BlackFideId "2016192"]
+[EventDate "2023.05.30"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 Nf6 4. O-O Nxe4 5. Re1 Nd6 6. Nxe5 Be7 7. Bf1 Nxe5 8.
+Rxe5 O-O 9. d4 Bf6 10. Re2 Nc4 11. b3 Nb6 12. a4 Nd5 13. Re1 Ne7 14. c3 d5 15.
+a5 c6 16. b4 Nf5 17. Bd3 g6 18. Bf4 Ng7 19. Nd2 Bf5 20. Bf1 Be7 21. Nb3 Bd6 22.
+Bg3 Qc7 23. Nc5 Bxg3 24. hxg3 Rae8 25. Rxe8 Rxe8 26. b5 cxb5 27. Bxb5 Rd8 28.
+Qb3 Ne6 29. Nxe6 Bxe6 30. Qb4 Rc8 31. Ra3 h5 32. Be2 Kg7 33. Qb2 Kg8 34. Bf3 Kg7
+35. Qe2 Kg8 36. Qb5 Qe7 37. Rb3 Rc7 38. Qe2 Qd7 39. Qb2 Qa4 40. Ra3 Qd7 41. Rb3
+Qa4 42. Qa3 Qd7 43. Be2 Bf5 44. Qb2 Be6 45. Rb5 Qc6 46. Rc5 Qd6 47. Qb4 b6 48.
+Rxc7 Qxc7 49. a6 Kg7 50. Kf1 Kf6 51. Kg1 Qe7 52. Qb2 Qc7 53. Qb4 Qe7 54. Qb2 Qc7
+55. Qb4 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.08"]
+[Round "8.4"]
+[White "Gukesh,D"]
+[Black "Tari,A"]
+[Result "1-0"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2732"]
+[BlackElo "2642"]
+[ECO "A45"]
+[Opening "Queen's pawn game"]
+[WhiteFideId "46616543"]
+[BlackFideId "1510045"]
+[EventDate "2023.05.30"]
+
+1. d4 Nf6 2. Bf4 d5 3. e3 g6 4. Nf3 Bg7 5. Nbd2 O-O 6. c3 b6 7. h4 c5 8. Ne5
+Nbd7 9. Be2 h5 10. Nc6 Qe8 11. b4 Ng4 12. O-O e5 13. Bg3 Qe6 14. b5 Bb7 15. c4
+Bxc6 16. bxc6 Ndf6 17. e4 Nxe4 18. cxd5 Qxd5 19. Nxe4 Qxe4 20. d5 Nf6 21. Bf3
+Qf5 22. d6 e4 23. Be2 Nd5 24. Rc1 Nb4 25. c7 Bd4 26. Qa4 a6 27. d7 b5 28. Bxb5
+axb5 29. Qxa8 Qxd7 30. Qxe4 Nxa2 31. Rce1 Bf6 32. Rd1 Bd4 33. Qc2 Qe6 34. Rfe1
+Qc4 35. Qxc4 bxc4 36. Bd6 Rc8 37. Bxc5 1-0
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.08"]
+[Round "8.5"]
+[White "Caruana,F"]
+[Black "So,W"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2764"]
+[BlackElo "2760"]
+[ECO "E46"]
+[Opening "Nimzo-Indian"]
+[Variation "4.e3 O-O"]
+[WhiteFideId "2020009"]
+[BlackFideId "5202213"]
+[EventDate "2023.05.30"]
+
+1. d4 Nf6 2. c4 e6 3. Nc3 Bb4 4. e3 O-O 5. Bd2 d5 6. Nf3 b6 7. cxd5 exd5 8. Bd3
+Bd6 9. O-O Re8 10. Re1 Bb7 11. Qc2 a6 12. e4 dxe4 13. Nxe4 Nxe4 14. Bxe4 Bxe4
+15. Rxe4 Rxe4 16. Qxe4 Nd7 17. Bg5 Qe8 18. Qb7 b5 19. Re1 Qc8 20. Qe4 h6 21. Bh4
+Nb6 22. Bg3 Qd7 23. Qb7 Qc8 24. Qc6 Qd7 25. Rc1 Qxc6 26. Rxc6 Bxg3 27. hxg3 Rc8
+28. Kf1 Kf8 29. Ne5 Ke7 30. Ke2 f6 31. Nd3 Kd7 32. Rc2 Re8+ 33. Kf3 Kd6 34. Nc5
+a5 35. Nb7+ Kd7 36. Nxa5 Ra8 37. b4 Nc4 38. Nxc4 bxc4 39. g4 Kd6 40. Rxc4 Ra3+
+41. Kf4 Rxa2 42. Kg3 c6 43. Kf3 Rb2 44. g3 Kd5 45. Rc5+ Kd6 46. Rc4 Kd5 47. Rc5+
+Kd6 48. Rc4 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.09"]
+[Round "9.1"]
+[White "Carlsen,M"]
+[Black "Abdusattorov,Nodirbek"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2853"]
+[BlackElo "2731"]
+[ECO "C42"]
+[Opening "Petrov"]
+[Variation "classical attack, close variation"]
+[WhiteFideId "1503014"]
+[BlackFideId "14204118"]
+[EventDate "2023.05.30"]
+
+1. e4 e5 2. Nf3 Nf6 3. Nxe5 d6 4. Nf3 Nxe4 5. d3 Nf6 6. d4 d5 7. Bd3 Bd6 8. Qe2+
+Be6 9. Ng5 Qe7 10. Nxe6 fxe6 11. c3 O-O 12. O-O e5 13. dxe5 Qxe5 14. Qxe5 Bxe5
+15. Nd2 Nbd7 16. Nf3 Bd6 17. g3 Rae8 18. Kg2 c6 19. a4 a5 20. Rb1 Ng4 21. Nd4
+Nc5 22. Bf5 Ne5 23. Bc2 Rf7 24. Bf4 Bb8 25. Rbd1 Nc4 26. Bc1 Ne4 27. f3 Nc5 28.
+Rfe1 Rfe7 29. Rxe7 Rxe7 30. Kf2 g6 31. b3 Ne5 32. h4 Ne6 33. h5 Ba7 34. hxg6
+hxg6 35. Kg2 Nxd4 36. cxd4 Ng4 37. Bxg6 Re2+ 38. Kg1 Kg7 39. fxg4 Kxg6 40. Bf4
+b5 41. Kf1 Rc2 42. Rd2 Rc3 43. Ke2 bxa4 44. bxa4 Rc4 45. Be3 Rxa4 46. Rc2 Rc4
+47. Rxc4 dxc4 48. Kd2 a4 49. Kc3 a3 50. Bc1 a2 51. Bb2 Kg5 52. Kxc4 Kxg4 53. Kb3
+Kxg3 54. Kxa2 Kf3 55. Kb3 Ke4 56. Kc4 Bb6 57. Ba1 Ba7 58. Bb2 Bb6 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.09"]
+[Round "9.2"]
+[White "So,W"]
+[Black "Gukesh,D"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2760"]
+[BlackElo "2732"]
+[ECO "D37"]
+[Opening "QGD"]
+[Variation "classical variation (5.Bf4)"]
+[WhiteFideId "5202213"]
+[BlackFideId "46616543"]
+[EventDate "2023.05.30"]
+
+1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bf4 O-O 6. e3 c5 7. dxc5 Nc6 8. cxd5
+Nxd5 9. Nxd5 exd5 10. Bd3 Qa5+ 11. Qd2 Qxd2+ 12. Kxd2 Bxc5 13. Rac1 Be7 14. Bb5
+Bd7 15. Rhd1 Rac8 16. Ke1 Bf6 17. Rd2 h6 18. Bxc6 Rxc6 19. Rxc6 Bxc6 20. Ne5
+Bxe5 21. Bxe5 d4 22. Rxd4 Re8 23. Bf4 g5 24. Bc7 Bxg2 25. h4 Bf3 26. hxg5 hxg5
+27. Rd8 Rxd8 28. Bxd8 g4 29. Kd2 f5 30. a4 Kf7 31. Kc3 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.09"]
+[Round "9.3"]
+[White "Nakamura,Hi"]
+[Black "Caruana,F"]
+[Result "1-0"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2775"]
+[BlackElo "2764"]
+[ECO "C58"]
+[Opening "Two knights defence"]
+[WhiteFideId "2016192"]
+[BlackFideId "2020009"]
+[EventDate "2023.05.30"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bc4 Nf6 4. Ng5 d5 5. exd5 Na5 6. Bb5+ c6 7. dxc6 bxc6 8.
+Bd3 Nd5 9. Nf3 Bd6 10. O-O Nf4 11. Nc3 Nxd3 12. cxd3 O-O 13. b3 Re8 14. Re1 c5
+15. Ba3 Nc6 16. Ne4 Bf8 17. Rc1 f5 18. Nxc5 Qd5 19. Qc2 Rd8 20. Qc4 Qxc4 21.
+Rxc4 Rd5 22. Rec1 Bd6 23. Bb2 Ne7 24. R4c2 Rb8 25. d4 exd4 26. Nxd4 a5 27. Nf3
+h6 28. Na4 Ba6 29. Nc3 Rc5 30. Ba3 Rc6 31. Bxd6 Rxd6 32. Na4 Nd5 33. Rc6 Rxc6
+34. Rxc6 Nb4 35. Rd6 Bb7 36. Nc3 Re8 37. h4 f4 38. Rd4 Rf8 39. Ne5 Re8 40. Nc4
+f3 41. gxf3 Bxf3 42. Kh2 Nc2 43. Rd3 Ba8 44. Kg3 Kh7 45. Ne3 Nb4 46. Rd6 Nc6 47.
+Ncd5 Rf8 48. Nc7 Bb7 49. Ne6 Rf7 50. f4 Ba8 51. h5 Ra7 52. a3 Kg8 53. f5 Re7 54.
+Kf4 Ra7 55. d4 1-0
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.09"]
+[Round "9.4"]
+[White "Giri,A"]
+[Black "Mamedyarov,S"]
+[Result "1/2-1/2"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2768"]
+[BlackElo "2738"]
+[ECO "C60"]
+[Opening "Ruy Lopez"]
+[Variation "Cozio defence"]
+[WhiteFideId "24116068"]
+[BlackFideId "13401319"]
+[EventDate "2023.05.30"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 Nge7 4. d4 Nxd4 5. Nxd4 exd4 6. Qxd4 Nc6 7. Qe3 Be7
+8. O-O O-O 9. Nc3 Nb4 10. Qd2 c6 11. Be2 a5 12. Qd1 Re8 13. Bf4 Na6 14. Bxa6
+Rxa6 15. e5 f6 16. exf6 Bxf6 17. Bd6 Bxc3 18. bxc3 Qf6 19. Qd2 Re6 20. Rad1 c5
+21. Bxc5 Qf5 22. Be3 b5 23. Qd5 Qxc2 24. Qxb5 Qxa2 25. Bd4 h6 26. h3 a4 27. Ra1
+Qc2 28. Qb8 Rac6 29. Qa8 Rg6 30. Rfe1 Kh7 31. Re8 Rxg2+ 32. Kxg2 Qg6+ 33. Kh2
+Qxe8 34. Rg1 g6 35. Qxa4 Re6 36. Qa8 1/2-1/2
+
+[Event "11th Norway Chess 2023"]
+[Site "Stavanger NOR"]
+[Date "2023.06.09"]
+[Round "9.5"]
+[White "Tari,A"]
+[Black "Firouzja,Alireza"]
+[Result "1-0"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2642"]
+[BlackElo "2785"]
+[ECO "B51"]
+[Opening "Sicilian"]
+[Variation "Canal-Sokolsky (Nimzovich-Rossolimo, Moscow) attack"]
+[WhiteFideId "1510045"]
+[BlackFideId "12573981"]
+[EventDate "2023.05.30"]
+
+1. e4 c5 2. Nf3 d6 3. Bb5+ Nd7 4. O-O a6 5. Bd3 e6 6. c3 Ngf6 7. Bc2 b5 8. d4
+Bb7 9. Re1 Be7 10. a4 cxd4 11. cxd4 O-O 12. a5 Rc8 13. Nbd2 Nb8 14. Nb3 Nc6 15.
+Bb1 Qc7 16. Bg5 h6 17. Bh4 e5 18. Bg3 Rfe8 19. d5 Nb8 20. Nfd2 g6 21. f3 Nh5 22.
+Bf2 Nf4 23. Bb6 Qd7 24. Nc1 Bg5 25. Nd3 Qe7 26. Nf2 Nd7 27. Be3 Rc7 28. Nb3 Nxg2
+29. Bxg5 Qxg5 30. Nh3 Ne3+ 31. Nxg5 Nxd1 32. Nxf7 Nxb2 33. Nxd6 Rf8 34. Ra2 Na4
+35. Rg2 Kh7 36. Rc1 Rxc1+ 37. Nxc1 Ba8 38. Rc2 Nac5 39. Ba2 Kg7 40. Nb3 Nxb3 41.
+Bxb3 Kf6 42. Rc7 Ke7 43. Nc8+ Kd8 44. d6 Rf6 45. Na7 Rxd6 46. Rc8+ Ke7 47. Rxa8
+Rd3 48. Nc8+ Kf6 49. Rxa6+ Kg5 50. Bd5 Ra3 51. Kf2 Nc5 52. Rc6 Nd3+ 53. Kg3 Rxa5
+54. h4+ Kh5 55. Rf6 1-0

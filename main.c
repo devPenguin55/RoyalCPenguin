@@ -31,7 +31,7 @@ int main() {
     // initBoard(&board, "3k4/8/R7/4K3/8/8/8/8 w - - 50 26", &tt); // m6
     // initBoard(&board, "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1", &tt); //kiwipete
 
-    // initBoard(&board, "1k3n2/4P3/8/8/8/8/8/1K6 w - - 0 1", &tt); //test
+    // initBoard(&board, "r2r2k1/ppq2ppp/4pn2/2bn2B1/2BN4/8/PPP1QPPP/R2R2K1 b - - 0 1", &tt); //test
 
     initGraphics(&spriteSheet, spriteRecs, sounds);
     
