@@ -21,8 +21,7 @@ void convertSquareIndexToAlgebraicForm(int squareIndex, char *out) {
 
 void convertMoveToSAN(Board *board, Move move, char *out) {
     if (move.fromSquare == -1) {
-        strcpy(out, "- ");
-        // strcpy(out, "No Move\n(Didn't Search)");
+        strcpy(out, "No Move\n(Didn't Search)");
         return;
     }
 
@@ -74,9 +73,16 @@ void convertMoveToSAN(Board *board, Move move, char *out) {
         char pieceMovingChar;
         convertPieceTypeToChar(board->squares[move.fromSquare].type, WHITE_PIECE, &pieceMovingChar);
         out[0] = pieceMovingChar;
-        out[1] = toSquare[0];
-        out[2] = toSquare[1];
-        out[3] = '\0';
+        if (move.captureSquare.type == NONE) {
+            out[1] = toSquare[0];
+            out[2] = toSquare[1];
+            out[3] = '\0';
+        } else {
+            out[1] = 'x';
+            out[2] = toSquare[0];
+            out[3] = toSquare[1];
+            out[4] = '\0';
+        }
     }
 
     
@@ -97,7 +103,9 @@ void convertMoveToSAN(Board *board, Move move, char *out) {
         if (
             (board->squares[legalMoves.moves[i].fromSquare].type == board->squares[move.fromSquare].type) &&
             (board->squares[legalMoves.moves[i].fromSquare].color == board->squares[move.fromSquare].color) &&
-            (legalMoves.moves[i].fromSquare != move.fromSquare && legalMoves.moves[i].toSquare == move.toSquare)            
+            (legalMoves.moves[i].fromSquare != move.fromSquare && legalMoves.moves[i].toSquare == move.toSquare) &&
+            (board->squares[move.fromSquare].type != PAWN)
+
         ) {
             // handle the disambiguity
             if ((legalMoves.moves[i].fromSquare % 8) == (move.fromSquare % 8)) {
