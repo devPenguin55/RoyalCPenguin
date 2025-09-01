@@ -1,0 +1,613 @@
+[Event "It"]
+[Site "Lublin/Warsaw/Krakow"]
+[Date "1942.??.??"]
+[Round "?"]
+[White "Bogoljubow Efim D (UKR)"]
+[Black "Alekhine Alexander A (RUS)"]
+[Result "1-0"]
+[ECO "C13"]
+[WhiteElo "0"]
+[BlackElo "0"]
+[Annotator ""]
+[Source ""]
+[Remark ""]
+
+1.e4 e6 2.d4 d5 3.Nc3 Nf6 4.Bg5 Be7 5.e5 Nfd7 6.h4 c5 7.Bxe7
+Kxe7 8.Qg4 Kf8 9.Nf3 Nc6 10.dxc5 Nxc5 11.O-O-O a6 12.Rh3 h6 13.Rg3
+Rg8 14.Bd3 Nxd3+ 15.Rxd3 Qb6 16.Rd2 Qc7 17.Qf4 Bd7 18.Ne2 Rc8
+19.Ned4 Na5 20.Rd3 Nc4 21.b3 Qa5 22.bxc4 dxc4 23.Re3 c3 24.Nb3
+Qa3+ 25.Kd1 Ke7 26.Nfd4 Qb2 27.Ref3 Be8 28.Ne2 a5 29.Nxc3 Rd8+
+30.Rd3 Bc6 31.Qc4 Rxd3+ 32.Rxd3 Rc8 33.Qc5+ Ke8 34.Qxa5 Bxg2
+35.f3 Bf1 36.Qb5+ Kf8 37.Qxb7 Re8 38.Rd7 Kg8 39.Qc7 Rf8 40.Rd8
+Rxd8+ 41.Qxd8+ Kh7 42.Kd2 Qa3 43.Qd4 Bh3 44.Qd6 Qa8 45.Nd4 Qc8
+46.a4 Qc4 47.a5 Bf1 48.Ncb5 Qa4 49.Qa3 Qc4 50.a6 Qd5 51.Qd6 Qa2
+52.Na3 1-0
+
+
+[Event "It"]
+[Site "Munich (Germany)"]
+[Date "1942.??.??"]
+[Round "8"]
+[White "Alekhine Alexander A (RUS)"]
+[Black "Foltys Jan (CZE)"]
+[Result "1/2-1/2"]
+[ECO "B70"]
+[WhiteElo "0"]
+[BlackElo "0"]
+[Annotator ""]
+[Source ""]
+[Remark ""]
+
+1.e4 c5 2.Nf3 d6 3.d4 cxd4 4.Nxd4 Nf6 5.Nc3 g6 6.Be2 Nc6 7.Nb3
+Bg7 8.O-O O-O 9.Kh1 a6 10.f4 Qc7 11.g4 e6 12.f5 Re8 13.Bf4 Ne5
+14.Bxe5 dxe5 15.g5 Rd8 16.Qe1 Ne8 17.fxg6 hxg6 18.Bd3 b6 19.Qh4
+Nd6 20.Rf3 Bb7 21.Raf1 Nf5 22.Qf2 Rd7 23.Kg1 Nd4 24.Rh3 Qd8 25.Qh4
+Kf8 26.Nd1 Rc8 27.Ne3 Nxb3 28.axb3 Rd4 29.Rg3 Rc7 30.Qg4 Kg8
+31.Qf3 b5 32.h4 Rxd3 33.cxd3 Qxd3 34.Rd1 Qxe4 35.Qxe4 Bxe4 36.Ng4
+Bd5 37.Rc3 Rxc3 38.bxc3 e4 39.Nf6+ Bxf6 40.gxf6 Bxb3 41.Rd8+
+Kh7 42.Ra8 e3 43.Rxa6 g5 44.hxg5 Kg6 45.Ra7 e5 46.Re7 Kf5 47.g6
+e2 48.Kf2 Kxg6 49.Rxe5 Bc4 50.Re3 Kxf6 51.Re8 1/2-1/2
+
+
+[Event "It"]
+[Site "Munich (Germany)"]
+[Date "1942.??.??"]
+[Round "?"]
+[White "Alekhine Alexander A (RUS)"]
+[Black "Keres Paul (EST)"]
+[Result "1-0"]
+[ECO "E17"]
+[WhiteElo "0"]
+[BlackElo "2580"]
+[Annotator ""]
+[Source ""]
+[Remark ""]
+
+1.Nf3 Nf6 2.c4 b6 3.d4 Bb7 4.g3 e6 5.Bg2 Be7 6.O-O O-O 7.b3 d5
+8.Ne5 c6 9.Bb2 Nbd7 10.Nd2 Rc8 11.Rc1 c5 12.e3 Rc7 13.Qe2 Qa8
+14.cxd5 Nxd5 15.e4 N5f6 16.b4 Rfc8 17.dxc5 bxc5 18.b5 a6 19.a4
+axb5 20.axb5 Qa2 21.Nec4 Qa8 22.Bxf6 gxf6 23.b6 Rc6 24.e5 Rxb6
+25.Nxb6 Nxb6 26.Bxb7 Qxb7 27.exf6 Bxf6 28.Ne4 Be7 29.Qg4+ Kh8
+30.Qf4 Bf8 31.Nxc5 Qc7 32.Nxe6 Qxf4 33.Nxf4 1-0
+
+
+[Event "It"]
+[Site "Munich (Germany)"]
+[Date "1942.??.??"]
+[Round "2"]
+[White "Alekhine Alexander A (RUS)"]
+[Black "Napolitano Mario (ITA)"]
+[Result "1-0"]
+[ECO "B62"]
+[WhiteElo "0"]
+[BlackElo "0"]
+[Annotator ""]
+[Source ""]
+[Remark ""]
+
+1.e4 c5 2.Nf3 Nc6 3.d4 cxd4 4.Nxd4 Nf6 5.Nc3 d6 6.Bb5 Bd7 7.Bg5
+e6 8.O-O Be7 9.Nb3 a6 10.Be2 b5 11.Bxf6 gxf6 12.a4 b4 13.Na2
+Qb6 14.Nac1 Na5 15.Bd3 Bc6 16.Qh5 Nxb3 17.Nxb3 f5 18.exf5 Rg8
+19.g3 Rg5 20.Qe2 h5 21.Qe3 Qxe3 22.fxe3 e5 23.Na5 Bd5 24.Rad1
+h4 25.Be2 Be4 26.Bf3 Bxf3 27.Rxf3 Rc8 28.Rd2 e4 29.Rf4 hxg3 30.h4
+Rh5 31.Kg2 Rxh4 32.Kxg3 Rh5 33.Rxe4 Rxf5 34.Nc4 Kf8 35.Nb6 Re8
+36.Rxb4 Bg5 37.Kg4 Bxe3 38.Kxf5 Bxd2 39.Rd4 Be3 40.Rxd6 Ke7 41.Rd7+
+Kf8 42.Nc4 Bc1 43.Rd1 Bh6 44.Rd6 Bc1 45.Rd1 Bh6 46.Ne5 Rc8 47.c3
+Bg7 48.Rd5 Ke8 49.Ra5 Ra8 50.Nc4 Kd8 51.Nb6 Ra7 52.Rc5 Rb7 53.a5
+Ke7 54.Rc6 Kd8 55.Rc8+ Ke7 56.Ra8 Kd6 57.Rxa6 Kc5 58.Ra8 Kb5
+59.Nd5 Kc4 60.a6 Rb5 61.Rc8+ Kb3 62.a7 Rxd5+ 63.Kf4 Ra5 64.a8Q
+Rxa8 65.Rxa8 Kxb2 66.c4 Bd4 67.Ke4 Kc3 68.Ra3+ Kb4 69.Kxd4 1-0
+
+
+[Event "It"]
+[Site "Munich (Germany)"]
+[Date "1942.??.??"]
+[Round "10"]
+[White "Alekhine Alexander A (RUS)"]
+[Black "Rabar Braslav (YUG)"]
+[Result "1-0"]
+[ECO "E02"]
+[WhiteElo "0"]
+[BlackElo "0"]
+[Annotator ""]
+[Source ""]
+[Remark ""]
+
+1.d4 Nf6 2.c4 e6 3.g3 d5 4.Bg2 dxc4 5.Qa4+ Bd7 6.Qxc4 Bc6 7.Nf3
+Bd5 8.Qd3 c5 9.Nc3 Bc6 10.O-O Nbd7 11.Rd1 cxd4 12.Nxd4 Bxg2 13.Kxg2
+Be7 14.Qf3 Qb6 15.Be3 O-O 16.Nf5 Bc5 17.Na4 Qa5 18.Nxc5 Nxc5
+19.Nxg7 Kxg7 20.Bd4 Nce4 21.Qxe4 Qf5 22.Qxf5 exf5 23.Rac1 Rfe8
+24.Rc7 Rxe2 25.Rxb7 Kg6 26.Bxf6 Kxf6 27.Rd6+ 1-0
+
+
+[Event "It"]
+[Site "Munich (Germany)"]
+[Date "1942.??.??"]
+[Round "6"]
+[White "Alekhine Alexander A (RUS)"]
+[Black "Richter Kurt Sr (GER)"]
+[Result "1-0"]
+[ECO "B14"]
+[WhiteElo "0"]
+[BlackElo "0"]
+[Annotator ""]
+[Source ""]
+[Remark ""]
+
+1.e4 d5 2.exd5 Nf6 3.c4 c6 4.d4 cxd5 5.Nc3 Nc6 6.Bg5 e6 7.Nf3
+Be7 8.Bd3 dxc4 9.Bxc4 O-O 10.O-O b6 11.a3 Bb7 12.Qd3 Nd5 13.Bxd5
+Bxg5 14.Be4 f5 15.Nxg5 Qxg5 16.Bf3 Kh8 17.Rfe1 Rad8 18.Qf1 Rxd4
+19.Qb5 Rd6 20.Ne4 Qg6 21.Nxd6 Nd4 22.Bxb7 Nxb5 23.Nxb5 Qf6 24.Nc3
+e5 25.Rad1 e4 26.Rd7 h5 27.h3 h4 28.Red1 Kh7 29.Ba6 Rf7 30.R7d6
+Qg5 31.R6d5 Qf4 32.Ne2 Qg5 33.Nd4 Rf6 34.Be2 Kh6 35.Nc2 Rf7 36.Ne3
+g6 37.Bc4 Qf4 38.Rd6 Rc7 39.b3 Kh7 40.a4 Qe5 41.Re6 Qc3 42.Nd5
+Qc2 43.Rf1 Rg7 44.f3 exf3 45.Rxf3 Kh6 46.Ne3 1-0
+
+
+[Event "It"]
+[Site "Munich (Germany)"]
+[Date "1942.??.??"]
+[Round "3"]
+[White "Rellstab Ludwig Sr (GER)"]
+[Black "Alekhine Alexander A (RUS)"]
+[Result "1-0"]
+[ECO "D02"]
+[WhiteElo "2265"]
+[BlackElo "0"]
+[Annotator ""]
+[Source ""]
+[Remark ""]
+
+1.Nf3 Nf6 2.g3 d5 3.d4 c6 4.Bg2 Bf5 5.O-O Nbd7 6.b3 e6 7.Bb2
+Be7 8.Nbd2 Ne4 9.Nxe4 Bxe4 10.Nd2 Bxg2 11.Kxg2 h5 12.h3 f5 13.f3
+h4 14.e4 Qc7 15.Qe1 O-O-O 16.g4 Bg5 17.e5 Bf4 18.b4 Nb6 19.Nb3
+Rdf8 20.Bc1 g5 21.Nc5 Rh6 22.Nd3 Bxc1 23.Qxc1 Nc4 24.Qxg5 Rhh8
+25.Rae1 Qh7 26.Rf2 Rhg8 27.Qc1 Rf7 28.Qd1 Qh6 29.Qc1 Qf8 30.Ref1
+b6 31.c3 f4 32.Kh1 Qh6 33.Re1 Rgf8 34.Nb2 Ne3 35.c4 Rc7 36.c5
+b5 37.Qc3 Kd7 38.a4 a6 39.Ra1 Rb8 40.axb5 axb5 41.Nd3 Rbc8 42.Rfa2
+Qg5 43.Qc1 Rf8 44.Ra7 Rfc8 45.R7a6 Rg8 46.R1a2 Rf8 47.Ra7 Rfc8
+48.Rxc7+ Rxc7 49.Ra8 Ke7 50.Rh8 Qg7 51.Nxf4 Kd7 52.Rd8+ Ke7 53.Qxe3
+Ra7 54.Rd6 Ra1+ 55.Kh2 Ra2+ 56.Kg1 Ra1+ 57.Kf2 Ra2+ 58.Ke1 Qh7
+59.Nxd5+ exd5 60.Qg5+ Kf7 61.Qf6+ 1-0
+
+
+[Event "It \"Duras-60\""]
+[Site "Prague (Czech Republic)"]
+[Date "1942.??.??"]
+[Round "5"]
+[White "Alekhine Alexander A (RUS)"]
+[Black "Foltys Jan (CZE)"]
+[Result "1/2-1/2"]
+[ECO "B22"]
+[WhiteElo "0"]
+[BlackElo "0"]
+[Annotator ""]
+[Source ""]
+[Remark "XII"]
+
+1.e4 c5 2.c3 Nf6 3.e5 Nd5 4.d4 e6 5.Nf3 cxd4 6.cxd4 d6 7.Nc3
+Nxc3 8.bxc3 Nc6 9.exd6 Bxd6 10.Bd3 Qa5 11.Qc2 b6 12.O-O Ba6 13.Be4
+Rc8 14.Re1 Ne7 15.Bd2 Bc4 16.Bb7 Rc7 17.Ne5 Rxb7 18.Nxc4 Qd5
+19.Qa4+ b5 20.Nxd6+ Qxd6 21.Qb3 O-O 22.a4 a6 23.axb5 axb5 24.g3
+Qc6 25.Reb1 Rfb8 26.Ra5 h6 27.Bf4 Rc8 1/2-1/2
+
+
+[Event "It \"Duras-60\""]
+[Site "Prague (Czech Republic)"]
+[Date "1942.??.??"]
+[Round "1"]
+[White "Alekhine Alexander A (RUS)"]
+[Black "Hromadka Karel (AUT)"]
+[Result "1-0"]
+[ECO "C87"]
+[WhiteElo "0"]
+[BlackElo "0"]
+[Annotator ""]
+[Source ""]
+[Remark "XII"]
+
+1.e4 e5 2.Nf3 Nc6 3.Bb5 a6 4.Ba4 Nf6 5.O-O d6 6.c3 Be7 7.d4 Nd7
+8.Re1 O-O 9.Nbd2 Bf6 10.Nf1 Re8 11.h3 b5 12.Bb3 Na5 13.Bc2 Bb7
+14.a4 Nc4 15.b3 Ncb6 16.a5 Nc8 17.Bb2 Ne7 18.Ne3 Ng6 19.Nd5 c6
+20.Nxf6+ Qxf6 21.g3 Rad8 22.h4 Bc8 23.Nh2 Ndf8 24.Ng4 Qe6 25.Ne3
+Qh3 26.Bd3 Ne7 27.c4 Qd7 28.Qh5 Ne6 29.Nf5 exd4 30.cxb5 axb5
+31.Nxd4 Nxd4 32.Bxd4 c5 33.Bb2 Ba6 34.e5 Ng6 35.Bf5 Qc7 36.exd6
+Qxd6 37.Rxe8+ Rxe8 38.Rd1 Qc7 39.Qf3 b4 40.Rd7 Re1+ 41.Kh2 Nxh4
+42.Qa8+ 1-0
+
+
+[Event "It \"Duras-60\""]
+[Site "Prague (Czech Republic)"]
+[Date "1942.??.??"]
+[Round "11"]
+[White "Alekhine Alexander A (RUS)"]
+[Black "Junge Klaus (CHI)"]
+[Result "1-0"]
+[ECO "E03"]
+[WhiteElo "0"]
+[BlackElo "0"]
+[Annotator ""]
+[Source ""]
+[Remark "XII"]
+
+1.d4 d5 2.c4 e6 3.Nf3 Nf6 4.g3 dxc4 5.Qa4+ Nbd7 6.Bg2 a6 7.Qxc4
+b5 8.Qc6 Rb8 9.O-O Bb7 10.Qc2 c5 11.a4 Bxf3 12.Bxf3 cxd4 13.axb5
+axb5 14.Rd1 Qb6 15.Nd2 e5 16.Nb3 Nc5 17.Nxc5 Bxc5 18.Ra6 Qxa6
+19.Qxc5 Qe6 20.Bc6+ Nd7 21.Bxd7+ Kxd7 22.Qa7+ Kc6 23.Bd2 Rhc8
+24.e4 Qb3 25.Ra1 b4 26.Ra6+ Kb5 27.Ra5+ Kc6 28.Qc5+ Kd7 29.Ra7+ 1-0
+
+
+[Event "It \"Duras-60\""]
+[Site "Prague (Czech Republic)"]
+[Date "1942.??.??"]
+[Round "9"]
+[White "Alekhine Alexander A (RUS)"]
+[Black "Prokop Frantisek Josef (CZE)"]
+[Result "1-0"]
+[ECO "D46"]
+[WhiteElo "0"]
+[BlackElo "0"]
+[Annotator ""]
+[Source ""]
+[Remark "XII"]
+
+1.d4 Nf6 2.c4 e6 3.Nc3 d5 4.Nf3 c6 5.e3 Bb4 6.Bd3 Nbd7 7.O-O
+Qc7 8.Bd2 O-O 9.Nxd5 Nxd5 10.cxd5 Bxd2 11.dxc6 Ba5 12.cxd7 Bxd7
+13.Ne5 Be8 14.Rc1 Qe7 15.Qh5 f5 16.Qe2 f4 17.Be4 a6 18.Qc2 g6
+19.exf4 Rxf4 20.g3 Rf8 21.Qc5 Qxc5 22.dxc5 Bc7 23.Nc4 Rb8 24.Rfd1
+Bb5 25.Nd6 Bc6 26.Bxc6 bxc6 27.b3 Rfd8 28.Rc4 e5 29.Kg2 Kf8 30.Re1
+Bxd6 31.cxd6 Rxd6 32.Rxe5 Rb7 33.Ra4 Ra7 34.Rea5 c5 35.Rxc5 Re7
+36.Rac4 Rd2 37.Rc2 Ree2 38.Rxd2 Rxd2 39.Rc7 Rxa2 40.Rxh7 Ra3
+41.Ra7 a5 42.h4 Kg8 43.Kh3 Rxb3 44.Rxa5 Rf3 45.Kg2 Rf7 46.h5 1-0
+
+
+[Event "It \"Duras-60\""]
+[Site "Prague (Czech Republic)"]
+[Date "1942.??.??"]
+[Round "3"]
+[White "Alekhine Alexander A (RUS)"]
+[Black "Thelen Bedrich (CZE)"]
+[Result "1/2-1/2"]
+[ECO "C07"]
+[WhiteElo "0"]
+[BlackElo "0"]
+[Annotator ""]
+[Source ""]
+[Remark "XII"]
+
+1.d4 e6 2.e4 d5 3.Nd2 c5 4.Ngf3 Nc6 5.Bb5 Nf6 6.exd5 Qxd5 7.c4
+Qd6 8.dxc5 Qxc5 9.O-O Bd7 10.Nb3 Qh5 11.Bf4 Be7 12.Bd6 a6 13.Bxe7
+Kxe7 14.Bxc6 Bxc6 15.Nbd4 Bxf3 16.Nxf3 Qc5 17.b4 Qc7 18.Re1 Rhd8
+19.Qb3 Rac8 20.Rac1 Kf8 21.a4 Rd7 22.b5 axb5 23.axb5 Qf4 24.c5
+Rdc7 25.Rc4 Qf5 26.Re5 Ra8 27.Ra4 Rxa4 28.Qxa4 Qd3 29.Qa8+ Ne8
+30.Qa5 Qc2 31.Qa3 Kg8 32.b6 Rc8 33.g3 Qd1+ 34.Kg2 Qd7 35.Re4
+Qc6 36.Ra4 f6 37.Ra8 Rxa8 38.Qxa8 Kf7 39.Qa3 g5 40.h3 Ng7 41.Kh2
+Nf5 42.Nd2 h5 43.Qc3 h4 44.g4 Ne7 45.Nb3 Ng6 46.Nd4 Qd5 47.c6
+Nf4 48.Nf3 bxc6 1/2-1/2
+
+
+[Event "It \"Duras-60\""]
+[Site "Prague (Czech Republic)"]
+[Date "1942.??.??"]
+[Round "7"]
+[White "Alekhine Alexander A (RUS)"]
+[Black "Zita Frantisek (CZE)"]
+[Result "1/2-1/2"]
+[ECO "B14"]
+[WhiteElo "0"]
+[BlackElo "0"]
+[Annotator ""]
+[Source ""]
+[Remark "XII"]
+
+1.e4 c6 2.d4 d5 3.exd5 cxd5 4.c4 Nf6 5.Nc3 Nc6 6.Bg5 e6 7.Nf3
+Be7 8.Bd3 dxc4 9.Bxc4 O-O 10.O-O Nd5 11.Be3 Nxc3 12.bxc3 b6 13.Bd3
+Bb7 14.c4 Bf6 15.Rc1 Rc8 16.Qd2 g6 17.Be2 Ne7 18.g4 Qd7 19.Rfd1
+Rfd8 20.Bg5 Bxg5 21.Qxg5 Bxf3 22.Bxf3 Nc6 23.d5 exd5 24.cxd5
+Na5 25.h4 Qd6 26.h5 Nc4 27.Kg2 Qe5 28.Qh6 g5 29.d6 Qg7 30.Qxg7+
+Kxg7 31.Be4 Rxd6 32.Bf5 Rxd1 33.Rxd1 Rc7 34.Kf3 h6 35.Rd8 Re7
+36.Rd4 Ne5+ 37.Kg3 Nc6 38.Rc4 Na5 39.Rc8 Nb7 40.Rc6 Nc5 41.Kf3
+Ne6 42.Rd6 Nc5 43.Rc6 Nb7 44.Be4 Nc5 45.Bf5 1/2-1/2
+
+
+[Event ""]
+[Site "Prague (Czech Republic)"]
+[Date "1942.??.??"]
+[Round "?"]
+[White "Alekhine Alexander A (RUS)"]
+[Black "Podgorny Jiri (CZE)"]
+[Result "1-0"]
+[ECO "B22"]
+[WhiteElo "0"]
+[BlackElo "0"]
+[Annotator ""]
+[Source ""]
+[Remark ""]
+
+1.e4 c5 2.c3 d5 3.exd5 Qxd5 4.d4 Nc6 5.Nf3 Bg4 6.Be2 cxd4 7.cxd4
+e6 8.Nc3 Bb4 9.O-O Qa5 10.a3 Nf6 11.d5 exd5 12.axb4 Qxa1 13.Nd2
+Bxe2 14.Qxe2+ Ne7 15.Re1 O-O 16.Nb3 Qa6 17.Qxa6 bxa6 18.Rxe7
+Rab8 19.b5 axb5 20.Rxa7 b4 21.Ne2 Rfc8 22.f3 Ra8 23.Rxa8 Rxa8
+24.Kf2 Nd7 25.Nf4 Nb6 26.Ke3 Rc8 27.Kd3 g5 28.Nh5 1-0
+
+
+[Event "It"]
+[Site "Salzburg (Austria)"]
+[Date "1942.??.??"]
+[Round "6"]
+[White "Alekhine Alexander A (RUS)"]
+[Black "Bogoljubow Efim D (UKR)"]
+[Result "1-0"]
+[ECO "C42"]
+[WhiteElo "0"]
+[BlackElo "0"]
+[Annotator ""]
+[Source ""]
+[Remark ""]
+
+1.e4 e5 2.Nf3 Nf6 3.Nxe5 d6 4.Nf3 Nxe4 5.d3 Nf6 6.d4 d5 7.c4
+Nc6 8.Nc3 Bg4 9.Be3 Be7 10.h3 Bh5 11.c5 O-O 12.Bb5 Ne4 13.Qa4
+Nxc3 14.bxc3 Bxf3 15.gxf3 Qd7 16.Rb1 Qf5 17.Qd1 Bg5 18.Bd3 Qe6
+19.Qe2 Bxe3 20.fxe3 b6 21.c4 dxc4 22.Bxc4 Qh6 23.Rd1 Rae8 24.f4
+Qh4+ 25.Kf1 Ne7 26.Qg4 Qf6 27.Kf2 bxc5 28.dxc5 Qc6 29.Rc1 g6
+30.Qf3 Qf6 31.e4 Rb8 32.Bb3 Rb4 33.Rhd1 Nc6 34.Rc4 Rxc4 35.Bxc4
+Qb2+ 36.Qe2 Qb4 37.Bd5 Ne7 38.Bb3 Qxc5+ 39.Qe3 Qc6 40.Rc1 Qb7
+41.Qd4 c6 42.Qd6 a5 43.Kf3 Qa7 44.h4 a4 45.Bc4 Qa5 46.Qxe7 Qd2
+47.Qc5 Rd8 48.Qe3 Qh2 49.Qf2 Qh3+ 50.Qg3 Qd7 51.f5 Qe7 52.fxg6
+Qa3+ 53.Kg2 Rd2+ 54.Kh3 Qxg3+ 55.Kxg3 hxg6 56.Rf1 Rd7 57.Rf6
+Rc7 58.e5 Kg7 59.Kf4 Rd7 60.Rxc6 Rd4+ 61.Kf3 Rxh4 62.Rc7 Rh3+
+63.Kg4 Rc3 64.e6 1-0
+
+
+[Event "It"]
+[Site "Salzburg (Austria)"]
+[Date "1942.??.??"]
+[Round "3"]
+[White "Alekhine Alexander A (RUS)"]
+[Black "Junge Klaus (CHI)"]
+[Result "0-1"]
+[ECO "D31"]
+[WhiteElo "0"]
+[BlackElo "0"]
+[Annotator ""]
+[Source ""]
+[Remark ""]
+
+1.d4 d5 2.c4 e6 3.Nc3 c6 4.e4 dxe4 5.Nxe4 Bb4+ 6.Nc3 c5 7.Be3
+Qa5 8.Nge2 cxd4 9.Bxd4 Nf6 10.a3 Be7 11.Ng3 Nc6 12.b4 Qc7 13.Be3
+O-O 14.Be2 b6 15.O-O Bb7 16.Nb5 Qb8 17.Qc1 a6 18.Nc3 Qc7 19.Na4
+Nd7 20.Rd1 Nce5 21.f3 a5 22.Qb2 axb4 23.axb4 Bf6 24.Qb3 b5 25.cxb5
+Bd5 26.Rxd5 exd5 27.Rc1 Nc4 28.Bxc4 dxc4 29.Rxc4 Qe5 30.Nc5 Nb6
+31.Rc1 Nd5 32.Nge4 Nxe3 33.Qxe3 Ra1 34.Rf1 Rd8 35.Nxf6+ Qxf6
+36.b6 Rxf1+ 37.Kxf1 Qxb6 38.Qe4 Qb5+ 39.Kf2 Re8 40.Qd4 Qb6 41.Nb3
+Rb8 42.Qxb6 Rxb6 43.g4 Rxb4 44.Nc5 f6 45.Kg3 Kf7 46.Nd3 Rd4 47.Nf4
+Rc4 48.h4 Rc5 49.Nh5 g6 50.Nf4 Ke7 51.h5 g5 52.Ne2 Rc4 53.Kf2
+Ke6 54.Ng3 Ke5 55.Nf5 Kf4 56.Ne3 Rc5 57.Ng2+ Ke5 58.Ne3 Kd4 59.Nd1
+Rc1 60.Ne3 Rc5 61.Nd1 Kd3 62.Ne3 Re5 63.Nf1 Re2+ 64.Kg1 Ra2 65.h6
+Ke2 66.Kg2 Rb2 67.Ng3+ Ke3+ 68.Kh3 Kxf3 69.Nh5 Rb6 0-1
+
+
+[Event "It"]
+[Site "Salzburg (Austria)"]
+[Date "1942.??.??"]
+[Round "?"]
+[White "Alekhine Alexander A (RUS)"]
+[Black "Keres Paul (EST)"]
+[Result "1-0"]
+[ECO "C86"]
+[WhiteElo "0"]
+[BlackElo "2580"]
+[Annotator ""]
+[Source ""]
+[Remark ""]
+
+1.e4 e5 2.Nf3 Nc6 3.Bb5 a6 4.Ba4 Nf6 5.O-O Be7 6.Qe2 b5 7.Bb3
+d6 8.c3 O-O 9.Rd1 Na5 10.Bc2 c5 11.d4 Qc7 12.Bg5 Bg4 13.dxe5
+dxe5 14.Nbd2 Rfd8 15.Nf1 Nh5 16.h3 Be6 17.Ne3 f6 18.Nh2 g6 19.Bh6
+Bf8 20.Bxf8 Kxf8 21.g3 Rxd1+ 22.Bxd1 Rd8 23.a4 Nc4 24.axb5 axb5
+25.Nd5 Qb7 26.b3 Nd6 27.c4 bxc4 28.bxc4 Bxd5 29.exd5 Ng7 30.Ng4
+Qe7 31.Bc2 Nge8 32.h4 e4 33.Ne3 Qe5 34.Ra7 Kg8 35.Ng4 Qd4 36.Bxe4
+f5 37.Nh6+ Kh8 38.Bc2 Qf6 39.Qe6 Qxe6 40.dxe6 Rc8 41.Nf7+ Nxf7
+42.exf7 Nd6 43.Bd3 Kg7 44.f8Q+ Kxf8 45.Rxh7 Kg8 46.Rd7 Ne8 47.h5
+gxh5 48.Bxf5 Ra8 49.Be6+ Kh8 50.Rd5 Nf6 51.Rxc5 Kg7 52.Kg2 Ra2
+53.Bf5 Ra3 54.Rc7+ Kh6 55.Rf7 Ra6 56.f4 h4 57.g4 1-0
+
+
+[Event "It"]
+[Site "Salzburg (Austria)"]
+[Date "1942.??.??"]
+[Round "7"]
+[White "Alekhine Alexander A (RUS)"]
+[Black "Schmidt Paul F (EST)"]
+[Result "1-0"]
+[ECO "C86"]
+[WhiteElo "0"]
+[BlackElo "0"]
+[Annotator ""]
+[Source ""]
+[Remark ""]
+
+1.e4 e5 2.Nf3 Nc6 3.Bb5 a6 4.Ba4 Nf6 5.O-O Be7 6.Qe2 b5 7.Bb3
+d6 8.a4 Bg4 9.c3 O-O 10.Rd1 b4 11.a5 d5 12.exd5 e4 13.dxc6 Bd6
+14.d4 Re8 15.Be3 exf3 16.gxf3 Bh5 17.Nd2 Ne4 18.Bxf7+ Kxf7 19.Qc4+
+Kf8 20.fxe4 Qh4 21.e5 Bxd1 22.exd6 Qg4+ 23.Kf1 cxd6 24.d5 Qh3+
+25.Ke1 Bc2 26.cxb4 Rxe3+ 27.fxe3 Qxe3+ 28.Qe2 Qh6 29.Ra3 Bf5
+30.Re3 g6 31.Qf2 Rb8 32.Nc4 Rxb4 33.Nxd6 1-0
+
+
+[Event "It"]
+[Site "Salzburg (Austria)"]
+[Date "1942.??.??"]
+[Round "?"]
+[White "Alekhine Alexander A (RUS)"]
+[Black "Stoltz Gosta (SWE)"]
+[Result "1-0"]
+[ECO "B54"]
+[WhiteElo "0"]
+[BlackElo "0"]
+[Annotator ""]
+[Source ""]
+[Remark ""]
+
+1.e4 c5 2.Nf3 d6 3.d4 cxd4 4.Nxd4 Nf6 5.f3 e6 6.Bb5+ Bd7 7.a4
+Nc6 8.O-O Nxd4 9.Qxd4 Qc7 10.Be3 Be7 11.Bxd7+ Nxd7 12.Na3 a6
+13.Rfd1 O-O 14.Qc4 Rac8 15.Qxc7 Rxc7 16.b3 f5 17.Nc4 Rc6 18.exf5
+Rxf5 19.Bd4 Rf7 20.Bf2 d5 21.Ne3 Bg5 22.Re1 Nf8 23.Re2 Ng6 24.Rd1
+Rfc7 25.c4 Bxe3 26.Rxe3 dxc4 27.bxc4 Rxc4 28.Rxe6 Rxa4 29.Rb6
+Nf4 30.Kf1 Rac4 31.Be3 g5 32.Rd8+ Kf7 33.h4 gxh4 34.Rh6 Kg7 35.Rxh4
+Ne6 36.Rxc4 Rxc4 37.Rd7+ Kg6 38.Rxb7 Ra4 39.Re7 Nf4 40.Bxf4 Rxf4
+41.Re6+ Rf6 42.Re5 Rb6 43.Ra5 Re6 44.g4 Kf6 45.Kf2 h6 46.Kg3
+Kg6 47.f4 Rb6 48.Kh4 Kg7 49.f5 Rc6 50.Ra4 Rb6 51.Ra5 Rc6 52.Rd5
+Rb6 53.Kh5 Rc6 54.Rd7+ Kf8 55.Ra7 Rb6 56.Rh7 Kg8 57.Re7 Kf8 58.Re6
+Rxe6 59.fxe6 a5 60.Kxh6 a4 61.g5 a3 62.g6 a2 63.g7+ Ke7 64.g8Q
+a1Q 65.Qf7+ Kd6 66.Qd7+ Kc5 67.Kg6 Qg1+ 68.Kf7 Qh1 69.Qc7+ Kb5
+70.Qe5+ Ka4 71.Qd4+ Ka3 72.Qd3+ Kb4 73.Qf5 Qc6 74.e7 Qc7 75.Qe4+
+Ka3 76.Qd4 Qh2 77.Qc5+ Ka2 78.e8Q Qf4+ 79.Kg7 Qg3+ 80.Kf8 1-0
+
+
+[Event "Salzburg"]
+[Site "Salzburg AUT"]
+[Date "1942.06.09"]
+[Round "1"]
+[White "Efim Bogoljubov"]
+[Black "Alexander Alekhine"]
+[Result "1-0"]
+[BlackElo "?"]
+[ECO "B15"]
+[EventDate "1942.06.09"]
+[PlyCount "91"]
+[WhiteElo "?"]
+
+1. e4 c6 2. d4 d5 3. Nc3 dxe4 4. Nxe4 Nf6 5. Nxf6+ exf6 6. Bc4 Bd6 7. Qe2+ Be7
+8. Nf3 Bg4 9. c3 Nd7 10. h3 Bh5 11. g4 Bg6 12. Nh4 Nb6 13. Bb3 Nd5 14. Bd2 Qd6
+15. Nf5 Bxf5 16. gxf5 g6 17. O-O-O O-O-O 18. Qf3 g5 19. Rhe1 Rhe8 20. Re4 Bf8
+21. Rxe8 Rxe8 22. Qh5 Qd7 23. Qxh7 Re4 24. Qh8 Qd8 25. Re1 Rxe1+ 26. Bxe1 Kc7
+27. Bd2 Qe7 28. Qh5 Qd7 29. Qf3 Qe7 30. Qh5 Qd7 31. Qf3 Bh6 32. h4 Nf4
+33. Bxf4+ gxf4 34. Qh5 Bf8 35. Bxf7 c5 36. Be6 Qd6 37. Qf7+ Be7 38. dxc5 Qxc5
+39. h5 f3 40. h6 Kb6 41. Bc4 Bd6 42. Bd5 Qc8 43. Qe6 Qf8 44. h7 Ka5
+45. Bxf3 Qh6+ 46. Kc2
+1-0
+
+
+[Event "Salzburg"]
+[Site "Salzburg AUT"]
+[Date "1942.06.13"]
+[Round "5"]
+[White "Alexander Alekhine"]
+[Black "Paul Keres"]
+[Result "1-0"]
+[BlackElo "?"]
+[ECO "C86"]
+[EventDate "1942.06.09"]
+[PlyCount "111"]
+[WhiteElo "?"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4 Nf6 5. O-O Be7 6. Qe2 b5 7. Bb3 d6
+8. c3 O-O 9. Rd1 Na5 10. Bc2 c5 11. d4 Qc7 12. Bg5 Bg4 13. dxe5 dxe5
+14. Nbd2 Rfd8 15. Nf1 Nh5 16. h3 Be6 17. Ne3 f6 18. Nh2 g6 19. Bh6 Bf8
+20. Bxf8 Kxf8 21. g3 Rxd1+ 22. Bxd1 Rd8 23. a4 Nc4 24. axb5 axb5 25. Nd5 Qb7
+26. b3 Nd6 27. c4 bxc4 28. bxc4 Bxd5 29. exd5 Ng7 30. Ng4 Qe7 31. Bc2 Nge8
+32. h4 e4 33. Ne3 Qe5 34. Ra7 Kg8 35. Ng4 Qd4 36. Bxe4 f5 37. Nh6+ Kh8
+38. Bc2 Qf6 39. Qe6 Qxe6 40. dxe6 Rc8 41. Nf7+ Nxf7 42. exf7 Nd6 43. Bd3 Kg7
+44. f8=Q+ Kxf8 45. Rxh7 Kg8 46. Rd7 Ne8 47. h5 gxh5 48. Bxf5 Ra8 49. Be6+ Kh8
+50. Rd5 Nf6 51. Rxc5 Kg7 52. Bf5 Ra3 53. Rc7+ Kh6 54. Rf7 Ra6 55. f4 h4 56. g4
+1-0
+
+
+[Event "Salzburg"]
+[Site "Salzburg AUT"]
+[Date "1942.06.11"]
+[Round "3"]
+[White "Alexander Alekhine"]
+[Black "Klaus Junge"]
+[Result "0-1"]
+[BlackElo "?"]
+[ECO "D31"]
+[EventDate "1942.06.09"]
+[PlyCount "138"]
+[WhiteElo "?"]
+
+1. d4 d5 2. c4 e6 3. Nc3 c6 4. e4 dxe4 5. Nxe4 Bb4+ 6. Nc3 c5 7. Be3 Qa5
+8. Ne2 cxd4 9. Bxd4 Nf6 10. a3 Be7 11. Ng3 Nc6 12. b4 Qc7 13. Be3 O-O 14. Be2 b6
+15. O-O Bb7 16. Nb5 Qb8 17. Qc1 a6 18. Nc3 Qc7 19. Na4 Nd7 20. Rd1 Nce5
+21. f3 a5 22. Qb2 axb4 23. axb4 Bf6 24. Qb3 b5 25. cxb5 Bd5 26. Rxd5 exd5
+27. Rc1 Nc4 28. Bxc4 dxc4 29. Rxc4 Qe5 30. Nc5 Nb6 31. Rc1 Nd5 32. Nge4 Nxe3
+33. Qxe3 Ra1 34. Rf1 Rd8 35. Nxf6+ Qxf6 36. b6 Rxf1+ 37. Kxf1 Qxb6 38. Qe4 Kf8
+39. Kf2 Re8 40. Qd4 Kg8 41. Nb3 Rb8 42. Qxb6 Rxb6 43. g4 Rxb4 44. Nc5 f6
+45. Kg3 Kf7 46. Nd3 Rd4 47. Nf4 Rc4 48. h4 Rc5 49. Nh5 g6 50. Nf4 Ke7 51. h5 g5
+52. Ne2 Rc4 53. Kf2 Ke6 54. Ng3 Ke5 55. Nf5 Kf4 56. Ne3 Rc5 57. Ng2+ Ke5
+58. Ne3 Kd4 59. Nd1 Rc1 60. Ne3 Rc5 61. Nd1 Kd3 62. Ne3 Re5 63. Nf1 Re2+
+64. Kg1 Ra2 65. h6 Ke2 66. Kg2 Rb2 67. Ng3+ Ke3+ 68. Kh3 Kxf3 69. Nh5 Rb6
+0-1
+
+
+[Event "Munich"]
+[Site "Munich GER"]
+[Date "1942.09.20"]
+[Round "6"]
+[White "Alexander Alekhine"]
+[Black "Kurt Paul Otto Joseph Richter"]
+[Result "1-0"]
+[BlackElo "?"]
+[ECO "B13"]
+[EventDate "1942.??.??"]
+[PlyCount "91"]
+[WhiteElo "?"]
+
+1. e4 d5 2. exd5 Nf6 3. c4 c6 4. d4 cxd5 5. Nc3 Nc6 6. Bg5 e6 7. Nf3 Be7
+8. Bd3 O-O 9. O-O dxc4 10. Bxc4 b6 11. a3 Bb7 12. Qd3 Nd5 13. Bxd5 Bxg5
+14. Be4 f5 15. Nxg5 Qxg5 16. Bf3 Kh8 17. Rfe1 Rad8 18. Qf1 Rxd4 19. Qb5 Rd6
+20. Ne4 Qg6 21. Nxd6 Nd4 22. Bxb7 Nxb5 23. Nxb5 Qf6 24. Nc3 e5 25. Rad1 e4
+26. Rd7 h5 27. h3 h4 28. Red1 Kh7 29. Ba6 Rf7 30. R7d6 Qg5 31. R6d5 Qf4
+32. Ne2 Qg5 33. Nd4 Rf6 34. Be2 Kh6 35. Nc2 Rf7 36. Ne3 g6 37. Bc4 Qf4
+38. Rd6 Rc7 39. b3 Kh7 40. a4 Qe5 41. Re6 Qc3 42. Nd5 Qc2 43. Rf1 Rg7
+44. f3 exf3 45. Rxf3 Kh6 46. Ne3
+1-0
+
+
+[Event "Munich"]
+[Site "Munich GER"]
+[Date "1942.09.18"]
+[Round "4"]
+[White "Alexander Alekhine"]
+[Black "Paul Keres"]
+[Result "1-0"]
+[BlackElo "?"]
+[ECO "E17"]
+[EventDate "1942.??.??"]
+[PlyCount "65"]
+[WhiteElo "?"]
+
+1. d4 Nf6 2. Nf3 b6 3. c4 Bb7 4. g3 e6 5. Bg2 Be7 6. O-O O-O 7. b3 d5 8. Ne5 c6
+9. Bb2 Nbd7 10. Nd2 c5 11. e3 Rc8 12. Rc1 Rc7 13. Qe2 Qa8 14. cxd5 Nxd5
+15. e4 N5f6 16. b4 Rfc8 17. dxc5 bxc5 18. b5 a6 19. a4 axb5 20. axb5 Qa2
+21. Nec4 Qa8 22. Bxf6 gxf6 23. b6 Rc6 24. e5 Rxb6 25. Nxb6 Nxb6 26. Bxb7 Qxb7
+27. exf6 Bxf6 28. Ne4 Be7 29. Qg4+ Kh8 30. Qf4 Bf8 31. Nxc5 Qc7 32. Nxe6 Qxf4
+33. Nxf4
+1-0
+
+
+[Event "3rd General Government"]
+[Site "Krakow POL"]
+[Date "1942.10.22"]
+[Round "9"]
+[White "Alexander Alekhine"]
+[Black "Werner-Eberhard Kunerth"]
+[Result "1-0"]
+[BlackElo "?"]
+[ECO "D46"]
+[EventDate "1942.10.12"]
+[PlyCount "113"]
+[WhiteElo "?"]
+
+1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Nf3 c6 5. e3 Nbd7 6. Bd3 Bd6 7. e4 dxe4
+8. Nxe4 Nxe4 9. Bxe4 Nf6 10. Bc2 Bb4+ 11. Kf1 b6 12. h4 Bb7 13. Rh3 Bd6
+14. Qe2 Qc7 15. b3 O-O-O 16. Bb2 h6 17. Ne5 Rhe8 18. a3 Bxe5 19. dxe5 Nd7
+20. Rg3 g5 21. hxg5 hxg5 22. Rxg5 Rh8 23. Qg4 c5 24. Ke2 Nb8 25. Rd1 Nc6
+26. Rd6 Rhf8 27. Rxd8+ Qxd8 28. Rg7 Kb8 29. Qf4 Qd7 30. Qd2 Qe7 31. Qd6+ Qxd6
+32. exd6 e5 33. Bf5 Nd4+ 34. Bxd4 exd4 35. g4 b5 36. Kd3 Ba6 37. g5 bxc4+
+38. bxc4 Bb7 39. f4 Bg2 40. Kd2 Bf1 41. Bd3 Bxd3 42. Kxd3 Kc8 43. Rh7 Kd7
+44. Rh6 f6 45. g6 Re8 46. Rh5 Re3+ 47. Kd2 Rg3 48. Rxc5 Kxd6 49. Rd5+ Ke7
+50. f5 Rxa3 51. Rxd4 Rg3 52. Re4+ Kd6 53. Re6+ Kc5 54. Rxf6 Kxc4 55. Rf7 a5
+56. g7 Kd4 57. f6
+1-0

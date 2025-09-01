@@ -1,17 +1,19 @@
 import os
 import chess
+from tqdm import tqdm 
 
 pgns = []
-for file in os.listdir("GrandmasterPGNs"):
+print("Reading contents of files")
+for file in tqdm(os.listdir("GrandmasterPGNs")):
     file = os.path.join("GrandmasterPGNs", file)
     with open(file, "r") as f:
         data = [i.strip() for i in f.readlines()]
         packet = []
         for line in data:
-            if ("[" in line) or ("]" in line) or (not line.strip()):
+            if (("[" in line) or ("]" in line) or (not line.strip())) and ("{[%clk" not in line):
                 if packet: 
                     packet = ' '.join(packet)
-                    packet = [i.strip() for i in packet.split(" ") if '.' not in i]
+                    packet = [i.strip() for i in packet.split(" ") if '.' not in i and '{[%clk' not in i and ":" not in i and i]
                     packet = packet[:min(16, len(packet))]
                     pgns.append(packet)
                 packet = []
@@ -24,10 +26,12 @@ for file in os.listdir("GrandmasterPGNs"):
             packet = packet[:min(16, len(packet))]
             pgns.append(packet)
 
+
+print("Processing PGNs and Counting Moves per FEN")
 with open("book.txt", "w+") as bookFile:
     bookFile.seek(0)
     fenToPossibleMoves = {}
-    for index, pgn in enumerate(pgns):
+    for index, pgn in tqdm(enumerate(pgns), total=len(pgns)):
         try:
             board = chess.Board()
             for move in pgn:
@@ -42,9 +46,11 @@ with open("book.txt", "w+") as bookFile:
                 else:
                     fenToPossibleMoves[originalFen] = {encodedMove:1}
         except Exception as e:
+            # print(e)
             e = e
     
-    for index, fen in enumerate(fenToPossibleMoves):
+    print("Writing fen book to file...")
+    for index, fen in tqdm(enumerate(fenToPossibleMoves), total=len(list(fenToPossibleMoves.keys()))):
         moves = fenToPossibleMoves[fen]
         moves = {key:moves[key] for key in sorted(moves, key=lambda x: moves[x], reverse=True)}
         bookFile.write(fen+": ")

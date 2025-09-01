@@ -11,7 +11,7 @@
 #include "zobrist.h"
 #include "evaluation.h"
 
-const int AI_COLOR = !BLACK_PIECE;
+const int AI_COLOR = BLACK_PIECE;
 const int OPPONENT_COLOR = (AI_COLOR == WHITE_PIECE) ? BLACK_PIECE : WHITE_PIECE;
 const int AI_DEPTH = 6;
 
@@ -92,6 +92,61 @@ void moveToNotation(Move *move, char *notation)
     notation[4] = '\0';
 }
 
+void drawArrow(Vector2 start, Vector2 end, float thickness, Color color)
+{   
+    
+    float dx = end.x - start.x;
+    float dy = end.y - start.y;
+    float dist = sqrtf(dx*dx + dy*dy);
+    float angle1 = atan2f(dy, dx);
+
+    for (float d = 0; d <= dist; d += 3)
+    {
+        Vector2 pos = {
+            start.x + cosf(angle1) * d,
+            start.y + sinf(angle1) * d
+        };
+        DrawCircleV(pos, 9, color);
+    }
+    
+    float angle = atan2f(end.y - start.y, end.x - start.x);
+    float arrowSize = 25.0;
+    
+    Vector2 left = {
+        end.x - arrowSize * cosf(angle - PI/4),
+        end.y - arrowSize * sinf(angle - PI/4)
+    };
+    dx = end.x - left.x;
+    dy = end.y - left.y;
+    dist = sqrtf(dx*dx + dy*dy);
+    float angle2 = atan2f(dy, dx);
+    for (float d = 0; d <= dist; d += 2)
+    {
+        Vector2 pos = {
+            left.x + cosf(angle2) * d,
+            left.y + sinf(angle2) * d
+        };
+        DrawCircleV(pos, 10, color);
+    }
+
+    Vector2 right = {
+        end.x - arrowSize * cosf(angle + PI/4),
+        end.y - arrowSize * sinf(angle + PI/4)
+    };
+    dx = end.x - right.x;
+    dy = end.y - right.y;
+    dist = sqrtf(dx*dx + dy*dy);
+    float angle3 = atan2f(dy, dx);
+    for (float d = 0; d <= dist; d += 2)
+    {
+        Vector2 pos = {
+            right.x + cosf(angle3) * d,
+            right.y + sinf(angle3) * d
+        };
+        DrawCircleV(pos, 10, color);
+    }
+}
+
 void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, DrawingPieceMouseHandler *drawingPieceMouseHandler, Sound *sounds, int showIndexes, LegalMovesContainer *curLegalMoves, TranspositionTable *tt, SearchRootResult *result, int *draggingPieceType, OpeningBook *book)
 {
     BeginDrawing();
@@ -100,6 +155,8 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
     int colorAdjustment;
     ClearBackground(DARKGRAY);
 
+    
+    
     // Draw the background board
     for (int i = 0; i < 8; i++)
     {
@@ -232,19 +289,37 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
         }
     }
 
+    AllPossibleOpeningMovesFromPosition possibleBookMoves = bookAllPossibleMoves(board, book);
+    for (int moveIdx = 0; moveIdx<possibleBookMoves.amtMoves; moveIdx++) {
+        Vector2 start = {
+            (possibleBookMoves.moves[moveIdx].fromSquare % 8) * 75 + 75/2,
+            (possibleBookMoves.moves[moveIdx].fromSquare / 8) * 75 + 75/2
+        };
+        Vector2 end = {
+            (possibleBookMoves.moves[moveIdx].toSquare % 8) * 75 + 75/2,
+            (possibleBookMoves.moves[moveIdx].toSquare / 8) * 75 + 75/2
+        }; 
+
+        if (start.x == end.x && start.y == end.y) {
+            continue;
+        }
+
+        drawArrow(start, end, 15.0, (Color){ 255, 192, 203, 50 });
+    }
+
     // create the drag and drop for moving pieces
     Vector2 mousePosition = GetMousePosition();
     int snappedMouseX = (int)(floor(mousePosition.x / 75));
     int snappedMouseY = (int)(floor(mousePosition.y / 75));
 
-    // if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
-    // {
-    //     // undo the last 2 moves to undo ur move and the AI's move or in the other order for the opposite side to go again
-    //     popMove(board);
-    //     popMove(board);
-    //     WaitTime(0.25);
-    //     *curLegalMoves = generateLegalMoves(board);
-    // }
+    if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
+    {
+        // undo the last 2 moves to undo ur move and the AI's move or in the other order for the opposite side to go again
+        popMove(board);
+        popMove(board);
+        WaitTime(0.25);
+        *curLegalMoves = generateLegalMoves(board);
+    }
 
     if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) // && board->colorToPlay == OPPONENT_COLOR)
     {
@@ -373,6 +448,7 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
         pushMove(board, result->bestMove);
         
         *curLegalMoves = generateLegalMoves(board);
+        
         
         UndoMove lastMove = board->moves.stack[board->moves.size - 1];
         

@@ -126,8 +126,26 @@ Move bookLookup(Board *board, OpeningBook *book) {
     for (int i = 0; i < book->amount; i++) {
         if (book->collection[i].positionHash == board->zobristHash) {
             // * we have a match! now return one of the stored moves
-            return book->collection[i].possibleMoves[rand() % (book->collection[i].amtPossibleMoves)]; // ! can be modified to be random later
+            return book->collection[i].possibleMoves[rand() % (book->collection[i].amtPossibleMoves)]; 
         }
     }
     return (Move){-1, -1, -1, (Square){NONE, NONE, -1}, -1};
+}
+
+AllPossibleOpeningMovesFromPosition bookAllPossibleMoves(Board *board, OpeningBook *book) {
+    AllPossibleOpeningMovesFromPosition possibleBook;
+    possibleBook.amtMoves = 0;
+
+
+    for (int i = 0; i < book->amount; i++) {
+        if (book->collection[i].positionHash == board->zobristHash) {
+            // * we have a match! now return all the stored moves
+            for (int moveIdx = 0; moveIdx<book->collection->amtPossibleMoves; moveIdx++) {
+                possibleBook.moves[moveIdx] = book->collection[i].possibleMoves[moveIdx];
+                possibleBook.amtMoves++;
+            }
+            break;
+        }
+    }
+    return possibleBook;
 }

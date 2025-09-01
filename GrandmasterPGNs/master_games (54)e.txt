@@ -1,0 +1,641 @@
+[Event "March 4 Early 2025"]
+[Date "2025.03.04"]
+[Round "8"]
+[White "Erigaisi Arjun"]
+[Black "Lagarde, Maxime"]
+[Result "1-0"]
+[Board "13"]
+[TimeControl "180+1"]
+[WhiteFideId "35009192"]
+[BlackFideId "662399"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "3196"]
+[BlackElo "2960"]
+[WhiteTeam "IND"]
+[BlackTeam "FRA"]
+[WhiteClock "0:01:41"]
+[BlackClock "0:00:46"]
+[Variant "Standard"]
+
+1. d4 {[%clk 0:03:00]}  f5 {[%clk 0:02:56]} 2. Nc3 {[%clk 0:03:00]}  Nf6 {[%clk 0:02:56]} 3. Bf4 {[%clk 0:03:00]}  e6 {[%clk 0:02:48]} 4. e3 {[%clk 0:02:58]}  d5 {[%clk 0:02:46]} 5. Nf3 {[%clk 0:02:55]}  Bd6 {[%clk 0:02:46]} 6. Bd3 {[%clk 0:02:53]}  O-O {[%clk 0:02:46]} 7. O-O {[%clk 0:02:53]}  Nc6 {[%clk 0:02:46]} 8. Bb5 {[%clk 0:02:49]}  Ne4 {[%clk 0:02:41]} 9. Ne2 {[%clk 0:02:41]}  g5 {[%clk 0:02:38]} 10. Bxd6 {[%clk 0:02:36]}  cxd6 {[%clk 0:02:38]} 11. Nd2 {[%clk 0:02:34]}  Bd7 {[%clk 0:02:31]} 12. c4 {[%clk 0:02:31]}  a6 {[%clk 0:02:24]} 13. cxd5 {[%clk 0:02:20]}  axb5 {[%clk 0:02:21]} 14. Nxe4 {[%clk 0:02:21]}  fxe4 {[%clk 0:02:17]} 15. dxc6 {[%clk 0:02:21]}  Bxc6 {[%clk 0:02:09]} 16. Ng3 {[%clk 0:02:18]}  Bd5 {[%clk 0:02:06]} 17. Qg4 {[%clk 0:02:15]}  Rc8 {[%clk 0:01:15]} 18. Nxe4 {[%clk 0:02:10]}  h5 {[%clk 0:01:14]} 19. Qxg5+ {[%clk 0:02:10]}  Qxg5 {[%clk 0:01:14]} 20. Nxg5 {[%clk 0:02:11]}  Rc2 {[%clk 0:01:13]} 21. b3 {[%clk 0:02:09]}  Ra8 {[%clk 0:01:09]} 22. e4 {[%clk 0:02:01]}  Bc6 {[%clk 0:01:09]} 23. f3 {[%clk 0:01:59]}  e5 {[%clk 0:01:06]} 24. dxe5 {[%clk 0:01:54]}  dxe5 {[%clk 0:01:05]} 25. Rf2 {[%clk 0:01:54]}  Rc3 {[%clk 0:01:05]} 26. Rd1 {[%clk 0:01:54]}  Kf8 {[%clk 0:01:02]} 27. h4 {[%clk 0:01:48]}  Ke7 {[%clk 0:01:01]} 28. Rfd2 {[%clk 0:01:47]}  b4 {[%clk 0:00:59]} 29. Rd6 {[%clk 0:01:39]}  Rxa2 {[%clk 0:00:51]} 30. Re6+ {[%clk 0:01:40]}  Kf8 {[%clk 0:00:52]} 31. Rd8+ {[%clk 0:01:40]}  Kg7 {[%clk 0:00:52]} 32. Re7+ {[%clk 0:01:41]}  Kf6 {[%clk 0:00:46]} 33. Rf7+ {[%clk 0:01:41]} 1-0
+
+
+
+
+
+[Event "March 4 Early 2025"]
+[Date "2025.03.04"]
+[Round "3"]
+[White "Erigaisi Arjun"]
+[Black "Levitskiy, Andrey"]
+[Result "1-0"]
+[Board "69"]
+[TimeControl "180+1"]
+[WhiteFideId "35009192"]
+[BlackFideId "14132885"]
+[WhiteTitle "GM"]
+[BlackTitle "FM"]
+[WhiteElo "3206"]
+[BlackElo "2701"]
+[WhiteTeam "IND"]
+[BlackTeam "UKR"]
+[WhiteClock "0:01:40"]
+[BlackClock "0:00:02"]
+[Variant "Standard"]
+
+1. d4 {[%clk 0:03:00]}  Nf6 {[%clk 0:02:59]} 2. Nc3 {[%clk 0:03:00]}  d5 {[%clk 0:02:53]} 3. Bf4 {[%clk 0:02:58]}  a6 {[%clk 0:02:53]} 4. e3 {[%clk 0:02:58]}  b5 {[%clk 0:02:52]} 5. h4 {[%clk 0:02:55]}  h5 {[%clk 0:02:53]} 6. Nf3 {[%clk 0:02:54]}  e6 {[%clk 0:02:52]} 7. Bd3 {[%clk 0:02:54]}  Bb7 {[%clk 0:02:47]} 8. Ne2 {[%clk 0:02:52]}  Nbd7 {[%clk 0:02:47]} 9. c3 {[%clk 0:02:52]}  c5 {[%clk 0:02:36]} 10. Ng5 {[%clk 0:02:50]}  Qb6 {[%clk 0:02:05]} 11. a4 {[%clk 0:02:49]}  c4 {[%clk 0:02:01]} 12. Bc2 {[%clk 0:02:47]}  Bd6 {[%clk 0:01:46]} 13. Rh3 {[%clk 0:02:41]}  Qc7 {[%clk 0:01:23]} 14. Kf1 {[%clk 0:02:33]}  Ne4 {[%clk 0:01:05]} 15. Nxe4 {[%clk 0:02:28]}  dxe4 {[%clk 0:01:06]} 16. Rg3 {[%clk 0:02:28]}  g6 {[%clk 0:01:00]} 17. Rg5 {[%clk 0:02:25]}  O-O {[%clk 0:00:31]} 18. Bxd6 {[%clk 0:02:20]}  Qxd6 {[%clk 0:00:31]} 19. Ng3 {[%clk 0:02:21]}  Nf6 {[%clk 0:00:22]} 20. Nxh5 {[%clk 0:02:09]}  Nxh5 {[%clk 0:00:23]} 21. Qxh5 {[%clk 0:02:10]}  Qh2 {[%clk 0:00:17]} 22. Ke2 {[%clk 0:02:08]}  Kg7 {[%clk 0:00:17]} 23. Qg4 {[%clk 0:02:05]}  Rh8 {[%clk 0:00:15]} 24. axb5 {[%clk 0:02:04]}  Rxh4 {[%clk 0:00:11]} 25. Qg3 {[%clk 0:02:01]}  axb5 {[%clk 0:00:12]} 26. Rxa8 {[%clk 0:01:57]}  Bxa8 {[%clk 0:00:12]} 27. Rxb5 {[%clk 0:01:48]}  Qh1 {[%clk 0:00:13]} 28. Qe5+ {[%clk 0:01:44]}  f6 {[%clk 0:00:07]} 29. Qc7+ {[%clk 0:01:43]}  Kh6 {[%clk 0:00:08]} 30. Rb8 {[%clk 0:01:44]}  Bd5 {[%clk 0:00:05]} 31. Rh8+ {[%clk 0:01:41]}  Kg5 {[%clk 0:00:06]} 32. Qg3+ {[%clk 0:01:41]}  Kf5 {[%clk 0:00:02]} 33. Rxh4 {[%clk 0:01:40]} 1-0
+
+
+
+
+
+[Event "March 4 Late 2025"]
+[Date "2025.03.04"]
+[Round "10"]
+[White "Erigaisi Arjun"]
+[Black "Krzyzanowski, Marcin"]
+[Result "1-0"]
+[Board "12"]
+[TimeControl "180+1"]
+[WhiteFideId "35009192"]
+[BlackFideId "1132199"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "3169"]
+[BlackElo "2827"]
+[WhiteTeam "IND"]
+[BlackTeam "POL"]
+[WhiteClock "0:00:47"]
+[BlackClock "0:00:01"]
+[Variant "Standard"]
+
+1. c4 {[%clk 0:03:00]}  e5 {[%clk 0:02:59]} 2. Nf3 {[%clk 0:03:01]}  Nc6 {[%clk 0:02:57]} 3. Nc3 {[%clk 0:03:01]}  Nf6 {[%clk 0:02:56]} 4. d3 {[%clk 0:03:01]}  Bb4 {[%clk 0:02:54]} 5. Bd2 {[%clk 0:03:01]}  O-O {[%clk 0:02:50]} 6. e3 {[%clk 0:03:00]}  Re8 {[%clk 0:02:45]} 7. Be2 {[%clk 0:03:00]}  Bxc3 {[%clk 0:02:45]} 8. Bxc3 {[%clk 0:03:01]}  d5 {[%clk 0:02:46]} 9. cxd5 {[%clk 0:03:00]}  Nxd5 {[%clk 0:02:46]} 10. Rc1 {[%clk 0:03:00]}  Nxc3 {[%clk 0:02:46]} 11. Rxc3 {[%clk 0:03:01]}  Qd6 {[%clk 0:02:42]} 12. O-O {[%clk 0:03:00]}  Bf5 {[%clk 0:02:39]} 13. Qb3 {[%clk 0:02:57]}  Na5 {[%clk 0:02:32]} 14. Qa4 {[%clk 0:02:50]}  b6 {[%clk 0:02:31]} 15. b4 {[%clk 0:02:50]}  Bd7 {[%clk 0:02:28]} 16. Qc2 {[%clk 0:02:43]}  Qxb4 {[%clk 0:02:21]} 17. Rxc7 {[%clk 0:02:43]}  Qd6 {[%clk 0:02:18]} 18. Rc1 {[%clk 0:02:42]}  h6 {[%clk 0:02:12]} 19. d4 {[%clk 0:02:32]}  exd4 {[%clk 0:02:04]} 20. Nxd4 {[%clk 0:02:33]}  Rac8 {[%clk 0:01:58]} 21. Bd3 {[%clk 0:02:21]}  Nc6 {[%clk 0:01:36]} 22. Nb5 {[%clk 0:01:44]}  Qe7 {[%clk 0:01:14]} 23. Rxd7 {[%clk 0:01:44]}  Qxd7 {[%clk 0:01:12]} 24. Bh7+ {[%clk 0:01:45]}  Kh8 {[%clk 0:01:10]} 25. Bf5 {[%clk 0:01:45]}  Qd5 {[%clk 0:00:44]} 26. Bxc8 {[%clk 0:01:44]}  Rxc8 {[%clk 0:00:45]} 27. Qa4 {[%clk 0:01:36]}  Ne7 {[%clk 0:00:39]} 28. Rd1 {[%clk 0:01:29]}  Qc4 {[%clk 0:00:35]} 29. Qxc4 {[%clk 0:01:02]}  Rxc4 {[%clk 0:00:36]} 30. Nd6 {[%clk 0:01:03]}  Rc2 {[%clk 0:00:32]} 31. Nxf7+ {[%clk 0:01:02]}  Kg8 {[%clk 0:00:30]} 32. Ne5 {[%clk 0:01:03]}  Rxa2 {[%clk 0:00:29]} 33. h4 {[%clk 0:01:02]}  Rc2 {[%clk 0:00:22]} 34. Rd7 {[%clk 0:00:51]}  Nf5 {[%clk 0:00:17]} 35. h5 {[%clk 0:00:44]}  Rc8 {[%clk 0:00:16]} 36. g4 {[%clk 0:00:44]}  Nh4 {[%clk 0:00:07]} 37. Kh2 {[%clk 0:00:44]}  Re8 {[%clk 0:00:07]} 38. f4 {[%clk 0:00:44]}  Rxe5 {[%clk 0:00:07]} 39. fxe5 {[%clk 0:00:45]}  Nf3+ {[%clk 0:00:08]} 40. Kg3 {[%clk 0:00:45]}  Nxe5 {[%clk 0:00:09]} 41. Rxa7 {[%clk 0:00:46]}  Nc4 {[%clk 0:00:06]} 42. Kf4 {[%clk 0:00:45]}  b5 {[%clk 0:00:06]} 43. Rb7 {[%clk 0:00:45]}  Nd6 {[%clk 0:00:05]} 44. Rb6 {[%clk 0:00:45]}  Nf7 {[%clk 0:00:02]} 45. Rxb5 {[%clk 0:00:46]}  Kh7 {[%clk 0:00:02]} 46. Rb6 {[%clk 0:00:45]}  Ng5 {[%clk 0:00:02]} 47. e4 {[%clk 0:00:46]}  Nh3+ {[%clk 0:00:03]} 48. Kg3 {[%clk 0:00:47]}  Ng5 {[%clk 0:00:04]} 49. e5 {[%clk 0:00:47]}  Ne4+ {[%clk 0:00:04]} 50. Kf4 {[%clk 0:00:48]}  Nc3 {[%clk 0:00:05]} 51. Kf5 {[%clk 0:00:48]}  Nd5 {[%clk 0:00:05]} 52. Rb7 {[%clk 0:00:48]}  Kg8 {[%clk 0:00:03]} 53. e6 {[%clk 0:00:47]}  Kf8 {[%clk 0:00:04]} 54. Rf7+ {[%clk 0:00:46]}  Kg8 {[%clk 0:00:02]} 55. Kg6 {[%clk 0:00:47]}  Kh8 {[%clk 0:00:01]} 56. Rf8# {[%clk 0:00:47]} 1-0
+
+
+
+
+
+[Event "March 4 Late 2025"]
+[Date "2025.03.04"]
+[Round "8"]
+[White "Erigaisi Arjun"]
+[Black "Kosakowski, Jakub"]
+[Result "1-0"]
+[Board "8"]
+[TimeControl "180+1"]
+[WhiteFideId "35009192"]
+[BlackFideId "1185080"]
+[WhiteTitle "GM"]
+[BlackTitle "IM"]
+[WhiteElo "3175"]
+[BlackElo "2931"]
+[WhiteTeam "IND"]
+[BlackTeam "POL"]
+[WhiteClock "0:00:50"]
+[BlackClock "0:00:00"]
+[Variant "Standard"]
+
+1. d4 {[%clk 0:03:00]}  Nf6 {[%clk 0:02:59]} 2. Nc3 {[%clk 0:03:01]}  d5 {[%clk 0:02:59]} 3. Bf4 {[%clk 0:03:01]}  a6 {[%clk 0:02:59]} 4. e3 {[%clk 0:03:02]}  Bf5 {[%clk 0:02:59]} 5. Bd3 {[%clk 0:02:57]}  Bxd3 {[%clk 0:02:57]} 6. cxd3 {[%clk 0:02:58]}  e6 {[%clk 0:02:55]} 7. Qb3 {[%clk 0:02:58]}  b6 {[%clk 0:02:49]} 8. Nf3 {[%clk 0:02:56]}  Bd6 {[%clk 0:02:48]} 9. Ne5 {[%clk 0:02:56]}  O-O {[%clk 0:02:47]} 10. Bg5 {[%clk 0:02:50]}  Be7 {[%clk 0:02:40]} 11. Rc1 {[%clk 0:02:44]}  Nfd7 {[%clk 0:02:38]} 12. Bxe7 {[%clk 0:02:40]}  Qxe7 {[%clk 0:02:38]} 13. Nf3 {[%clk 0:02:41]}  c5 {[%clk 0:02:33]} 14. dxc5 {[%clk 0:02:35]}  Nxc5 {[%clk 0:02:32]} 15. Qd1 {[%clk 0:02:35]}  Ncd7 {[%clk 0:02:23]} 16. O-O {[%clk 0:02:32]}  Nf6 {[%clk 0:02:18]} 17. Ne2 {[%clk 0:02:02]}  Nbd7 {[%clk 0:02:05]} 18. Qa4 {[%clk 0:02:03]}  Nc5 {[%clk 0:01:59]} 19. Qa3 {[%clk 0:02:02]}  Qb7 {[%clk 0:01:56]} 20. Rc2 {[%clk 0:01:54]}  Rfc8 {[%clk 0:01:49]} 21. Rfc1 {[%clk 0:01:55]}  h6 {[%clk 0:01:42]} 22. Ned4 {[%clk 0:01:46]}  Ncd7 {[%clk 0:01:25]} 23. Nc6 {[%clk 0:01:40]}  Nc5 {[%clk 0:01:22]} 24. Nfe5 {[%clk 0:01:39]}  Re8 {[%clk 0:00:19]} 25. f3 {[%clk 0:01:22]}  a5 {[%clk 0:00:19]} 26. d4 {[%clk 0:01:14]}  Na6 {[%clk 0:00:18]} 27. Qd6 {[%clk 0:01:14]}  Kh8 {[%clk 0:00:06]} 28. a3 {[%clk 0:01:05]}  Kg8 {[%clk 0:00:06]} 29. b4 {[%clk 0:01:05]}  axb4 {[%clk 0:00:06]} 30. axb4 {[%clk 0:01:06]}  Nh7 {[%clk 0:00:05]} 31. b5 {[%clk 0:01:04]}  Nb8 {[%clk 0:00:03]} 32. Nd8 {[%clk 0:01:03]}  Qe7 {[%clk 0:00:00]} 33. Ndxf7 {[%clk 0:00:50]} 1-0
+
+
+
+
+
+[Event "March 11 Late 2025"]
+[Date "2025.03.11"]
+[Round "6"]
+[White "Erigaisi Arjun"]
+[Black "Theodorou, Nikolas"]
+[Result "1-0"]
+[Board "4"]
+[TimeControl "180+1"]
+[WhiteFideId "35009192"]
+[BlackFideId "4262875"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "3193"]
+[BlackElo "3124"]
+[WhiteTeam "IND"]
+[BlackTeam "GRE"]
+[WhiteClock "0:00:58"]
+[BlackClock "0:00:17"]
+[Variant "Standard"]
+
+1. d4 {[%clk 0:03:00]}  Nf6 {[%clk 0:02:36]} 2. Nc3 {[%clk 0:03:01]}  d5 {[%clk 0:02:35]} 3. Bf4 {[%clk 0:03:01]}  g6 {[%clk 0:02:36]} 4. e3 {[%clk 0:03:01]}  Bg7 {[%clk 0:02:37]} 5. h4 {[%clk 0:03:01]}  h5 {[%clk 0:02:37]} 6. Nf3 {[%clk 0:03:01]}  O-O {[%clk 0:02:37]} 7. Ne5 {[%clk 0:03:01]}  c5 {[%clk 0:02:38]} 8. Qd2 {[%clk 0:03:01]}  Nc6 {[%clk 0:02:38]} 9. f3 {[%clk 0:03:00]}  cxd4 {[%clk 0:02:34]} 10. exd4 {[%clk 0:03:01]}  Bf5 {[%clk 0:02:34]} 11. Bb5 {[%clk 0:03:00]}  Nxe5 {[%clk 0:02:32]} 12. dxe5 {[%clk 0:02:40]}  Nd7 {[%clk 0:02:32]} 13. O-O-O {[%clk 0:02:38]}  Nxe5 {[%clk 0:02:29]} 14. Bh6 {[%clk 0:02:34]}  Rc8 {[%clk 0:02:17]} 15. Bxg7 {[%clk 0:02:19]}  Kxg7 {[%clk 0:02:18]} 16. Rhe1 {[%clk 0:02:16]}  f6 {[%clk 0:02:05]} 17. Qxd5 {[%clk 0:02:06]}  Qxd5 {[%clk 0:01:57]} 18. Rxd5 {[%clk 0:02:07]}  Rfd8 {[%clk 0:01:58]} 19. Rxd8 {[%clk 0:02:00]}  Rxd8 {[%clk 0:01:59]} 20. f4 {[%clk 0:02:00]}  Ng4 {[%clk 0:01:45]} 21. Rxe7+ {[%clk 0:01:58]}  Kh6 {[%clk 0:01:46]} 22. Rxb7 {[%clk 0:01:58]}  Ne3 {[%clk 0:01:47]} 23. g3 {[%clk 0:01:46]}  Nxc2 {[%clk 0:01:47]} 24. Rxa7 {[%clk 0:01:46]}  Nd4 {[%clk 0:01:39]} 25. Bc4 {[%clk 0:01:29]}  Re8 {[%clk 0:01:32]} 26. b3 {[%clk 0:01:13]}  Re3 {[%clk 0:01:21]} 27. Nd5 {[%clk 0:01:12]}  Re6 {[%clk 0:01:08]} 28. Ne7 {[%clk 0:01:10]}  Re1+ {[%clk 0:00:58]} 29. Kd2 {[%clk 0:01:10]}  Nf3+ {[%clk 0:00:22]} 30. Kc3 {[%clk 0:01:10]}  Re3+ {[%clk 0:00:23]} 31. Kb4 {[%clk 0:01:10]}  Rxe7 {[%clk 0:00:24]} 32. Rxe7 {[%clk 0:01:11]}  g5 {[%clk 0:00:25]} 33. fxg5+ {[%clk 0:01:08]}  fxg5 {[%clk 0:00:26]} 34. hxg5+ {[%clk 0:01:09]}  Kxg5 {[%clk 0:00:27]} 35. a4 {[%clk 0:01:07]}  Nd4 {[%clk 0:00:27]} 36. Kc5 {[%clk 0:01:07]}  Nf3 {[%clk 0:00:25]} 37. a5 {[%clk 0:01:06]}  Kg4 {[%clk 0:00:25]} 38. Rg7+ {[%clk 0:01:06]}  Ng5 {[%clk 0:00:25]} 39. Be2+ {[%clk 0:01:04]}  Kxg3 {[%clk 0:00:26]} 40. Rxg5+ {[%clk 0:01:04]}  Kf4 {[%clk 0:00:27]} 41. Rxh5 {[%clk 0:01:04]}  Be4 {[%clk 0:00:27]} 42. b4 {[%clk 0:01:04]}  Ke3 {[%clk 0:00:28]} 43. Re5 {[%clk 0:01:04]}  Kf4 {[%clk 0:00:28]} 44. Re7 {[%clk 0:01:04]}  Bg2 {[%clk 0:00:27]} 45. b5 {[%clk 0:01:05]}  Bh1 {[%clk 0:00:28]} 46. a6 {[%clk 0:01:05]}  Bg2 {[%clk 0:00:29]} 47. b6 {[%clk 0:01:06]}  Bh1 {[%clk 0:00:30]} 48. b7 {[%clk 0:01:06]}  Kg5 {[%clk 0:00:29]} 49. a7 {[%clk 0:01:05]}  Be4 {[%clk 0:00:30]} 50. Rxe4 {[%clk 0:01:02]}  Kh6 {[%clk 0:00:30]} 51. a8=Q {[%clk 0:01:00]}  Kg7 {[%clk 0:00:31]} 52. Re7+ {[%clk 0:00:59]}  Kh6 {[%clk 0:00:29]} 53. Qf8+ {[%clk 0:00:58]}  Kg5 {[%clk 0:00:17]} 54. Rg7+ {[%clk 0:00:58]} 1-0
+
+
+
+
+
+[Event "March 11 Late 2025"]
+[Date "2025.03.11"]
+[Round "3"]
+[White "Erigaisi Arjun"]
+[Black "Madaminov, Mukhiddin"]
+[Result "1-0"]
+[Board "3"]
+[TimeControl "180+1"]
+[WhiteFideId "35009192"]
+[BlackFideId "14210703"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "3188"]
+[BlackElo "2937"]
+[WhiteTeam "IND"]
+[BlackTeam "UZB"]
+[WhiteClock "0:00:04"]
+[BlackClock "0:00:01"]
+[Variant "Standard"]
+
+1. d4 {[%clk 0:03:00]}  Nf6 {[%clk 0:03:00]} 2. Bf4 {[%clk 0:03:01]}  d5 {[%clk 0:02:58]} 3. e3 {[%clk 0:03:01]}  c5 {[%clk 0:02:58]} 4. Nc3 {[%clk 0:02:58]}  cxd4 {[%clk 0:02:51]} 5. exd4 {[%clk 0:02:59]}  a6 {[%clk 0:02:51]} 6. Nf3 {[%clk 0:02:58]}  Nc6 {[%clk 0:02:48]} 7. Ne5 {[%clk 0:02:58]}  e6 {[%clk 0:02:47]} 8. Nxc6 {[%clk 0:02:57]}  bxc6 {[%clk 0:02:48]} 9. Na4 {[%clk 0:02:58]}  Bd6 {[%clk 0:02:46]} 10. Bg3 {[%clk 0:02:57]}  O-O {[%clk 0:02:44]} 11. Bd3 {[%clk 0:02:57]}  Re8 {[%clk 0:02:43]} 12. O-O {[%clk 0:02:56]}  e5 {[%clk 0:02:43]} 13. dxe5 {[%clk 0:02:54]}  Bxe5 {[%clk 0:02:44]} 14. Re1 {[%clk 0:02:44]}  Bxg3 {[%clk 0:02:39]} 15. hxg3 {[%clk 0:02:45]}  Ra7 {[%clk 0:02:20]} 16. Nc5 {[%clk 0:02:17]}  Rae7 {[%clk 0:02:17]} 17. Qd2 {[%clk 0:02:17]}  Qb6 {[%clk 0:02:13]} 18. b4 {[%clk 0:02:08]}  a5 {[%clk 0:02:01]} 19. c3 {[%clk 0:02:08]}  Nd7 {[%clk 0:01:39]} 20. Rxe7 {[%clk 0:02:03]}  Rxe7 {[%clk 0:01:40]} 21. Re1 {[%clk 0:02:04]}  Rxe1+ {[%clk 0:01:41]} 22. Qxe1 {[%clk 0:02:05]}  Kf8 {[%clk 0:01:40]} 23. Na4 {[%clk 0:01:28]}  Qa7 {[%clk 0:01:39]} 24. Bc2 {[%clk 0:01:28]}  Ba6 {[%clk 0:01:34]} 25. Nb2 {[%clk 0:01:22]}  axb4 {[%clk 0:01:29]} 26. cxb4 {[%clk 0:01:23]}  Qd4 {[%clk 0:01:30]} 27. Nd1 {[%clk 0:01:16]}  c5 {[%clk 0:01:05]} 28. bxc5 {[%clk 0:01:02]}  Qxc5 {[%clk 0:01:06]} 29. Ba4 {[%clk 0:01:00]}  Nf6 {[%clk 0:01:01]} 30. Qe5 {[%clk 0:00:55]}  Qb6 {[%clk 0:00:53]} 31. Bb3 {[%clk 0:00:37]}  Bc4 {[%clk 0:00:46]} 32. Bxc4 {[%clk 0:00:19]}  dxc4 {[%clk 0:00:47]} 33. Ne3 {[%clk 0:00:17]}  g6 {[%clk 0:00:33]} 34. a4 {[%clk 0:00:12]}  Qc6 {[%clk 0:00:04]} 35. g4 {[%clk 0:00:08]}  h6 {[%clk 0:00:02]} 36. a5 {[%clk 0:00:06]}  c3 {[%clk 0:00:02]} 37. f3 {[%clk 0:00:04]}  Kg7 {[%clk 0:00:02]} 38. Nc2 {[%clk 0:00:03]}  Qa4 {[%clk 0:00:02]} 39. Qxc3 {[%clk 0:00:03]}  Qa2 {[%clk 0:00:01]} 40. Ne3 {[%clk 0:00:03]}  Qa4 {[%clk 0:00:01]} 41. Kh2 {[%clk 0:00:03]}  Qd7 {[%clk 0:00:01]} 42. Qe5 {[%clk 0:00:03]}  Qc6 {[%clk 0:00:01]} 43. g5 {[%clk 0:00:03]}  hxg5 {[%clk 0:00:01]} 44. Ng4 {[%clk 0:00:04]}  Kf8 {[%clk 0:00:02]} 45. Nxf6 {[%clk 0:00:04]}  g4 {[%clk 0:00:02]} 46. Qe8+ {[%clk 0:00:04]}  Kg7 {[%clk 0:00:01]} 47. Qxc6 {[%clk 0:00:04]} 1-0
+
+
+
+
+
+[Event "March 11 Late 2025"]
+[Date "2025.03.11"]
+[Round "1"]
+[White "Erigaisi Arjun"]
+[Black "Kozlov, Gennady"]
+[Result "1-0"]
+[Board "3"]
+[TimeControl "180+1"]
+[WhiteFideId "35009192"]
+[BlackFideId "4191668"]
+[WhiteTitle "GM"]
+[BlackTitle "FM"]
+[WhiteElo "3185"]
+[BlackElo "2604"]
+[WhiteTeam "IND"]
+[BlackTeam "ESP"]
+[WhiteClock "0:00:07"]
+[BlackClock "0:00:15"]
+[Variant "Standard"]
+
+1. c4 {[%clk 0:02:58]}  e5 {[%clk 0:02:59]} 2. d3 {[%clk 0:02:58]}  Nc6 {[%clk 0:02:59]} 3. a3 {[%clk 0:02:57]}  a5 {[%clk 0:02:57]} 4. Nf3 {[%clk 0:02:57]}  g6 {[%clk 0:02:57]} 5. g3 {[%clk 0:02:54]}  Bg7 {[%clk 0:02:57]} 6. Bg2 {[%clk 0:02:54]}  d6 {[%clk 0:02:58]} 7. O-O {[%clk 0:02:54]}  Be6 {[%clk 0:02:56]} 8. Nc3 {[%clk 0:02:53]}  Qd7 {[%clk 0:02:55]} 9. Nd5 {[%clk 0:02:52]}  Nge7 {[%clk 0:02:54]} 10. Nxe7 {[%clk 0:02:47]}  Qxe7 {[%clk 0:02:51]} 11. Rb1 {[%clk 0:02:40]}  O-O {[%clk 0:02:43]} 12. b4 {[%clk 0:02:40]}  axb4 {[%clk 0:02:42]} 13. axb4 {[%clk 0:02:41]}  Rae8 {[%clk 0:02:42]} 14. b5 {[%clk 0:02:39]}  Nd8 {[%clk 0:02:41]} 15. Qc2 {[%clk 0:02:31]}  h6 {[%clk 0:02:36]} 16. Bb2 {[%clk 0:02:15]}  f5 {[%clk 0:02:35]} 17. Ra1 {[%clk 0:02:16]}  g5 {[%clk 0:02:22]} 18. Ra7 {[%clk 0:02:07]}  Bc8 {[%clk 0:02:13]} 19. Nd2 {[%clk 0:01:43]}  f4 {[%clk 0:02:04]} 20. Ba3 {[%clk 0:01:36]}  b6 {[%clk 0:01:51]} 21. Ne4 {[%clk 0:01:34]}  Nf7 {[%clk 0:01:45]} 22. Nc3 {[%clk 0:01:33]}  Be6 {[%clk 0:01:43]} 23. Nd5 {[%clk 0:01:33]}  Bxd5 {[%clk 0:01:42]} 24. cxd5 {[%clk 0:01:34]}  g4 {[%clk 0:01:33]} 25. Rxc7 {[%clk 0:01:12]}  Qf6 {[%clk 0:01:28]} 26. Be4 {[%clk 0:00:47]}  Ng5 {[%clk 0:01:20]} 27. Rc6 {[%clk 0:00:41]}  Rd8 {[%clk 0:01:19]} 28. Rxb6 {[%clk 0:00:38]}  f3 {[%clk 0:01:18]} 29. h4 {[%clk 0:00:23]}  gxh3 {[%clk 0:00:59]} 30. Kh2 {[%clk 0:00:23]}  h5 {[%clk 0:00:55]} 31. Bc1 {[%clk 0:00:20]}  Nxe4 {[%clk 0:00:52]} 32. dxe4 {[%clk 0:00:20]}  h4 {[%clk 0:00:52]} 33. g4 {[%clk 0:00:17]}  Qg6 {[%clk 0:00:46]} 34. g5 {[%clk 0:00:14]}  Qh5 {[%clk 0:00:41]} 35. e3 {[%clk 0:00:12]}  Qxg5 {[%clk 0:00:36]} 36. Rg1 {[%clk 0:00:13]}  Qg2+ {[%clk 0:00:29]} 37. Rxg2 {[%clk 0:00:13]}  fxg2 {[%clk 0:00:29]} 38. Qe2 {[%clk 0:00:09]}  Rde8 {[%clk 0:00:19]} 39. Rb7 {[%clk 0:00:07]}  Rf6 {[%clk 0:00:20]} 40. Qg4 {[%clk 0:00:07]}  Rf7 {[%clk 0:00:21]} 41. Rxf7 {[%clk 0:00:06]}  Kxf7 {[%clk 0:00:21]} 42. Qxh3 {[%clk 0:00:07]}  Rb8 {[%clk 0:00:15]} 43. Qe6+ {[%clk 0:00:07]} 1-0
+
+
+
+
+
+[Event "March 11 Early 2025"]
+[Date "2025.03.11"]
+[Round "6"]
+[White "Erigaisi Arjun"]
+[Black "Klukin, Kirill"]
+[Result "1-0"]
+[Board "11"]
+[TimeControl "180+1"]
+[WhiteFideId "35009192"]
+[BlackFideId "24199273"]
+[WhiteTitle "GM"]
+[BlackTitle "IM"]
+[WhiteElo "3170"]
+[BlackElo "2925"]
+[WhiteTeam "IND"]
+[BlackTeam "FID"]
+[WhiteClock "0:00:09"]
+[BlackClock "0:00:00"]
+[Variant "Standard"]
+
+1. Nf3 {[%clk 0:03:00]}  c5 {[%clk 0:02:59]} 2. e4 {[%clk 0:02:59]}  g6 {[%clk 0:02:59]} 3. c3 {[%clk 0:02:55]}  Bg7 {[%clk 0:02:58]} 4. d4 {[%clk 0:02:55]}  cxd4 {[%clk 0:02:59]} 5. cxd4 {[%clk 0:02:55]}  d5 {[%clk 0:03:00]} 6. e5 {[%clk 0:02:53]}  a6 {[%clk 0:03:00]} 7. h3 {[%clk 0:02:52]}  Nc6 {[%clk 0:03:00]} 8. Nc3 {[%clk 0:02:49]}  f6 {[%clk 0:03:01]} 9. exf6 {[%clk 0:02:45]}  Nxf6 {[%clk 0:03:02]} 10. Be2 {[%clk 0:02:45]}  O-O {[%clk 0:03:01]} 11. O-O {[%clk 0:02:46]}  Nh5 {[%clk 0:03:00]} 12. Re1 {[%clk 0:02:32]}  Nf4 {[%clk 0:03:00]} 13. Bf1 {[%clk 0:02:32]}  Qd6 {[%clk 0:02:57]} 14. Be3 {[%clk 0:02:26]}  Bd7 {[%clk 0:02:51]} 15. Na4 {[%clk 0:02:01]}  Rae8 {[%clk 0:02:35]} 16. Nb6 {[%clk 0:01:57]}  Bf5 {[%clk 0:02:14]} 17. Bxf4 {[%clk 0:01:36]}  Qxf4 {[%clk 0:02:14]} 18. Nxd5 {[%clk 0:01:36]}  Qd6 {[%clk 0:02:15]} 19. Ne3 {[%clk 0:01:16]}  Nxd4 {[%clk 0:02:12]} 20. Nxf5 {[%clk 0:01:16]}  Rxf5 {[%clk 0:02:07]} 21. Nd2 {[%clk 0:01:16]}  Ref8 {[%clk 0:02:00]} 22. Ne4 {[%clk 0:01:16]}  Qb6 {[%clk 0:02:01]} 23. Qd2 {[%clk 0:01:12]}  Rd8 {[%clk 0:01:50]} 24. Bd3 {[%clk 0:01:06]}  Kh8 {[%clk 0:01:30]} 25. Rad1 {[%clk 0:01:07]}  Rf3 {[%clk 0:01:25]} 26. Ng5 {[%clk 0:01:01]}  Rff8 {[%clk 0:01:22]} 27. Rxe7 {[%clk 0:00:57]}  Qf6 {[%clk 0:00:40]} 28. Rxb7 {[%clk 0:00:57]}  h6 {[%clk 0:00:39]} 29. Ne4 {[%clk 0:00:56]}  Qh4 {[%clk 0:00:40]} 30. Qe3 {[%clk 0:00:49]}  Nf5 {[%clk 0:00:38]} 31. Qa7 {[%clk 0:00:45]}  Ra8 {[%clk 0:00:29]} 32. Qb6 {[%clk 0:00:42]}  Qh5 {[%clk 0:00:28]} 33. Rc1 {[%clk 0:00:38]}  Bd4 {[%clk 0:00:28]} 34. Qc7 {[%clk 0:00:35]}  Ng7 {[%clk 0:00:26]} 35. Qg3 {[%clk 0:00:22]}  Rae8 {[%clk 0:00:25]} 36. Qg4 {[%clk 0:00:19]}  Qd5 {[%clk 0:00:15]} 37. Qxg6 {[%clk 0:00:19]}  Qxb7 {[%clk 0:00:15]} 38. Qxh6+ {[%clk 0:00:09]}  Kg8 {[%clk 0:00:14]} 39. Bc4+ {[%clk 0:00:10]}  Rf7 {[%clk 0:00:13]} 40. Nd6 {[%clk 0:00:10]}  Qxb2 {[%clk 0:00:05]} 41. Bxf7+ {[%clk 0:00:10]}  Kf8 {[%clk 0:00:05]} 42. Bxe8 {[%clk 0:00:08]}  Qxf2+ {[%clk 0:00:00]} 43. Kh1 {[%clk 0:00:09]} 1-0
+
+
+
+
+
+[Event "March 11 Early 2025"]
+[Date "2025.03.11"]
+[Round "7"]
+[White "Erigaisi Arjun"]
+[Black "Svane, Rasmus"]
+[Result "1-0"]
+[Board "8"]
+[TimeControl "180+1"]
+[WhiteFideId "35009192"]
+[BlackFideId "4657101"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "3173"]
+[BlackElo "2996"]
+[WhiteTeam "IND"]
+[BlackTeam "GER"]
+[WhiteClock "0:00:32"]
+[BlackClock "0:00:00"]
+[Variant "Standard"]
+
+1. d4 {[%clk 0:03:00]}  d5 {[%clk 0:02:58]} 2. Nc3 {[%clk 0:03:00]}  Nf6 {[%clk 0:02:58]} 3. Bf4 {[%clk 0:03:01]}  c6 {[%clk 0:02:58]} 4. e3 {[%clk 0:03:00]}  Bf5 {[%clk 0:02:58]} 5. f3 {[%clk 0:03:01]}  h5 {[%clk 0:02:53]} 6. Bd3 {[%clk 0:03:00]}  e6 {[%clk 0:02:53]} 7. Bxf5 {[%clk 0:02:51]}  exf5 {[%clk 0:02:54]} 8. Qd3 {[%clk 0:02:52]}  g6 {[%clk 0:02:50]} 9. Nge2 {[%clk 0:02:50]}  Bd6 {[%clk 0:02:35]} 10. Bg5 {[%clk 0:02:46]}  Be7 {[%clk 0:02:29]} 11. Bxf6 {[%clk 0:02:29]}  Bxf6 {[%clk 0:02:29]} 12. e4 {[%clk 0:02:30]}  fxe4 {[%clk 0:02:04]} 13. fxe4 {[%clk 0:02:31]}  dxe4 {[%clk 0:02:04]} 14. Nxe4 {[%clk 0:02:32]}  O-O {[%clk 0:02:04]} 15. O-O-O {[%clk 0:02:32]}  Bg7 {[%clk 0:01:59]} 16. g4 {[%clk 0:02:17]}  h4 {[%clk 0:01:17]} 17. g5 {[%clk 0:02:17]}  Qa5 {[%clk 0:01:16]} 18. a3 {[%clk 0:02:10]}  Nd7 {[%clk 0:01:07]} 19. Rdf1 {[%clk 0:02:05]}  Rae8 {[%clk 0:00:55]} 20. Rf4 {[%clk 0:02:02]}  c5 {[%clk 0:00:53]} 21. Qh3 {[%clk 0:01:53]}  Qc7 {[%clk 0:00:42]} 22. d5 {[%clk 0:01:36]}  f5 {[%clk 0:00:34]} 23. gxf6 {[%clk 0:01:21]}  Bh6 {[%clk 0:00:22]} 24. Qg4 {[%clk 0:00:56]}  Rxf6 {[%clk 0:00:08]} 25. Nxf6+ {[%clk 0:00:34]}  Nxf6 {[%clk 0:00:08]} 26. Qxg6+ {[%clk 0:00:35]}  Qg7 {[%clk 0:00:00]} 27. Rg1 {[%clk 0:00:32]} 1-0
+
+
+
+
+
+[Event "March 11 Early 2025"]
+[Date "2025.03.11"]
+[Round "4"]
+[White "Erigaisi Arjun"]
+[Black "Shuvalova, Polina"]
+[Result "1-0"]
+[Board "28"]
+[TimeControl "180+1"]
+[WhiteFideId "35009192"]
+[BlackFideId "24171760"]
+[WhiteTitle "GM"]
+[BlackTitle "IM"]
+[WhiteElo "3166"]
+[BlackElo "2779"]
+[WhiteTeam "IND"]
+[BlackTeam "FID"]
+[WhiteClock "0:01:15"]
+[BlackClock "0:00:17"]
+[Variant "Standard"]
+
+1. b3 {[%clk 0:03:00]}  Nf6 {[%clk 0:02:47]} 2. Bb2 {[%clk 0:03:01]}  d5 {[%clk 0:02:47]} 3. Nf3 {[%clk 0:03:01]}  e6 {[%clk 0:02:46]} 4. e3 {[%clk 0:03:01]}  Be7 {[%clk 0:02:47]} 5. Be2 {[%clk 0:02:53]}  O-O {[%clk 0:02:46]} 6. O-O {[%clk 0:02:53]}  c5 {[%clk 0:02:46]} 7. Ne5 {[%clk 0:02:53]}  b6 {[%clk 0:02:44]} 8. f4 {[%clk 0:02:52]}  Bb7 {[%clk 0:02:44]} 9. d3 {[%clk 0:02:47]}  Bc6 {[%clk 0:02:43]} 10. Nd2 {[%clk 0:02:46]}  Bb7 {[%clk 0:02:38]} 11. Qe1 {[%clk 0:02:45]}  Nbd7 {[%clk 0:02:29]} 12. Qg3 {[%clk 0:02:34]}  Ne8 {[%clk 0:02:21]} 13. Qh3 {[%clk 0:02:30]}  Rc8 {[%clk 0:02:04]} 14. Bg4 {[%clk 0:02:23]}  Nc7 {[%clk 0:01:25]} 15. Nxd7 {[%clk 0:02:17]}  Qxd7 {[%clk 0:01:25]} 16. f5 {[%clk 0:02:18]}  d4 {[%clk 0:01:18]} 17. exd4 {[%clk 0:02:03]}  cxd4 {[%clk 0:01:17]} 18. Rae1 {[%clk 0:02:03]}  Bf6 {[%clk 0:01:10]} 19. fxe6 {[%clk 0:02:00]}  fxe6 {[%clk 0:01:05]} 20. Rxe6 {[%clk 0:02:01]}  Qd5 {[%clk 0:00:55]} 21. Rexf6 {[%clk 0:01:34]}  gxf6 {[%clk 0:00:49]} 22. Bf3 {[%clk 0:01:26]}  Qg5 {[%clk 0:00:32]} 23. Bxb7 {[%clk 0:01:26]}  Rb8 {[%clk 0:00:32]} 24. Ne4 {[%clk 0:01:25]}  Qg7 {[%clk 0:00:17]} 25. Bxd4 {[%clk 0:01:15]} 1-0
+
+
+
+
+
+[Event "March 11 Late 2025"]
+[Date "2025.03.11"]
+[Round "8"]
+[White "Erigaisi Arjun"]
+[Black "Paravyan, David"]
+[Result "1-0"]
+[Board "8"]
+[TimeControl "180+1"]
+[WhiteFideId "35009192"]
+[BlackFideId "4194985"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "3189"]
+[BlackElo "3059"]
+[WhiteTeam "IND"]
+[BlackTeam "FID"]
+[WhiteClock "0:00:47"]
+[BlackClock "0:00:00"]
+[Variant "Standard"]
+
+1. d4 {[%clk 0:03:00]}  d5 {[%clk 0:02:59]} 2. Bf4 {[%clk 0:02:59]}  Bf5 {[%clk 0:02:58]} 3. e3 {[%clk 0:02:59]}  e6 {[%clk 0:02:58]} 4. c4 {[%clk 0:02:58]}  Nf6 {[%clk 0:02:56]} 5. Nc3 {[%clk 0:02:58]}  Bb4 {[%clk 0:02:32]} 6. Qb3 {[%clk 0:02:57]}  c5 {[%clk 0:02:28]} 7. dxc5 {[%clk 0:02:50]}  Nc6 {[%clk 0:02:29]} 8. a3 {[%clk 0:02:30]}  Qa5 {[%clk 0:01:38]} 9. Rc1 {[%clk 0:02:22]}  Bxc3+ {[%clk 0:01:38]} 10. Qxc3 {[%clk 0:02:21]}  Qxc3+ {[%clk 0:01:37]} 11. Rxc3 {[%clk 0:02:22]}  e5 {[%clk 0:01:33]} 12. Bg3 {[%clk 0:02:18]}  d4 {[%clk 0:01:30]} 13. Rc1 {[%clk 0:02:12]}  a5 {[%clk 0:00:32]} 14. Nf3 {[%clk 0:02:10]}  Nd7 {[%clk 0:00:32]} 15. exd4 {[%clk 0:02:07]}  exd4 {[%clk 0:00:31]} 16. Bd6 {[%clk 0:02:08]}  O-O-O {[%clk 0:00:20]} 17. Kd2 {[%clk 0:02:08]}  d3 {[%clk 0:00:16]} 18. Rc3 {[%clk 0:01:53]}  Nf6 {[%clk 0:00:16]} 19. Bxd3 {[%clk 0:01:53]}  Bxd3 {[%clk 0:00:05]} 20. Kxd3 {[%clk 0:01:30]}  Rhe8 {[%clk 0:00:05]} 21. Re1 {[%clk 0:01:21]}  Rxe1 {[%clk 0:00:05]} 22. Nxe1 {[%clk 0:01:22]}  Ne5+ {[%clk 0:00:02]} 23. Kc2 {[%clk 0:01:18]}  Nc6 {[%clk 0:00:01]} 24. Rd3 {[%clk 0:01:07]}  Ne4 {[%clk 0:00:01]} 25. f3 {[%clk 0:01:07]}  Nxd6 {[%clk 0:00:02]} 26. cxd6 {[%clk 0:01:07]}  Kd7 {[%clk 0:00:02]} 27. c5 {[%clk 0:01:02]}  Re8 {[%clk 0:00:01]} 28. Kd2 {[%clk 0:00:57]}  Re5 {[%clk 0:00:01]} 29. Rc3 {[%clk 0:00:58]}  Rd5+ {[%clk 0:00:01]} 30. Nd3 {[%clk 0:00:58]}  Ne5 {[%clk 0:00:02]} 31. b4 {[%clk 0:00:58]}  axb4 {[%clk 0:00:01]} 32. axb4 {[%clk 0:00:59]}  b6 {[%clk 0:00:01]} 33. Kc2 {[%clk 0:00:52]}  bxc5 {[%clk 0:00:01]} 34. Nxe5+ {[%clk 0:00:53]}  Rxe5 {[%clk 0:00:01]} 35. bxc5 {[%clk 0:00:53]}  Kc6 {[%clk 0:00:02]} 36. Kd2 {[%clk 0:00:52]}  Re8 {[%clk 0:00:01]} 37. Kd3 {[%clk 0:00:51]}  f6 {[%clk 0:00:01]} 38. Kd4 {[%clk 0:00:50]}  Re5 {[%clk 0:00:02]} 39. f4 {[%clk 0:00:50]}  Rd5+ {[%clk 0:00:02]} 40. Ke3 {[%clk 0:00:50]}  Rf5 {[%clk 0:00:01]} 41. g4 {[%clk 0:00:47]}  Rd5 {[%clk 0:00:00]} 42. Rd3 {[%clk 0:00:47]} 1-0
+
+
+
+
+
+[Event "March 18 Early 2025"]
+[Date "2025.03.18"]
+[Round "1"]
+[White "Erigaisi Arjun"]
+[Black "Kreken, Eivind Grunt"]
+[Result "1-0"]
+[Board "3"]
+[TimeControl "180+1"]
+[WhiteFideId "35009192"]
+[BlackFideId "1532359"]
+[WhiteTitle "GM"]
+[BlackTitle "FM"]
+[WhiteElo "3207"]
+[BlackElo "2601"]
+[WhiteTeam "IND"]
+[BlackTeam "NOR"]
+[WhiteClock "0:01:47"]
+[BlackClock "0:00:36"]
+[Variant "Standard"]
+
+1. c4 {[%clk 0:03:00]}  e6 {[%clk 0:02:59]} 2. Nf3 {[%clk 0:02:59]}  d5 {[%clk 0:03:00]} 3. e3 {[%clk 0:03:00]}  c5 {[%clk 0:02:58]} 4. d4 {[%clk 0:02:56]}  Nf6 {[%clk 0:02:58]} 5. a3 {[%clk 0:02:52]}  a6 {[%clk 0:02:51]} 6. dxc5 {[%clk 0:02:51]}  Bxc5 {[%clk 0:02:52]} 7. b4 {[%clk 0:02:52]}  Ba7 {[%clk 0:02:51]} 8. Bb2 {[%clk 0:02:52]}  Nc6 {[%clk 0:02:51]} 9. Nbd2 {[%clk 0:02:49]}  O-O {[%clk 0:02:51]} 10. Rc1 {[%clk 0:02:43]}  Qe7 {[%clk 0:02:50]} 11. Bd3 {[%clk 0:02:38]}  dxc4 {[%clk 0:02:37]} 12. Nxc4 {[%clk 0:02:38]}  b5 {[%clk 0:02:35]} 13. Nd6 {[%clk 0:02:29]}  Bd7 {[%clk 0:02:28]} 14. Bxf6 {[%clk 0:02:17]}  gxf6 {[%clk 0:02:10]} 15. Be4 {[%clk 0:02:16]}  Ne5 {[%clk 0:01:24]} 16. Nxe5 {[%clk 0:02:10]}  fxe5 {[%clk 0:01:25]} 17. Bxa8 {[%clk 0:01:58]}  Rxa8 {[%clk 0:01:26]} 18. Rc7 {[%clk 0:01:55]}  Bb8 {[%clk 0:00:49]} 19. Nc8 {[%clk 0:01:54]}  Qg5 {[%clk 0:00:40]} 20. Rxd7 {[%clk 0:01:50]}  Qxg2 {[%clk 0:00:36]} 21. Rf1 {[%clk 0:01:47]} 1-0
+
+
+
+
+
+[Event "March 18 Late 2025"]
+[Date "2025.03.18"]
+[Round "6"]
+[White "Erigaisi Arjun"]
+[Black "Salimiyan, Behzad"]
+[Result "1-0"]
+[Board "7"]
+[TimeControl "180+1"]
+[WhiteFideId "35009192"]
+[BlackFideId "32718136"]
+[WhiteTitle "GM"]
+[BlackTitle "CM"]
+[WhiteElo "3144"]
+[BlackElo "2746"]
+[WhiteTeam "IND"]
+[BlackTeam "IRI"]
+[WhiteClock "0:00:18"]
+[BlackClock "0:01:24"]
+[Variant "Standard"]
+
+1. d4 {[%clk 0:03:00]}  Nf6 {[%clk 0:02:58]} 2. Nc3 {[%clk 0:03:01]}  d5 {[%clk 0:02:58]} 3. Bf4 {[%clk 0:03:01]}  e6 {[%clk 0:02:57]} 4. Nb5 {[%clk 0:03:01]}  Bb4+ {[%clk 0:02:57]} 5. c3 {[%clk 0:03:00]}  Ba5 {[%clk 0:02:58]} 6. e3 {[%clk 0:03:00]}  a6 {[%clk 0:02:56]} 7. Na3 {[%clk 0:03:00]}  O-O {[%clk 0:02:53]} 8. Nf3 {[%clk 0:03:00]}  Nbd7 {[%clk 0:02:51]} 9. Be2 {[%clk 0:02:59]}  c5 {[%clk 0:02:49]} 10. dxc5 {[%clk 0:03:00]}  Nxc5 {[%clk 0:02:33]} 11. b4 {[%clk 0:02:58]}  Nce4 {[%clk 0:02:34]} 12. bxa5 {[%clk 0:02:55]}  Nxc3 {[%clk 0:02:34]} 13. Qb3 {[%clk 0:02:29]}  Nfe4 {[%clk 0:02:32]} 14. Qb4 {[%clk 0:01:56]}  b5 {[%clk 0:02:25]} 15. Bd3 {[%clk 0:01:48]}  f6 {[%clk 0:02:22]} 16. Bxe4 {[%clk 0:01:41]}  dxe4 {[%clk 0:02:18]} 17. Qxc3 {[%clk 0:01:31]}  exf3 {[%clk 0:02:18]} 18. gxf3 {[%clk 0:01:32]}  Bb7 {[%clk 0:02:16]} 19. Rd1 {[%clk 0:01:23]}  Qe8 {[%clk 0:02:05]} 20. e4 {[%clk 0:01:19]}  Qh5 {[%clk 0:02:04]} 21. Rd7 {[%clk 0:01:07]}  Rac8 {[%clk 0:02:01]} 22. Qb3 {[%clk 0:01:07]}  Bc6 {[%clk 0:01:58]} 23. Re7 {[%clk 0:01:00]}  Kh8 {[%clk 0:01:51]} 24. Rg1 {[%clk 0:00:54]}  e5 {[%clk 0:01:42]} 25. Bd2 {[%clk 0:00:38]}  Rg8 {[%clk 0:01:40]} 26. Nc2 {[%clk 0:00:30]}  Qxh2 {[%clk 0:01:33]} 27. Rg3 {[%clk 0:00:29]}  Qh1+ {[%clk 0:01:29]} 28. Ke2 {[%clk 0:00:29]}  b4 {[%clk 0:01:29]} 29. a4 {[%clk 0:00:20]}  bxa3 {[%clk 0:01:26]} 30. Nxa3 {[%clk 0:00:20]}  Rb8 {[%clk 0:01:24]} 31. Qf7 {[%clk 0:00:18]} 1-0
+
+
+
+
+
+[Event "March 18 Late 2025"]
+[Date "2025.03.18"]
+[Round "2"]
+[White "Erigaisi Arjun"]
+[Black "George, Kevin"]
+[Result "1-0"]
+[Board "6"]
+[TimeControl "180+1"]
+[WhiteFideId "35009192"]
+[BlackFideId "10669515"]
+[WhiteTitle "GM"]
+[BlackTitle "IM"]
+[WhiteElo "3152"]
+[BlackElo "2710"]
+[WhiteTeam "IND"]
+[BlackTeam "EGY"]
+[WhiteClock "0:01:36"]
+[BlackClock "0:00:02"]
+[Variant "Standard"]
+
+1. d4 {[%clk 0:03:00]}  Nf6 {[%clk 0:03:00]} 2. Nc3 {[%clk 0:02:55]}  d5 {[%clk 0:02:59]} 3. Bf4 {[%clk 0:02:55]}  c5 {[%clk 0:02:59]} 4. e3 {[%clk 0:02:56]}  cxd4 {[%clk 0:02:55]} 5. exd4 {[%clk 0:02:57]}  Bg4 {[%clk 0:02:55]} 6. Be2 {[%clk 0:02:57]}  Bxe2 {[%clk 0:02:55]} 7. Qxe2 {[%clk 0:02:57]}  Nc6 {[%clk 0:02:55]} 8. Nb5 {[%clk 0:02:55]}  Rc8 {[%clk 0:02:52]} 9. Nd6+ {[%clk 0:02:54]}  Kd7 {[%clk 0:02:51]} 10. Nxc8 {[%clk 0:02:42]}  Qxc8 {[%clk 0:02:49]} 11. Nf3 {[%clk 0:02:41]}  e6 {[%clk 0:02:48]} 12. O-O {[%clk 0:02:40]}  Be7 {[%clk 0:02:47]} 13. Rac1 {[%clk 0:02:36]}  Rd8 {[%clk 0:02:36]} 14. c4 {[%clk 0:02:34]}  Ke8 {[%clk 0:02:31]} 15. c5 {[%clk 0:02:32]}  Ne4 {[%clk 0:02:29]} 16. a3 {[%clk 0:02:30]}  g5 {[%clk 0:02:26]} 17. Be3 {[%clk 0:02:30]}  f5 {[%clk 0:02:21]} 18. b4 {[%clk 0:02:25]}  a6 {[%clk 0:02:19]} 19. Nd2 {[%clk 0:02:19]}  f4 {[%clk 0:02:18]} 20. Nxe4 {[%clk 0:02:19]}  dxe4 {[%clk 0:02:07]} 21. Bd2 {[%clk 0:02:20]}  Nxd4 {[%clk 0:01:59]} 22. Qxe4 {[%clk 0:02:18]}  Nb3 {[%clk 0:01:56]} 23. Bc3 {[%clk 0:02:13]}  Nxc1 {[%clk 0:01:55]} 24. Rxc1 {[%clk 0:02:14]}  Qd7 {[%clk 0:01:03]} 25. Re1 {[%clk 0:02:13]}  Qd5 {[%clk 0:00:45]} 26. Qxh7 {[%clk 0:02:12]}  f3 {[%clk 0:00:44]} 27. gxf3 {[%clk 0:02:06]}  Kd7 {[%clk 0:00:25]} 28. Qe4 {[%clk 0:02:01]}  Rf8 {[%clk 0:00:23]} 29. Kg2 {[%clk 0:01:56]}  a5 {[%clk 0:00:20]} 30. Re3 {[%clk 0:01:45]}  Qxe4 {[%clk 0:00:15]} 31. Rxe4 {[%clk 0:01:46]}  axb4 {[%clk 0:00:15]} 32. axb4 {[%clk 0:01:47]}  Ra8 {[%clk 0:00:12]} 33. f4 {[%clk 0:01:41]}  Ra3 {[%clk 0:00:11]} 34. Bd4 {[%clk 0:01:41]}  Rb3 {[%clk 0:00:08]} 35. Be3 {[%clk 0:01:41]}  gxf4 {[%clk 0:00:06]} 36. Rxf4 {[%clk 0:01:42]}  Kc6 {[%clk 0:00:03]} 37. h4 {[%clk 0:01:41]}  e5 {[%clk 0:00:02]} 38. Rg4 {[%clk 0:01:40]}  Kb5 {[%clk 0:00:02]} 39. h5 {[%clk 0:01:34]}  Rxb4 {[%clk 0:00:03]} 40. Rg7 {[%clk 0:01:34]}  Bxc5 {[%clk 0:00:02]} 41. Rxb7+ {[%clk 0:01:35]}  Kc4 {[%clk 0:00:02]} 42. Rc7 {[%clk 0:01:35]}  Rb5 {[%clk 0:00:02]} 43. h6 {[%clk 0:01:34]}  Kd5 {[%clk 0:00:02]} 44. Rxc5+ {[%clk 0:01:34]}  Rxc5 {[%clk 0:00:03]} 45. Bxc5 {[%clk 0:01:35]}  Kxc5 {[%clk 0:00:02]} 46. h7 {[%clk 0:01:36]} 1-0
+
+
+
+
+
+[Event "March 18 Early 2025"]
+[Date "2025.03.18"]
+[Round "10"]
+[White "Erigaisi Arjun"]
+[Black "Janik, Igor"]
+[Result "1-0"]
+[Board "37"]
+[TimeControl "180+1"]
+[WhiteFideId "35009192"]
+[BlackFideId "1159259"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "3163"]
+[BlackElo "2830"]
+[WhiteTeam "IND"]
+[BlackTeam "POL"]
+[WhiteClock "0:00:57"]
+[BlackClock "0:00:01"]
+[Variant "Standard"]
+
+1. b3 {[%clk 0:02:57]}  e5 {[%clk 0:02:56]} 2. Bb2 {[%clk 0:02:58]}  Nc6 {[%clk 0:02:53]} 3. e3 {[%clk 0:02:59]}  g6 {[%clk 0:02:53]} 4. c4 {[%clk 0:02:59]}  Bg7 {[%clk 0:02:53]} 5. Nf3 {[%clk 0:03:00]}  d6 {[%clk 0:02:52]} 6. d4 {[%clk 0:03:01]}  Nge7 {[%clk 0:02:48]} 7. Be2 {[%clk 0:03:00]}  O-O {[%clk 0:02:48]} 8. O-O {[%clk 0:03:00]}  Bg4 {[%clk 0:02:44]} 9. d5 {[%clk 0:02:57]}  Nb8 {[%clk 0:02:43]} 10. Nc3 {[%clk 0:02:56]}  a5 {[%clk 0:02:31]} 11. a3 {[%clk 0:02:52]}  Na6 {[%clk 0:02:31]} 12. Nb5 {[%clk 0:02:47]}  Bd7 {[%clk 0:02:24]} 13. Qd2 {[%clk 0:02:46]}  Nc5 {[%clk 0:02:21]} 14. Bd1 {[%clk 0:02:44]}  f5 {[%clk 0:02:00]} 15. Bc2 {[%clk 0:02:42]}  h6 {[%clk 0:01:46]} 16. b4 {[%clk 0:02:41]}  Ne4 {[%clk 0:01:40]} 17. Qe2 {[%clk 0:02:42]}  Kh7 {[%clk 0:01:23]} 18. Nc3 {[%clk 0:02:16]}  Nxc3 {[%clk 0:01:06]} 19. Bxc3 {[%clk 0:02:17]}  axb4 {[%clk 0:01:06]} 20. axb4 {[%clk 0:02:17]}  b5 {[%clk 0:01:05]} 21. e4 {[%clk 0:02:12]}  bxc4 {[%clk 0:01:00]} 22. Qxc4 {[%clk 0:02:13]}  Rb8 {[%clk 0:01:01]} 23. Ra5 {[%clk 0:02:11]}  Qe8 {[%clk 0:00:57]} 24. Rfa1 {[%clk 0:02:07]}  Bb5 {[%clk 0:00:55]} 25. Qb3 {[%clk 0:01:57]}  f4 {[%clk 0:00:44]} 26. Ra7 {[%clk 0:01:57]}  Qd7 {[%clk 0:00:43]} 27. Be1 {[%clk 0:01:54]}  Nc8 {[%clk 0:00:42]} 28. R7a5 {[%clk 0:01:53]}  g5 {[%clk 0:00:40]} 29. Bd3 {[%clk 0:01:54]}  Bxd3 {[%clk 0:00:40]} 30. Qxd3 {[%clk 0:01:55]}  Bf6 {[%clk 0:00:39]} 31. Rc1 {[%clk 0:01:54]}  g4 {[%clk 0:00:38]} 32. Nd2 {[%clk 0:01:54]}  Rxb4 {[%clk 0:00:24]} 33. Qc2 {[%clk 0:01:52]}  Rb7 {[%clk 0:00:23]} 34. Ra3 {[%clk 0:01:53]}  Bd8 {[%clk 0:00:21]} 35. Nc4 {[%clk 0:01:50]}  Ne7 {[%clk 0:00:20]} 36. Rc3 {[%clk 0:01:49]}  Ng6 {[%clk 0:00:19]} 37. Na5 {[%clk 0:01:50]}  Rb6 {[%clk 0:00:18]} 38. Nc6 {[%clk 0:01:49]}  Rf7 {[%clk 0:00:16]} 39. Ra3 {[%clk 0:01:42]}  Bg5 {[%clk 0:00:15]} 40. Rca1 {[%clk 0:01:38]}  Ne7 {[%clk 0:00:08]} 41. Na5 {[%clk 0:01:36]}  f3 {[%clk 0:00:06]} 42. g3 {[%clk 0:01:36]}  h5 {[%clk 0:00:06]} 43. Rc3 {[%clk 0:01:34]}  Ng6 {[%clk 0:00:05]} 44. Bd2 {[%clk 0:01:28]}  Bxd2 {[%clk 0:00:04]} 45. Qxd2 {[%clk 0:01:29]}  Qe7 {[%clk 0:00:03]} 46. Rac1 {[%clk 0:01:20]}  Kg7 {[%clk 0:00:03]} 47. Nc4 {[%clk 0:01:20]}  Rb7 {[%clk 0:00:03]} 48. Ne3 {[%clk 0:01:21]}  Qd7 {[%clk 0:00:02]} 49. Nf5+ {[%clk 0:01:20]}  Kf6 {[%clk 0:00:02]} 50. Rc6 {[%clk 0:01:16]}  Rh7 {[%clk 0:00:02]} 51. h4 {[%clk 0:01:08]}  Ne7 {[%clk 0:00:03]} 52. Qg5+ {[%clk 0:01:07]}  Kf7 {[%clk 0:00:04]} 53. Nh6+ {[%clk 0:01:04]}  Kf8 {[%clk 0:00:04]} 54. Ra1 {[%clk 0:00:58]}  Nxc6 {[%clk 0:00:04]} 55. dxc6 {[%clk 0:00:59]}  Qxc6 {[%clk 0:00:04]} 56. Ra8+ {[%clk 0:00:58]}  Qe8 {[%clk 0:00:01]} 57. Qf6+ {[%clk 0:00:57]} 1-0
+
+
+
+
+
+[Event "March 18 Early 2025"]
+[Date "2025.03.18"]
+[Round "9"]
+[White "Erigaisi Arjun"]
+[Black "Budrewicz, Krzysztof"]
+[Result "1-0"]
+[Board "58"]
+[TimeControl "180+1"]
+[WhiteFideId "35009192"]
+[BlackFideId "1127950"]
+[WhiteTitle "GM"]
+[WhiteElo "3162"]
+[BlackElo "2666"]
+[WhiteTeam "IND"]
+[BlackTeam "POL"]
+[WhiteClock "0:00:57"]
+[BlackClock "0:00:14"]
+[Variant "Standard"]
+
+1. b3 {[%clk 0:03:00]}  e5 {[%clk 0:02:58]} 2. Bb2 {[%clk 0:03:01]}  Nc6 {[%clk 0:02:58]} 3. e3 {[%clk 0:03:01]}  a6 {[%clk 0:02:58]} 4. c4 {[%clk 0:03:02]}  Nf6 {[%clk 0:02:57]} 5. Nf3 {[%clk 0:03:01]}  d6 {[%clk 0:02:50]} 6. d4 {[%clk 0:03:00]}  exd4 {[%clk 0:02:49]} 7. Nxd4 {[%clk 0:03:01]}  Bd7 {[%clk 0:02:49]} 8. Be2 {[%clk 0:03:01]}  g6 {[%clk 0:02:49]} 9. Nxc6 {[%clk 0:02:55]}  Bxc6 {[%clk 0:02:48]} 10. Bf3 {[%clk 0:02:56]}  Bg7 {[%clk 0:02:40]} 11. Bxc6+ {[%clk 0:02:55]}  bxc6 {[%clk 0:02:40]} 12. Qf3 {[%clk 0:02:55]}  c5 {[%clk 0:02:37]} 13. Qc6+ {[%clk 0:02:53]}  Kf8 {[%clk 0:02:32]} 14. Nc3 {[%clk 0:02:51]}  Nd7 {[%clk 0:02:29]} 15. h4 {[%clk 0:02:42]}  h5 {[%clk 0:02:27]} 16. Qd5 {[%clk 0:02:39]}  Bf6 {[%clk 0:02:22]} 17. Qd2 {[%clk 0:02:34]}  Kg7 {[%clk 0:02:18]} 18. Nd5 {[%clk 0:02:34]}  Bxb2 {[%clk 0:02:17]} 19. Qxb2+ {[%clk 0:02:35]}  f6 {[%clk 0:02:13]} 20. Rh3 {[%clk 0:02:28]}  c6 {[%clk 0:02:07]} 21. Nf4 {[%clk 0:02:28]}  Qe7 {[%clk 0:02:04]} 22. O-O-O {[%clk 0:02:23]}  Ne5 {[%clk 0:02:03]} 23. Rg3 {[%clk 0:02:21]}  a5 {[%clk 0:02:03]} 24. Qc2 {[%clk 0:02:20]}  Rh6 {[%clk 0:01:54]} 25. a4 {[%clk 0:02:09]}  Rb8 {[%clk 0:01:49]} 26. Qc3 {[%clk 0:02:05]}  Ng4 {[%clk 0:01:45]} 27. Rd2 {[%clk 0:02:01]}  Rb7 {[%clk 0:01:35]} 28. Kb2 {[%clk 0:01:53]}  Ra7 {[%clk 0:01:34]} 29. Ka2 {[%clk 0:01:49]}  Ne5 {[%clk 0:01:25]} 30. Qc2 {[%clk 0:01:43]}  Ng4 {[%clk 0:01:14]} 31. Qd3 {[%clk 0:01:41]}  Rd7 {[%clk 0:01:13]} 32. f3 {[%clk 0:01:40]}  Ne5 {[%clk 0:01:13]} 33. Qf5 {[%clk 0:01:38]}  Kh7 {[%clk 0:01:07]} 34. Qe6 {[%clk 0:01:37]}  Qxe6 {[%clk 0:00:46]} 35. Nxe6 {[%clk 0:01:38]}  Kg8 {[%clk 0:00:46]} 36. f4 {[%clk 0:01:36]}  Ng4 {[%clk 0:00:46]} 37. Nxc5 {[%clk 0:01:36]}  Re7 {[%clk 0:00:47]} 38. Rxd6 {[%clk 0:01:36]}  Nxe3 {[%clk 0:00:46]} 39. Rxf6 {[%clk 0:01:34]}  Kg7 {[%clk 0:00:43]} 40. Rxc6 {[%clk 0:01:29]}  Nc2 {[%clk 0:00:44]} 41. Re6 {[%clk 0:01:27]}  Nb4+ {[%clk 0:00:43]} 42. Kb2 {[%clk 0:01:25]}  Rxe6 {[%clk 0:00:42]} 43. Nxe6+ {[%clk 0:01:26]}  Kf6 {[%clk 0:00:43]} 44. Nd4 {[%clk 0:01:24]}  Rh8 {[%clk 0:00:42]} 45. Rg5 {[%clk 0:01:21]}  Rd8 {[%clk 0:00:41]} 46. Nf3 {[%clk 0:01:21]}  Nd3+ {[%clk 0:00:36]} 47. Kc3 {[%clk 0:01:15]}  Nxf4 {[%clk 0:00:37]} 48. Rxa5 {[%clk 0:01:15]}  Nxg2 {[%clk 0:00:36]} 49. Rd5 {[%clk 0:01:15]}  Re8 {[%clk 0:00:34]} 50. a5 {[%clk 0:01:14]}  Nf4 {[%clk 0:00:35]} 51. Rd6+ {[%clk 0:01:14]}  Kf5 {[%clk 0:00:35]} 52. Kb4 {[%clk 0:01:11]}  Kg4 {[%clk 0:00:31]} 53. Nd4 {[%clk 0:01:02]}  Kxh4 {[%clk 0:00:31]} 54. a6 {[%clk 0:01:02]}  Nd3+ {[%clk 0:00:29]} 55. Kb5 {[%clk 0:01:01]}  Ne5 {[%clk 0:00:23]} 56. a7 {[%clk 0:00:59]}  Kg3 {[%clk 0:00:20]} 57. Re6 {[%clk 0:00:57]}  Rxe6 {[%clk 0:00:14]} 58. Nxe6 {[%clk 0:00:57]} 1-0
+
+
+
+
+
+[Event "March 18 Early 2025"]
+[Date "2025.03.18"]
+[Round "6"]
+[White "Erigaisi Arjun"]
+[Black "Atakhan, Abtin"]
+[Result "1-0"]
+[Board "32"]
+[TimeControl "180+1"]
+[WhiteFideId "35009192"]
+[BlackFideId "22502203"]
+[WhiteTitle "GM"]
+[BlackTitle "IM"]
+[WhiteElo "3187"]
+[BlackElo "2816"]
+[WhiteTeam "IND"]
+[BlackTeam "IRI"]
+[WhiteClock "0:00:14"]
+[BlackClock "0:00:00"]
+[Variant "Standard"]
+
+1. b3 {[%clk 0:03:00]}  Nf6 {[%clk 0:02:58]} 2. Bb2 {[%clk 0:03:01]}  g6 {[%clk 0:02:59]} 3. g3 {[%clk 0:03:01]}  Bg7 {[%clk 0:02:59]} 4. Bg2 {[%clk 0:03:02]}  O-O {[%clk 0:02:59]} 5. c4 {[%clk 0:03:02]}  c5 {[%clk 0:02:59]} 6. Nf3 {[%clk 0:03:02]}  b6 {[%clk 0:02:57]} 7. d4 {[%clk 0:02:57]}  cxd4 {[%clk 0:02:47]} 8. Nxd4 {[%clk 0:02:56]}  d5 {[%clk 0:02:47]} 9. cxd5 {[%clk 0:02:54]}  Nxd5 {[%clk 0:02:41]} 10. O-O {[%clk 0:02:40]}  Bb7 {[%clk 0:02:41]} 11. Qd2 {[%clk 0:02:39]}  Nd7 {[%clk 0:02:26]} 12. Rd1 {[%clk 0:02:31]}  e6 {[%clk 0:02:02]} 13. Na3 {[%clk 0:02:17]}  Qe7 {[%clk 0:01:57]} 14. Nc4 {[%clk 0:02:17]}  Rfd8 {[%clk 0:01:48]} 15. e4 {[%clk 0:02:07]}  Nb4 {[%clk 0:01:37]} 16. Nb5 {[%clk 0:01:56]}  Ne5 {[%clk 0:01:25]} 17. Qc3 {[%clk 0:01:42]}  Nbd3 {[%clk 0:01:13]} 18. Ba3 {[%clk 0:01:33]}  Qf6 {[%clk 0:00:55]} 19. f4 {[%clk 0:01:21]}  Nxc4 {[%clk 0:00:43]} 20. Qxc4 {[%clk 0:01:22]}  Rac8 {[%clk 0:00:25]} 21. e5 {[%clk 0:01:03]}  Qf5 {[%clk 0:00:21]} 22. Bxb7 {[%clk 0:01:02]}  Rxc4 {[%clk 0:00:20]} 23. bxc4 {[%clk 0:01:03]}  Bf8 {[%clk 0:00:15]} 24. Bxf8 {[%clk 0:00:51]}  Kxf8 {[%clk 0:00:16]} 25. Bg2 {[%clk 0:00:48]}  g5 {[%clk 0:00:14]} 26. Nxa7 {[%clk 0:00:34]}  gxf4 {[%clk 0:00:13]} 27. Nc6 {[%clk 0:00:35]}  f3 {[%clk 0:00:10]} 28. Rf1 {[%clk 0:00:33]}  f2+ {[%clk 0:00:08]} 29. Kh1 {[%clk 0:00:34]}  Rc8 {[%clk 0:00:07]} 30. Rad1 {[%clk 0:00:31]}  Nxe5 {[%clk 0:00:06]} 31. Nd4 {[%clk 0:00:32]}  Qf6 {[%clk 0:00:05]} 32. Rd2 {[%clk 0:00:32]}  Ng4 {[%clk 0:00:05]} 33. h3 {[%clk 0:00:32]}  Ne3 {[%clk 0:00:04]} 34. Rfxf2 {[%clk 0:00:32]}  Qe5 {[%clk 0:00:04]} 35. Rf4 {[%clk 0:00:17]}  Rxc4 {[%clk 0:00:03]} 36. Nf3 {[%clk 0:00:17]}  Rc1+ {[%clk 0:00:03]} 37. Kh2 {[%clk 0:00:17]}  Qa1 {[%clk 0:00:03]} 38. Ng5 {[%clk 0:00:16]}  Nf5 {[%clk 0:00:01]} 39. g4 {[%clk 0:00:15]}  Qe5 {[%clk 0:00:01]} 40. Rf2 {[%clk 0:00:15]}  h6 {[%clk 0:00:00]} 41. Ne4 {[%clk 0:00:14]} 1-0
+
+
+
+
+
+[Event "March 18 Early 2025"]
+[Date "2025.03.18"]
+[Round "5"]
+[White "Erigaisi Arjun"]
+[Black "Gorovets, Andrey"]
+[Result "1-0"]
+[Board "56"]
+[TimeControl "180+1"]
+[WhiteFideId "35009192"]
+[BlackFideId "13504037"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "3186"]
+[BlackElo "2744"]
+[WhiteTeam "IND"]
+[BlackTeam "BLR"]
+[WhiteClock "0:02:05"]
+[BlackClock "0:00:00"]
+[Variant "Standard"]
+
+1. c4 {[%clk 0:03:00]}  e6 {[%clk 0:02:59]} 2. Nf3 {[%clk 0:03:00]}  a6 {[%clk 0:02:58]} 3. e3 {[%clk 0:03:01]}  d5 {[%clk 0:02:58]} 4. b3 {[%clk 0:03:01]}  b6 {[%clk 0:02:44]} 5. Bb2 {[%clk 0:03:00]}  Bb7 {[%clk 0:02:44]} 6. Nc3 {[%clk 0:02:59]}  Nd7 {[%clk 0:02:43]} 7. Qc2 {[%clk 0:02:57]}  Ngf6 {[%clk 0:02:39]} 8. Be2 {[%clk 0:02:57]}  Bd6 {[%clk 0:02:37]} 9. cxd5 {[%clk 0:02:56]}  exd5 {[%clk 0:02:36]} 10. Rg1 {[%clk 0:02:50]}  c5 {[%clk 0:02:25]} 11. g4 {[%clk 0:02:45]}  O-O {[%clk 0:02:06]} 12. g5 {[%clk 0:02:44]}  Ne8 {[%clk 0:01:59]} 13. O-O-O {[%clk 0:02:43]}  b5 {[%clk 0:01:52]} 14. h4 {[%clk 0:02:39]}  Rc8 {[%clk 0:01:44]} 15. h5 {[%clk 0:02:39]}  b4 {[%clk 0:01:43]} 16. Na4 {[%clk 0:02:30]}  c4 {[%clk 0:01:42]} 17. Kb1 {[%clk 0:02:30]}  Nc7 {[%clk 0:01:25]} 18. Nd4 {[%clk 0:02:25]}  Nb5 {[%clk 0:01:19]} 19. Nf5 {[%clk 0:02:25]}  Be5 {[%clk 0:01:11]} 20. f4 {[%clk 0:02:18]}  Bxb2 {[%clk 0:01:10]} 21. Kxb2 {[%clk 0:02:19]}  Na3 {[%clk 0:00:48]} 22. Qc1 {[%clk 0:02:19]}  cxb3 {[%clk 0:00:48]} 23. Qa1 {[%clk 0:02:20]}  Nc2 {[%clk 0:00:18]} 24. Qb1 {[%clk 0:02:16]}  bxa2 {[%clk 0:00:15]} 25. Qxa2 {[%clk 0:02:17]}  Nc5 {[%clk 0:00:13]} 26. Nxc5 {[%clk 0:02:11]}  Rxc5 {[%clk 0:00:14]} 27. Rc1 {[%clk 0:02:09]}  Ra5 {[%clk 0:00:12]} 28. Qb3 {[%clk 0:02:08]}  Na3 {[%clk 0:00:08]} 29. Qxb4 {[%clk 0:02:05]}  Nc4+ {[%clk 0:00:07]} 30. Kc2 {[%clk 0:02:04]}  Ra2+ {[%clk 0:00:05]} 31. Kd1 {[%clk 0:02:04]}  Rxd2+ {[%clk 0:00:04]} 32. Ke1 {[%clk 0:02:05]}  Rxe2+ {[%clk 0:00:04]} 33. Kxe2 {[%clk 0:02:06]}  Qd7 {[%clk 0:00:00]} 34. Nh6+ {[%clk 0:02:05]} 1-0
+
+
+
+
+
+[Event "March 18 Early 2025"]
+[Date "2025.03.18"]
+[Round "3"]
+[White "Erigaisi Arjun"]
+[Black "Vlassov, Nikolai"]
+[Result "1-0"]
+[Board "66"]
+[TimeControl "180+1"]
+[WhiteFideId "35009192"]
+[BlackFideId "4103360"]
+[WhiteTitle "GM"]
+[BlackTitle "IM"]
+[WhiteElo "3192"]
+[BlackElo "2604"]
+[WhiteTeam "IND"]
+[BlackTeam "FID"]
+[WhiteClock "0:01:54"]
+[BlackClock "0:00:00"]
+[Variant "Standard"]
+
+1. c4 {[%clk 0:03:00]}  e5 {[%clk 0:02:59]} 2. Nf3 {[%clk 0:03:01]}  e4 {[%clk 0:02:58]} 3. Nd4 {[%clk 0:03:01]}  Nf6 {[%clk 0:02:58]} 4. Nc3 {[%clk 0:03:00]}  Bb4 {[%clk 0:02:57]} 5. Qb3 {[%clk 0:03:00]}  a5 {[%clk 0:02:52]} 6. a3 {[%clk 0:03:00]}  Bc5 {[%clk 0:02:46]} 7. e3 {[%clk 0:03:00]}  Bxd4 {[%clk 0:02:32]} 8. exd4 {[%clk 0:03:01]}  Nc6 {[%clk 0:02:32]} 9. d5 {[%clk 0:02:55]}  Nd4 {[%clk 0:02:32]} 10. Qd1 {[%clk 0:02:56]}  d6 {[%clk 0:02:26]} 11. h3 {[%clk 0:02:55]}  O-O {[%clk 0:02:23]} 12. Ne2 {[%clk 0:02:49]}  c5 {[%clk 0:02:14]} 13. d3 {[%clk 0:02:25]}  exd3 {[%clk 0:02:02]} 14. Nxd4 {[%clk 0:02:25]}  Re8+ {[%clk 0:01:57]} 15. Ne2 {[%clk 0:02:25]}  Bf5 {[%clk 0:01:44]} 16. Be3 {[%clk 0:02:22]}  Rxe3 {[%clk 0:01:10]} 17. fxe3 {[%clk 0:02:23]}  dxe2 {[%clk 0:01:10]} 18. Bxe2 {[%clk 0:02:18]}  Ne4 {[%clk 0:01:09]} 19. O-O {[%clk 0:02:18]}  Qg5 {[%clk 0:01:09]} 20. Rf3 {[%clk 0:02:18]}  h5 {[%clk 0:00:53]} 21. Bd3 {[%clk 0:02:03]}  h4 {[%clk 0:00:34]} 22. Qc2 {[%clk 0:02:03]}  Re8 {[%clk 0:00:31]} 23. Raf1 {[%clk 0:02:03]}  Bg6 {[%clk 0:00:30]} 24. Rf4 {[%clk 0:02:03]}  Nf6 {[%clk 0:00:18]} 25. Bxg6 {[%clk 0:02:02]}  fxg6 {[%clk 0:00:17]} 26. R1f3 {[%clk 0:02:01]}  Re5 {[%clk 0:00:11]} 27. Qd3 {[%clk 0:01:57]}  Kh7 {[%clk 0:00:09]} 28. b3 {[%clk 0:01:56]}  b6 {[%clk 0:00:08]} 29. Qf1 {[%clk 0:01:54]}  Qh6 {[%clk 0:00:05]} 30. Qf2 {[%clk 0:01:52]}  g5 {[%clk 0:00:05]} 31. Rxf6 {[%clk 0:01:52]}  gxf6 {[%clk 0:00:05]} 32. Rxf6 {[%clk 0:01:53]}  Qh5 {[%clk 0:00:05]} 33. Rf7+ {[%clk 0:01:53]}  Kg8 {[%clk 0:00:05]} 34. Rf8+ {[%clk 0:01:53]}  Kh7 {[%clk 0:00:00]} 35. Qf6 {[%clk 0:01:54]} 1-0
+
+
+
+
+
+[Event "March 18 Late 2025"]
+[Date "2025.03.18"]
+[Round "10"]
+[White "Erigaisi Arjun"]
+[Black "ICantStandDisGame"]
+[Result "1-0"]
+[Board "17"]
+[TimeControl "180+1"]
+[WhiteFideId "35009192"]
+[WhiteTitle "GM"]
+[WhiteElo "3120"]
+[BlackElo "2815"]
+[WhiteTeam "IND"]
+[WhiteClock "0:02:20"]
+[BlackClock "0:00:23"]
+[Variant "Standard"]
+
+1. b3 {[%clk 0:02:57]}  Nf6 {[%clk 0:02:59]} 2. Bb2 {[%clk 0:02:57]}  g6 {[%clk 0:02:59]} 3. e3 {[%clk 0:02:58]}  Bg7 {[%clk 0:02:59]} 4. c4 {[%clk 0:02:59]}  O-O {[%clk 0:03:00]} 5. Nc3 {[%clk 0:03:00]}  c5 {[%clk 0:02:59]} 6. Nf3 {[%clk 0:03:01]}  Nc6 {[%clk 0:02:58]} 7. Rc1 {[%clk 0:03:01]}  b6 {[%clk 0:02:56]} 8. h4 {[%clk 0:03:01]}  Bb7 {[%clk 0:02:55]} 9. Be2 {[%clk 0:03:00]}  h5 {[%clk 0:02:48]} 10. Kf1 {[%clk 0:02:59]}  e6 {[%clk 0:02:36]} 11. Rh3 {[%clk 0:02:57]}  d5 {[%clk 0:02:34]} 12. cxd5 {[%clk 0:02:58]}  exd5 {[%clk 0:02:35]} 13. d4 {[%clk 0:02:58]}  Re8 {[%clk 0:02:29]} 14. dxc5 {[%clk 0:02:57]}  bxc5 {[%clk 0:02:29]} 15. Na4 {[%clk 0:02:57]}  c4 {[%clk 0:02:22]} 16. bxc4 {[%clk 0:02:57]}  dxc4 {[%clk 0:02:21]} 17. Qxd8 {[%clk 0:02:51]}  Rexd8 {[%clk 0:02:18]} 18. Bxc4 {[%clk 0:02:52]}  Rac8 {[%clk 0:01:40]} 19. Nc5 {[%clk 0:02:44]}  Ba8 {[%clk 0:01:15]} 20. Ng5 {[%clk 0:02:43]}  Rc7 {[%clk 0:01:09]} 21. Rf3 {[%clk 0:02:41]}  Rd6 {[%clk 0:00:43]} 22. Bxf7+ {[%clk 0:02:18]}  Rxf7 {[%clk 0:00:41]} 23. Nxf7 {[%clk 0:02:19]}  Kxf7 {[%clk 0:00:28]} 24. Ne4 {[%clk 0:02:19]}  Re6 {[%clk 0:00:28]} 25. Ng5+ {[%clk 0:02:20]}  Ke7 {[%clk 0:00:29]} 26. Ba3+ {[%clk 0:02:20]}  Kd7 {[%clk 0:00:23]} 27. Rd1+ {[%clk 0:02:20]} 1-0
+
+
+
+
+
+[Event "March 18 Late 2025"]
+[Date "2025.03.18"]
+[Round "8"]
+[White "Erigaisi Arjun"]
+[Black "Povshednyi, Ivan"]
+[Result "1-0"]
+[Board "13"]
+[TimeControl "180+1"]
+[WhiteFideId "35009192"]
+[BlackFideId "14190907"]
+[WhiteTitle "GM"]
+[BlackTitle "FM"]
+[WhiteElo "3133"]
+[BlackElo "2805"]
+[WhiteTeam "IND"]
+[BlackTeam "UKR"]
+[WhiteClock "0:00:43"]
+[BlackClock "0:00:02"]
+[Variant "Standard"]
+
+1. d4 {[%clk 0:03:00]}  Nf6 {[%clk 0:02:59]} 2. Nc3 {[%clk 0:03:01]}  d5 {[%clk 0:02:59]} 3. Bf4 {[%clk 0:03:01]}  a6 {[%clk 0:03:00]} 4. e3 {[%clk 0:03:02]}  b5 {[%clk 0:03:00]} 5. h4 {[%clk 0:03:01]}  e6 {[%clk 0:02:57]} 6. g4 {[%clk 0:03:01]}  Bb4 {[%clk 0:02:56]} 7. g5 {[%clk 0:02:55]}  Ne4 {[%clk 0:02:56]} 8. Ne2 {[%clk 0:02:56]}  c5 {[%clk 0:02:50]} 9. Bg2 {[%clk 0:02:54]}  Bb7 {[%clk 0:02:37]} 10. Bxe4 {[%clk 0:02:38]}  dxe4 {[%clk 0:02:38]} 11. dxc5 {[%clk 0:02:39]}  Qxd1+ {[%clk 0:02:27]} 12. Rxd1 {[%clk 0:02:40]}  Bxc5 {[%clk 0:02:18]} 13. Ng3 {[%clk 0:02:40]}  Bb4 {[%clk 0:02:09]} 14. Be5 {[%clk 0:02:40]}  Nd7 {[%clk 0:01:26]} 15. Bxg7 {[%clk 0:02:39]}  Rg8 {[%clk 0:01:26]} 16. Nh5 {[%clk 0:02:29]}  Ke7 {[%clk 0:01:16]} 17. a3 {[%clk 0:02:27]}  Ba5 {[%clk 0:01:05]} 18. b4 {[%clk 0:02:17]}  Bc7 {[%clk 0:01:03]} 19. Nf6 {[%clk 0:02:17]}  Rgd8 {[%clk 0:00:56]} 20. Nfxe4 {[%clk 0:02:11]}  Rg8 {[%clk 0:00:33]} 21. Bd4 {[%clk 0:01:45]}  e5 {[%clk 0:00:28]} 22. Bc5+ {[%clk 0:01:44]}  Nxc5 {[%clk 0:00:29]} 23. bxc5 {[%clk 0:01:45]}  Ba5 {[%clk 0:00:28]} 24. Ke2 {[%clk 0:01:37]}  Bxc3 {[%clk 0:00:27]} 25. Nxc3 {[%clk 0:01:38]}  Bxh1 {[%clk 0:00:27]} 26. Rxh1 {[%clk 0:01:39]}  Ke6 {[%clk 0:00:21]} 27. Ne4 {[%clk 0:01:38]}  Rac8 {[%clk 0:00:17]} 28. Rh3 {[%clk 0:01:35]}  h6 {[%clk 0:00:09]} 29. Rf3 {[%clk 0:01:19]}  hxg5 {[%clk 0:00:08]} 30. hxg5 {[%clk 0:01:20]}  Rg6 {[%clk 0:00:07]} 31. Rh3 {[%clk 0:01:17]}  Rc7 {[%clk 0:00:06]} 32. Rh8 {[%clk 0:01:16]}  Kd5 {[%clk 0:00:03]} 33. Kd3 {[%clk 0:01:15]}  Kc6 {[%clk 0:00:02]} 34. Rb8 {[%clk 0:01:11]}  Re6 {[%clk 0:00:02]} 35. Rb6+ {[%clk 0:01:06]}  Kd7 {[%clk 0:00:02]} 36. Nf6+ {[%clk 0:01:07]}  Kd8 {[%clk 0:00:01]} 37. Rxe6 {[%clk 0:00:45]}  fxe6 {[%clk 0:00:02]} 38. Ke4 {[%clk 0:00:45]}  Rxc5 {[%clk 0:00:03]} 39. g6 {[%clk 0:00:45]}  Ke7 {[%clk 0:00:02]} 40. g7 {[%clk 0:00:45]}  Rc4+ {[%clk 0:00:02]} 41. Kxe5 {[%clk 0:00:43]}  Rc5+ {[%clk 0:00:03]} 42. Ke4 {[%clk 0:00:43]}  Kxf6 {[%clk 0:00:02]} 43. g8=Q {[%clk 0:00:43]}  Re5+ {[%clk 0:00:03]} 44. Kd3 {[%clk 0:00:43]}  Rd5+ {[%clk 0:00:03]} 45. Ke2 {[%clk 0:00:44]}  Ke7 {[%clk 0:00:03]} 46. Qa8 {[%clk 0:00:44]}  Rd6 {[%clk 0:00:03]} 47. f4 {[%clk 0:00:44]}  e5 {[%clk 0:00:03]} 48. fxe5 {[%clk 0:00:45]}  Rh6 {[%clk 0:00:04]} 49. Kf3 {[%clk 0:00:45]}  Rh3+ {[%clk 0:00:02]} 50. Ke4 {[%clk 0:00:45]}  Rh8 {[%clk 0:00:02]} 51. Qxh8 {[%clk 0:00:43]} 1-0
+
+
+
+
+
+[Event "German Bundesliga 2024/25"]
+[Date "2025.03.22"]
+[Round "11"]
+[White "Erigaisi Arjun"]
+[Black "Pechac, Jergus"]
+[Result "1-0"]
+[Board "9"]
+[TimeControl "40/6000+30:3000+30"]
+[WhiteFideId "35009192"]
+[BlackFideId "14926970"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "2778"]
+[BlackElo "2598"]
+[WhiteTeam "Düsseldorfer SK"]
+[BlackTeam "USV Dresden"]
+[WhiteClock "0:18:42"]
+[BlackClock "0:00:31"]
+[Variant "Standard"]
+
+1. Nf3 {[%clk 1:30:53]}  d5 {[%clk 1:30:54]} 2. b3 {[%clk 1:31:17]}  c5 {[%clk 1:30:56]} 3. e3 {[%clk 1:31:27]}  Nc6 {[%clk 1:30:54]} 4. Bb2 {[%clk 1:31:49]}  e6 {[%clk 1:31:04]} 5. a3 {[%clk 1:31:40]}  Nf6 {[%clk 1:28:34]} 6. d4 {[%clk 1:30:36]}  cxd4 {[%clk 1:24:58]} 7. exd4 {[%clk 1:30:59]}  Bd6 {[%clk 1:25:04]} 8. Bd3 {[%clk 1:30:46]}  b6 {[%clk 1:24:33]} 9. O-O {[%clk 1:29:32]}  O-O {[%clk 1:24:04]} 10. Nbd2 {[%clk 1:29:26]}  Bb7 {[%clk 1:24:11]} 11. Ne5 {[%clk 1:26:40]}  Rc8 {[%clk 1:21:27]} 12. f4 {[%clk 1:23:26]}  Ne7 {[%clk 1:21:24]} 13. Qe2 {[%clk 1:16:50]}  Rc7 {[%clk 1:20:50]} 14. Rf2 {[%clk 1:13:56]}  a6 {[%clk 1:14:59]} 15. g4 {[%clk 0:59:50]}  b5 {[%clk 0:54:40]} 16. Re1 {[%clk 0:56:13]}  Kh8 {[%clk 0:53:40]} 17. h4 {[%clk 0:48:36]}  Ne4 {[%clk 0:50:58]} 18. Nxe4 {[%clk 0:48:46]}  dxe4 {[%clk 0:51:24]} 19. Bxe4 {[%clk 0:49:11]}  Bxe4 {[%clk 0:51:33]} 20. Qxe4 {[%clk 0:49:35]}  f5 {[%clk 0:51:45]} 21. Qg2 {[%clk 0:39:46]}  Bxe5 {[%clk 0:40:06]} 22. Rxe5 {[%clk 0:38:44]}  Ng6 {[%clk 0:37:22]} 23. Rxe6 {[%clk 0:38:13]}  Qxh4 {[%clk 0:37:05]} 24. d5 {[%clk 0:37:18]}  Rcf7 {[%clk 0:29:21]} 25. d6 {[%clk 0:29:54]}  fxg4 {[%clk 0:27:11]} 26. f5 {[%clk 0:22:18]}  g3 {[%clk 0:20:08]} 27. Rf3 {[%clk 0:22:42]}  Qh5 {[%clk 0:19:46]} 28. f6 {[%clk 0:23:05]}  Qc5+ {[%clk 0:16:47]} 29. Kf1 {[%clk 0:23:08]}  gxf6 {[%clk 0:11:47]} 30. Qxg3 {[%clk 0:19:42]}  Qxc2 {[%clk 0:10:42]} 31. Rexf6 {[%clk 0:17:42]}  Kg8 {[%clk 0:07:58]} 32. Rf2 {[%clk 0:12:56]}  Rxf6 {[%clk 0:06:47]} 33. Bxf6 {[%clk 0:13:19]}  Qd1+ {[%clk 0:06:29]} 34. Kg2 {[%clk 0:13:43]}  Qd5+ {[%clk 0:06:47]} 35. Kg1 {[%clk 0:13:16]}  Qe6 {[%clk 0:05:39]} 36. Bc3 {[%clk 0:08:54]}  Rxf2 {[%clk 0:05:39]} 37. Kxf2 {[%clk 0:09:18]}  Qxb3 {[%clk 0:04:21]} 38. Qd3 {[%clk 0:06:45]}  Qf7+ {[%clk 0:04:11]} 39. Ke3 {[%clk 0:06:33]}  Nf4 {[%clk 0:01:00]} 40. Qe4 {[%clk 0:04:38]}  Nd5+ {[%clk 0:01:00]} 41. Kd4 {[%clk 0:01:18]}  Nf6 {[%clk 0:28:45]} 42. Qa8+ {[%clk 0:27:34]}  Kg7 {[%clk 0:29:02]} 43. Qc6 {[%clk 0:27:53]}  Kf8 {[%clk 0:20:13]} 44. Qc8+ {[%clk 0:24:39]}  Kg7 {[%clk 0:19:55]} 45. Ke3 {[%clk 0:23:09]}  a5 {[%clk 0:07:39]} 46. Qc7 {[%clk 0:18:44]}  Kf8 {[%clk 0:00:32]} 47. Bxf6 {[%clk 0:18:35]}  Qe6+ {[%clk 0:01:01]} 48. Kd4 {[%clk 0:18:19]}  Qxf6+ {[%clk 0:01:18]} 49. Kc5 {[%clk 0:18:27]}  Qe5+ {[%clk 0:00:31]} 50. Kc6 {[%clk 0:18:48]}  Qe4+ {[%clk 0:00:34]} 51. Kb6 {[%clk 0:18:52]}  Qe6 {[%clk 0:00:31]} 52. Kb7 {[%clk 0:18:42]}  Qd5+ {[%clk 0:00:31]} 1-0
+
+
+
+
+
+[Event "April 01 Early 2025"]
+[Date "2025.04.01"]
+[Round "10"]
+[White "Erigaisi Arjun"]
+[Black "Rasulov, Vugar"]
+[Result "1-0"]
+[Board "7"]
+[TimeControl "180+1"]
+[WhiteFideId "35009192"]
+[BlackFideId "13402390"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "3135"]
+[BlackElo "3016"]
+[WhiteTeam "IND"]
+[BlackTeam "AZE"]
+[WhiteClock "0:01:10"]
+[BlackClock "0:00:31"]
+[Variant "Standard"]
+
+1. d4 {[%clk 0:03:00]}  a6 {[%clk 0:03:00]} 2. e4 {[%clk 0:03:00]}  e6 {[%clk 0:03:01]} 3. Nf3 {[%clk 0:03:00]}  d5 {[%clk 0:03:01]} 4. Nc3 {[%clk 0:03:00]}  Nf6 {[%clk 0:02:56]} 5. e5 {[%clk 0:02:58]}  Nfd7 {[%clk 0:02:56]} 6. Bf4 {[%clk 0:02:52]}  c5 {[%clk 0:02:56]} 7. dxc5 {[%clk 0:02:53]}  Nc6 {[%clk 0:02:54]} 8. a3 {[%clk 0:02:50]}  Nxc5 {[%clk 0:02:47]} 9. b4 {[%clk 0:02:47]}  Nd7 {[%clk 0:02:46]} 10. Bd3 {[%clk 0:02:48]}  Be7 {[%clk 0:02:46]} 11. h4 {[%clk 0:02:47]}  h6 {[%clk 0:02:44]} 12. Kf1 {[%clk 0:02:42]}  O-O {[%clk 0:02:33]} 13. Qd2 {[%clk 0:02:37]}  f6 {[%clk 0:02:33]} 14. Bxh6 {[%clk 0:02:26]}  Ndxe5 {[%clk 0:02:17]} 15. Rh3 {[%clk 0:02:20]}  Nxf3 {[%clk 0:02:04]} 16. gxf3 {[%clk 0:02:15]}  f5 {[%clk 0:01:52]} 17. Rg3 {[%clk 0:02:12]}  Bf6 {[%clk 0:01:51]} 18. Re1 {[%clk 0:02:13]}  Kf7 {[%clk 0:01:40]} 19. Bg5 {[%clk 0:02:12]}  Rh8 {[%clk 0:01:38]} 20. Na4 {[%clk 0:02:10]}  Bxg5 {[%clk 0:01:24]} 21. hxg5 {[%clk 0:02:08]}  g6 {[%clk 0:01:08]} 22. f4 {[%clk 0:02:02]}  Qd6 {[%clk 0:00:58]} 23. Nb6 {[%clk 0:01:58]}  Rb8 {[%clk 0:00:58]} 24. Kg2 {[%clk 0:01:43]}  e5 {[%clk 0:00:49]} 25. fxe5 {[%clk 0:01:31]}  Nxe5 {[%clk 0:00:50]} 26. Qf4 {[%clk 0:01:31]}  Nc4 {[%clk 0:00:40]} 27. Qd4 {[%clk 0:01:18]}  Rd8 {[%clk 0:00:31]} 28. Nxc4 {[%clk 0:01:10]} 1-0
+
+
+
+
+
+[Event "April 01 Early 2025"]
+[Date "2025.04.01"]
+[Round "7"]
+[White "Erigaisi Arjun"]
+[Black "Esipenko, Andrey"]
+[Result "1-0"]
+[Board "1"]
+[TimeControl "180+1"]
+[WhiteFideId "35009192"]
+[BlackFideId "24175439"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "3144"]
+[BlackElo "3042"]
+[WhiteTeam "IND"]
+[BlackTeam "FID"]
+[WhiteClock "0:02:49"]
+[BlackClock "0:00:29"]
+[Variant "Standard"]
+
+1. d4 {[%clk 0:03:00]}  Nf6 {[%clk 0:02:59]} 2. Nc3 {[%clk 0:03:01]}  d5 {[%clk 0:02:59]} 3. Bf4 {[%clk 0:03:01]}  c5 {[%clk 0:02:58]} 4. e3 {[%clk 0:03:01]}  cxd4 {[%clk 0:02:56]} 5. exd4 {[%clk 0:03:02]}  Bg4 {[%clk 0:02:56]} 6. Be2 {[%clk 0:03:03]}  Bxe2 {[%clk 0:02:54]} 7. Qxe2 {[%clk 0:03:03]}  Nc6 {[%clk 0:02:53]} 8. Nb5 {[%clk 0:03:03]}  Qa5+ {[%clk 0:02:07]} 9. c3 {[%clk 0:03:03]}  Kd7 {[%clk 0:02:08]} 10. Nf3 {[%clk 0:03:00]}  a6 {[%clk 0:01:58]} 11. Nc7 {[%clk 0:03:00]}  Rc8 {[%clk 0:01:53]} 12. Ne5+ {[%clk 0:03:00]}  Nxe5 {[%clk 0:01:40]} 13. dxe5 {[%clk 0:03:01]}  Rxc7 {[%clk 0:01:24]} 14. exf6 {[%clk 0:03:01]}  Rc4 {[%clk 0:01:25]} 15. fxg7 {[%clk 0:02:49]}  Bxg7 {[%clk 0:00:29]} 16. Qg4+ {[%clk 0:02:49]} 1-0
+
+
+
+
+
+[Event "April 01 Early 2025"]
+[Date "2025.04.01"]
+[Round "4"]
+[White "Erigaisi Arjun"]
+[Black "Pichot, Alan"]
+[Result "1-0"]
+[Board "4"]
+[TimeControl "180+1"]
+[WhiteFideId "35009192"]
+[BlackFideId "110973"]
+[WhiteTitle "GM"]
+[BlackTitle "GM"]
+[WhiteElo "3131"]
+[BlackElo "2954"]
+[WhiteTeam "IND"]
+[BlackTeam "ESP"]
+[WhiteClock "0:00:18"]
+[BlackClock "0:00:00"]
+[Variant "Standard"]
+
+1. d4 {[%clk 0:03:00]}  Nf6 {[%clk 0:02:59]} 2. Nc3 {[%clk 0:03:01]}  d5 {[%clk 0:02:59]} 3. Bf4 {[%clk 0:03:01]}  c5 {[%clk 0:02:55]} 4. e3 {[%clk 0:03:01]}  cxd4 {[%clk 0:02:52]} 5. exd4 {[%clk 0:03:02]}  Bg4 {[%clk 0:02:50]} 6. Be2 {[%clk 0:03:02]}  Bxe2 {[%clk 0:02:48]} 7. Qxe2 {[%clk 0:03:03]}  Nc6 {[%clk 0:02:48]} 8. Nb5 {[%clk 0:03:03]}  Qa5+ {[%clk 0:02:30]} 9. c3 {[%clk 0:03:03]}  Kd7 {[%clk 0:02:15]} 10. a4 {[%clk 0:02:58]}  a6 {[%clk 0:02:04]} 11. b4 {[%clk 0:02:21]}  Qd8 {[%clk 0:01:49]} 12. Nc7 {[%clk 0:02:13]}  e5 {[%clk 0:01:46]} 13. Nxa8 {[%clk 0:01:56]}  exf4 {[%clk 0:01:46]} 14. b5 {[%clk 0:01:56]}  Na5 {[%clk 0:01:03]} 15. bxa6 {[%clk 0:01:55]}  Qxa8 {[%clk 0:01:03]} 16. Qb5+ {[%clk 0:01:55]}  Nc6 {[%clk 0:01:03]} 17. axb7 {[%clk 0:01:54]}  Qa7 {[%clk 0:01:04]} 18. Nf3 {[%clk 0:01:49]}  Bd6 {[%clk 0:01:04]} 19. Ne5+ {[%clk 0:01:13]}  Bxe5 {[%clk 0:01:03]} 20. dxe5 {[%clk 0:01:14]}  Re8 {[%clk 0:01:02]} 21. O-O {[%clk 0:01:14]}  Rxe5 {[%clk 0:00:58]} 22. Rfb1 {[%clk 0:01:15]}  Re8 {[%clk 0:00:53]} 23. a5 {[%clk 0:01:14]}  Kc7 {[%clk 0:00:49]} 24. a6 {[%clk 0:01:06]}  Ne4 {[%clk 0:00:45]} 25. Qe2 {[%clk 0:00:50]}  Kb8 {[%clk 0:00:32]} 26. Rb2 {[%clk 0:00:47]}  Re6 {[%clk 0:00:27]} 27. Qg4 {[%clk 0:00:41]}  g5 {[%clk 0:00:18]} 28. Qf5 {[%clk 0:00:41]}  Nd6 {[%clk 0:00:16]} 29. Qxg5 {[%clk 0:00:35]}  f3 {[%clk 0:00:10]} 30. Qg8+ {[%clk 0:00:28]}  Re8 {[%clk 0:00:10]} 31. Qg3 {[%clk 0:00:29]}  Ne5 {[%clk 0:00:10]} 32. gxf3 {[%clk 0:00:21]}  f6 {[%clk 0:00:06]} 33. Kh1 {[%clk 0:00:19]}  Ndc4 {[%clk 0:00:00]} 34. Re2 {[%clk 0:00:18]} 1-0

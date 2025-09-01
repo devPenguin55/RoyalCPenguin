@@ -19,6 +19,7 @@ extern Rectangle spriteRecs[12];
 extern DrawingPieceMouseHandler drawingPieceMouseHandler;
 
 void initGraphics(Texture2D *spriteSheet, Rectangle *spriteRecs, Sound *sounds);
+void drawArrow(Vector2 start, Vector2 end, float thickness, Color color);
 void convertPieceTypeToTextureColumn(int pieceType, int *textureCol);
 void moveToNotation(Move *move, char *notation);
 void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, DrawingPieceMouseHandler *drawingPieceMouseHandler, Sound *sounds, int showIndexes, LegalMovesContainer *curLegalMoves, TranspositionTable *tt, SearchRootResult *result, int *draggingPieceType, OpeningBook *book);

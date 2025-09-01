@@ -9,6 +9,7 @@ typedef struct PositionHashToMoves {
     uint64_t positionHash;
     int amtPossibleMoves;
     Move possibleMoves[64];
+    int moveOccurrence[64];
 } PositionHashToMoves;
 
 typedef struct OpeningBook {
@@ -17,7 +18,13 @@ typedef struct OpeningBook {
     int amount; 
 } OpeningBook;
 
+typedef struct AllPossibleOpeningMovesFromPosition {
+    Move moves[64];
+    int amtMoves;
+} AllPossibleOpeningMovesFromPosition;
+
 OpeningBook initBook(Board *board, TranspositionTable *tt);
 Move bookLookup(Board *board, OpeningBook *book);
+AllPossibleOpeningMovesFromPosition bookAllPossibleMoves(Board *board, OpeningBook *book);
 
 #endif 
