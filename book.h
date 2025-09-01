@@ -20,6 +20,7 @@ typedef struct OpeningBook {
 
 typedef struct AllPossibleOpeningMovesFromPosition {
     Move moves[64];
+    int moveOccurrence[64];
     int amtMoves;
 } AllPossibleOpeningMovesFromPosition;
 

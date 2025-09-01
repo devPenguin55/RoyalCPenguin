@@ -11,7 +11,7 @@
 #include "zobrist.h"
 #include "evaluation.h"
 
-const int AI_COLOR = BLACK_PIECE;
+const int AI_COLOR = !BLACK_PIECE;
 const int OPPONENT_COLOR = (AI_COLOR == WHITE_PIECE) ? BLACK_PIECE : WHITE_PIECE;
 const int AI_DEPTH = 6;
 
@@ -257,6 +257,42 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
         }
     }
 
+    AllPossibleOpeningMovesFromPosition possibleBookMoves = bookAllPossibleMoves(board, book);
+    int maxOccurrence = 0;
+    for (int i = 0; i<possibleBookMoves.amtMoves; i++){
+        if (possibleBookMoves.moveOccurrence[i] > maxOccurrence) {
+            maxOccurrence = possibleBookMoves.moveOccurrence[i];
+        }
+    }
+    for (int moveIdx = 0; moveIdx<possibleBookMoves.amtMoves; moveIdx++) {
+        Vector2 start = {
+            (possibleBookMoves.moves[moveIdx].fromSquare % 8) * 75 + 75/2,
+            (possibleBookMoves.moves[moveIdx].fromSquare / 8) * 75 + 75/2
+        };
+        Vector2 end = {
+            (possibleBookMoves.moves[moveIdx].toSquare % 8) * 75 + 75/2,
+            (possibleBookMoves.moves[moveIdx].toSquare / 8) * 75 + 75/2
+        }; 
+
+        if (start.x == end.x && start.y == end.y) {
+            continue;
+        }
+        
+        int occ = possibleBookMoves.moveOccurrence[moveIdx];
+        float maxOcc = (double)(maxOccurrence);
+        float t = (float)occ / maxOcc;
+        if (t > 1.0f) t = 1.0f;
+        Color low = (Color){ 255, 192, 203, 50 };   // pink
+        Color high = (Color){ 128, 0, 255, 200 };   // purple-blue
+        int r = (int)(low.r + (high.r - low.r) * t);
+        int g = (int)(low.g + (high.g - low.g) * t);
+        int b = (int)(low.b + (high.b - low.b) * t);
+        int a = (int)(low.a + (high.a - low.a) * t);
+        Color col = (Color){ r, g, b, a };
+
+        drawArrow(start, end, 15.0, col);
+    }
+
     Square curSquare;
     int textureCol;
     for (int i = 0; i < 64; i++)
@@ -289,23 +325,7 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
         }
     }
 
-    AllPossibleOpeningMovesFromPosition possibleBookMoves = bookAllPossibleMoves(board, book);
-    for (int moveIdx = 0; moveIdx<possibleBookMoves.amtMoves; moveIdx++) {
-        Vector2 start = {
-            (possibleBookMoves.moves[moveIdx].fromSquare % 8) * 75 + 75/2,
-            (possibleBookMoves.moves[moveIdx].fromSquare / 8) * 75 + 75/2
-        };
-        Vector2 end = {
-            (possibleBookMoves.moves[moveIdx].toSquare % 8) * 75 + 75/2,
-            (possibleBookMoves.moves[moveIdx].toSquare / 8) * 75 + 75/2
-        }; 
-
-        if (start.x == end.x && start.y == end.y) {
-            continue;
-        }
-
-        drawArrow(start, end, 15.0, (Color){ 255, 192, 203, 50 });
-    }
+    
 
     // create the drag and drop for moving pieces
     Vector2 mousePosition = GetMousePosition();

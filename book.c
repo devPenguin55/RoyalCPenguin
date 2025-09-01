@@ -20,9 +20,11 @@ OpeningBook initBook(Board *board, TranspositionTable *tt) {
         printf("Could not open book.txt!");
         exit(EXIT_FAILURE);
     }
+    
 
     char buffer[1024];
     while (fgets(buffer, sizeof(buffer), filePtr) != NULL) {
+        
         if (book.amount >= book.capacity) {
             book.capacity *= 2;
             book.collection = realloc(book.collection, sizeof(PositionHashToMoves)*book.capacity);
@@ -44,7 +46,9 @@ OpeningBook initBook(Board *board, TranspositionTable *tt) {
         char curEncodedMove[8];
         int posInCurEncodedMove = 0;
         int keepLookingForEncodedMove = 1;
-
+        char totalCharsForOccurrence[16];
+        int amtWrittenToTotalCharsForOccurrence = 0;
+        book.collection[book.amount].amtPossibleMoves = 0;
         for (int i = 0; i < strlen(buffer); i++) {
             if ((!endLookForFen) && (buffer[i] != ':')) {
                 lastFenIndex = i;
@@ -58,14 +62,24 @@ OpeningBook initBook(Board *board, TranspositionTable *tt) {
                         strcpy(encodedMoves[amtEncodedMoves++], curEncodedMove);
                         keepLookingForEncodedMove = 1;
                         posInCurEncodedMove = 0;
+                        totalCharsForOccurrence[amtWrittenToTotalCharsForOccurrence++] = '\0';
+                        amtWrittenToTotalCharsForOccurrence = 0;
+                        book.collection[book.amount].moveOccurrence[book.collection[book.amount].amtPossibleMoves++] = atoi(totalCharsForOccurrence);
                     } else if (buffer[i] == '(' || buffer[i] == ')') {
                         keepLookingForEncodedMove = 0;
                     } else if (keepLookingForEncodedMove) {
                         curEncodedMove[posInCurEncodedMove++] = buffer[i];
                     }
+                    if (keepLookingForEncodedMove == 0 && !((buffer[i] == '(' || buffer[i] == ')'))) {
+                        totalCharsForOccurrence[amtWrittenToTotalCharsForOccurrence++] = buffer[i];
+                    }
                 } 
             }
         }
+        
+        totalCharsForOccurrence[amtWrittenToTotalCharsForOccurrence++] = '\0';
+        book.collection[book.amount].moveOccurrence[book.collection[book.amount].amtPossibleMoves++] = atoi(totalCharsForOccurrence);
+        
         fen[lastFenIndex+1] = '\0';
 
         curEncodedMove[posInCurEncodedMove++] = '\0';
@@ -113,7 +127,7 @@ OpeningBook initBook(Board *board, TranspositionTable *tt) {
             
         }
         free(curLegalMoves.moves);
-        free(board->moves.stack);
+        free(board->moves.stack); 
         book.amount++;
     }
     fclose(filePtr);
@@ -142,6 +156,7 @@ AllPossibleOpeningMovesFromPosition bookAllPossibleMoves(Board *board, OpeningBo
             // * we have a match! now return all the stored moves
             for (int moveIdx = 0; moveIdx<book->collection->amtPossibleMoves; moveIdx++) {
                 possibleBook.moves[moveIdx] = book->collection[i].possibleMoves[moveIdx];
+                possibleBook.moveOccurrence[moveIdx] = book->collection[i].moveOccurrence[moveIdx];
                 possibleBook.amtMoves++;
             }
             break;
