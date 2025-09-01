@@ -242,7 +242,7 @@ void pushMove(Board *board, Move move)
     board->moves.stack[board->moves.size].oldZobristHash = board->zobristHash;
 
     if (board->enPassantSquareIndex != -1) {
-        board->zobristHash ^= zobristUniqueValues[board->enPassantSquareIndex % 8][0];
+        // board->zobristHash ^= zobristUniqueValues[board->enPassantSquareIndex % 8][0];
     }
 
     // change the board turn
@@ -551,7 +551,7 @@ void pushMove(Board *board, Move move)
     board->zobristHash ^= zobristUniqueValues[move.toSquare][board->squares[move.fromSquare].type - PAWN + (board->squares[move.fromSquare].color == BLACK_PIECE)*6];
     board->zobristHash ^= zobristUniqueValues[64][0];
     if (board->enPassantSquareIndex != -1) {
-        board->zobristHash ^= zobristUniqueValues[board->enPassantSquareIndex % 8][0];
+        // board->zobristHash ^= zobristUniqueValues[board->enPassantSquareIndex % 8][0];
     }
 
     
@@ -602,10 +602,10 @@ void popMove(Board *board)
     board->moves.size--;
 
     if (board->enPassantSquareIndex != -1) {
-        board->zobristHash ^= zobristUniqueValues[board->enPassantSquareIndex % 8][0];
+        // board->zobristHash ^= zobristUniqueValues[board->enPassantSquareIndex % 8][0];
     }
     if (undoMove.oldEnPassantSquareIndex != -1) {
-        board->zobristHash ^= zobristUniqueValues[undoMove.oldEnPassantSquareIndex % 8][0];
+        // board->zobristHash ^= zobristUniqueValues[undoMove.oldEnPassantSquareIndex % 8][0];
     }
     board->enPassantSquareIndex = undoMove.oldEnPassantSquareIndex;
 
@@ -950,7 +950,7 @@ void initBoard(Board *board, char fen[], TranspositionTable *tt)
     board->materialScore = whiteMat - blackMat;
     board->pieceSquareTableScore = whitePositionScore - blackPositionScore;
     board->zobristHash = generateZobristHash(board);
-    printf("zobrist hash %lld\n", board->zobristHash);
+    // printf("zobrist hash %lld\n", board->zobristHash);
 
     board->gameState = NONE;
     generateLegalMoves(board);

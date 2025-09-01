@@ -10,6 +10,7 @@
 #include "search.h"
 #include "evaluation.h"
 #include "zobrist.h"
+#include "book.h"
 
 
 
@@ -18,7 +19,9 @@ int main() {
     Board board;
     TranspositionTable tt;
     initializeTT(&tt, 256);
-
+    
+    OpeningBook book = initBook(&board, &tt);
+    
     initBoard(&board, STARTING_FEN, &tt);
     // initBoard(&board, "2rq1rk1/1p2npp1/4p1b1/4PBQp/5N2/2R3R1/PP3PPP/6K1 w - - 0 1", &tt);
     // initBoard(&board, "8/5k1P/1K6/8/8/2P5/1P6/8 w - - 0 1", &tt);
@@ -41,12 +44,13 @@ int main() {
 
     int draggingPieceType = -1;
     while (!WindowShouldClose()) {
-        drawFrame(&board, &spriteSheet, spriteRecs, &drawingPieceMouseHandler, sounds, 1, &curLegalMoves, &tt, result, &draggingPieceType);
+        drawFrame(&board, &spriteSheet, spriteRecs, &drawingPieceMouseHandler, sounds, 0, &curLegalMoves, &tt, result, &draggingPieceType, &book);
     }
 
     free(tt.entries);
     free(board.moves.stack);
     free(curLegalMoves.moves);
+    free(book.collection);
     CloseAudioDevice();
     CloseWindow();
     return 0;

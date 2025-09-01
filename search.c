@@ -11,7 +11,7 @@
 #include "evaluation.h"
 #include "moveOrdering.h"
 #include "zobrist.h"
-
+#include "book.h"
 
 // #define MAX(a, b) ((a) > (b) ? (a) : (b))
 
@@ -226,7 +226,7 @@ void convertPieceTypeToTextureColumn2(int pieceType, int *textureCol)
 }
 
 
-SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTable *tt, Texture2D *spriteSheet, Rectangle *spriteRecs, DrawingPieceMouseHandler *drawingPieceMouseHandler, Vector2 *mousePosition, int *textureCol) {
+SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTable *tt, Texture2D *spriteSheet, Rectangle *spriteRecs, DrawingPieceMouseHandler *drawingPieceMouseHandler, Vector2 *mousePosition, int *textureCol, OpeningBook *book) {
     // ! if u see depth 1 mate found but score is like -999996 or smt, then it found mate but it was in tp and thus cancelled search there 
     // ! bc it knew that it was game over
     
@@ -243,10 +243,17 @@ SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTab
         return rootResult;
     }
 
+    Move bookMoveResult = bookLookup(board, book);
+    if (bookMoveResult.fromSquare != -1) {
+        rootResult.bestScore = UNKNOWN;
+        rootResult.bestMove = bookMoveResult;
+        return rootResult;
+    }
 
     if ((board->whitePieceAmt + board->blackPieceAmt) <= 16) {
         maxDepth += (int)((16 - board->whitePieceAmt - board->blackPieceAmt)/(2));
     }
+
     
     printf("Searching for total depth %d with game state of %d\n", maxDepth, board->gameState);
     
@@ -275,9 +282,15 @@ SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTab
         DrawRectangle(8 * 75, 0, 75*4, 75*8, DARKGRAY);
         char text[80];
         if (((rootResult.bestScore > infinity-500) || (rootResult.bestScore < -infinity+500)) && rootResult.bestScore != UNKNOWN) { 
-            snprintf(text, sizeof(text), "Searched depth %d\nEval: Mate in %d ply", currentDepth, infinity-abs(rootResult.bestScore));
+            int whiteCenteredMateScore = (board->colorToPlay == BLACK_PIECE ? -1 : 1)*(infinity-abs(rootResult.bestScore));
+            snprintf(text, sizeof(text), "Searched depth %d\nEval:%s#%d", currentDepth, (whiteCenteredMateScore >= 0) ? " \0" : " -\0", (abs(whiteCenteredMateScore)+1)/2);
         } else {
-            snprintf(text, sizeof(text), "Searched depth %d\nEval: %d", currentDepth, rootResult.bestScore);
+            double whiteCenteredEval = (board->colorToPlay == BLACK_PIECE ? -1 : 1)*((double)(rootResult.bestScore))/((double)(pieceTypeToWorth[PAWN]));
+            if (whiteCenteredEval == 0.0) {
+                snprintf(text, sizeof(text), "Searched depth %d\nEval: 0.0", currentDepth);
+            } else {
+                snprintf(text, sizeof(text), "Searched depth %d\nEval:%s%.1f", currentDepth, (whiteCenteredEval >= 0) ? " +\0" : " \0", whiteCenteredEval);
+            }
         }
         DrawText(text, 8 * 75+2, 2 * 75, 30, GREEN);
         char notation[5];

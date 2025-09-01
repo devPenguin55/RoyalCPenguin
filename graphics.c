@@ -11,7 +11,7 @@
 #include "zobrist.h"
 #include "evaluation.h"
 
-const int AI_COLOR = BLACK_PIECE;
+const int AI_COLOR = !BLACK_PIECE;
 const int OPPONENT_COLOR = (AI_COLOR == WHITE_PIECE) ? BLACK_PIECE : WHITE_PIECE;
 const int AI_DEPTH = 6;
 
@@ -92,7 +92,7 @@ void moveToNotation(Move *move, char *notation)
     notation[4] = '\0';
 }
 
-void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, DrawingPieceMouseHandler *drawingPieceMouseHandler, Sound *sounds, int showIndexes, LegalMovesContainer *curLegalMoves, TranspositionTable *tt, SearchRootResult *result, int *draggingPieceType)
+void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, DrawingPieceMouseHandler *drawingPieceMouseHandler, Sound *sounds, int showIndexes, LegalMovesContainer *curLegalMoves, TranspositionTable *tt, SearchRootResult *result, int *draggingPieceType, OpeningBook *book)
 {
     BeginDrawing();
 
@@ -237,14 +237,14 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
     int snappedMouseX = (int)(floor(mousePosition.x / 75));
     int snappedMouseY = (int)(floor(mousePosition.y / 75));
 
-    if (IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
-    {
-        // undo the last 2 moves to undo ur move and the AI's move or in the other order for the opposite side to go again
-        popMove(board);
-        popMove(board);
-        WaitTime(0.25);
-        *curLegalMoves = generateLegalMoves(board);
-    }
+    // if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
+    // {
+    //     // undo the last 2 moves to undo ur move and the AI's move or in the other order for the opposite side to go again
+    //     popMove(board);
+    //     popMove(board);
+    //     WaitTime(0.25);
+    //     *curLegalMoves = generateLegalMoves(board);
+    // }
 
     if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) // && board->colorToPlay == OPPONENT_COLOR)
     {
@@ -368,14 +368,14 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
 
         // convertPieceTypeToTextureColumn(drawingPieceMouseHandler->squareSelected.type, &textureCol);
 
-        SearchRootResult rootResult = IterativeDeepening(board, AI_DEPTH, tt, spriteSheet, spriteRecs, drawingPieceMouseHandler, &mousePosition, draggingPieceType);
+        SearchRootResult rootResult = IterativeDeepening(board, AI_DEPTH, tt, spriteSheet, spriteRecs, drawingPieceMouseHandler, &mousePosition, draggingPieceType, book);
         memcpy(result, &rootResult, sizeof(SearchRootResult));
         pushMove(board, result->bestMove);
-
+        
         *curLegalMoves = generateLegalMoves(board);
-
+        
         UndoMove lastMove = board->moves.stack[board->moves.size - 1];
-
+        
         if (board->gameState > CHECK)
         {
             PlaySound(sounds[4]);
@@ -414,11 +414,19 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
         char text[80];
         if (((result->bestScore > infinity - 500) || (result->bestScore < -infinity + 500)) && result->bestScore != UNKNOWN)
         {
-            snprintf(text, sizeof(text), "Searched depth %d\nEval: Mate in %d ply", board->targetPly, infinity - abs(result->bestScore));
+            int whiteCenteredMateScore = (board->colorToPlay == WHITE_PIECE ? -1 : 1)*(infinity-abs(result->bestScore));
+            snprintf(text, sizeof(text), "Searched depth %d\nEval:%s#%d", board->targetPly, (whiteCenteredMateScore >= 0) ? " \0" : " -\0", (abs(whiteCenteredMateScore)+1)/2);
+        } else if (result->bestScore == UNKNOWN) {
+            snprintf(text, sizeof(text), "Opening Book\nEval: Book Move");
         }
         else
         {
-            snprintf(text, sizeof(text), "Searched depth %d\nEval: %d", board->targetPly, result->bestScore);
+            double whiteCenteredEval = (board->colorToPlay == WHITE_PIECE ? -1 : 1)*((double)(result->bestScore))/((double)(pieceTypeToWorth[PAWN]));
+            if (whiteCenteredEval == 0.0) {
+                snprintf(text, sizeof(text), "Searched depth %d\nEval: 0.0", board->targetPly);
+            } else {
+                snprintf(text, sizeof(text), "Searched depth %d\nEval:%s%.1f", board->targetPly, (whiteCenteredEval >= 0) ? " +\0" : " \0", whiteCenteredEval);
+            }
         }
         DrawText(text, 8 * 75 + 2, 2 * 75, 30, GREEN);
         char notation[5];

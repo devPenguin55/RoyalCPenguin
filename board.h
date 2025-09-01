@@ -19,6 +19,7 @@ struct TranspositionTable; // forward declare it to avoid circular includes
 #define QUEEN 5
 #define KING 6
 
+
 // game state
 #define CHECK 1
 #define CHECKMATE 2
