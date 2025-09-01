@@ -247,7 +247,6 @@ SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTab
     if (bookMoveResult.fromSquare != -1) {
         rootResult.bestScore = UNKNOWN;
         rootResult.bestMove = bookMoveResult;
-        
         return rootResult;
     }
 

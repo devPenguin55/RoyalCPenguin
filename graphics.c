@@ -332,11 +332,16 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
     int snappedMouseX = (int)(floor(mousePosition.x / 75));
     int snappedMouseY = (int)(floor(mousePosition.y / 75));
 
-    if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
+    if (IsMouseButtonDown(MOUSE_BUTTON_RIGHT) && (rand() % 100 == 0))
     {
         // undo the last 2 moves to undo ur move and the AI's move or in the other order for the opposite side to go again
-        popMove(board);
-        popMove(board);
+        if (board->moves.size == 1) {
+            popMove(board);
+            WaitTime(0.75);
+        } else {
+            popMove(board);
+            popMove(board);
+        }
         WaitTime(0.25);
         *curLegalMoves = generateLegalMoves(board);
     }
@@ -456,9 +461,10 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
         DrawText(text, 2.5 * 75, 3.5 * 75, 80, DARKGREEN);
     } 
 
-    if (board->colorToPlay == AI_COLOR && board->gameState <= CHECK)
     // if (board->gameState <= CHECK)
+    if (board->colorToPlay == AI_COLOR && board->gameState <= CHECK)
     {
+        printf("Allowed %d\n", (board->colorToPlay == AI_COLOR && board->gameState <= CHECK));
         drawingPieceMouseHandler->isPickedUp = 0;
 
         // convertPieceTypeToTextureColumn(drawingPieceMouseHandler->squareSelected.type, &textureCol);
