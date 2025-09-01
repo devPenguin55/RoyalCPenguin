@@ -34,11 +34,13 @@ int main() {
     // initBoard(&board, "3k4/8/R7/4K3/8/8/8/8 w - - 50 26", &tt); // m6
     // initBoard(&board, "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1", &tt); //kiwipete
 
-    initBoard(&board, "K7/8/8/1B6/2b5/8/4B3/k7 w - - 0 1", &tt); //test
+    // initBoard(&board, "K7/8/8/1B6/2b5/8/4B3/k7 w - - 0 1", &tt); //test
     
 
 
     initGraphics(&spriteSheet, spriteRecs, sounds);
+    Font myFont = LoadFontEx("KRONIKA_.TTF", 32, 0, 0);
+    SetTextureFilter(myFont.texture, TEXTURE_FILTER_BILINEAR);
     
     LegalMovesContainer curLegalMoves = generateLegalMoves(&board);
 
@@ -48,7 +50,7 @@ int main() {
     char notation[64];
     convertMoveToSAN(&board, (Move){-1, -1, -1, (Square){NONE, NONE, -1}, -1}, notation);
     while (!WindowShouldClose()) {
-        drawFrame(&board, &spriteSheet, spriteRecs, &drawingPieceMouseHandler, sounds, 1, &curLegalMoves, &tt, result, &draggingPieceType, &book, notation);
+        drawFrame(&board, &spriteSheet, spriteRecs, &drawingPieceMouseHandler, sounds, 0, &curLegalMoves, &tt, result, &draggingPieceType, &book, notation, &myFont);
     }
 
     free(tt.entries);
@@ -57,5 +59,6 @@ int main() {
     free(book.collection);
     CloseAudioDevice();
     CloseWindow();
+    UnloadFont(myFont);
     return 0;
 }
