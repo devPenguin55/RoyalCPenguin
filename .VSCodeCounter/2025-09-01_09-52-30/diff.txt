@@ -1,0 +1,53 @@
+Date : 2025-09-01 09:52:30
+Directory : c:\AaravC-Projects\Chess Engine
+Total : 21 files,  -160 codes, -18 comments, -48 blanks, all -226 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| C        |         10 |        307 |         13 |         54 |        374 |
+| Markdown |          4 |         96 |          0 |         26 |        122 |
+| CSV      |          2 |         40 |          0 |          0 |         40 |
+| C++      |          1 |         25 |          0 |          6 |         31 |
+| JSON     |          1 |          1 |          0 |          0 |          1 |
+| Python   |          3 |       -629 |        -31 |       -134 |       -794 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                               | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                  |         21 |       -160 |        -18 |        -48 |       -226 |
+| . (Files)                                                                          |         14 |       -297 |        -18 |        -74 |       -389 |
+| .VSCodeCounter                                                                     |          7 |        137 |          0 |         26 |        163 |
+| .VSCodeCounter\2025-08-29_19-17-14                                                 |          7 |        137 |          0 |         26 |        163 |
++------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                           | language | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\AaravC-Projects\Chess Engine\.VSCodeCounter\2025-08-29_19-17-14\details.md      | Markdown |         34 |          0 |          6 |         40 |
+| c:\AaravC-Projects\Chess Engine\.VSCodeCounter\2025-08-29_19-17-14\diff-details.md | Markdown |         20 |          0 |          6 |         26 |
+| c:\AaravC-Projects\Chess Engine\.VSCodeCounter\2025-08-29_19-17-14\diff.csv        | CSV      |         13 |          0 |          0 |         13 |
+| c:\AaravC-Projects\Chess Engine\.VSCodeCounter\2025-08-29_19-17-14\diff.md         | Markdown |         20 |          0 |          7 |         27 |
+| c:\AaravC-Projects\Chess Engine\.VSCodeCounter\2025-08-29_19-17-14\results.csv     | CSV      |         27 |          0 |          0 |         27 |
+| c:\AaravC-Projects\Chess Engine\.VSCodeCounter\2025-08-29_19-17-14\results.json    | JSON     |          1 |          0 |          0 |          1 |
+| c:\AaravC-Projects\Chess Engine\.VSCodeCounter\2025-08-29_19-17-14\results.md      | Markdown |         22 |          0 |          7 |         29 |
+| c:\AaravC-Projects\Chess Engine\board.c                                            | C        |         -5 |          5 |          0 |          0 |
+| c:\AaravC-Projects\Chess Engine\board.h                                            | C        |          1 |          0 |          1 |          2 |
+| c:\AaravC-Projects\Chess Engine\book.c                                             | C        |        129 |          8 |         29 |        166 |
+| c:\AaravC-Projects\Chess Engine\book.h                                             | C++      |         25 |          0 |          6 |         31 |
+| c:\AaravC-Projects\Chess Engine\comp.py                                            | Python   |       -689 |        -32 |       -142 |       -863 |
+| c:\AaravC-Projects\Chess Engine\convertGrandmasterPgnsToOneFile.py                 | Python   |         56 |          1 |          7 |         64 |
+| c:\AaravC-Projects\Chess Engine\graphics.c                                         | C        |         95 |         -1 |         15 |        109 |
+| c:\AaravC-Projects\Chess Engine\graphics.h                                         | C        |          1 |          0 |          0 |          1 |
+| c:\AaravC-Projects\Chess Engine\main.c                                             | C        |          3 |          0 |          3 |          6 |
+| c:\AaravC-Projects\Chess Engine\movegen.c                                          | C        |         91 |          0 |         11 |        102 |
+| c:\AaravC-Projects\Chess Engine\rename.py                                          | Python   |          4 |          0 |          1 |          5 |
+| c:\AaravC-Projects\Chess Engine\search.c                                           | C        |         -8 |          0 |         -4 |        -12 |
+| c:\AaravC-Projects\Chess Engine\search.h                                           | C        |          1 |          0 |         -1 |          0 |
+| c:\AaravC-Projects\Chess Engine\zobrist.c                                          | C        |         -1 |          1 |          0 |          0 |
+| Total                                                                              |          |       -160 |        -18 |        -48 |       -226 |
++------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

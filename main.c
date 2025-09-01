@@ -11,7 +11,7 @@
 #include "evaluation.h"
 #include "zobrist.h"
 #include "book.h"
-
+#include "notations.h"
 
 
 int main() {
@@ -34,7 +34,9 @@ int main() {
     // initBoard(&board, "3k4/8/R7/4K3/8/8/8/8 w - - 50 26", &tt); // m6
     // initBoard(&board, "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1", &tt); //kiwipete
 
-    // initBoard(&board, "r2r2k1/ppq2ppp/4pn2/2bn2B1/2BN4/8/PPP1QPPP/R2R2K1 b - - 0 1", &tt); //test
+    // initBoard(&board, "kbr2r2/8/8/4b3/3R4/8/4N1N1/K2R4 w - - 0 1", &tt); //test
+    
+
 
     initGraphics(&spriteSheet, spriteRecs, sounds);
     
@@ -43,8 +45,9 @@ int main() {
     SearchRootResult *result = &((SearchRootResult){(Move){-1, -1, -1, (Square){NONE, NONE, -1}, -1}, Evaluate(&board)});    
 
     int draggingPieceType = -1;
+    char notation[64];
     while (!WindowShouldClose()) {
-        drawFrame(&board, &spriteSheet, spriteRecs, &drawingPieceMouseHandler, sounds, 0, &curLegalMoves, &tt, result, &draggingPieceType, &book);
+        drawFrame(&board, &spriteSheet, spriteRecs, &drawingPieceMouseHandler, sounds, 1, &curLegalMoves, &tt, result, &draggingPieceType, &book, notation);
     }
 
     free(tt.entries);

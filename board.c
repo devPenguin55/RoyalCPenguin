@@ -227,7 +227,7 @@ void pushMove(Board *board, Move move)
         }
     }
 
-
+    
     board->moves.stack[board->moves.size].oldEnPassantSquareIndex = board->enPassantSquareIndex;
     memcpy(board->moves.stack[board->moves.size].oldCastlingRights, board->castlingRights, 4 * sizeof(int));
     board->moves.stack[board->moves.size].oldHalfMoveClock = board->halfmoveClock;

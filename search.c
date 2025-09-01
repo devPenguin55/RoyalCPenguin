@@ -12,6 +12,7 @@
 #include "moveOrdering.h"
 #include "zobrist.h"
 #include "book.h"
+#include "notations.h"
 
 // #define MAX(a, b) ((a) > (b) ? (a) : (b))
 
@@ -226,7 +227,7 @@ void convertPieceTypeToTextureColumn2(int pieceType, int *textureCol)
 }
 
 
-SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTable *tt, Texture2D *spriteSheet, Rectangle *spriteRecs, DrawingPieceMouseHandler *drawingPieceMouseHandler, Vector2 *mousePosition, int *textureCol, OpeningBook *book) {
+SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTable *tt, Texture2D *spriteSheet, Rectangle *spriteRecs, DrawingPieceMouseHandler *drawingPieceMouseHandler, Vector2 *mousePosition, int *textureCol, OpeningBook *book, char *notation) {
     // ! if u see depth 1 mate found but score is like -999996 or smt, then it found mate but it was in tp and thus cancelled search there 
     // ! bc it knew that it was game over
     
@@ -247,6 +248,7 @@ SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTab
     if (bookMoveResult.fromSquare != -1) {
         rootResult.bestScore = UNKNOWN;
         rootResult.bestMove = bookMoveResult;
+        convertMoveToSAN(board, bookMoveResult, notation);
         return rootResult;
     }
 
@@ -293,8 +295,7 @@ SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTab
             }
         }
         DrawText(text, 8 * 75+2, 2 * 75, 30, GREEN);
-        char notation[5];
-        moveToNotation(&(rootResult.bestMove), notation);
+        convertMoveToSAN(board, (rootResult.bestMove), notation);
         DrawText("Bot Best Move\n---------------", 8 * 75+2, 4 * 75, 30, GREEN);
         DrawText(notation, 8 * 75+2, 5 * 75-15, 30, GREEN);
         EndDrawing();

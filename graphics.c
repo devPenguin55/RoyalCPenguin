@@ -10,6 +10,7 @@
 #include "search.h"
 #include "zobrist.h"
 #include "evaluation.h"
+#include "notations.h"
 
 const int AI_COLOR = !BLACK_PIECE;
 const int OPPONENT_COLOR = (AI_COLOR == WHITE_PIECE) ? BLACK_PIECE : WHITE_PIECE;
@@ -147,7 +148,7 @@ void drawArrow(Vector2 start, Vector2 end, float thickness, Color color)
     }
 }
 
-void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, DrawingPieceMouseHandler *drawingPieceMouseHandler, Sound *sounds, int showIndexes, LegalMovesContainer *curLegalMoves, TranspositionTable *tt, SearchRootResult *result, int *draggingPieceType, OpeningBook *book)
+void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, DrawingPieceMouseHandler *drawingPieceMouseHandler, Sound *sounds, int showIndexes, LegalMovesContainer *curLegalMoves, TranspositionTable *tt, SearchRootResult *result, int *draggingPieceType, OpeningBook *book, char *notation)
 {
     BeginDrawing();
 
@@ -464,12 +465,11 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
     // if (board->gameState <= CHECK)
     if (board->colorToPlay == AI_COLOR && board->gameState <= CHECK)
     {
-        printf("Allowed %d\n", (board->colorToPlay == AI_COLOR && board->gameState <= CHECK));
         drawingPieceMouseHandler->isPickedUp = 0;
 
         // convertPieceTypeToTextureColumn(drawingPieceMouseHandler->squareSelected.type, &textureCol);
 
-        SearchRootResult rootResult = IterativeDeepening(board, AI_DEPTH, tt, spriteSheet, spriteRecs, drawingPieceMouseHandler, &mousePosition, draggingPieceType, book);
+        SearchRootResult rootResult = IterativeDeepening(board, AI_DEPTH, tt, spriteSheet, spriteRecs, drawingPieceMouseHandler, &mousePosition, draggingPieceType, book, notation);
         memcpy(result, &rootResult, sizeof(SearchRootResult));
         pushMove(board, result->bestMove);
         
@@ -531,8 +531,7 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
             }
         }
         DrawText(text, 8 * 75 + 2, 2 * 75, 30, GREEN);
-        char notation[5];
-        moveToNotation(&result->bestMove, notation);
+    
         DrawText("Bot Best Move\n---------------", 8 * 75 + 2, 4 * 75, 30, GREEN);
         DrawText(notation, 8 * 75 + 2, 5 * 75 - 15, 30, GREEN);
 
