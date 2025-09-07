@@ -52,7 +52,7 @@ void initializeTT(TranspositionTable *tt, int ttMBsToAllocate) {
     tt->hits = 0;
     tt->collisions = 0;
 
-    printf("\nCreated TT table with %d MB -> space for %d entries\n", ttMBsToAllocate, tt->size);
+    // printf("\nCreated TT table with %d MB -> space for %d entries\n", ttMBsToAllocate, tt->size);
 }
 
 uint64_t generateZobristHash(Board *board) {

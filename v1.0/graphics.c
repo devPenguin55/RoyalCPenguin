@@ -14,7 +14,7 @@
 
 const int AI_COLOR = !BLACK_PIECE;
 const int OPPONENT_COLOR = (AI_COLOR == WHITE_PIECE) ? BLACK_PIECE : WHITE_PIECE;
-const int AI_DEPTH = 6;
+const int AI_DEPTH = 7;
 
 Sound sounds[6];
 Texture2D spriteSheet;
@@ -467,8 +467,8 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
         drawingPieceMouseHandler->isPickedUp = 0;
 
         // convertPieceTypeToTextureColumn(drawingPieceMouseHandler->squareSelected.type, &textureCol);
-
-        SearchRootResult rootResult = IterativeDeepening(board, AI_DEPTH, tt, spriteSheet, spriteRecs, drawingPieceMouseHandler, &mousePosition, draggingPieceType, book, notation, myFont);
+        SearchRootResult rootResult = IterativeDeepening(board, AI_DEPTH, tt, book);
+        convertMoveToSAN(board, rootResult.bestMove, notation);
         memcpy(result, &rootResult, sizeof(SearchRootResult));
         pushMove(board, result->bestMove);
 

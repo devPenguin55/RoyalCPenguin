@@ -4,7 +4,6 @@
 #include <string.h>
 #include <math.h>
 #include <time.h>
-#include <raylib.h>
 #include "board.h"
 #include "movegen.h"
 #include "search.h"
@@ -247,18 +246,18 @@ void convertPieceTypeToTextureColumn2(int pieceType, int *textureCol)
     }
 }
 
-SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTable *tt, Texture2D *spriteSheet, Rectangle *spriteRecs, DrawingPieceMouseHandler *drawingPieceMouseHandler, Vector2 *mousePosition, int *textureCol, OpeningBook *book, char *notation, Font *myFont)
+SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTable *tt, OpeningBook *book)
 {
     // ! if u see depth 1 mate found but score is like -999996 or smt, then it found mate but it was in tp and thus cancelled search there
     // ! bc it knew that it was game over
 
-    int searchStartTime = getTimeInMilliseconds();
+    // int searchStartTime = getTimeInMilliseconds();
     POSITIONS_EVALUATED = 0;
     tt->hits = 0;
     tt->collisions = 0;
     tt->writes = 0;
     SearchRootResult rootResult;
-    int maxDepthSearched = 1;
+    // int maxDepthSearched = 1;
 
     if (board->gameState > CHECK)
     {
@@ -270,7 +269,6 @@ SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTab
     {
         rootResult.bestScore = UNKNOWN;
         rootResult.bestMove = bookMoveResult;
-        convertMoveToSAN(board, bookMoveResult, notation);
         return rootResult;
     }
 
@@ -279,7 +277,7 @@ SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTab
         maxDepth += (int)((16 - board->whitePieceAmt - board->blackPieceAmt) / (2));
     }
 
-    printf("Searching for total depth %d with game state of %d\n", maxDepth, board->gameState);
+    // printf("Searching for total depth %d with game state of %d\n", maxDepth, board->gameState);
 
     for (int currentDepth = 1; currentDepth <= maxDepth; currentDepth++)
     {
@@ -287,58 +285,16 @@ SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTab
         rootResult.bestScore = -infinity;
         Search(board, currentDepth, -infinity, infinity, tt, &rootResult);
 
-        // * graphics addition
-        BeginDrawing();
-
-        // convertPieceTypeToTextureColumn2(drawingPieceMouseHandler->squareSelected.type, &textureCol);
-
-        Rectangle destRec = {
-            mousePosition->x - spriteRecs[(*textureCol) + drawingPieceMouseHandler->squareSelected.color * 6].width * 0.75 * 0.5 * 0.5, mousePosition->y - spriteRecs[(*textureCol) + drawingPieceMouseHandler->squareSelected.color * 6].height * 0.75 * 0.5 * 0.5,
-            spriteRecs[0].width * 0.75 * 0.5, spriteRecs[0].height * 0.75 * 0.5};
-
-        DrawTexturePro(
-            *spriteSheet,
-            spriteRecs[(*textureCol) + drawingPieceMouseHandler->squareSelected.color * 6],
-            destRec,
-            (Vector2){0, 0},
-            0.0f,
-            WHITE);
-
-        DrawRectangle(8 * 75, 0, 75 * 4, 75 * 8, DARKGRAY);
-        char text[80];
-        if (((rootResult.bestScore > infinity - 500) || (rootResult.bestScore < -infinity + 500)) && rootResult.bestScore != UNKNOWN)
-        {
-            int whiteCenteredMateScore = (board->colorToPlay == BLACK_PIECE ? -1 : 1) * (infinity - abs(rootResult.bestScore));
-            snprintf(text, sizeof(text), "Searched depth %d\nEval:%s#%d", currentDepth, (whiteCenteredMateScore >= 0) ? " \0" : " -\0", (abs(whiteCenteredMateScore) + 1) / 2);
-        }
-        else
-        {
-            double whiteCenteredEval = (board->colorToPlay == BLACK_PIECE ? -1 : 1) * ((double)(rootResult.bestScore)) / ((double)(pieceTypeToWorth[PAWN]));
-            if (whiteCenteredEval == 0.0)
-            {
-                snprintf(text, sizeof(text), "Searched depth %d\nEval: 0.0", currentDepth);
-            }
-            else
-            {
-                snprintf(text, sizeof(text), "Searched depth %d\nEval:%s%.1f", currentDepth, (whiteCenteredEval >= 0) ? " +\0" : " \0", whiteCenteredEval);
-            }
-        }
-        DrawTextEx(*myFont, text, (Vector2){8 * 75 + 2, 2 * 75}, 40, 1, GREEN);
-        convertMoveToSAN(board, (rootResult.bestMove), notation);
-        DrawTextEx(*myFont, "Bot Best Move\n---------------", (Vector2){8 * 75 + 2, 4 * 75}, 40, 1, GREEN);
-        DrawTextEx(*myFont, notation, (Vector2){8 * 75 + 2, 5 * 75 - 5}, 40, 1, GREEN);
-        EndDrawing();
-
-        maxDepthSearched = currentDepth;
+        // maxDepthSearched = currentDepth;
         if (((rootResult.bestScore > infinity - 500) || (rootResult.bestScore < -infinity + 500)) && rootResult.bestScore != UNKNOWN)
         {
             // we have a mate score to deal with
-            printf("\n[MATE FOUND]");
+            // printf("\n[MATE FOUND]");
             break;
         }
         else
         {
-            printf("depth %d | best move %d to %d, %d was best score\n", currentDepth, rootResult.bestMove.fromSquare, rootResult.bestMove.toSquare, rootResult.bestScore);
+            // printf("depth %d | best move %d to %d, %d was best score\n", currentDepth, rootResult.bestMove.fromSquare, rootResult.bestMove.toSquare, rootResult.bestScore);
         }
         // if (((getTimeInMilliseconds() - searchStartTime)/1000) > 5) {
         //     printf("\n[TIME OUT]");
@@ -346,8 +302,8 @@ SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTab
         // }
     }
 
-    printf("\nTook %f ms for depth %d, %d positions evaluated, %d hits, %d collisions\n", getTimeInMilliseconds() - searchStartTime, maxDepthSearched, POSITIONS_EVALUATED, tt->hits, tt->collisions);
-    printf("Wrote %d, which is %f\n\n", tt->writes, ((double)(tt->writes)) / ((double)(tt->size)) * 100.0);
+    // printf("\nTook %f ms for depth %d, %d positions evaluated, %d hits, %d collisions\n", getTimeInMilliseconds() - searchStartTime, maxDepthSearched, POSITIONS_EVALUATED, tt->hits, tt->collisions);
+    // printf("Wrote %d, which is %f\n\n", tt->writes, ((double)(tt->writes)) / ((double)(tt->size)) * 100.0);
     // extract PV line
     //     printf("\nPV line -> ");
     //     int amtPV = 0;

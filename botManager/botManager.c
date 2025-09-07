@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+#include <math.h>
+#include <time.h>
+#include "board.h"
+#include "graphics.h"
+#include "movegen.h"
+#include "search.h"
+#include "evaluation.h"
+#include "zobrist.h"
+#include "book.h"
+#include "notations.h"

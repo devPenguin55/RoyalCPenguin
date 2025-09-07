@@ -1,0 +1,13 @@
+CC = gcc
+CFLAGS = -IC:/msys64/mingw64/include -Wall -Werror 
+LDFLAGS = -LC:/msys64/mingw64/lib
+LIBS = -lraylib -lopengl32 -lgdi32 -lwinmm
+
+SOURCES = main.c board.c graphics.c movegen.c evaluation.c search.c zobrist.c moveOrdering.c book.c notations.c
+TARGET = versionOne.exe
+
+$(TARGET): $(SOURCES)
+	$(CC) $(SOURCES) -o $(TARGET) $(CFLAGS) $(LDFLAGS) $(LIBS)
+
+clean:
+	del $(TARGET)

@@ -137,3 +137,56 @@ void convertMoveToSAN(Board *board, Move move, char *out) {
     
     return;
 }
+
+void convertMoveToUCI(Board *board, Move move, char *out) {
+    char fromSquare[3];
+    char toSquare[3];
+    convertSquareIndexToAlgebraicForm(move.fromSquare, fromSquare);
+    convertSquareIndexToAlgebraicForm(move.toSquare, toSquare);
+    out[0] = fromSquare[0];
+    out[1] = fromSquare[1];
+    out[2] = toSquare[0];
+    out[3] = toSquare[1];
+
+    if (move.promotionType != -1) {
+        char promotionType;
+        convertPieceTypeToChar(move.promotionType, BLACK_PIECE, &promotionType);
+        out[4] = promotionType;
+        out[5] = '\0';
+    } else {
+        out[4] = '\0';
+    }
+}
+
+void pushUCIToBoard(Board *board, char *uci) {
+    LegalMovesContainer legalMoves = generateLegalMoves(board);
+
+    for (int i = 0; i<legalMoves.amtOfMoves; i++) {
+        char out[6];
+        char fromSquare[3];
+        char toSquare[3];
+        convertSquareIndexToAlgebraicForm(legalMoves.moves[i].fromSquare, fromSquare);
+        convertSquareIndexToAlgebraicForm(legalMoves.moves[i].toSquare, toSquare);
+        out[0] = fromSquare[0];
+        out[1] = fromSquare[1];
+        out[2] = toSquare[0];
+        out[3] = toSquare[1];
+
+        if (legalMoves.moves[i].promotionType != NONE) {
+            char promotionType;
+            convertPieceTypeToChar(legalMoves.moves[i].promotionType, BLACK_PIECE, &promotionType);
+            out[4] = promotionType;
+            out[5] = '\0';
+        } else {
+            out[4] = '\0';
+        }
+
+        if (strcmp(uci, out) == 0) {
+            pushMove(board, legalMoves.moves[i]);
+            free(legalMoves.moves);
+            return;
+        }
+    }
+
+    free(legalMoves.moves);
+}

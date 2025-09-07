@@ -23,5 +23,5 @@ double getTimeInMilliseconds();
 int SearchAllCaptures(Board *board, int alpha, int beta, TranspositionTable *tt, SearchRootResult *rootResult);
 int Search(Board *board, int depth, int alpha, int beta, TranspositionTable *tt, SearchRootResult *rootResult);
 void convertPieceTypeToTextureColumn2(int pieceType, int *textureCol);
-SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTable *tt,Texture2D *spriteSheet, Rectangle *spriteRecs, DrawingPieceMouseHandler *drawingPieceMouseHandler, Vector2 *mousePosition, int *textureCol, OpeningBook *book, char *notation, Font *myFont);
+SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTable *tt, OpeningBook *book);
 #endif
