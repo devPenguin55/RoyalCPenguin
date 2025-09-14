@@ -38,9 +38,6 @@ int main(int argc, char *argv[]) {
     // initBoard(&board, "6k1/2p1pp1p/1p4p1/8/8/2P1r3/P5PP/1R4K1 w - - 0 1", &tt);
 
     if (argc > 1 && strcmp(argv[1], "--nogui") == 0) {
-        // rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
-        LegalMovesContainer curLegalMoves = generateLegalMoves(&board);
-
         char positionFenString[100];
         if (fgets(positionFenString, sizeof(positionFenString), stdin)) {
             positionFenString[strcspn(positionFenString, "\n")] = '\0';
@@ -58,8 +55,27 @@ int main(int argc, char *argv[]) {
                 uciMove[strcspn(uciMove, "\n")] = '\0';
                 if (strcmp(uciMove, "q") == 0) {
                     break;
+                } else if (strcmp(uciMove, "new") == 0) {
+                    char positionFenString[100];
+                    if (fgets(positionFenString, sizeof(positionFenString), stdin)) {
+                        positionFenString[strcspn(positionFenString, "\n")] = '\0';
+                    }
+                    free(tt.entries);
+                    free(board.moves.stack);
+                    free(book.collection);
+                    
+                    initializeTT(&tt, 256);
+                    
+                    book = initBook(&board, &tt);
+                    (void)book;
+                    
+                    if (strcmp(positionFenString, "startpos") == 0) {
+                        initBoard(&board, STARTING_FEN, &tt);
+                    } else {
+                        initBoard(&board, positionFenString, &tt);
+                    }
                 } else if (strcmp(uciMove, "go") == 0) {
-                    SearchRootResult searchResult = IterativeDeepening(&board, 7, &tt, &book);
+                    SearchRootResult searchResult = IterativeDeepening(&board, 5, &tt, &book);
                     pushMove(&board, searchResult.bestMove);
                     char uciBestMove[6];
                     convertMoveToUCI(&board, searchResult.bestMove, uciBestMove);
@@ -67,12 +83,12 @@ int main(int argc, char *argv[]) {
                 } else {
                     pushUCIToBoard(&board, uciMove);
                 }
+                fflush(stdout);
             }
         }
 
         free(tt.entries);
         free(board.moves.stack);
-        free(curLegalMoves.moves);
         free(book.collection);
     } else {
         initBoard(&board, STARTING_FEN, &tt);

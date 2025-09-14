@@ -160,7 +160,7 @@ void convertMoveToUCI(Board *board, Move move, char *out) {
 
 void pushUCIToBoard(Board *board, char *uci) {
     LegalMovesContainer legalMoves = generateLegalMoves(board);
-
+    
     for (int i = 0; i<legalMoves.amtOfMoves; i++) {
         char out[6];
         char fromSquare[3];
@@ -172,7 +172,7 @@ void pushUCIToBoard(Board *board, char *uci) {
         out[2] = toSquare[0];
         out[3] = toSquare[1];
 
-        if (legalMoves.moves[i].promotionType != NONE) {
+        if (legalMoves.moves[i].promotionType != -1) {
             char promotionType;
             convertPieceTypeToChar(legalMoves.moves[i].promotionType, BLACK_PIECE, &promotionType);
             out[4] = promotionType;
