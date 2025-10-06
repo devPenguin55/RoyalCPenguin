@@ -30,13 +30,15 @@ int SearchAllCaptures(Board *board, int alpha, int beta, TranspositionTable *tt,
     POSITIONS_EVALUATED++;
 
     uint64_t stateZobristHash = board->zobristHash;
-    for (int i = (board->moves.size - board->halfmoveClock); i < board->moves.size; i++)
-    {
-        if (board->moves.stack[i].oldZobristHash == stateZobristHash)
+    if ((board->moves.size - board->halfmoveClock) >= 0) {
+        for (int i = (board->moves.size - board->halfmoveClock); i < board->moves.size; i++)
         {
-
-            board->gameState = DRAW;
-            return 0;
+            if (board->moves.stack[i].oldZobristHash == stateZobristHash)
+            {
+    
+                board->gameState = DRAW;
+                return 0;
+            }
         }
     }
     if (board->halfmoveClock >= 100)
@@ -136,6 +138,7 @@ int Search(Board *board, int depth, int alpha, int beta, TranspositionTable *tt,
             rootResult->bestScore = ttLookupValue;
         }
         // printf("tt lookup!\n");
+        free(legalMoves.moves);
         return ttLookupValue;
     }
 
@@ -246,10 +249,29 @@ void convertPieceTypeToTextureColumn2(int pieceType, int *textureCol)
     }
 }
 
-SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTable *tt, OpeningBook *book)
+SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTable *tt, OpeningBook *book, char *engineId)
 {
+    
+    
+
     // ! if u see depth 1 mate found but score is like -999996 or smt, then it found mate but it was in tp and thus cancelled search there
     // ! bc it knew that it was game over
+
+    char fileName[64];
+    snprintf(fileName, sizeof(fileName), "engine%s.txt", engineId);
+    FILE *filePtr = fopen(fileName, "a");
+    setvbuf(filePtr, NULL, _IONBF, 0);
+    if (filePtr == NULL) {
+        
+        printf("Failed to open %s\n", fileName);
+        fflush(stdout);
+        perror("fopen");
+        exit(EXIT_FAILURE);
+    }
+    fprintf(filePtr, "Entered iterative deepening\n");
+    fflush(filePtr);
+    
+    
 
     // int searchStartTime = getTimeInMilliseconds();
     POSITIONS_EVALUATED = 0;
@@ -259,37 +281,50 @@ SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTab
     SearchRootResult rootResult;
     // int maxDepthSearched = 1;
 
+    
     if (board->gameState > CHECK)
     {
+        fprintf(filePtr, "Game state greater than check\n");
+        fclose(filePtr);
         return rootResult;
     }
-
+    
     Move bookMoveResult = bookLookup(board, book);
     if (bookMoveResult.fromSquare != -1)
     {
         rootResult.bestScore = UNKNOWN;
         rootResult.bestMove = bookMoveResult;
+        fprintf(filePtr, "Book move\n");
+        fclose(filePtr);
         return rootResult;
     }
-
+    
     if ((board->whitePieceAmt + board->blackPieceAmt) <= 16)
     {
         maxDepth += (int)((16 - board->whitePieceAmt - board->blackPieceAmt) / (2));
     }
-
+    
     // printf("Searching for total depth %d with game state of %d\n", maxDepth, board->gameState);
 
+    fprintf(filePtr, "Starting search for depths %d...\n", maxDepth);
+
+        
     for (int currentDepth = 1; currentDepth <= maxDepth; currentDepth++)
-    {
+    {   
+        fprintf(filePtr, "    Starting search for depth %d/%d...\n", currentDepth, maxDepth);
+        fflush(filePtr);
         board->targetPly = currentDepth;
         rootResult.bestScore = -infinity;
         Search(board, currentDepth, -infinity, infinity, tt, &rootResult);
-
+        fprintf(filePtr, "    Search Finished, best score %d | best move %d to %d\n", rootResult.bestScore, rootResult.bestMove.fromSquare, rootResult.bestMove.toSquare);
+        fflush(filePtr);
         // maxDepthSearched = currentDepth;
         if (((rootResult.bestScore > infinity - 500) || (rootResult.bestScore < -infinity + 500)) && rootResult.bestScore != UNKNOWN)
         {
             // we have a mate score to deal with
             // printf("\n[MATE FOUND]");
+            fprintf(filePtr, "    [MATE FOUND]\n");
+            fflush(filePtr);
             break;
         }
         else
@@ -329,6 +364,8 @@ SearchRootResult IterativeDeepening(Board *board, int maxDepth, TranspositionTab
     // for (int i = 0; i<amtPV; i++) {
     //     popMove(board);
     // }
-
+    fprintf(filePtr, "Search ended!\n");
+    fflush(filePtr);
+    fclose(filePtr);
     return rootResult;
 }

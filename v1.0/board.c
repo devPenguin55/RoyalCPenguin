@@ -927,7 +927,10 @@ void initBoard(Board *board, char fen[], TranspositionTable *tt)
     board->moves.size = 0;
     board->moves.capacity = 5;
     board->moves.stack = malloc(board->moves.capacity * sizeof(UndoMove));
-
+    if (board->moves.stack == NULL) {
+        printf("allocating moves stack failed");
+        exit(EXIT_FAILURE);
+    }
     // printBoard(board);
 
     
@@ -953,5 +956,6 @@ void initBoard(Board *board, char fen[], TranspositionTable *tt)
     // printf("zobrist hash %lld\n", board->zobristHash);
 
     board->gameState = NONE;
-    generateLegalMoves(board);
+    LegalMovesContainer legals = generateLegalMoves(board);
+    free(legals.moves);
 }

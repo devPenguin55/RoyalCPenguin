@@ -467,7 +467,7 @@ void drawFrame(Board *board, Texture2D *spriteSheet, Rectangle *spriteRecs, Draw
         drawingPieceMouseHandler->isPickedUp = 0;
 
         // convertPieceTypeToTextureColumn(drawingPieceMouseHandler->squareSelected.type, &textureCol);
-        SearchRootResult rootResult = IterativeDeepening(board, AI_DEPTH, tt, book);
+        SearchRootResult rootResult = IterativeDeepening(board, AI_DEPTH, tt, book, "0");
         convertMoveToSAN(board, rootResult.bestMove, notation);
         memcpy(result, &rootResult, sizeof(SearchRootResult));
         pushMove(board, result->bestMove);

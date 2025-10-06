@@ -951,7 +951,9 @@ void initBoard(Board *board, char fen[], TranspositionTable *tt)
     board->pieceSquareTableScore = whitePositionScore - blackPositionScore;
     board->zobristHash = generateZobristHash(board);
     // printf("zobrist hash %lld\n", board->zobristHash);
-
+    
     board->gameState = NONE;
-    generateLegalMoves(board);
+    LegalMovesContainer legals = generateLegalMoves(board);
+    
+    free(legals.moves);
 }

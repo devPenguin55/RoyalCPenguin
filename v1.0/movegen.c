@@ -621,14 +621,15 @@ LegalMovesContainer generateLegalMoves(Board *board)
     }
 
     if (board->gameState <= CHECK) {
-
-        for (int i = (board->moves.size-board->halfmoveClock); i < board->moves.size; i++)
-        {
-            if (board->moves.stack[i].oldZobristHash == board->zobristHash)
+        if ((board->moves.size-board->halfmoveClock) >= 0) {
+            for (int i = (board->moves.size-board->halfmoveClock); i < board->moves.size; i++)
             {
-                 board->gameState = DRAW_RETURN_0_IN_SEARCH;
-                 actualLegalMoves.amtOfMoves = 0;
-                 break;
+                if (board->moves.stack[i].oldZobristHash == board->zobristHash)
+                {
+                     board->gameState = DRAW_RETURN_0_IN_SEARCH;
+                     actualLegalMoves.amtOfMoves = 0;
+                     break;
+                }
             }
         }
     }

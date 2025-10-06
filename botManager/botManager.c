@@ -9,10 +9,15 @@
 #include "notations.h"
 #include "zobrist.h"
 
+typedef struct RoughlyEqualStartingPositions {
+    int amtEntries;
+    char entries[1000][150];
+} RoughlyEqualStartingPositions;
+
 int sendMessageToEngine(char *message, HANDLE engineWriteHandle) {
     DWORD bytesWritten;
     if (!WriteFile(engineWriteHandle, message, (DWORD)(strlen(message)), &bytesWritten, NULL)) {
-        printf("Failed to write to engine one\n");
+        printf("Failed to write to engine\n");
         return 0;
     }   
     printf("Sent msg %s", message);
@@ -44,8 +49,48 @@ int readMessageFromEngine(HANDLE hReadPipe, char *moveBuffer) {
     return 1;
 }
 
+void initStartingPositions(RoughlyEqualStartingPositions *startingPositions) {
+    startingPositions->amtEntries = 0;
+
+    FILE *filePtr = fopen("botManagerStartpos.txt", "r");
+
+    if (filePtr == NULL) {
+        printf("Failed to open botManagerStartpos.txt");
+        exit(EXIT_FAILURE);
+    }
+    
+    char buffer[1024];
+    while (fgets(buffer, sizeof(buffer), filePtr) != NULL) {
+        int lastFenIndex = 0;
+
+        if (startingPositions->amtEntries >= 1000) {
+            break;
+        } else if (((rand() % 30) != 0)) { 
+            continue; 
+        }
+        
+        for (int i = 0; i < strlen(buffer); i++) {
+            if (buffer[i] != '\n') {
+                startingPositions->entries[startingPositions->amtEntries][i] = buffer[i];
+                lastFenIndex = i;
+            }
+        }
+        
+        startingPositions->entries[startingPositions->amtEntries][lastFenIndex+1] = '\0';
+        startingPositions->amtEntries++;
+    }
+
+    fclose(filePtr);
+}
 
 int main() {
+    srand(55); // time (null)
+
+    RoughlyEqualStartingPositions startingPositions;
+    initStartingPositions(&startingPositions);
+
+    initMoveGen();
+
     HANDLE hReadEngineOne, hWriteEngineOne;
     HANDLE hReadEngineOneOut, hWriteEngineOneOut;
     HANDLE hReadEngineTwo, hWriteEngineTwo;
@@ -79,7 +124,7 @@ int main() {
     si.hStdOutput = hWriteEngineOneOut; 
     if (!CreateProcess(
         NULL, 
-        "..\\v1.0\\versionOne.exe --nogui",
+        "..\\v1.0\\versionOne.exe --nogui 0",
         NULL, NULL,      
         TRUE,            
         0,       
@@ -99,7 +144,7 @@ int main() {
     si2.hStdOutput = hWriteEngineTwoOut; 
     if (!CreateProcess(
         NULL, 
-        "..\\v1.0\\versionOne.exe --nogui",
+        "..\\v1.0\\versionOne.exe --nogui 1",
         NULL, NULL,      
         TRUE,            
         0,       
@@ -112,65 +157,112 @@ int main() {
         return 1;
     }
 
-
-    sendMessageToEngine("startpos\n", hWriteEngineOne);
-    sendMessageToEngine("startpos\n", hWriteEngineTwo);
-
-    char engineOneMove[64];
-    char engineTwoMove[64];
     Board authoritativeBoard;
     TranspositionTable tt;
-    initMoveGen();
     initializeTT(&tt, 256);
-    initBoard(&authoritativeBoard, STARTING_FEN, &tt);
 
-    printf("\nTurn %d\n", authoritativeBoard.colorToPlay);
-    if (authoritativeBoard.colorToPlay == WHITE_PIECE) {
-        sendMessageToEngine("go\n", hWriteEngineOne);
-        readMessageFromEngine(hReadEngineOneOut, engineOneMove);
+    int engineOneWins = 0;
+    int engineTwoWins = 0;
+    int draws = 0;
 
-        pushUCIToBoard(&authoritativeBoard, engineOneMove);
-    } else {
-        sendMessageToEngine("go\n", hWriteEngineTwo);
-        readMessageFromEngine(hReadEngineTwoOut, engineTwoMove);
+
+    
+
+
+    for (int gameCount = 0; gameCount < 1000; gameCount++) {
+        printf("\nGame %d\n", gameCount+1);
+        char positionMessage[160];
+        char *fen = startingPositions.entries[gameCount];
+
+        snprintf(positionMessage, sizeof(positionMessage), "%s\n", fen);
+        sendMessageToEngine(positionMessage, hWriteEngineOne);
+        sendMessageToEngine(positionMessage, hWriteEngineTwo);
+
+        char engineOneMove[256];
+        char engineTwoMove[256];
         
-        pushUCIToBoard(&authoritativeBoard, engineTwoMove);
-    }
-    LegalMovesContainer legal = generateLegalMoves(&authoritativeBoard);
-    free(legal.moves);
+        initBoard(&authoritativeBoard, fen, &tt);
+        
+        LegalMovesContainer legal = generateLegalMoves(&authoritativeBoard);
+        free(legal.moves);
+        
+        printf("game state: %d\n", authoritativeBoard.gameState);
+        if (authoritativeBoard.gameState > CHECK) {
+            printf("Skipping game, game state is %d\n", authoritativeBoard.gameState);
+            free(authoritativeBoard.moves.stack);
+            sendMessageToEngine("new\n", hWriteEngineOne);
+            sendMessageToEngine("new\n", hWriteEngineTwo);
+            continue;
+        }
 
-    while (authoritativeBoard.gameState <= CHECK) {
-        if (authoritativeBoard.colorToPlay == WHITE_PIECE) {
-            printf("engine one turn\n");
-            // engine 1 move
-            sendMessageToEngine(engineTwoMove, hWriteEngineOne);
+        printf("\nTurn %d\n", authoritativeBoard.colorToPlay);
+        if (authoritativeBoard.colorToPlay == ((gameCount < 500) ? WHITE_PIECE : BLACK_PIECE)) {
             sendMessageToEngine("go\n", hWriteEngineOne);
             readMessageFromEngine(hReadEngineOneOut, engineOneMove);
-            
+
             pushUCIToBoard(&authoritativeBoard, engineOneMove);
         } else {
-            printf("engine two turn\n");
-            // engine 2 move
-            sendMessageToEngine(engineOneMove, hWriteEngineTwo);
             sendMessageToEngine("go\n", hWriteEngineTwo);
             readMessageFromEngine(hReadEngineTwoOut, engineTwoMove);
             
             pushUCIToBoard(&authoritativeBoard, engineTwoMove);
-        } 
-
-        LegalMovesContainer legal = generateLegalMoves(&authoritativeBoard);
-        free(legal.moves);
-    }
-    if (authoritativeBoard.gameState == CHECKMATE) {
-        if (authoritativeBoard.colorToPlay == BLACK_PIECE) {
-            printf("Engine One Won as White!\n");
-        } else {
-            printf("Engine Two Won as Black!\n");
         }
-    } else {
-        printf("Draw!\n");
-    }
 
+        LegalMovesContainer newLegal = generateLegalMoves(&authoritativeBoard);
+        free(newLegal.moves);
+
+
+        
+
+
+        while ((authoritativeBoard.gameState <= CHECK)) {
+            if (authoritativeBoard.colorToPlay == ((gameCount < 500) ? WHITE_PIECE : BLACK_PIECE)) {
+                printf("engine one turn\n");
+                // engine 1 move
+                sendMessageToEngine(engineTwoMove, hWriteEngineOne);
+                sendMessageToEngine("go\n", hWriteEngineOne);
+                readMessageFromEngine(hReadEngineOneOut, engineOneMove);
+                
+                pushUCIToBoard(&authoritativeBoard, engineOneMove);
+            } else {
+                printf("engine two turn\n");
+                // engine 2 move
+                sendMessageToEngine(engineOneMove, hWriteEngineTwo);
+                sendMessageToEngine("go\n", hWriteEngineTwo);
+                readMessageFromEngine(hReadEngineTwoOut, engineTwoMove);
+                
+                pushUCIToBoard(&authoritativeBoard, engineTwoMove);
+            } 
+
+            LegalMovesContainer legal = generateLegalMoves(&authoritativeBoard);
+            free(legal.moves);
+        }
+        printf("\n\n\n\n\n");
+        if (authoritativeBoard.gameState == CHECKMATE) {
+            if (authoritativeBoard.colorToPlay == ((gameCount < 500) ? BLACK_PIECE : WHITE_PIECE)) {
+                printf("Engine One Won!\n");
+                engineOneWins++;
+            } else {
+                printf("Engine Two Won!\n");
+                engineTwoWins++;
+            }
+        } else if (authoritativeBoard.gameState == DRAW) {
+            printf("Draw!\n");
+            draws++;
+        }
+        printf("\n\n\n\n\n");
+
+        free(authoritativeBoard.moves.stack);
+        sendMessageToEngine("new\n", hWriteEngineOne);
+        sendMessageToEngine("new\n", hWriteEngineTwo);
+    }
+    free(tt.entries);
+    sendMessageToEngine("startpos\n", hWriteEngineOne);
+    sendMessageToEngine("startpos\n", hWriteEngineTwo);
+    sendMessageToEngine("q\n", hWriteEngineOne);
+    sendMessageToEngine("q\n", hWriteEngineTwo);
+
+    printf("Engine One Wins - %d, Draws - %d, Engine Two Wins - %d", engineOneWins, draws, engineTwoWins);
     CloseHandle(hReadEngineOne);
     CloseHandle(hWriteEngineOne);
     CloseHandle(hReadEngineOneOut);

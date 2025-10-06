@@ -564,7 +564,7 @@ LegalMovesContainer generateLegalMoves(Board *board)
     }
     LegalMovesContainer pseudoLegal = generatePseudoLegalMoves(board);
     // return pseudoLegal;
-
+    
     LegalMovesContainer actualLegalMoves;
     actualLegalMoves.moves = malloc(pseudoLegal.amtOfMoves * sizeof(Move));
     actualLegalMoves.amtOfMoves = 0;
@@ -589,7 +589,7 @@ LegalMovesContainer generateLegalMoves(Board *board)
     }
 
     free(pseudoLegal.moves);
-
+    
     if (actualLegalMoves.amtOfMoves == 0)
     {
         if (!kingIsAttacked(board, originalColorToPlay))
@@ -619,21 +619,21 @@ LegalMovesContainer generateLegalMoves(Board *board)
         board->gameState = DRAW_RETURN_0_IN_SEARCH;
         actualLegalMoves.amtOfMoves = 0;
     }
-
     if (board->gameState <= CHECK) {
-
-        for (int i = (board->moves.size-board->halfmoveClock); i < board->moves.size; i++)
-        {
-            if (board->moves.stack[i].oldZobristHash == board->zobristHash)
+        if ((board->moves.size-board->halfmoveClock) >= 0) {
+            for (int i = (board->moves.size-board->halfmoveClock); i < board->moves.size; i++)
             {
-                 board->gameState = DRAW_RETURN_0_IN_SEARCH;
-                 actualLegalMoves.amtOfMoves = 0;
-                 break;
+                if (board->moves.stack[i].oldZobristHash == board->zobristHash)
+                {
+                     board->gameState = DRAW_RETURN_0_IN_SEARCH;
+                     actualLegalMoves.amtOfMoves = 0;
+                     break;
+                }
             }
         }
     }
-    
     if (board->gameState <= CHECK) {
+        
         
         if (board->whitePieceAmt + board->blackPieceAmt == 2) {
             board->gameState = DRAW;
@@ -716,7 +716,6 @@ LegalMovesContainer generateLegalMoves(Board *board)
             }
         }
     }
-
     return actualLegalMoves;
 }
 

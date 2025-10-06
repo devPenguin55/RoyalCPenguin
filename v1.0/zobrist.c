@@ -44,9 +44,9 @@ void initializeTT(TranspositionTable *tt, int ttMBsToAllocate) {
     // figure out how many TT entries can fit in these allocated bytes
     tt->size = bytesToAllocate / sizeof(TranspositionTableEntry);
     // then allocate the amount of TT entries that can fit multiplied by the size of a TT entry
-    tt->entries = malloc(tt->size * sizeof(TranspositionTableEntry));
+    tt->entries = calloc(tt->size, sizeof(TranspositionTableEntry));
     if (tt->entries == NULL) {
-        fprintf(stderr, "\nFailed to allocate %d MB for the TT table -> space for %d entries\n", ttMBsToAllocate, tt->size);
+        printf("\nFailed to allocate %d MB for the TT table -> space for %d entries\n", ttMBsToAllocate, tt->size);
         exit(EXIT_FAILURE);
     }
     tt->hits = 0;

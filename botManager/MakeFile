@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -IC:/msys64/mingw64/include -Wall -Werror 
+CFLAGS = -IC:/msys64/mingw64/include -Wall -Werror
 LDFLAGS = -LC:/msys64/mingw64/lib
 LIBS = -lraylib -lopengl32 -lgdi32 -lwinmm
 
